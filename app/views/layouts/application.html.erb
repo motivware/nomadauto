@@ -32,26 +32,49 @@
   }
 
   #navbar {
-    background-color: #41B3A3;
+    background-color: #FFF;
     margin: 0 auto;
     float: none;
   }
-
   
-  #navbar li > a {
-      color: #FFF;
+  .navbar-nav > li {
+    padding: 0px 40px 0px 40px;
   }
 
-  #News {
-  background-color: #41B3A3;
-  height: 700px;
+  a.header-nav-link {
+    font-size: 1.5em;
+    margin-top: 30px;
   }
+
+  a.footer-nav-link {
+    font-size: 1.5em;
+    color: #FFF;
+  }
+
+  a.header-nav-link:hover {
+    color:#418AB3;   
+  }
+
+  a.header-link {
+    text-decoration: none;
+    font-size: 1.3em;
+  }
+  
+  #News {
+  background: url(/assets/banner.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 800px;
+}
+   
 
   #SignUp {
-    background-color: #41B3A3;
-    padding-bottom: 125px;
+    background-color: #343A40;
+    height: 400px;
   }
-
+  
   h3.text-center.news {
     font-size: 2.5em;
     font-weight: bolder;
@@ -60,7 +83,7 @@
   }
 
   #navbar > div > div > div > div.navbar-header > h3 > a {
-    color: white;
+    color: #000;
     text-decoration: none;
   }
 
@@ -73,11 +96,6 @@
 
   input {
       height: auto !important;
-  }
-
-  .logo {
-    color: #41B3A3;
-    font-size: 200px;
   }
 
   #News > div > div > h2 {
@@ -93,6 +111,19 @@
     border: solid 3px white !important;
     color: white !important;
   }
+
+  .footer-nav {
+    list-style-type: none;
+    margin:10px;
+    margin-top: 100px;
+    text-align: right;
+  }
+
+  .footer-nav li {
+    padding: 25px 0px 25px 0px;
+    color: #FFF;
+  }
+   
   </style>
   </head>
   <body>
@@ -107,10 +138,6 @@
   </div>
 
   <%= yield %>
-
-  <% if not logged_in? && request.subdomain.present? %>
-    <%= render 'layouts/footer' %>
-  <% end %>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-105637220-2"></script>

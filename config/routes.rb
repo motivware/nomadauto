@@ -32,6 +32,7 @@ Rails.application.routes.draw do
         resources :visitors, only: [:new, :create, :index]
         get 'features', to: 'pages#features'
         get 'pricing', to: 'pages#pricing'
+        get 'faq', to: 'pages#faq'
     end
 
     constraints(SubdomainPresent) do

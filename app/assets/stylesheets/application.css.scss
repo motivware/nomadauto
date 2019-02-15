@@ -20,7 +20,6 @@
 
 html, body {
   height: 100%;
-
 }
 
 html {
@@ -39,6 +38,10 @@ body {
 }
 
 // Home Page Styles
+.header-link {
+  text-decoration: none;
+}
+
 .home-callout {
   color: #4286f4;
   padding-top: 50px;

@@ -53,22 +53,23 @@ h1 {
 
 #Contact {
     padding-bottom: 50px;
-    background-color: #41B3A3;
+    background-color: #B22222;
 }
 
 #Tasks {
     padding-bottom: 150px;
 }
 /* Main Content */
-
-.logoimage {
-    margin-top: -150px;
-}
-
 .jumbotron { background-color: #FFFFFF!important; }
 .well {
-    background-color: #FFFFFF!important;
-    border-color: #FFFFFF!important;
+    margin: 0px 10px 0px 10px;
+    height: 250px;
+    //background-color: #FFFFFF!important;
+    //border-color: #FFFFFF!important;
+}
+
+.well-sm {
+  background-color: #F5F5F5;
 }
 
 #sizing-addon {
@@ -124,7 +125,7 @@ p.copyright {
 /* sidebar */
 
 #Tasks > div > div > nav > div > ul > li.nav-link > a {
-    color: #2D9484;
+    color: #B22222;
 }
 
 #Tasks > div > div > nav > div > ul > li.nav-link > a:hover {
@@ -460,21 +461,28 @@ td:hover {
 }
 
 .btn-default-outline:hover {
-  background-color: #418ab3 !important;
-  border: solid 3px #418ab3 !important;
+  background-color: #B22222 !important;
+  border: solid 3px #B22222 !important;
 }
 
 .btn-primary {
-  border: solid 3px #41B3A3 !important;
-  background-color: #41B3A3 !important;
+  border: solid 3px #B22222 !important;
+  background-color: #B22222 !important;
 }
 
-.btn-primary:hover {
+.btn-default:hover {
   background-color: #418ab3 !important;
   border: solid 3px #418ab3 !important;
 }
 
-.inline {
-  display: inline;
-}
+.forms {
+    background: url(/assets/engine.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 500px;
+    margin: 0px -20px 0px -20px
+  }
+
 
