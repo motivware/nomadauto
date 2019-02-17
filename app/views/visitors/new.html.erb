@@ -1,11 +1,16 @@
 <div class="container-fluid" id="News">
   <div class="row">
-    <div class="col-sm-8 col-sm-offset-2"><br/>
-      <h2 class="news" style="font-size: 3.8em; font-weight:bold;">Make your autoshop management <br>easier than ever.</h2>
-      <h3  style="font-size: 2.3em; padding-bottom:20px;text-align:left;padding-left:100px;font-weight:bold;">Software that is simple to use <br><br> Only taks seconds to setup <br><br> Will help your busines grow</h3>
-        <ul style="padding-top:50px;list-style-type:none;text-align:left;">
-          <li style="display:inline;padding-right: 30px;"><%= link_to "Try for Free", signup_path(plan: @basic_plan.id), class: 'btn btn-default-outline btn-lg' %></li>
-          <li style="display:inline;padding-left: 30px;"><%= link_to "Request a Demo", new_contact_path, class: 'btn btn-default-outline btn-lg' %>
+    <div class="col-md-8 col-sm-8 col-md-offset-2"><br/>
+      <h2 style="font-size: 3.8em; font-weight:bold;">Make your autoshop management <br>easier than ever.</h2>
+      <h3 class="sm-none" style="font-size: 2.3em; padding-bottom:20px;text-align:left;padding-left:100px;font-weight:bold;">
+      Software that is simple to use <br>
+      <br> Only taks seconds to setup <br>
+      <br> Will help your busines grow</h3>
+        <ul style="padding-top:40px;list-style-type:none;text-align:left;">
+          <li style="display:inline;padding-right:60px;">
+          <%= link_to "Try for Free", signup_path(plan: @basic_plan.id), class: 'btn btn-default-outline btn-lg' %></li>
+          <li style="display:inline;margin-top: 100px;">
+          <%= link_to "Request a Demo", new_contact_path, class: 'btn btn-default-outline btn-lg' %>
           </li>
           <br/>
         </ul>
@@ -14,12 +19,12 @@
 </div>
 <div style="background-color:#B22222;" class="container-fluid">
   <div class="row">
-    <div style="text-align:left;padding-top:30px;height:300px;" class="col-sm-8 col-sm-offset-2">
+    <div style="text-align:left;padding:0px 25px 0px 25px;height:300px;" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 sm-none">
       <h2 style="text-align:left">What We Offer</h2>
-      <h2 style="padding: 0px 0px 20px 0px;">Motivware is very simple tool to use, has powerful features, and only takes seconds to set up. 
-Start today for free by signing up and inviting the rest of your team. We offer an all-in-one tool 
-for your autoshop business. Designed to assist auto-mechanic service companies with customer 
-relationships and business processes.</h4>
+      <h2 style="padding: 0px 0px 20px 0px;">Motivware is a very simple tool to use, has powerful features 
+      and only takes seconds to set up. Start today for free by signing up and inviting the rest of your team. 
+      We offer an all-in-one tool for your autoshop business. Designed to assist auto-mechanic service companies 
+      with customer relationships and business processes.</h2>
     </div>
   </div>
   </div>
@@ -30,92 +35,86 @@ relationships and business processes.</h4>
   
   <div class="row">
 
-    <div class="well col-md-2 col-md-offset-2">
+    <div class="well space landingfour landingtwo col-xl-1 col-lg-2 col-md-4 col-sm-4 ">
       <div style="font-size:3em;text-align:center;">
-        <i style="font-size: 50px; float:left; " class="glyphicon glyphicon-tasks logo"></i>
-        <h2 style="text-align:center;">Work Orders</h2>
-        <h4>Help assign tasks and keep 
-        your team organized. Keep track 
-        of what's completed and what 
+        <i class="glyphicon glyphicon-tasks landicon"></i>
+        <h3 style="text-align:center;">Work Orders</h3>
+        <h4 class="landtext">Help assign tasks and keep 
+        your team organized. Track 
+        what is completed and what 
         still needs done. </h4>
       </div>
     </div>
   
-    <div class="well col-md-2">
+    <div class="well space col-xl-1 col-lg-2 col-md-4 col-sm-4">
       <div style="font-size:3em;text-align:center;">
-        <i style="font-size: 50px; float:left;" class="glyphicon glyphicon-road logo"></i>
-        <h2 style="text-align:center;">Vehicle Roadmap</h2>
-        <h4>Keep track of all the customers and 
-        the vehicles  you have worked on. 
-        Help alert customers with common 
-        vehicle problems ahead of time.</h4>
+        <i class="glyphicon glyphicon-road landicon"></i>
+        <h3 style="text-align:center;">Vehicle Roadmap</h3>
+        <h4 class="landtext">Keep track of all your vehicles. Help alert customers of common 
+        vehicle problems.</h4>
       </div>
     </div>
 
-    <div class="well col-md-2">
+    <div class="well space landingtwo col-xl-1 col-lg-2 col-md-4 col-sm-4">
       <div style="font-size:3em;text-align:center;">
-        <i style="font-size: 50px; float:left;" class="glyphicon glyphicon-pencil logo"></i>
-        <h2 style="text-align:center;">Invoice Generation</h2>
-        <h4>Generate and print invoices its very 
-        quick and easy. Contain a history 
-        of all invoice records. Customize your 
+        <i class="glyphicon glyphicon-pencil landicon"></i>
+        <h3 style="text-align:center;">Invoice Generation</h3>
+        <h4 class="landtext">Generate invoices and contain a history 
+        of records. Customize your 
         invoice to suite your needs</h4>
       </div>
     </div>
 
-    <div class="well col-md-2">
+    <div class="well space col-xl-1 col-lg-2 col-md-4 col-sm-4">
       <div style="font-size:3em;text-align:center;">
-         <i style="font-size: 50px; float:left;" class="glyphicon glyphicon-search logo"></i>
-        <h2 style="text-align:center;">Part Finder</h2>
-        <h4>Search for parts across 
+        <i class="glyphicon glyphicon-search landicon"></i>
+        <h3 style="text-align:center;">Part Finder</h3>
+        <h4 class="landtext">Search for parts across 
         the web. Find the best deals to 
         help everyone save money. Ensure
         your finding the right part for job.</h4>
       </div>
     </div>
 
-  </div>
-
-    </br></br></br>
-    
+  </div> 
+ 
   <div class="row">
 
-    <div class="well col-md-2 col-md-offset-2">
+    <div class="well space landingfour landingtwo col-xl-1 col-lg-2 col-md-4 col-sm-4 ">
       <div style="font-size:3em;text-align:center;">
-        <i style="font-size: 50px; float:left;" class="glyphicon glyphicon-barcode logo"></i>
-        <h2 style="text-align:center;">Repair Estimates</h2>
-        <h4>Build service repair estimates for 
+        <i class="glyphicon glyphicon-equalizer landicon"></i>
+        <h3 style="text-align:center;">Repair Estimates</h3>
+        <h4 class="landtext">Build service repair estimates for 
         your customers. Send the estimates by 
-        printing or email. </h4>
+        print or email. </h4>
       </div>
     </div>
 
-  <div class="well col-md-2">
+  <div class="well space col-xl-1 col-lg-2 col-md-4 col-sm-4">
     <div style="font-size:3em;text-align:center;">
-      <i style="font-size: 50px; float:left;" class="fa fa-mobile logo"></i>
-      <h2 style="text-align:center;">Mobile Friendly</h2>
-      <h4>User with your phone or tablet from 
+      <i class="fa fa-mobile landicon"></i>
+      <h3 class="landhead" style="text-align:center;">Mobile Friendly</h3>
+      <h4 class="landtext" class="landsmall">User with your phone or tablet from 
         anywhere with Wifi. Stay up to date 
         with all work being done from home. </h4>
     </div>
   </div>
 
-  <div class="well col-md-2">
+  <div class="well space landingtwo col-xl-1 col-lg-2 col-md-4 col-sm-4">
     <div style="font-size:3em;text-align:center;">
-      <i style="font-size: 50px; float:left;" class="fa fa-users logo"></i>
-        <h2 style="text-align:center;">Customer Portal</h2>
-    <h4>Provide customers with access to 
-      see the service done on their vehicles. 
-      Allow customers to submit service
-      requests from their phone.</h4>
+      <i class="fa fa-users landicon"></i>
+      <h3 style="text-align:center;">Customer Portal</h3>
+      <h4 class="landtext">Allow customers to submit service requests and 
+      view the status of their vehicles.
+      </h4>
     </div>
   </div>
 
-  <div class="well col-md-2">
+  <div class="well space col-xl-2 col-lg-2 col-md-4 col-sm-4">
     <div style="font-size:3em; text-align:center;">
-      <i style="font-size: 50px; float:left;" class="fa fa-database logo"></i>
-        <h2 style="text-align:center;">Data Normalization</h2>
-    <h4>Start keeping your records organized. 
+      <i class="fa fa-database landicon"></i>
+        <h3 style="text-align:center;">Data Normalization</h3>
+      <h4 class="landtext">Start keeping your records organized. 
       Save a history of everything your shop 
       has been working on.</h4>
     </div>
@@ -128,27 +127,22 @@ relationships and business processes.</h4>
 
 <div class="container-fluid" id="SignUp">
   <div class="row">
-    <div class="col-sm-3 col-sm-offset-2"">
-    </br>
-          <h5 style="color:white;font-size: 2.0em;">Subscribe to our newsletter</h3>
+    <div class="col-sm-4 col-sm-offset-1">
+          <h3 style="color:white;font-size: 2.0em;">Subscribe to our newsletter</h3>
 
           <%= form_for @visitor do |f| %>
             <%= f.text_field :email, label: false, :placeholder => 'Your email address...', class: 'form-control' %>
             <br/>
             <%= f.submit "Subscribe", :class => "btn btn-default-outline btn-lg" %>
           <% end %>
-          
-            </br></br></br>            
-            <%= link_to image_tag("logoimg.jpg"), root_url %>
-    </div>
-    <div class="col-sm-3 col-sm-offset-0">
-
-      <span style="padding-top:300px;color:#FFF;font-size: 1.2em;" class="glyphicon glyphicon-envelope fa-md"><a style="font-size: 1.2em;color:#FFF;text-decoration:none;" href="mailto:admin@nomadauto.com">
+          </br></br></br></br>
+      <span style="color:#FFF;font-size: .8em;" class="glyphicon glyphicon-envelope fa-md">
+      <a style="font-size: 1.0em;color:#FFF;text-decoration:none;" href="mailto:support@motivware.com">
       support@motivware.com
       </a></span>
     </div>
-    <div class="col-sm-2 col-sm-offset-0">
-        <ul class="footer-nav">
+    <div class="sm-none" class="col-sm-4" >
+        <ul style="margin-right:100px;" class="footer-nav">
           <li><%= link_to "FAQ", faq_path, class: "footer-nav-link" %></li>
           <li><%= link_to "Privacy Policy", new_contact_path, class: "footer-nav-link" %></li>
           <li><%= link_to "Terms Of Use", new_contact_path, class: "footer-nav-link" %></li>

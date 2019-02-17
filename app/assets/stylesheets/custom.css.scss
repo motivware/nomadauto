@@ -63,7 +63,7 @@ h1 {
 .jumbotron { background-color: #FFFFFF!important; }
 .well {
     margin: 0px 10px 0px 10px;
-    height: 250px;
+    height: 275px;
     //background-color: #FFFFFF!important;
     //border-color: #FFFFFF!important;
 }
@@ -475,14 +475,163 @@ td:hover {
   border: solid 3px #418ab3 !important;
 }
 
-.forms {
-    background: url(/assets/engine.jpg) no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    height: 500px;
-    margin: 0px -20px 0px -20px
+  /* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  
+  //CSS
+  .landicon {
+    font-size: 50px;
+    }
+  .landingfour {
+    margin-left: 150px;
+  }
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1480px)  {
+  .landingfour {
+    margin-left: 230px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1480px) {
+  
+  //CSS
+  .landingfour {
+    margin-left: 170px;
+  }
+  .landicon {
+    font-size: 35px;
+  }
+  .landtext {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1200px) {
+  
+  //CSS
+  .landingtwo {
+    margin-left: 150px;
+  }
+  .landicon {
+    font-size: 45px;
+  }
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+  //CSS
+  .landicon {
+    font-size: 50px;
+    }
+  .landingtwo {
+    margin-left:100px;
+  }
+  .space {
+    margin: 50px;
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+  //CSS
+  .landicon {
+    font-size: 65px;
+    }
+  .landingtwo {
+    margin-left:100px;
+  }
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  
+  //CSS
+  
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+  //CSS
+  .landicon {
+    font-size: 65px;
+  }
+}
+
+@media (min-width: 769px) {
+  #sm-ham {
+    display: none;
+  }
+}
+
+@media (max-width: 769px) {
+  .navbar-header {
+      float: none;
+  }	    
+
+  .collapse.in{	    
+      display:block !important;	        
+  }	   
+
+  #md-ham {
+      display: none;
   }
 
+  #sm-ham {
+    text-align:center;  
+  }
+}
 
+@media (max-width: 989px) {
+  .forms {
+    height: 900px;
+    margin: 0px -20px 0px -20px
+  }
+}
+
+@media (min-width: 990px) {
+  .forms {
+      background: url(/assets/engine.jpg) no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      height: 500px;
+      margin: 0px -20px 0px -20px
+  }
+}
+
+@media (max-width: 645px) {
+  .sm-none {
+    display: none;
+  }
+}

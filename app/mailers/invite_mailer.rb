@@ -1,5 +1,5 @@
 class InviteMailer < ActionMailer::Base
- default from: "noreply@nomadauto.com"
+ default from: "noreply@motivware.com"
 
  def new_user_invite(invite)
     @invite = invite
