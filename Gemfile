@@ -15,6 +15,8 @@ gem 'coffee-rails', '4.2.1'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '4.1.1'
+# gem for using React JS
+gem 'react-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '5.0.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -28,7 +30,7 @@ gem 'bcrypt', '3.1.7'
 # gem 'capistrano-rails', group: :development
 
 # Use Twitter Bootstrap library for front end UI and layout
-gem 'bootstrap-sass', '3.3.7'
+gem "bootstrap-sass", ">= 3.4.1"
 
 # Use Font Awesome sass gem for adding icons
 gem 'font-awesome-sass', '~> 4.6.2'
@@ -62,7 +64,7 @@ gem 'groupdate'
 gem 'geocoder'
 
 # Use pg as the database for Active Record
-gem 'pg'
+gem 'pg', '1.1.4'
 
 # authorization library
 gem 'cancan'
@@ -96,7 +98,7 @@ group :development, :test do
   # Gem letter opener to avoid sending emails
   gem "letter_opener", :group => :development
 
-   # TDD
+  # TDD
   gem 'rspec-rails', ">= 2.0.0.beta"
   gem 'capybara'
 
@@ -120,4 +122,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-ruby '2.3.0'
+ruby '2.3.3'
