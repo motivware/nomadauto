@@ -32,7 +32,7 @@ Nomad Auto is currently being hosted at [Motivware](https://www.motivware.com)
 - [Sass](https://sass-lang.com/)
 
 # Setting up your Dev Environment
-If your computer is not setup to run ruby on rails yet - then you can follow one of the links below. These links will provide instructions on how to get your computer ready for developing rails.
+If your computer is not setup to run ruby on rails yet - then you can follow one of the links below. These links will provide instructions on how to get your computer ready for developing rails. (Choose ruby 2.3.8 and rails 5.0.7) 
 
 [GoRails - Windows Setup](https://gorails.com/setup/windows/10)
 
