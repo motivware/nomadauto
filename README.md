@@ -38,6 +38,8 @@ If your computer is not setup to run ruby on rails yet - then you can follow one
 
 [GoRails - MAC Setup](https://gorails.com/setup/osx/10.14-mojave)
 
+[GoRails - Ubuntu](https://gorails.com/setup/ubuntu/16.04)
+
 Once your computer is setup and running ruby on rails with Postgres you can clone the project and start working locally. Open your terminal window and follow the steps below to get a local version of motivware setup on your computer. 
 
 ```
