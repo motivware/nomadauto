@@ -48,6 +48,8 @@ cd projects
 git clone https://github.com/DamonClark/nomadauto/
 cd nomadauto
 bundle install
+createdb project_development
+rails db:migrate
 rails server -p 3000 -b lvh.me
 ```
 
