@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180724022542) do
+ActiveRecord::Schema.define(version: 20190316015343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "adminpack"
 
   create_table "accounts", force: :cascade do |t|
     t.string   "subdomain"
@@ -177,6 +176,19 @@ ActiveRecord::Schema.define(version: 20180724022542) do
     t.string   "subdomain"
     t.integer  "invite_id"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+  end
+
+  create_table "vehicles", force: :cascade do |t|
+    t.string   "vin"
+    t.string   "make"
+    t.string   "model"
+    t.string   "year"
+    t.string   "miles"
+    t.string   "engine"
+    t.string   "license_plate"
+    t.string   "transmission"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   add_foreign_key "activities", "users"
