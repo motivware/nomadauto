@@ -1,3 +1,3 @@
 class Vehicle < ApplicationRecord
-  validates :vin, presence: true
+  validates :make, presence: true
 end
