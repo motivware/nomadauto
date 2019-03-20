@@ -47,8 +47,6 @@ Rails.application.routes.draw do
 
           scope module: "users" do
             resources :companies
-            resources :lists
-            resources :cards
             resources :deals
             resources :invites
             resources :activities
