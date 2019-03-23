@@ -8,3 +8,10 @@
 Plan.create(name: 'basic', price: 0)
 Plan.create(name: 'pro', price: 49)
 Plan.create(name: 'invite', price: 0)
+
+User.create(name: 'test user', email: 'user@test.com', password: 'MotiVw@re',
+            plan_id: '2', activated: 'TRUE', subdomain: 'company' )
+
+Project.create(title: 'Mechanic Shop',
+               details: 'This is a demo for an auto mechanic shop',
+               user_id: '1')
