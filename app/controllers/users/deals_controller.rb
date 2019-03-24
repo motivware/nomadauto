@@ -45,7 +45,7 @@ module Users
 
         if @deal.save
           # Store form fields via paramaters, into variables
-          company = params[:deal][:company]
+          customer = params[:deal][:customer]
           status = params[:deal][:status]
           value = params[:deal][:value]
           flash[:success] = "Record Saved."
@@ -103,7 +103,7 @@ module Users
     def deal_params
        # To collect data from form, we need to use
        # strong paramaters and whitelist form fields
-       params.require(:deal).permit(:company, :status, :value, :project_id, :user_id)
+       params.require(:deal).permit(:customer, :status, :value, :project_id, :user_id)
     end
   end
 end
