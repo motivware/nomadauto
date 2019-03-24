@@ -46,7 +46,7 @@ Rails.application.routes.draw do
         end
 
           scope module: "users" do
-            resources :companies
+            resources :customers
             resources :deals
             resources :invites
             resources :activities
