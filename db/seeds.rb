@@ -15,3 +15,18 @@ User.create(name: 'test user', email: 'user@test.com', password: 'MotiVw@re',
 Project.create(title: 'Mechanic Shop',
                details: 'This is a demo for an auto mechanic shop',
                user_id: '1')
+
+customer_list = [
+  [ 1, "McDonalds", "John", "Smith", 4121231234, "test.com", "test/@email.com", 1 ],
+  [ 1, "BurgerKing", "Kevin", "Steven", 4121231234, "test.com", "test/@email.com", 1 ],
+  [ 1, "", "Jeff", "Rock", 4125431234, "test.com", "test/@email.com", 1 ],
+  [ 1, "", "Craig, Smith", 4121221212, "test.com", "test/@email.com", 1 ],
+  [ 1, "", "Ray, Fenz", 4121231512, "test.com", "test/@email.com", 1 ]
+
+]
+
+customer_list.each do |name, company, first_name, last_name, phone_number, website, email, project_id|
+  Customer.create( id: id, company: company, first_name: first_name,
+                  last_name: last_name, phone_number: phone_number,
+                  website: website, email: email, project_id: project_id )
+end

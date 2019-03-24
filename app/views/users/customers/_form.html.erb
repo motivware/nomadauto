@@ -1,5 +1,5 @@
-<%= form_for([@company.project, @company])  do |f| %>
-<%= f.label :Company %>
+<%= form_for([@customer.project, @customer])  do |f| %>
+<%= f.label :company %>
 <%= f.text_field :company, autofocus: true, class: 'form-control' %>
 <%= f.label :first_name %>
 <%= f.text_field :first_name, autofocus: true, class: 'form-control' %>
@@ -14,7 +14,7 @@
 </br>
 <%= f.submit "Submit", class: 'btn btn-primary' %>
 <% end %>
-<td><%= link_to "Delete", [@company.project, @company, @activities], method: :delete, data: { confirm: "Are you sure?" } %></td>
-<td><%= link_to "Back", project_companies_path(@project) %></td>
+<td><%= link_to "Delete", [@customer.project, @customer, @activities], method: :delete, data: { confirm: "Are you sure?" } %></td>
+<td><%= link_to "Back", project_customers_path(@project) %></td>
 
 
