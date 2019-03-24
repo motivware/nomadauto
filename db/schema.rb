@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190316015343) do
+ActiveRecord::Schema.define(version: 20190324210836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,15 @@ ActiveRecord::Schema.define(version: 20190316015343) do
     t.index ["task_id"], name: "index_comments_on_task_id", using: :btree
   end
 
-  create_table "companies", force: :cascade do |t|
+  create_table "contacts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "comments"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "customers", force: :cascade do |t|
     t.string   "company"
     t.string   "first_name"
     t.string   "last_name"
@@ -64,15 +72,7 @@ ActiveRecord::Schema.define(version: 20190316015343) do
     t.datetime "updated_at",   null: false
     t.integer  "project_id"
     t.integer  "user_id"
-    t.index ["project_id"], name: "index_companies_on_project_id", using: :btree
-  end
-
-  create_table "contacts", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.text     "comments"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_customers_on_project_id", using: :btree
   end
 
   create_table "deals", force: :cascade do |t|
@@ -194,10 +194,10 @@ ActiveRecord::Schema.define(version: 20190316015343) do
   add_foreign_key "activities", "users"
   add_foreign_key "cards", "lists"
   add_foreign_key "comments", "tasks"
-  add_foreign_key "companies", "projects"
+  add_foreign_key "customers", "projects"
   add_foreign_key "deals", "projects"
   add_foreign_key "invites", "projects"
-  add_foreign_key "projects", "companies"
+  add_foreign_key "projects", "customers", column: "company_id"
   add_foreign_key "projects", "deals"
   add_foreign_key "projects", "tasks"
   add_foreign_key "tasks", "projects"
