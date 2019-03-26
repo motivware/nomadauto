@@ -2,7 +2,6 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="well">
     <p id="notice"><%= notice %></p>
 
       <div class="card">
@@ -24,10 +23,9 @@
           <%= link_to "Back", project_tasks_path(@project),
                       class: 'btn btn-default' %>
         </ul>
-       </div>
       </div>
     </div>
-    <div class="well">
+    <div class="jumbotron">
       <h3><%= @task.comments.count %> Comments</h3>
        <%= render @task.comments %>
 

@@ -5,7 +5,6 @@
     <div class="page-content inset">
       <div class="row">
       <div class="container-fluid" id="Tasks">
-        <div class="well">
           <%if Task.where(project_id: @project) %>
             <div class="col-xs-12 col-md-6 col-md-offset-0">
               <h4>Priorities Graph</h4>
@@ -71,11 +70,10 @@
                 </tbody>
               </table>
 
-              <%= form_tag import_project_tasks_path do %>
-                   <%= file_field_tag :file %>
-                   <%= submit_tag "Upload" %>
-              <% end %>
-            </div>
+            <%= form_tag import_project_tasks_path do %>
+                 <%= file_field_tag :file %>
+                 <%= submit_tag "Upload" %>
+            <% end %>
           </div>
         </div>
       </div>
