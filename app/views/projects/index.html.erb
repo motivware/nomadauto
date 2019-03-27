@@ -9,7 +9,7 @@
         <table class="table table-striped">
           <% current_account.projects.each do |project| %>
             <tr>
-              <td><%= link_to project.title, project_tasks_path(project) %></td>
+              <td><%= link_to project.title, project_workorders_path(project) %></td>
               <td><%= project.details %></td>
             </tr>
           <% end %>

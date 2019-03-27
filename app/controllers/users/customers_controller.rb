@@ -26,7 +26,7 @@ module Users
     def show
       #1st you retrieve the project thanks to params[:project_id]
       @project = Project.find(params[:project_id])
-      #2nd you retrieve the tasks thanks to params[:id]
+      #2nd you retrieve the workorders thanks to params[:id]
       @customer = @project.customers.find(params[:id])
       authorize @customer
 
@@ -46,7 +46,7 @@ module Users
       #1st you retrieve the project thanks to params[:project_id]
       @project = Project.find(params[:project_id])
 
-      #2nd you create the task with arguments in params[:task]
+      #2nd you create the workorder with arguments in params[:workorder]
       @customer = @project.customers.create(customer_params)
 
         if @customer.save

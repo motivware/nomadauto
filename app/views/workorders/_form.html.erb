@@ -1,4 +1,4 @@
-<%= form_for([@task.project, @task]) do |f| %>
+<%= form_for([@workorder.project, @workorder]) do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control' %>
 
@@ -19,5 +19,5 @@
     </br>
     <%= f.submit "Submit", class: 'btn btn-primary' %>
 <% end %>
-<td><%= link_to "delete", [@task.project, @task, @activities], method: :delete, data: { confirm: "Are you sure?" } %></td>
-<td><%= link_to "Back", project_tasks_path(@project) %></td>
+<td><%= link_to "delete", [@workorder.project, @workorder, @activities], method: :delete, data: { confirm: "Are you sure?" } %></td>
+<td><%= link_to "Back", project_workorders_path(@project) %></td>

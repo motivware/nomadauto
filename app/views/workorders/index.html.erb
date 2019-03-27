@@ -5,20 +5,20 @@
     <div class="page-content inset">
       <div class="row">
       <div class="container-fluid" id="Tasks">
-          <%if Task.where(project_id: @project) %>
+          <%if Workorder.where(project_id: @project) %>
             <div class="col-xs-12 col-md-6 col-md-offset-0">
               <h4>Priorities Graph</h4>
-              <%= bar_chart @project.tasks.group(:priority).count %>
+              <%= bar_chart @project.workorders.group(:priority).count %>
             </div>
             <div class="col-xs-12 col-md-6 col-md-offset-0">
               <h4>Status Graph</h4>
-              <%= line_chart @project.tasks.group(:status).count %>  </br></br>
+              <%= line_chart @project.workorders.group(:status).count %>  </br></br>
             </div>
           <% end %>
         <div class="col-md-12 col-md-offset-0">
-        <%= link_to "Create New Ticket", new_project_task_path(), class: 'btn btn-default', id: "addtask" %>
+        <%= link_to "Create New Ticket", new_project_workorder_path(), class: 'btn btn-default', id: "addworkorder" %>
         </div>
-        <%= form_tag project_tasks_path, method: :get, class: "form-inline" do %>
+        <%= form_tag project_workorders_path, method: :get, class: "form-inline" do %>
             <div class="col-md-4">
             <%= label_tag "Status" %>
             <%= select_tag("status", options_for_select([['Open'],['Pending'],['Closed']]), :multiple => true, class: "filterbox" ) %>
@@ -35,7 +35,7 @@
             <%= submit_tag "Search", name: nil, class: 'btn btn-default' %>
             </div>
             <div class="col-md-6">
-            <%= link_to "Reset", project_tasks_path, class: 'btn btn-default' %>
+            <%= link_to "Reset", project_workorders_path, class: 'btn btn-default' %>
             </div>
         <% end %>
             <div class="col-md-12">
@@ -51,26 +51,26 @@
                  </tr>
                 </thead>
                 <tbody>
-                    <%if Task.where(project_id: @project) %>
-                      <% @tasks.each do |task| %>
+                    <%if Workorder.where(project_id: @project) %>
+                      <% @workorders.each do |workorder| %>
                         <tr>
-                          <td class="center" style="vertical-align:middle"><%= link_to task.title, project_task_path(@project, task) %></td>
-                          <td class="center" style="vertical-align:middle"><%= task.status %></td>
-                          <td class="center" style="vertical-align:middle"><%= task.priority %></td>
-                          <td class="center" style="vertical-align:middle"><%= if task.owner == nil
-                                                                                  task.user.name
+                          <td class="center" style="vertical-align:middle"><%= link_to workorder.title, project_workorder_path(@project, workorder) %></td>
+                          <td class="center" style="vertical-align:middle"><%= workorder.status %></td>
+                          <td class="center" style="vertical-align:middle"><%= workorder.priority %></td>
+                          <td class="center" style="vertical-align:middle"><%= if workorder.owner == nil
+                                                                                  workorder.user.name
                                                                               else
-                                                                                  task.owner
+                                                                                  workorder.owner
                                                                               end %></td>
-                          <td class="center" style="vertical-align:middle"><%= "#{time_ago_in_words(Time.at(task.created_at.to_i))} ago" %></td>
-                          <td class="center" style="vertical-align:middle"><%= "#{time_ago_in_words(Time.at(task.updated_at.to_i))} ago" %></td>
+                          <td class="center" style="vertical-align:middle"><%= "#{time_ago_in_words(Time.at(workorder.created_at.to_i))} ago" %></td>
+                          <td class="center" style="vertical-align:middle"><%= "#{time_ago_in_words(Time.at(workorder.updated_at.to_i))} ago" %></td>
                         </tr>
                       <% end %>
                     <% end %>
                 </tbody>
               </table>
 
-            <%= form_tag import_project_tasks_path do %>
+            <%= form_tag import_project_workorders_path do %>
                  <%= file_field_tag :file %>
                  <%= submit_tag "Upload" %>
             <% end %>

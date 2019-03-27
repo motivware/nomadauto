@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190324210836) do
+ActiveRecord::Schema.define(version: 20190327003503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,10 +47,12 @@ ActiveRecord::Schema.define(version: 20190324210836) do
   create_table "comments", force: :cascade do |t|
     t.text     "body"
     t.integer  "task_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "owner"
+    t.integer  "workorder_id"
     t.index ["task_id"], name: "index_comments_on_task_id", using: :btree
+    t.index ["workorder_id"], name: "index_comments_on_workorder_id", using: :btree
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -140,19 +142,6 @@ ActiveRecord::Schema.define(version: 20190324210836) do
     t.index ["task_id"], name: "index_projects_on_task_id", using: :btree
   end
 
-  create_table "tasks", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.string   "status"
-    t.string   "priority"
-    t.string   "owner"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "user_id"
-    t.integer  "project_id"
-    t.index ["project_id"], name: "index_tasks_on_project_id", using: :btree
-  end
-
   create_table "user_groups", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -191,14 +180,28 @@ ActiveRecord::Schema.define(version: 20190324210836) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "workorders", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "status"
+    t.string   "priority"
+    t.string   "owner"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.index ["project_id"], name: "index_workorders_on_project_id", using: :btree
+  end
+
   add_foreign_key "activities", "users"
   add_foreign_key "cards", "lists"
-  add_foreign_key "comments", "tasks"
+  add_foreign_key "comments", "workorders"
+  add_foreign_key "comments", "workorders", column: "task_id"
   add_foreign_key "customers", "projects"
   add_foreign_key "deals", "projects"
   add_foreign_key "invites", "projects"
   add_foreign_key "projects", "customers", column: "company_id"
   add_foreign_key "projects", "deals"
-  add_foreign_key "projects", "tasks"
-  add_foreign_key "tasks", "projects"
+  add_foreign_key "projects", "workorders", column: "task_id"
+  add_foreign_key "workorders", "projects"
 end
