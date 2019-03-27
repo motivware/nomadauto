@@ -19,7 +19,7 @@ skip_before_filter :verify_authenticity_token, only: [:index, :show]
 
   def new
     @project = Project.new
-    #@task = Task.new(project_id: params[:project_id])
+    #@workorder = workorder.new(project_id: params[:project_id])
   end
 
   def create
@@ -33,6 +33,6 @@ skip_before_filter :verify_authenticity_token, only: [:index, :show]
   private
 
   def project_params
-    params.require(:project).permit(:title, :details, :task_id, :deal_id)
+    params.require(:project).permit(:title, :details, :workorder_id, :deal_id)
   end
 end

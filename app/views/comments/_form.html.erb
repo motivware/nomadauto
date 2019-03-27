@@ -1,4 +1,4 @@
-<%= form_for([@task.project, @task, @task.comments.build]) do |f| %>
+<%= form_for([@workorder.project, @workorder, @workorder.comments.build]) do |f| %>
    <p>
     <%= f.label :assigned %>
     <% options_from_collection_for_select(current_account.user_users, :name, :name) %>

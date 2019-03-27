@@ -34,7 +34,7 @@ module Users
     #1st you retrieve the project thanks to params[:project_id]
     @project = Project.find(params[:project_id])
 
-    #2nd you create the task with arguments in params[:task]
+    #2nd you create the workorder with arguments in params[:workorder]
     @invite = @project.invites.create(invite_params)
 
      # Not the final implementation!

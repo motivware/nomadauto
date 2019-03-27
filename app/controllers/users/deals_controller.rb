@@ -26,7 +26,7 @@ module Users
     def show
       #1st you retrieve the project thanks to params[:project_id]
       @project = Project.find(params[:project_id])
-      #2nd you retrieve the tasks thanks to params[:id]
+      #2nd you retrieve the workorders thanks to params[:id]
       @deal = @project.deals.find(params[:id])
       authorize @deal
 
@@ -40,7 +40,7 @@ module Users
       #1st you retrieve the project thanks to params[:project_id]
       @project = Project.find(params[:project_id])
 
-      #2nd you create the task with arguments in params[:task]
+      #2nd you create the workorder with arguments in params[:workorder]
       @deal = @project.deals.create(deal_params)
 
         if @deal.save
@@ -73,7 +73,7 @@ module Users
       respond_to do |format|
         if @deal.update_attributes(deal_params)
           #1st argument of redirect_to is an array, in order to build the correct route to the nested resource comment
-          format.html { redirect_to project_deals_path(@project), :notice => 'Task was successfully updated.' }
+          format.html { redirect_to project_deals_path(@project), :notice => 'workorder was successfully updated.' }
           flash[:success] = "Your deal has been updated"
           format.xml  { head :ok }
 
@@ -90,7 +90,7 @@ module Users
 
       #1st you retrieve the project thanks to params[:project_id]
       @project = Project.find(params[:project_id])
-      #2nd you retrieve the task thanks to params[:id]
+      #2nd you retrieve the workorder thanks to params[:id]
       @deal = Deal.find(params[:id])
 
       if @deal.destroy

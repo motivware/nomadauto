@@ -1,0 +1,38 @@
+<%= render 'users/sidebar' %></br>
+
+<div class="container-fluid">
+  <div class="row">
+    <p id="notice"><%= notice %></p>
+
+      <div class="card">
+        <div class="card-header">
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><h3>Title: <%= @workorder.title %></h3></li>
+          <li class="list-group-item"><h3>Priority: <%= @workorder.priority %></h3></li>
+          <li class="list-group-item"><h3>Owner: <%= @workorder.owner %></h3></li>
+          <li class="list-group-item"><h3>Description: <%= @workorder.description %></h3></li>
+        </br>
+          <%= link_to "Delete", [@workorder.project, @workorder, @activities],
+                      class: 'btn btn-default',
+                      method: :delete,
+                      data: { confirm: "Are you sure?" } %>
+
+          <%= link_to "Edit", edit_project_workorder_path(@project),
+                      class: 'btn btn-default' %>
+          <%= link_to "Back", project_workorders_path(@project),
+                      class: 'btn btn-default' %>
+        </ul>
+      </div>
+    </div>
+    <div class="jumbotron">
+      <h3><%= @workorder.comments.count %> Comments</h3>
+       <%= render @workorder.comments %>
+
+      <h4>Add a comment:</h4>
+      <%= render 'comments/form' %>
+    </div>
+  <div>
+</div>
+
+

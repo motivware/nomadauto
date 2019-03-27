@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     constraints(SubdomainPresent) do
         root 'projects#index'
         resources :projects, only: [:index, :show, :new, :create] do
-        resources :tasks, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+        resources :workorders, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
           resources :comments
           collection do
               post :import

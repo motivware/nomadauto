@@ -5,8 +5,8 @@ class Project < ApplicationRecord
   has_many :customers, dependent: :destroy
   has_many :deals, dependent: :destroy
   has_many :lists, dependent: :destroy
-  has_many :tasks, dependent: :destroy
+  has_many :workorders, dependent: :destroy
   has_many :invites, dependent: :destroy
-  accepts_nested_attributes_for :tasks
+  accepts_nested_attributes_for :workorders
 
 end
