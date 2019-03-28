@@ -7,6 +7,7 @@ class Project < ApplicationRecord
   has_many :lists, dependent: :destroy
   has_many :workorders, dependent: :destroy
   has_many :invites, dependent: :destroy
+  has_many :vehicles, dependent: :destroy
   accepts_nested_attributes_for :workorders
 
 end

@@ -35,22 +35,23 @@ Rails.application.routes.draw do
         get 'faq', to: 'pages#faq'
     end
 
-    constraints(SubdomainPresent) do
-        root 'projects#index'
-        resources :projects, only: [:index, :show, :new, :create] do
-        resources :workorders, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
-          resources :comments
-          collection do
-              post :import
-          end
-        end
-
-          scope module: "users" do
-            resources :customers
-            resources :deals
-            resources :invites
-            resources :activities
-          end
+  constraints(SubdomainPresent) do
+    root 'projects#index'
+    resources :projects, only: [:index, :show, :new, :create] do
+      resources :workorders, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+        resources :comments
+        collection do
+            post :import
         end
       end
+      resources :vehicles
+
+      scope module: "users" do
+        resources :customers
+        resources :deals
+        resources :invites
+        resources :activities
+      end
     end
+  end
+end
