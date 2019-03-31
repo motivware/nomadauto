@@ -45,6 +45,8 @@
                    <th class="center"><%= sortable "title" %></th>
                    <th class="center"><%= sortable "status" %></th>
                    <th class="center"><%= sortable "priority" %></th>
+                   <th class="center"><%= sortable "time" %></th>
+                   <th class="center"><%= sortable "charge" %></th>
                    <th class="center"><%= sortable "user" %></th>
                    <th class="center"><%= sortable "created_at" %></th>
                    <th class="center"><%= sortable "updated_at" %></th>
@@ -57,6 +59,8 @@
                           <td class="center" style="vertical-align:middle"><%= link_to workorder.title, project_workorder_path(@project, workorder) %></td>
                           <td class="center" style="vertical-align:middle"><%= workorder.status %></td>
                           <td class="center" style="vertical-align:middle"><%= workorder.priority %></td>
+                          <td class="center" style="vertical-align:middle"><%= workorder.time %></td>
+                          <td class="center" style="vertical-align:middle"><%= workorder.charge %></td>
                           <td class="center" style="vertical-align:middle"><%= if workorder.owner == nil
                                                                                   workorder.user.name
                                                                               else

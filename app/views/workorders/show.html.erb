@@ -11,6 +11,8 @@
           <li class="list-group-item"><h3>Title: <%= @workorder.title %></h3></li>
           <li class="list-group-item"><h3>Priority: <%= @workorder.priority %></h3></li>
           <li class="list-group-item"><h3>Owner: <%= @workorder.owner %></h3></li>
+          <li class="list-group-item"><h3>time: <%= @workorder.time %></h3></li>
+          <li class="list-group-item"><h3>Charge: <%= @workorder.charge %></h3></li>
           <li class="list-group-item"><h3>Description: <%= @workorder.description %></h3></li>
         </br>
           <%= link_to "Delete", [@workorder.project, @workorder, @activities],
