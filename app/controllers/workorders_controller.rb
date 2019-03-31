@@ -139,7 +139,9 @@ class WorkordersController < UsersController
   private
 
   def workorder_params
-    params.require(:workorder).permit(:title, :description, :status, :priority, :owner, :miles, :time, :project_id, :user_id)
+    params.require(:workorder).permit(:title, :description, :status, :priority,
+                                      :owner, :time, :charge, :project_id,
+                                      :user_id)
   end
 
   def sort_column
