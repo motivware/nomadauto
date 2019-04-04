@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190331174126) do
+ActiveRecord::Schema.define(version: 20190401021214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,26 @@ ActiveRecord::Schema.define(version: 20190331174126) do
     t.string   "subdomain"
     t.integer  "project_id"
     t.index ["project_id"], name: "index_invites_on_project_id", using: :btree
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.date     "date"
+    t.integer  "subtotal"
+    t.integer  "otherfees"
+    t.integer  "salestax"
+    t.integer  "total"
+    t.integer  "paid"
+    t.integer  "due"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "project_id"
+    t.integer  "workorder_id"
+    t.integer  "customer_id"
+    t.integer  "vehicle_id"
+    t.index ["customer_id"], name: "index_invoices_on_customer_id", using: :btree
+    t.index ["project_id"], name: "index_invoices_on_project_id", using: :btree
+    t.index ["vehicle_id"], name: "index_invoices_on_vehicle_id", using: :btree
+    t.index ["workorder_id"], name: "index_invoices_on_workorder_id", using: :btree
   end
 
   create_table "lists", force: :cascade do |t|
@@ -205,6 +225,10 @@ ActiveRecord::Schema.define(version: 20190331174126) do
   add_foreign_key "customers", "projects"
   add_foreign_key "deals", "projects"
   add_foreign_key "invites", "projects"
+  add_foreign_key "invoices", "customers"
+  add_foreign_key "invoices", "projects"
+  add_foreign_key "invoices", "vehicles"
+  add_foreign_key "invoices", "workorders"
   add_foreign_key "projects", "customers", column: "company_id"
   add_foreign_key "projects", "deals"
   add_foreign_key "projects", "workorders", column: "task_id"
