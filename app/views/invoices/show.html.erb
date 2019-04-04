@@ -1,0 +1,71 @@
+<%= render 'users/sidebar' %></br>
+
+<div class="container-fluid">
+  <div class="row">
+    <p id="notice"><%= notice %></p>
+    <div class="col-md-4">
+      <div class="well">
+        <h2><strong><u>Customer</u></strong></h2>
+        <h3>Name: <%= @customer.first.last_name %>,
+                  <%= @customer.first.first_name %></h3>
+        <h3>Phone Number: <%= @customer.first.phone_number %></h3>
+        <h3>Email: <%= @customer.first.email %></h3>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="well">
+        <h2><strong><u>Vehicle</u></strong></h2>
+        <h3>Make: <%= @vehicle.first.make %> </h3>
+        <h3>Model: <%= @vehicle.first.model %></h3>
+        <h3>Mileage: <%= @vehicle.first.miles %></h3>
+        <h3>Vin: <%= @vehicle.first.vin %></h3>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="well">
+        <h3>Repair Order #: <%= @invoice.id %></h3>
+        </br>
+        <h3>Date: <%= @invoice.date %></h3>
+        </br></br>
+        <button>Generate Invoice PDF and Print</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="well">
+        <h3 style="margin:0px" align="center"><strong><u>Parts</u></strong></h3>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="well">
+        <h3 style="margin:0px" align="center"><strong><u>Labor</u></strong></h3>
+        <h3>Title: <%= @workorders.first.title %></h3>
+        <h3>Technichian: <%= @workorders.first.owner %></h3>
+        <h3>Description: <%= @workorders.first.description %></h3>
+        <h3>Charge: <%= @workorders.first.charge %></h3>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="well">
+
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="well">
+        <h3 style="clear:both;float:left;">Labor:
+              <%= @workorders.first.charge %></h3>
+        <h3 style="text-align: center;">Sales Tax: </h3>
+        <h3 style="clear:both;float:left;">Parts: <%= %></h3>
+        <h3 style="text-align: center;">Total: </h3>
+        <h3 style="clear:both;float:left;">Subtotal:
+              <%= @workorders.first.charge %></h3>
+        <h3 style="text-align: center;">Paid: </h3>
+        <h3 style="text-align: center;">Due: </h3>
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>

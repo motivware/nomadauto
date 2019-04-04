@@ -1,0 +1,35 @@
+<%= render 'users/sidebar' %></br>
+
+<div class="container-fluid">
+  <div class="col-md-16 col-md-offset-0">
+    <%= link_to "Add New Invoice", new_project_invoice_path, :class => "btn btn-default" %></br></br>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+        <tr>
+          <th>Id</th>
+          <th>Date</th>
+          <th>Subtotal</th>
+          <th>Other Fees</th>
+          <th>Sales Tax</th>
+          <th>Total</th>
+          <th>Paid</th>
+          <th>Due</th>
+        </tr>
+      <%if Invoice.where(project_id: @project) %>
+        <% @invoices.each do |invoice| %>
+          <tr>
+            <td><%= link_to invoice.id, project_invoice_path(@project, invoice) %></td>
+            <td><%= invoice.date %></td>
+            <td><%= invoice.subtotal %></td>
+            <td><%= invoice.otherfees %></td>
+            <td><%= invoice.salestax %></td>
+            <td><%= invoice.total %></td>
+            <td><%= invoice.paid %></td>
+            <td><%= invoice.due %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+</div>
