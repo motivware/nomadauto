@@ -1,0 +1,16 @@
+<%= form_for([@project, @invoice]) do |f| %>
+  <%= f.label :date %>
+  <%= f.date_field :date, autofocus: true, class: 'form-control' %>
+  </br>
+  <%= f.label :customer_id, "Customer" %>
+  <%= f.select(:customer_id, @customers) %>
+
+  <%= f.label :vehicle_id, "Vehicle" %>
+  <%= f.select(:vehicle_id, @vehicles) %>
+
+  <%= f.label :workorder_id, "Workorder" %>
+  <%= f.select :workorder_id, @workorders %>
+
+  <%= f.submit "Submit", class: 'bn btn-primary' %>
+  </br>
+<% end %>
