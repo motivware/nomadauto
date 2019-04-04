@@ -4,8 +4,13 @@ class Workorder < ApplicationRecord
   belongs_to :project
 
   has_many :comments, dependent: :destroy
+  has_one :invoices
 
   accepts_nested_attributes_for :comments, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
+
+  def title_with_charge
+    "#{title}: #{charge}"
+  end
 
   def self.assign_from_row(row)
       workorder = Workorder.where(project_id: row[:project_id],

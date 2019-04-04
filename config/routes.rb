@@ -45,6 +45,7 @@ Rails.application.routes.draw do
         end
       end
       resources :vehicles
+      resources :invoices
 
       scope module: "users" do
         resources :customers
