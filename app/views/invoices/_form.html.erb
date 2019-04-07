@@ -9,7 +9,16 @@
   <%= f.select(:vehicle_id, @vehicles) %>
 
   <%= f.label :workorder_id, "Workorder" %>
-  <%= f.select :workorder_id, @workorders %>
+  <%= f.select(:workorder_id, @workorders) %>
+
+  <%= f.label :part_id, "Parts" %>
+  <%= f.select(:part_id, @parts) %>
+
+  <%= f.label :due, "Due" %>
+  <%= f.text_field(:due, class: 'form-control') %>
+
+  <%= f.label :paid, "Paid" %>
+  <%= f.text_field(:paid, class: 'form-control') %>
 
   <%= f.submit "Submit", class: 'bn btn-primary' %>
   </br>
