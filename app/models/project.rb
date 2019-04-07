@@ -9,6 +9,7 @@ class Project < ApplicationRecord
   has_many :invites, dependent: :destroy
   has_many :invoices, dependent: :destroy
   has_many :vehicles, dependent: :destroy
+  has_many :parts, dependent: :destroy
   accepts_nested_attributes_for :workorders
 
 end

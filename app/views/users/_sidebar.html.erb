@@ -28,6 +28,11 @@
       <% end %>
     </li>
     <li class="nav-link">
+      <%= link_to project_parts_path, method: :get, class: "nav-link-text" do %>
+        Parts<span style="float:right;padding-right: 20px;margin-top: 10px;" style="float:right;padding-right:10px;margin-top:10px;" class="glyphicon glyphicon-wrench"></span>
+      <% end %>
+    </li>
+    <li class="nav-link">
       <%= link_to project_activities_path, method: :get, class: "nav-link-text" do %>
         Timeline <span style="float:right;padding-right: 20px;margin-top:10px;" class="glyphicon glyphicon-dashboard"></span>
       <% end %>

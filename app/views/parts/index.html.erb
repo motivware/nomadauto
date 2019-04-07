@@ -1,0 +1,25 @@
+<%= render 'users/sidebar' %></br>
+
+<div class="container-fluid">
+  <div class="col-md-16 col-md-offset-0">
+    <%= link_to "Add New Part", new_project_part_path, :class => "btn btn-default" %></br></br>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Vehicle</th>
+      </tr>
+      <% @parts.each do |part| %>
+        <tr>
+          <td><%= part.name %></td>
+          <td><%= part.description %></td>
+          <td><%= part.price %></td>
+          <td><%= part.vehicle.model_make_year %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
