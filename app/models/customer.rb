@@ -5,5 +5,6 @@ class Customer < ApplicationRecord
 
   has_many :vehicles
   has_many :invoices
+  has_many :workorders
 
 end

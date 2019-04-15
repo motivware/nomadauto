@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190415203940) do
+ActiveRecord::Schema.define(version: 20190415204722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,7 +74,9 @@ ActiveRecord::Schema.define(version: 20190415203940) do
     t.datetime "updated_at",   null: false
     t.integer  "project_id"
     t.integer  "user_id"
+    t.integer  "workorder_id"
     t.index ["project_id"], name: "index_customers_on_project_id", using: :btree
+    t.index ["workorder_id"], name: "index_customers_on_workorder_id", using: :btree
   end
 
   create_table "deals", force: :cascade do |t|
@@ -230,7 +232,9 @@ ActiveRecord::Schema.define(version: 20190415203940) do
     t.integer  "project_id"
     t.integer  "time"
     t.integer  "charge"
+    t.integer  "vehicle_id"
     t.index ["project_id"], name: "index_workorders_on_project_id", using: :btree
+    t.index ["vehicle_id"], name: "index_workorders_on_vehicle_id", using: :btree
   end
 
   add_foreign_key "activities", "users"
@@ -238,6 +242,7 @@ ActiveRecord::Schema.define(version: 20190415203940) do
   add_foreign_key "comments", "workorders"
   add_foreign_key "comments", "workorders", column: "task_id"
   add_foreign_key "customers", "projects"
+  add_foreign_key "customers", "workorders"
   add_foreign_key "deals", "projects"
   add_foreign_key "invites", "projects"
   add_foreign_key "invoices", "customers"
@@ -252,4 +257,5 @@ ActiveRecord::Schema.define(version: 20190415203940) do
   add_foreign_key "projects", "workorders", column: "task_id"
   add_foreign_key "vehicles", "projects"
   add_foreign_key "workorders", "projects"
+  add_foreign_key "workorders", "vehicles"
 end
