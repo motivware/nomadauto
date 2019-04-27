@@ -35,15 +35,6 @@ ActiveRecord::Schema.define(version: 20190415204722) do
     t.index ["user_id"], name: "index_activities_on_user_id", using: :btree
   end
 
-  create_table "cards", force: :cascade do |t|
-    t.integer  "list_id"
-    t.string   "name"
-    t.integer  "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["list_id"], name: "index_cards_on_list_id", using: :btree
-  end
-
   create_table "comments", force: :cascade do |t|
     t.text     "body"
     t.integer  "task_id"
@@ -123,13 +114,6 @@ ActiveRecord::Schema.define(version: 20190415204722) do
     t.index ["project_id"], name: "index_invoices_on_project_id", using: :btree
     t.index ["vehicle_id"], name: "index_invoices_on_vehicle_id", using: :btree
     t.index ["workorder_id"], name: "index_invoices_on_workorder_id", using: :btree
-  end
-
-  create_table "lists", force: :cascade do |t|
-    t.string   "new"
-    t.integer  "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "parts", force: :cascade do |t|
@@ -232,13 +216,13 @@ ActiveRecord::Schema.define(version: 20190415204722) do
     t.integer  "project_id"
     t.integer  "time"
     t.integer  "charge"
+    t.integer  "miles"
     t.integer  "vehicle_id"
     t.index ["project_id"], name: "index_workorders_on_project_id", using: :btree
     t.index ["vehicle_id"], name: "index_workorders_on_vehicle_id", using: :btree
   end
 
   add_foreign_key "activities", "users"
-  add_foreign_key "cards", "lists"
   add_foreign_key "comments", "workorders"
   add_foreign_key "comments", "workorders", column: "task_id"
   add_foreign_key "customers", "projects"
