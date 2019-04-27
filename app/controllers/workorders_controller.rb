@@ -26,7 +26,6 @@ class WorkordersController < UsersController
     @workorder = @project.workorders.find(params[:id])
     #authorize @workorder
     #
-    @customer = Customer.where(id: @workorder.customer_id)
     @vehicle = Vehicle.where(id: @workorder.vehicle_id)
 
     respond_to do |format|
@@ -45,7 +44,6 @@ class WorkordersController < UsersController
     authorize @workorder
 
     @vehicles = @project.vehicles.pluck(:make, :id)
-    @customers = @project.customers.pluck(:last_name, :id)
 
     respond_to do |format|
       format.html # new.html.erb
