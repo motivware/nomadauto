@@ -70,7 +70,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.2)
       xpath (~> 3.2)
-    chartkick (3.0.2)
+    chartkick (3.2.0)
     climate_control (0.2.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
@@ -281,7 +281,7 @@ DEPENDENCIES
   byebug
   cancan
   capybara
-  chartkick
+  chartkick (>= 3.2.0)
   coffee-rails (= 4.2.1)
   figaro (= 1.1.1)
   font-awesome-sass (~> 4.6.2)
