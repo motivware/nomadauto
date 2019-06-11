@@ -11,6 +11,7 @@ class InvoicesController < ApplicationController
     @customer = Customer.where(id: @invoice.customer_id)
     @vehicle = Vehicle.where(id: @invoice.vehicle_id)
     @workorders = Workorder.where(id: @invoice.workorder_id)
+    @parts = Part.where(id: @invoice.part_id)
   end
 
   def new
@@ -20,6 +21,8 @@ class InvoicesController < ApplicationController
     #needs to be dynamic based off customer selected
     @vehicles = @project.vehicles.pluck(:make, :id)
     @workorders = @project.workorders.pluck(:title, :id)
+    @parts = @project.parts.pluck(:name, :id)
+    @salestax = 0.06.to_i
     #authorize @invoice
   end
 

@@ -2,9 +2,11 @@ class Workorder < ApplicationRecord
 
   belongs_to :user
   belongs_to :project
+  belongs_to :customers
 
   has_many :comments, dependent: :destroy
   has_one :invoices
+  has_many :vehicles
 
   accepts_nested_attributes_for :comments, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
 

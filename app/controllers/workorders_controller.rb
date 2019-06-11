@@ -25,6 +25,8 @@ class WorkordersController < UsersController
     #@workorder = @project.workorders.find_by!(permalink: params[:id])
     @workorder = @project.workorders.find(params[:id])
     #authorize @workorder
+    #
+    @vehicle = Vehicle.where(id: @workorder.vehicle_id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -40,6 +42,8 @@ class WorkordersController < UsersController
     #2nd you get all the workorders of this project
     @workorder = @project.workorders.build
     authorize @workorder
+
+    @vehicles = @project.vehicles.pluck(:make, :id)
 
     respond_to do |format|
       format.html # new.html.erb

@@ -1,6 +1,6 @@
 <%= render 'users/sidebar' %></br>
 
-<div class="container-fluid">
+<div class="container-fluid" style="background-color:#D3D3D3; margin-top:-22px;">
   <div class="row">
     <p id="notice"><%= notice %></p>
     <div class="col-md-4">
@@ -35,7 +35,9 @@
     <div class="col-md-6">
       <div class="well">
         <h3 style="margin:0px" align="center"><strong><u>Parts</u></strong></h3>
-        
+        <h3>Name: <%= @parts.first.name %></h3>
+        <h3>Description: <%= @parts.first.description %></h3>
+        <h3>Price: <%= @parts.first.price %></h3>
       </div>
     </div>
     <div class="col-md-6">
@@ -51,21 +53,22 @@
   <div class="row">
     <div class="col-md-6">
       <div class="well">
-
+        <h3>Signature</h3>
       </div>
     </div>
     <div class="col-md-6">
       <div class="well">
         <h3 style="clear:both;float:left;">Labor:
               <%= @workorders.first.charge %></h3>
-        <h3 style="text-align: center;">Sales Tax: </h3>
-        <h3 style="clear:both;float:left;">Parts: <%= %></h3>
-        <h3 style="text-align: center;">Total: </h3>
+        <h3 style="clear:both;float:left;">Parts:
+              <%= @parts.first.price %></h3>
         <h3 style="clear:both;float:left;">Subtotal:
-              <%= @workorders.first.charge %></h3>
-        <h3 style="text-align: center;">Paid: </h3>
-        <h3 style="text-align: center;">Due: </h3>
-        </h3>
+              <%= @workorders.first.charge + @parts.first.price %></h3>
+        <h3 style="float:right;">Sales Tax:
+              <%= @workorders.first.charge + @parts.first.price * 0.06 %></h3>
+         </h3>
+         <h3 style="clear:both;float:right;">Total:
+             <%= (@workorders.first.charge + @parts.first.price * 0.06) + @workorders.first.charge + @parts.first.price %></h3>
       </div>
     </div>
   </div>

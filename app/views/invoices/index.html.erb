@@ -9,10 +9,6 @@
         <tr>
           <th>Id</th>
           <th>Date</th>
-          <th>Subtotal</th>
-          <th>Other Fees</th>
-          <th>Sales Tax</th>
-          <th>Total</th>
           <th>Paid</th>
           <th>Due</th>
         </tr>
@@ -21,10 +17,6 @@
           <tr>
             <td><%= link_to invoice.id, project_invoice_path(@project, invoice) %></td>
             <td><%= invoice.date %></td>
-            <td><%= invoice.subtotal %></td>
-            <td><%= invoice.otherfees %></td>
-            <td><%= invoice.salestax %></td>
-            <td><%= invoice.total %></td>
             <td><%= invoice.paid %></td>
             <td><%= invoice.due %></td>
           </tr>
