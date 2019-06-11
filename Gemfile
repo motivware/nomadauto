@@ -55,7 +55,7 @@ gem 'figaro', '1.1.1'
 gem "paperclip", "~> 5.2.1"
 
 # Charts with rails
-gem 'chartkick'
+gem 'chartkick', ">= 3.2.0"
 
 # Analysis times of entry
 gem 'groupdate'
