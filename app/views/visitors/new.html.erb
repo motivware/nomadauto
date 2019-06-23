@@ -124,35 +124,59 @@
 
 </div>
 
-<div class="container-fluid" id="SignUp">
-  <div class="row">
-    <div class="col-sm-4 col-sm-offset-1">
-          <h3 style="color:white;font-size: 2.0em;">Subscribe to our newsletter</h3>
+<footer class="wrapper">
+  <div class="inner">
+    <div class="newsletter">
+      <h3 class="newsletterHeading">NEWSLETTER</h3>
 
+      <p class="newsletterBody">
+        To recieve tips on how to use motivware and grow your business, sign up to our weekly
+        newsletter. We’ll never send you spam or pass on your email address.
+      </p>
+
+      <form >
           <%= form_for @visitor do |f| %>
-            <%= f.text_field :email, label: false, :placeholder => 'Your email address...', class: 'form-control' %>
-            <br/>
-            <%= f.submit "Subscribe", :class => "btn btn-default btn-lg" %>
+            <%= f.text_field :email, label: false, :placeholder => 'Your email address...', class: 'formEmail' %>
+            <br/><br/>
+            <%= f.submit "Subscribe", :class => "formButton" %>
           <% end %>
-          </br></br></br></br>
-      <span style="color:#FFF;font-size: .8em;" class="glyphicon glyphicon-envelope fa-md">
-      <a style="font-size: 1.0em;color:#FFF;text-decoration:none;" href="mailto:support@motivware.com">
-      support@motivware.com
-      </a></span>
+      </form>
     </div>
-    <div class="sm-none" class="col-sm-4" >
-        <ul style="margin-right:100px;" class="footer-nav">
-          <li><%= link_to "FAQ", faq_path, class: "footer-nav-link" %></li>
-          <li><%= link_to "Privacy Policy", new_contact_path, class: "footer-nav-link" %></li>
-          <li><%= link_to "Terms Of Use", new_contact_path, class: "footer-nav-link" %></li>
-        </ul>
+
+    <div class="about">
+      <img class="logo" />
+      <%= image_tag 'logo_alt.svg' %>
+
+      <p class="aboutBody">
+        Motivware is an all-in-one tool for your autoshop business designed to
+        assist auto-mechanic repair shops with customer relationships and
+        business processes.
+      </p>
+
+      <ul class="info">
+        <li class="infoItem">
+          <%= image_tag 'mail.svg', :class => "infoItemLogo" %>
+          <a class="emailLink" href="mailto:support@motivware.com" >
+            support@motivware.com
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
-</div>
 
-<footer class="container-fluid text-center">
-  <a href="#myPage" title="To Top">
-    <span class="glyphicon glyphicon-chevron-up"></span>
-  </a>
-  <p>Copyright &copy; Motivware 2019. All Rights Reserved</a></p>
+  <ul class="links">
+    <li class="linkItem">
+      <a  href="#"><%= link_to "FAQ", faq_path, :class => "link" %></a>
+    </li>
+    <li class="linkItem">
+      <a class="link" href="#">Privacy Policy</a>
+    </li>
+    <li class="linkItem">
+      <a class="link" href="#">Terms of Use</a>
+    </li>
+  </ul>
+
+  <p class="copyright">
+    Copyright © Motivware 2019. All Rights Reserved
+  </p>
 </footer>
