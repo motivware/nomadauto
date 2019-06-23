@@ -40,7 +40,6 @@ class InvoicesController < ApplicationController
         format.html { render :action => "new" }
         format.xml  { render :xml => @invoice.errors, :status => :unprocessable_entity }
       end
-    end
   end
 
   private
