@@ -43,7 +43,7 @@ h1 {
 
 
 #navbar li > a:hover {
-    border-bottom: solid 3px white;
+  border-bottom: solid 3px white;
 
 }
 
@@ -606,7 +606,7 @@ td:hover {
 
 @media (min-width: 990px) {
   .forms {
-      background: url(/assets/engine.jpg) no-repeat center center fixed; 
+      background: url(/assets/engine.jpg) no-repeat center center auto; 
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;

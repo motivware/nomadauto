@@ -1,20 +1,22 @@
 .featurewrapper {
-    padding: 4em 1em;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
+    flex: 600px;
 }
 
 @media (min-width: 64em) {
     .featurewrapper {
-        padding: 8em 4em;
+        padding: 2em 1em;
     }
 }
 
 .cardwrapper {
-    width: 50em;
-    max-width: 100%;
-    padding: 2em 2em;
+    width: 25em;
+    max-width: 25%;
+    padding: 1em 1em;
+    margin: 60px;
     border-radius: 1.25em;
     box-sizing: border-box;
     background-color: hsl(0, 100%, 100%);
@@ -40,8 +42,8 @@
 }
 
 .image {
-    width: 18.75em;
-    max-width: 100%;
+    width: 4.75em;
+    max-width: 50%;
     margin-bottom: 2em;
 }
 
