@@ -25,8 +25,8 @@
   </div>
   <div class="field form-group">
     <%= f.label :subdomain, 'Motivware Web Address' %><br />
-    <%= f.text_field :subdomain, autocomplete: "off", placeholder: "Motivware Web Address", class: 'form-control' %>
-    <span class="sm-none" class="input-group-addon">.motivware.com</span>
+    <%= f.text_field :subdomain, autocomplete: "off", placeholder: "Motivware Web Address", class: 'form-control', id: 'special' %>
+      <span class="sm-none input-group-addon" id="special-addon">.motivware.com</span>
   </div>
   <div class="field form-group">
     <%= label_tag :card_number, "Credit Card Number" %>
