@@ -442,9 +442,13 @@ td:hover {
 }
 
 
-#special {
+  #special {
     max-width: 900px;
-}
+  }
+
+  #special-addon {
+    margin-top: -50px;
+  }
 
 .logo-small {
     color: #41B3A3;
@@ -461,13 +465,13 @@ td:hover {
   background-color: #B22222 !important;
 }
 
-  /* 
+  /*
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
 */
 
 @media (min-width: 1281px) {
-  
+
   //CSS
   .landicon {
     font-size: 50px;
@@ -477,7 +481,7 @@ td:hover {
   }
 }
 
-/* 
+/*
   ##Device = Laptops, Desktops
   ##Screen = B/w 1025px to 1280px
 */
@@ -489,7 +493,7 @@ td:hover {
 }
 
 @media (min-width: 1200px) and (max-width: 1480px) {
-  
+
   //CSS
   .landingfour {
     margin-left: 170px;
@@ -500,10 +504,11 @@ td:hover {
   .landtext {
     font-size: 15px;
   }
+
 }
 
 @media (min-width: 1024px) and (max-width: 1200px) {
-  
+
   //CSS
   .landingtwo {
     margin-left: 150px;
@@ -511,16 +516,16 @@ td:hover {
   .landicon {
     font-size: 45px;
   }
-  
+
 }
 
-/* 
+/*
   ##Device = Tablets, Ipads (portrait)
   ##Screen = B/w 768px to 1024px
 */
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  
+
   //CSS
   .landicon {
     font-size: 50px;
@@ -533,13 +538,13 @@ td:hover {
   }
 }
 
-/* 
+/*
   ##Device = Tablets, Ipads (landscape)
   ##Screen = B/w 768px to 1024px
 */
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-  
+
   //CSS
   .landicon {
     font-size: 65px;
@@ -549,24 +554,24 @@ td:hover {
   }
 }
 
-/* 
+/*
   ##Device = Low Resolution Tablets, Mobiles (Landscape)
   ##Screen = B/w 481px to 767px
 */
 
 @media (min-width: 481px) and (max-width: 767px) {
-  
+
   //CSS
-  
+
 }
 
-/* 
+/*
   ##Device = Most of the Smartphones Mobiles (Portrait)
   ##Screen = B/w 320px to 479px
 */
 
 @media (min-width: 320px) and (max-width: 480px) {
-  
+
   //CSS
   .landicon {
     font-size: 65px;
@@ -582,18 +587,18 @@ td:hover {
 @media (max-width: 769px) {
   .navbar-header {
       float: none;
-  }	    
+  }
 
-  .collapse.in{	    
-      display:block !important;	        
-  }	   
+  .collapse.in{
+      display:block !important;
+  }
 
   #md-ham {
       display: none;
   }
 
   #sm-ham {
-    text-align:center;  
+    text-align:center;
   }
 }
 
@@ -606,7 +611,7 @@ td:hover {
 
 @media (min-width: 990px) {
   .forms {
-      background: url(/assets/engine.jpg) no-repeat center center auto; 
+      background: url(/assets/engine.jpg) no-repeat center center auto;
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
@@ -619,5 +624,6 @@ td:hover {
 @media (max-width: 645px) {
   .sm-none {
     display: none;
+    visibility: hidden;
   }
 }
