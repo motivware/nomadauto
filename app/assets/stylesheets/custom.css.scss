@@ -578,13 +578,19 @@ td:hover {
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 969px) {
   #sm-ham {
     display: none;
   }
 }
 
-@media (max-width: 769px) {
+@media (max-width: 768px) {
+  #sm-none-cta {
+    display: none;
+  }
+}
+
+@media (max-width: 969px) {
   .navbar-header {
       float: none;
   }
@@ -611,7 +617,7 @@ td:hover {
 
 @media (min-width: 990px) {
   .forms {
-      background: url(/assets/engine.jpg) no-repeat center center auto;
+      background: url(/assets/engine.jpg) no-repeat center center;
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
