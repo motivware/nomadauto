@@ -130,13 +130,11 @@
         newsletter. We’ll never send you spam or pass on your email address.
       </p>
 
-      <form >
-          <%= form_for @visitor do |f| %>
-            <%= f.text_field :email, label: false, :placeholder => 'Your email address...', class: 'formEmail' %>
-            <br/><br/>
-            <%= f.submit "Subscribe", :class => "formButton" %>
-          <% end %>
-      </form>
+      <%= form_for @visitor do |f| %>
+        <%= f.text_field :email, label: false, :placeholder => 'Your email address...', class: 'formEmail' %>
+        <br/><br/>
+        <%= f.submit "Subscribe", :class => "formButton" %>
+      <% end %>
     </div>
 
     <div class="about">
