@@ -6,6 +6,7 @@ skip_before_filter :verify_authenticity_token, only: [:index, :show]
     # @basic_plan = Plan.find(1)
     @pro_plan = Plan.find(2)
     # @invite_plan = Plan.find(3)
+    @user = User.find(session[:user_id])
     if Project.exists?(user: current_account)
       @projects = current_account.user_projects
     end
