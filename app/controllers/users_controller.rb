@@ -74,15 +74,21 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @pro_plan = Plan.find(2)
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    if params[:plan] == '1' || params[:plan] == '3'
+      @user = User.find(params[:id])
+      @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
-      redirect_to @user
-    else
-      render 'edit'
+      redirect_to root_url
+    else params[:plan] == '2'
+      @user = User.find(params[:id], params[:stripe_card_token])
+      @user.save_with_subscription
+      @user.update_attribute(:plan_id, '2')
+      flash[:info] = "You are now signed up for the pro account"
+      redirect_to projects_path
     end
   end
 
@@ -109,7 +115,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :password,
+      params.require(:user).permit(:name, :email, :password, :plan_id,
                                   :password_confirmation, :subdomain, :stripe_card_token)
     end
 

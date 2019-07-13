@@ -1,4 +1,4 @@
-<%= form_for @user, html: {id: 'pro_form'} do |f| %>
+<%= form_for @user, :url => { :action => "update" }, html: { id: 'pro_form'} do |f| %>
 
   <%= hidden_field_tag 'plan', params[:plan] %>
 
@@ -6,26 +6,16 @@
 
   <div class="field form-group">
     <%= f.label :name, 'Name' %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "off", placeholder: "Full Name", class: 'form-control' %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "off", value: User.find(session[:user_id]).name, readonly: true, class: 'form-control' %>
   </div>
   <div class="field form-group">
     <%= f.label :email, 'Email' %><br />
-    <%= f.email_field :email, placeholder: "Email", class: 'form-control' %>
+    <%= f.email_field :email, value: User.find(session[:user_id]).email, readonly: true, class: 'form-control' %>
   </div>
+
   <div class="field form-group">
-    <%= f.label :password, 'Password' %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: 'form-control' %>
-  </div>
-  <div class="field form-group">
-    <%= f.label :password_confirmation, 'Confirmation' %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Passoword Confirmation", class: 'form-control' %>
-  </div>
-  <div class="field form-group">
-    <%= f.label :subdomain, 'Motivware Web Address' %><br />
-    <%= f.text_field :subdomain, autocomplete: "off", placeholder: "Motivware Web Address", class: 'form-control', id: 'special' %>
+    <%= f.label :subdomain, 'Company Name' %><br />
+    <%= f.text_field :subdomain, readonly: true, value: User.find(session[:user_id]).subdomain, autocomplete: "on", placeholder: "Motivware Web Address", class: 'form-control', id: 'special' %>
       <span class="sm-none input-group-addon" id="special-addon">.motivware.com</span>
   </div>
   <div class="field form-group">
