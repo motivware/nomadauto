@@ -26,21 +26,23 @@
               <% end %>
           </table>
 
-      <h3>Invite Users</h3>
-      <%= form_for @invite, :url => project_invites_path do |f| %>
+      <h3 class="extra-margin-top">Invite Users</h3>
+            <% if @user.plan_id == 1 %>
+                  <p> You have <span style="color:red"><%= remaining_days %> Days left </span>with your free acount! <%= link_to "Suscribe Now", edit_user_path(current_user, plan: @pro_plan.id) %> to add the rest of your team!</p>
+            <% else @user.plan_id == 2 %>
+                <%= form_for @invite, :url => project_invites_path do |f| %>
+                  <%= f.hidden_field :user_group_id, :value => @invite.user_group_id %>
 
-            <%= f.hidden_field :user_group_id, :value => @invite.user_group_id, readonly: true %>
-
-            <%= f.hidden_field :subdomain, value: @subdomain, readonly: true, class: 'form-control' %>
-
-          <div class="field form-group">
-            <%= f.label :email %>
-            <%= f.text_field :email, class: 'form-control' %>
-          </div>
-          <div style="padding-bottom:250px;"class="form-group">
-            <%= f.submit :submit, class: 'btn btn-primary' %>
-          </div>
-        <% end %>
+                  <div class="field form-group">
+                    <%= f.label :email %>
+                    <%= f.text_field :email, class: 'form-control' %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.submit :submit, class: 'btn btn-primary' %>
+                  </div>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
