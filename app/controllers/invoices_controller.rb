@@ -30,6 +30,7 @@ class InvoicesController < ApplicationController
     @project = Project.find(params[:project_id])
     @invoice = @project.invoices.create(invoice_params)
 
+    respond_to do |format|
       if @invoice.save
         #1st argument of redirect_to is an array, in order to build the correct route to the nested resource workorder
         format.html { redirect_to project_invoices_path(@project), :notice => 'invoice was successfully created.' }
@@ -40,6 +41,7 @@ class InvoicesController < ApplicationController
         format.html { render :action => "new" }
         format.xml  { render :xml => @invoice.errors, :status => :unprocessable_entity }
       end
+    end
   end
 
   private
