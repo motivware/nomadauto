@@ -20,9 +20,6 @@
   <%= f.label :paid, "Paid" %>
   <%= f.text_field(:paid, class: 'form-control') %>
 
-  <%= f.label :workorder_id, "Workorder" %>
-  <%= f.select :workorder_id, @parts %>
-
   <%= f.submit "Submit", class: 'bn btn-primary' %>
   </br>
 <% end %>
