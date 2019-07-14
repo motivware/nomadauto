@@ -4,8 +4,12 @@
       <div style="margin:200px 50px 0px 50px;padding:20px;height:400px;" class="well well-sm" >
       <h1>Teams</h1>
       <div class="well">
+      <% if @user.plan_id == 1 %>
+        <p> Trial period will expire in <span style="color:red"><%= remaining_days %> Days. </span></br><%= link_to "Suscribe Now!", edit_user_path(current_user, plan: @pro_plan.id) %></p>
+      <% end %>
+      <% if @user.plan_id == 1 || @user.plan_id == 2  %>
         <h2><%= link_to 'Create New Team', new_project_path, class: 'btn btn-default btn-lg' %></h2>
-        <p> trial period will expire in <span style="color:red"><%= remaining_days %> Days. </span><%= link_to "Suscribe Now!", signup_path(plan: @pro_plan.id) %></p>
+      <% end %>
         <table class="table table-striped">
           <% current_account.projects.each do |project| %>
             <tr>
