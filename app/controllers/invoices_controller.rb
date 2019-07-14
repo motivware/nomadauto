@@ -50,6 +50,6 @@ class InvoicesController < ApplicationController
     params.require(:invoice).permit(:date, :subtotal, :otherfees,
                                     :salestax, :total, :paid, :due,
                                     :workorder_id, :customer_id,
-                                    :vehicle_id, :parts_id)
+                                    :vehicle_id, :part_id)
   end
 end
