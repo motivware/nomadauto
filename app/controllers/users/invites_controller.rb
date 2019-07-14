@@ -4,7 +4,8 @@ module Users
 
     def index
       @users = current_account.invitelist
-
+      @user = User.find(session[:user_id])
+      @pro_plan = Plan.find(2)
       @invite = Invite.new
 
       # if UserGroup.first == nil
