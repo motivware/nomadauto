@@ -11,3 +11,4 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( filterrific/filterrific-spinner.gif )
 Rails.application.config.assets.precompile += %w( chartkick.js )
+Rails.application.config.assets.precompile += %w( invoice.css.scss )

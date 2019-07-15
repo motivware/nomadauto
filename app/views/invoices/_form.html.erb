@@ -1,5 +1,5 @@
 <%= form_for([@project, @invoice]) do |f| %>
-  <%= f.label :date %>
+  <%= f.label :date, "Due Date" %>
   <%= f.date_field :date, autofocus: true, class: 'form-control' %>
   </br>
   <%= f.label :customer_id, "Customer" %>
@@ -14,10 +14,10 @@
   <%= f.label :part_id, "Parts" %>
   <%= f.select(:part_id, @parts) %>
 
-  <%= f.label :due, "Due" %>
+  <%= f.label :due, "Total Due" %>
   <%= f.text_field(:due, class: 'form-control') %>
 
-  <%= f.label :paid, "Paid" %>
+  <%= f.label :paid, "Total Paid" %>
   <%= f.text_field(:paid, class: 'form-control') %>
 
   <%= f.submit "Submit", class: 'bn btn-primary' %>

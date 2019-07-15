@@ -12,6 +12,20 @@ class InvoicesController < ApplicationController
     @vehicle = Vehicle.where(id: @invoice.vehicle_id)
     @workorders = Workorder.where(id: @invoice.workorder_id)
     @parts = Part.where(id: @invoice.part_id)
+
+    respond_to do |format|
+        format.html
+        format.pdf do
+            render pdf: "Invoice No. #{@invoice.id}",
+            page_size: 'A4',
+            template: "invoices/show.html.erb",
+            layout: "pdf.html",
+            orientation: "Landscape",
+            lowquality: true,
+            zoom: 1,
+            dpi: 75
+        end
+    end
   end
 
   def new
@@ -52,4 +66,6 @@ class InvoicesController < ApplicationController
                                     :workorder_id, :customer_id,
                                     :vehicle_id, :part_id)
   end
+
+
 end

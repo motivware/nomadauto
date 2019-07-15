@@ -1,75 +1,140 @@
-<%= render 'users/sidebar' %></br>
+<div class="invoice-box">
+  <table cellpadding="0" cellspacing="0">
+    <tr class="top">
+      <td colspan="4">
+        <table>
+          <tr>
+            <td class="title">
+              <%= image_tag wicked_pdf_asset_base64('logo.svg') %>
+            </td>
+            <td>
+              <b>Invoice #:</b> <%= @invoice.id %><br>
+              <b>Created:</b> <%= @invoice.created_at.strftime('%Y-%d-%m') %><br>
+              <b>Due Date:</b> <%= @invoice.date %>
+              <br>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
 
-<div class="container-fluid" style="background-color:#D3D3D3; margin-top:-22px;">
-  <div class="row">
-    <p id="notice"><%= notice %></p>
-    <div class="col-md-4">
-      <div class="well">
-        <h2><strong><u>Customer</u></strong></h2>
-        <h3>Name: <%= @customer.first.last_name %>,
-                  <%= @customer.first.first_name %></h3>
-        <h3>Phone Number: <%= @customer.first.phone_number %></h3>
-        <h3>Email: <%= @customer.first.email %></h3>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="well">
-        <h2><strong><u>Vehicle</u></strong></h2>
-        <h3>Make: <%= @vehicle.first.make %> </h3>
-        <h3>Model: <%= @vehicle.first.model %></h3>
-        <h3>Mileage: <%= @vehicle.first.miles %></h3>
-        <h3>Vin: <%= @vehicle.first.vin %></h3>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="well">
-        <h3>Repair Order #: <%= @invoice.id %></h3>
-        </br>
-        <h3>Date: <%= @invoice.date %></h3>
-        </br></br>
-        <button>Generate Invoice PDF and Print</button>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="well">
-        <h3 style="margin:0px" align="center"><strong><u>Parts</u></strong></h3>
-        <h3>Name: <%= @parts.first.name %></h3>
-        <h3>Description: <%= @parts.first.description %></h3>
-        <h3>Price: <%= @parts.first.price %></h3>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="well">
-        <h3 style="margin:0px" align="center"><strong><u>Labor</u></strong></h3>
-        <h3>Title: <%= @workorders.first.title %></h3>
-        <h3>Technichian: <%= @workorders.first.owner %></h3>
-        <h3>Description: <%= @workorders.first.description %></h3>
-        <h3>Charge: <%= @workorders.first.charge %></h3>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="well">
-        <h3>Signature</h3>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="well">
-        <h3 style="clear:both;float:left;">Labor:
-              <%= @workorders.first.charge %></h3>
-        <h3 style="clear:both;float:left;">Parts:
-              <%= @parts.first.price %></h3>
-        <h3 style="clear:both;float:left;">Subtotal:
-              <%= @workorders.first.charge + @parts.first.price %></h3>
-        <h3 style="float:right;">Sales Tax:
-              <%= @workorders.first.charge + @parts.first.price * 0.06 %></h3>
-         </h3>
-         <h3 style="clear:both;float:right;">Total:
-             <%= (@workorders.first.charge + @parts.first.price * 0.06) + @workorders.first.charge + @parts.first.price %></h3>
-      </div>
-    </div>
-  </div>
+    <tr class="information">
+      <td colspan="4">
+        <table>
+          <tr>
+            <td>
+              <b>Name:</b> <%= @customer.first.last_name %>,
+                       <%= @customer.first.first_name %><br>
+              <b>Phone Number: </b><%= @customer.first.phone_number %><br>
+              <b>Email:</b> <%= @customer.first.email %>
+            </td>
+
+             <td>
+              <b>Make:</b> <%= @vehicle.first.make %><br>
+              <b>Model:</b> <%= @vehicle.first.model %><br>
+              <b>Mileage:</b> <%= @vehicle.first.miles %><br>
+              <b>Vin:</b> <%= @vehicle.first.vin %></b>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr class="heading">
+    <table>
+      <tr>
+        <h2>Parts</h2>
+        <td><b>Item</b></td>
+        <td class="right"><b>Description</b></td>
+        <td class="right"><b>Qty</b></td>
+        <td class="right"><b>Price</b></td>
+      </tr>
+    </tr>
+
+      <tr class="details">
+        <td colspan="16">
+          <% @parts.each do |item| %>
+            <tr class="item">
+                <td>
+                    <%= @parts.first.name %><br>
+                </td>
+
+                <td class="right">
+                  <%= @parts.first.description %>
+                </td>
+
+                <td class="right">
+                  <%= @parts.first.quantity %>
+                </td>
+
+
+                <td class="right">
+                  <%= @parts.first.price %>
+                </td>
+            </tr>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+    </tr>
+
+    <tr class="heading">
+        <table>
+          <tr>
+            <h2><b>Labor</b></h2>
+            <td><b>Title</b></td>
+            <td class="right"><b>Description</b></td>
+            <td class="right"><b>Technichian</b></td>
+            <td class="right"><b>Price</b></td>
+          </tr>
+
+      <tr class="details">
+        <td colspan="16">
+          <% @parts.each do |item| %>
+            <tr class="item">
+                <td>
+                  <%= @workorders.first.title %><br>
+                </td>
+
+                <td class="right">
+                  <%= @workorders.first.owner %>
+                </td>
+
+                <td class="right">
+                  <%= @workorders.first.description %>
+                </td>
+
+                <td class="right">
+                  <%= @workorders.first.charge %>
+                </td>
+            </tr>
+          <% end %>
+        </td>
+       </tr>
+      </table>
+      </tr>
+
+  <table>
+    <br>
+    <tr>
+      <td colspan="2"></td>
+      <td><b>Subtotal:</b><%= @workorders.first.charge + @parts.first.price %></td>
+      <td></td>
+    </tr>
+
+    <tr>
+      <td colspan="2"></td>
+      <td><b>Sales Tax </b><%= @workorders.first.charge + @parts.first.price * 0.06 %></td>
+      <td></td>
+    </tr>
+
+    <tr class="heading">
+      <td colspan="2"></td>
+      <td><b>TOTAL:</b> <%= (@workorders.first.charge + @parts.first.price * 0.06) + @workorders.first.charge + @parts.first.price %></td>
+      <td>
+         <b></b>
+      </td>
+    </tr>
+  </table>
 </div>
+

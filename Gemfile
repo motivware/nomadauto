@@ -13,6 +13,10 @@ gem 'coffee-rails', '4.2.1'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# pdf generation gems
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '4.1.1'
 # gem for using React JS
