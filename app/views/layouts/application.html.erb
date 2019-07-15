@@ -124,19 +124,25 @@
     color: #FFF;
   }
 
+  .alert {
+    padding:5px;
+    margin:0px;
+  }
 
   </style>
   </head>
   <body>
+
   <% if not logged_in? && request.subdomain.present? %>
     <%= render 'layouts/header' %>
   <% end %>
 
-  <div class="col-md-6 col-md-offset-3">
-      <% flash.each do |type, msg| %>
-          <%= content_tag :div, msg, class: "alert alert-#{type}" %>
-      <% end %>
+  <div style="width:100%;padding:-30px;margin:0px;">
+    <% flash.each do |type, msg| %>
+        <%= content_tag :div, msg, class: "alert alert-#{type}" %>
+    <% end %>
   </div>
+
 
   <%= yield %>
 
