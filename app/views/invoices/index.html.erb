@@ -2,15 +2,15 @@
 
 <div class="container-fluid">
   <div class="col-md-16 col-md-offset-0">
-    <%= link_to "Add New Invoice", new_project_invoice_path, :class => "btn btn-default" %></br></br>
+      <%= link_to "Add New Invoice", new_project_invoice_path, :class => "btn btn-default" %></br></br>
   </div>
   <div class="table-responsive">
     <table class="table">
         <tr>
           <th>Id</th>
-          <th>Date</th>
-          <th>Paid</th>
-          <th>Due</th>
+          <th>Due Date</th>
+          <th>Total Paid</th>
+          <th>Total Due</th>
         </tr>
       <%if Invoice.where(project_id: @project) %>
         <% @invoices.each do |invoice| %>
@@ -19,6 +19,7 @@
             <td><%= invoice.date %></td>
             <td><%= invoice.paid %></td>
             <td><%= invoice.due %></td>
+            <td><%= link_to "PRINT PDF", project_invoice_path(@project, invoice, format: :pdf) %></td>
           </tr>
         <% end %>
       <% end %>
