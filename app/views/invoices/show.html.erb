@@ -124,13 +124,13 @@
 
     <tr>
       <td colspan="2"></td>
-      <td><b>Sales Tax </b><%= @workorders.first.charge + @parts.first.price * 0.06 %></td>
+      <td><b>Sales Tax: </b><%= (@workorders.first.charge + @parts.first.price) * 0.06 %></td>
       <td></td>
     </tr>
 
     <tr class="heading">
       <td colspan="2"></td>
-      <td><b>TOTAL:</b> <%= (@workorders.first.charge + @parts.first.price * 0.06) + @workorders.first.charge + @parts.first.price %></td>
+      <td><b>TOTAL: </b> <%= (@workorders.first.charge + @parts.first.price * 0.06) + @workorders.first.charge + @parts.first.price %></td>
       <td>
          <b></b>
       </td>
