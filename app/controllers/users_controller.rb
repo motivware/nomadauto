@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @project = Project.where(user_id: current_user).pluck(:id).first
   end
 
   def show
@@ -100,7 +101,7 @@ class UsersController < ApplicationController
 
   # Confirms the correct user.
   def correct_user
-    @user = User.find(session[:user_id])
+    @user = User.find([:sessionuser_id])
     redirect_to(root_url) unless current_user?(@user)
   end
   helper_method :current_user

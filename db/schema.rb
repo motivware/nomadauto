@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190415204722) do
+ActiveRecord::Schema.define(version: 20190716173106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,6 +116,13 @@ ActiveRecord::Schema.define(version: 20190415204722) do
     t.index ["workorder_id"], name: "index_invoices_on_workorder_id", using: :btree
   end
 
+  create_table "invoices_parts", id: false, force: :cascade do |t|
+    t.integer "invoice_id"
+    t.integer "part_id"
+    t.index ["invoice_id"], name: "index_invoices_parts_on_invoice_id", using: :btree
+    t.index ["part_id"], name: "index_invoices_parts_on_part_id", using: :btree
+  end
+
   create_table "parts", force: :cascade do |t|
     t.text     "name"
     t.text     "description"
@@ -150,6 +157,8 @@ ActiveRecord::Schema.define(version: 20190415204722) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "project_id"
+    t.index ["project_id"], name: "index_profiles_on_project_id", using: :btree
   end
 
   create_table "projects", force: :cascade do |t|
@@ -230,12 +239,12 @@ ActiveRecord::Schema.define(version: 20190415204722) do
   add_foreign_key "deals", "projects"
   add_foreign_key "invites", "projects"
   add_foreign_key "invoices", "customers"
-  add_foreign_key "invoices", "parts"
   add_foreign_key "invoices", "projects"
   add_foreign_key "invoices", "vehicles"
   add_foreign_key "invoices", "workorders"
   add_foreign_key "parts", "projects"
   add_foreign_key "parts", "vehicles"
+  add_foreign_key "profiles", "projects"
   add_foreign_key "projects", "customers", column: "company_id"
   add_foreign_key "projects", "deals"
   add_foreign_key "projects", "workorders", column: "task_id"

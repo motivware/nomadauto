@@ -6,7 +6,7 @@
   <%= f.label :model %>
   <%= f.text_field :model, autofocus: true, class: 'form-control' %>
   <%= f.label :year %>
-  <%= f.text_field :year, autofocus: true, class: 'form-control' %>
+  <%= f.select :year, Date.today.year-50.. 8.years.from_now.year, autofocus: true, class: 'form-control' %>
   <%= f.label :miles %>
   <%= f.text_field :miles, autofocus: true, class: 'form-control' %>
   <%= f.label :engine %>
