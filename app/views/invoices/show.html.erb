@@ -5,7 +5,7 @@
         <table>
           <tr>
             <td class="title">
-              <%= image_tag wicked_pdf_asset_base64('logo.svg') %>
+              <%= wicked_pdf_image_tag_for_public(@profile.avatar.url(:thumb)) unless @profile.avatar.url.blank? %>
             </td>
             <td>
               <b>Invoice #:</b> <%= @invoice.id %><br>

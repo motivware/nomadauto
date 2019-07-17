@@ -47,6 +47,7 @@ Rails.application.routes.draw do
       resources :vehicles
       resources :invoices
       resources :parts
+      resources :profiles
 
       scope module: "users" do
         resources :customers
