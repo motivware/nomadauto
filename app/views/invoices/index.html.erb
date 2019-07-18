@@ -15,7 +15,7 @@
       <%if Invoice.where(project_id: @project) %>
         <% @invoices.each do |invoice| %>
           <tr>
-            <td><%= link_to invoice.id, project_invoice_path(@project, invoice) %></td>
+            <td><%= invoice.id %></td>
             <td><%= invoice.date %></td>
             <td><%= invoice.paid %></td>
             <td><%= invoice.due %></td>

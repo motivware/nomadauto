@@ -13,7 +13,8 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @profile = @project.profiles.find(params[:id])
+    @project = Project.find(params[:project_id])
+    @profile = Profile.find(params[:id])
   end
 
   # GET to /users/:user_id/profile/new
@@ -46,7 +47,7 @@ class ProfilesController < ApplicationController
   # GET to /users/:user_id/profile/edit
   def edit
     @project = Project.find(params[:project_id])
-    @profile = @project.profile
+    @profile = Profile.find(params[:id])
   end
 
   # PUT to /users/:user_id/profile
@@ -58,7 +59,7 @@ class ProfilesController < ApplicationController
     if @profile.update_attributes(profile_params)
       flash[:success] = "Profile Updated!"
       # Redirect user to their profile page
-      redirect_to user_path(id: params[:user_id])
+      redirect_to project_profile_path(@project, @profile)
     else
       render action: :edit
     end
@@ -68,7 +69,8 @@ class ProfilesController < ApplicationController
 
     def profile_params
       params.require(:profile).permit(:first_name, :last_name, :avatar, :job_title,
-                     :phone_number, :contact_email, :description, :project_id)
+                     :phone_number, :contact_email, :description, :project_id,
+                     :street_address, :address_line_two, :city, :state, :zipcode)
     end
 
     def only_current_user
