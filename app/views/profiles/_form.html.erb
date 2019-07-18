@@ -6,11 +6,15 @@
   </div>
   <div class="form-group">
     <%= f.label :first_name %>
-    <%= f.text_field :first_name, placeholder: "First Name", class: 'form-control inline-three' %>
+    <%= f.text_field :first_name, placeholder: "First Name", class: 'form-control' %>
+  </div>
+  <div class="form-group">
     <%= f.label :last_name %>
-    <%= f.text_field :last_name, placeholder: "Last Name", class: 'form-control inline-three' %>
+    <%= f.text_field :last_name, placeholder: "Last Name", class: 'form-control' %>
+  </div>
+  <div class="form-group">
     <%= f.label :phone_number, "Phone" %>
-    <%= f.text_field :phone_number, placeholder: "Phone Number", class: 'form-control inline-three' %>
+    <%= f.text_field :phone_number, placeholder: "Phone Number", class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.label :street_address %>
@@ -19,13 +23,15 @@
   </div>
   <div class="form-group">
     <%= f.label :city %>
-    <%= f.text_field :city , placeholder: "City", class: 'form-control inline-three' %>
-
+    <%= f.text_field :city , placeholder: "City", class: 'form-control' %>
+  </div>
+  <div class="form-group">
     <%= f.label :state %>
-    <%= f.text_field :state, placeholder: "State", class: 'form-control inline-three' %>
-
+    <%= f.text_field :state, placeholder: "State", class: 'form-control' %>
+  </div>
+  <div class="form-group">
     <%= f.label :zipcode %>
-    <%= f.text_field :zipcode, placeholder: "Zipcode", class: 'form-control inline-three' %>
+    <%= f.text_field :zipcode, placeholder: "Zipcode", class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.submit "Update Profile", class: 'btn btn-primary' %>
