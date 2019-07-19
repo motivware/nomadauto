@@ -4,20 +4,13 @@
   <div class="jumbotron">
     <div class="row">
       <div class="col-md-14">
-        <% if Profile.where(project_id: @project).exists?() %>
-          <%= link_to "Udate Profile", edit_project_profile_path(@project, @profile), class: 'btn btn-default' %>
+        <%= link_to "Udate Profile", edit_project_profile_path(@project, @profile), class: 'btn btn-default' %>
           <p></p>
-        <% else %>
-            <%= link_to "Add Profile", new_project_profile_path, class: 'btn btn-default' %>
-          <p></p>
-        <% end %>
       <br/><br/>
-      <% if Profile.where(project_id: @project).exists?() %>
         <h3><%= @profile.first_name %> <%= @profile.last_name %></h3>
         <h3><%= @profile.street_address %></h3>
         <h3><%= @profile.city %>, <%= @profile.state %> <%= @profile.zipcode %></h3>
         <h3><br/><br/><%= image_tag(@profile.avatar.url(:thumb)) %></h3>
-      <% end %>
     </div>
   </div>
 </div>

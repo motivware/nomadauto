@@ -12,10 +12,8 @@ class InvoicesController < ApplicationController
     @vehicle = Vehicle.where(id: @invoice.vehicle_id)
     @workorders = Workorder.where(id: @invoice.workorder_id)
     @parts = Part.where(id: @invoice.part_id)
+    @profile = Profile.where(project_id: @project).last
 
-    if Profile.exists?
-      @profile = Profile.where(project_id: @project).last
-    end
     respond_to do |format|
         format.html
         format.pdf do

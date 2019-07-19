@@ -7,7 +7,15 @@
             <td class="title">
               <%= wicked_pdf_image_tag_for_public(@profile.avatar.url(:thumb)) unless @profile.avatar.url.blank? %>
             </td>
-            <td>
+            <td style="text-align: left">
+              <b>Company Name:</b> <%= current_user.subdomain %><br>
+              <b>Phone Number: </b><%= @profile.phone_number %><br>
+              <b>Street Address</b><br><%= @profile.street_address %>
+              <%= @profile.address_line_two %><br>
+              <%= @profile.city %>, <%= @profile.city %> <%= @profile.state %>
+
+            </td>
+            <td style="text-align: right">
               <b>Invoice #:</b> <%= @invoice.id %><br>
               <b>Created:</b> <%= @invoice.created_at.strftime('%Y-%d-%m') %><br>
               <b>Due Date:</b> <%= @invoice.date %>
@@ -23,13 +31,12 @@
         <table>
           <tr>
             <td>
-              <b>Name:</b> <%= @customer.first.last_name %>,
+              <b>Customer Name:</b> <%= @customer.first.last_name %>,
                        <%= @customer.first.first_name %><br>
               <b>Phone Number: </b><%= @customer.first.phone_number %><br>
               <b>Email:</b> <%= @customer.first.email %>
             </td>
-
-             <td>
+            <td>
               <b>Make:</b> <%= @vehicle.first.make %><br>
               <b>Model:</b> <%= @vehicle.first.model %><br>
               <b>Mileage:</b> <%= @vehicle.first.miles %><br>

@@ -1,9 +1,39 @@
 <%= form_for([@project, @profile]) do |f| %>
+
   <div class="form-group">
-    <%= f.label :avatar %>
+    <%= f.label :avatar, "Logo" %>
     <%= f.file_field :avatar, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.submit "Update Autoshop Profile", class: 'btn btn-primary' %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, placeholder: "First Name", class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, placeholder: "Last Name", class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :phone_number, "Phone" %>
+    <%= f.text_field :phone_number, placeholder: "Phone Number", class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :street_address %>
+    <%= f.text_field :street_address, placeholder: "Stree Address", class: 'form-control' %>
+    <%= f.text_field :address_line_two, placeholder: "Address Line", class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :city %>
+    <%= f.text_field :city , placeholder: "City", class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :state %>
+    <%= f.text_field :state, placeholder: "State", class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :zipcode %>
+    <%= f.text_field :zipcode, placeholder: "Zipcode", class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Update Profile", class: 'btn btn-primary' %>
   </div>
 <% end %>
