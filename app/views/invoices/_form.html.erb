@@ -12,7 +12,7 @@
   <%= f.select(:workorder_id, @workorders) %>
 
   <%= f.label :part_id, "Parts" %>
-  <%= f.select(:part_id, @parts) %>
+  <%= f.select(:part_id, @parts, {}, { :multiple => true }) %>
 
   <%= f.label :due, "Total Due" %>
   <%= f.text_field(:due, class: 'form-control') %>
