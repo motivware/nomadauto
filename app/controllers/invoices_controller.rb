@@ -44,9 +44,14 @@ class InvoicesController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @invoice = @project.invoices.create(invoice_params)
-
     respond_to do |format|
       if @invoice.save
+        # You can access an invoice's parts list by checking `@invoice.parts_to_invoices`
+        invoice_params[:part_id].each do |val|
+          if val != ""
+            PartsToInvoice.create({ invoice_id: @invoice.id, part_id: val })
+          end
+        end
         #1st argument of redirect_to is an array, in order to build the correct route to the nested resource workorder
         format.html { redirect_to project_invoices_path(@project), :notice => 'invoice was successfully created.' }
         #the key :location is associated to an array in order to build the correct route to the nested resource workorder
@@ -65,8 +70,7 @@ class InvoicesController < ApplicationController
     params.require(:invoice).permit(:date, :subtotal, :otherfees,
                                     :salestax, :total, :paid, :due,
                                     :workorder_id, :customer_id,
-                                    :vehicle_id, :part_id)
+                                    :vehicle_id, part_id: [])
   end
-
 
 end

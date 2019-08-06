@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190718141142) do
+ActiveRecord::Schema.define(version: 20190730065333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 20190718141142) do
     t.datetime "updated_at",     null: false
     t.index ["trackable_type", "trackable_id"], name: "index_activities_on_trackable_type_and_trackable_id", using: :btree
     t.index ["user_id"], name: "index_activities_on_user_id", using: :btree
+  end
+
+  create_table "cards", force: :cascade do |t|
+    t.integer  "list_id"
+    t.string   "name"
+    t.integer  "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_cards_on_list_id", using: :btree
   end
 
   create_table "comments", force: :cascade do |t|
@@ -116,11 +125,11 @@ ActiveRecord::Schema.define(version: 20190718141142) do
     t.index ["workorder_id"], name: "index_invoices_on_workorder_id", using: :btree
   end
 
-  create_table "invoices_parts", id: false, force: :cascade do |t|
-    t.integer "invoice_id"
-    t.integer "part_id"
-    t.index ["invoice_id"], name: "index_invoices_parts_on_invoice_id", using: :btree
-    t.index ["part_id"], name: "index_invoices_parts_on_part_id", using: :btree
+  create_table "lists", force: :cascade do |t|
+    t.string   "new"
+    t.integer  "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "parts", force: :cascade do |t|
@@ -135,6 +144,15 @@ ActiveRecord::Schema.define(version: 20190718141142) do
     t.string   "part_number"
     t.index ["project_id"], name: "index_parts_on_project_id", using: :btree
     t.index ["vehicle_id"], name: "index_parts_on_vehicle_id", using: :btree
+  end
+
+  create_table "parts_to_invoices", force: :cascade do |t|
+    t.integer  "invoice_id"
+    t.integer  "part_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invoice_id"], name: "index_parts_to_invoices_on_invoice_id", using: :btree
+    t.index ["part_id"], name: "index_parts_to_invoices_on_part_id", using: :btree
   end
 
   create_table "plans", force: :cascade do |t|
@@ -230,13 +248,13 @@ ActiveRecord::Schema.define(version: 20190718141142) do
     t.integer  "project_id"
     t.integer  "time"
     t.integer  "charge"
-    t.integer  "miles"
     t.integer  "vehicle_id"
     t.index ["project_id"], name: "index_workorders_on_project_id", using: :btree
     t.index ["vehicle_id"], name: "index_workorders_on_vehicle_id", using: :btree
   end
 
   add_foreign_key "activities", "users"
+  add_foreign_key "cards", "lists"
   add_foreign_key "comments", "workorders"
   add_foreign_key "comments", "workorders", column: "task_id"
   add_foreign_key "customers", "projects"
@@ -244,11 +262,14 @@ ActiveRecord::Schema.define(version: 20190718141142) do
   add_foreign_key "deals", "projects"
   add_foreign_key "invites", "projects"
   add_foreign_key "invoices", "customers"
+  add_foreign_key "invoices", "parts"
   add_foreign_key "invoices", "projects"
   add_foreign_key "invoices", "vehicles"
   add_foreign_key "invoices", "workorders"
   add_foreign_key "parts", "projects"
   add_foreign_key "parts", "vehicles"
+  add_foreign_key "parts_to_invoices", "invoices"
+  add_foreign_key "parts_to_invoices", "parts"
   add_foreign_key "profiles", "projects"
   add_foreign_key "projects", "customers", column: "company_id"
   add_foreign_key "projects", "deals"
