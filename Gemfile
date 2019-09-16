@@ -17,6 +17,9 @@ gem 'coffee-rails', '4.2.1'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
+# nokogiri
+gem "nokogiri", ">= 1.10.4"
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '4.1.1'
 # gem for using React JS
