@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.7'
+gem 'rails', '~> 6.0', '>= 6.0.3.4'
 # Use Puma as the app server
 gem 'puma', '4.3.5'
 # Use SCSS for stylesheets
@@ -21,7 +21,7 @@ gem 'wkhtmltopdf-binary'
 gem "nokogiri", ">= 1.10.4"
 
 # actionview
-gem 'actionview', '>= 5.0.7'
+gem 'actionview', ">= 5.2.4.3"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '4.1.1'
