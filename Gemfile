@@ -1,15 +1,15 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0', '>= 6.0.3.4'
+gem 'rails', '5.0.7'
 # Use Puma as the app server
 gem 'puma', '4.3.5'
 # Use SCSS for stylesheets
-gem 'sass-rails', '5.0.6'
+gem 'sass-rails', '~> 6.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '3.0.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '4.2.1'
+gem 'coffee-rails', '4.2.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -20,17 +20,20 @@ gem 'wkhtmltopdf-binary'
 # nokogiri
 gem "nokogiri", ">= 1.10.4"
 
-# actionview
-gem 'actionview', ">= 5.2.4.3"
+# action
+# gem "actionpack", ">= 5.2.4.3"
+# gem "activesupport", ">= 5.2.4.3"
+# gem "actionview", ">= 5.2.4.4"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '4.1.1'
-# gem for using React JS
+
 gem 'react-rails'
+
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '5.0.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '2.5.0'
+gem 'jbuilder', '~> 2.10', '>= 2.10.1'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '3.0'
 # Use ActiveModel has_secure_password
@@ -62,8 +65,7 @@ gem 'stripe', '1.48.0'
 gem 'figaro', '1.1.1'
 
 # User paparclip for image upload
-gem "paperclip", "~> 5.2.1"
-
+gem 'paperclip', '~> 6.1'
 # Charts with rails
 gem 'chartkick', ">= 3.2.0"
 
@@ -80,26 +82,18 @@ gem 'pg', '1.1.4'
 gem 'cancan'
 
 # subdomains
-gem 'apartment'
+# gem 'apartment'
 
 # pagination
-gem 'will_paginate', '~> 3.0.6'
+gem 'will_paginate', '~> 3.0.3'
 gem 'will_paginate-bootstrap'
 
 # roles and multi-tenant
-gem "pundit"
-
-# public activity feed
-gem 'public_activity'
-
-#sortable
-gem 'record_tag_helper', '~> 1.0'
-
+gem 'pundit', '~> 2.1'
 #gem 'rails_12factor'
 
 # sorting of list position
-gem 'acts_as_list', '0.7.5'
-
+gem 'acts_as_list', '~> 1.0', '>= 1.0.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -109,7 +103,6 @@ group :development, :test do
   gem "letter_opener", :group => :development
 
   # TDD
-  gem 'rspec-rails', ">= 2.0.0.beta"
   gem 'capybara'
 
   # UML Diagram
@@ -119,7 +112,7 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console'
+  gem 'web-console', '3.0.0'
   gem 'listen', '3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
