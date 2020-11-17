@@ -23,7 +23,7 @@ Once your computer is setup and running ruby on rails with Postgres you can clon
 ```
 mkdir projects
 cd projects
-git clone https://github.com/DamonClark/nomadauto/
+git clone https://github.com/motivware/nomadauto.git
 cd nomadauto
 bundle install
 rails db:create
