@@ -1,7 +1,7 @@
 # README
 # Motivware - Web Based Software as a Service App
 
-Motivware is an software as a service business template that includes authenticatoin and multi-tenant capabilities.
+Motivware is an software as a service CRM application that includes authenticatoin and multi-tenant capabilities.
 
 # Tech Stack
 - [Ruby on Rails](https://guides.rubyonrails.org/)
