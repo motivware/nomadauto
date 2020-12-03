@@ -1,7 +1,7 @@
 # README
 # Motivware - Web Based Software as a Service App
 
-Motivware is an software as a service CRM application that includes authenticatoin and multi-tenant capabilities.
+Motivware is a boilerplate SaaS application that includes authenticatoin and multi-tenant capabilities. 
 
 # Tech Stack
 - [Ruby on Rails](https://guides.rubyonrails.org/)
@@ -32,6 +32,14 @@ rails server -p 3000 -b lvh.me
 ```
 
 You can now open your browser to [lvh.me:3000](lvh.me:3000)
+# Features
+
+  - User authenticated accounts with teams
+  - Multi-tenant subdomain support
+  - 30 day free trial access with stripe integration
+  - Newlsetter integration with mailchimp
+  - Contact form functionality
+  - Mobile friendly landing pages
 
 # How to Contribute 
 When contributing always make sure that you have the most recents changes by running `git pull`. Also you only want to make changes inside your own branch. You can follow the steps below to get started.
