@@ -1,6 +1,6 @@
 class WorkordersController < UsersController
   before_action :trial_expired?
-  skip_before_filter :verify_authenticity_token, only: [:index, :show]
+  skip_before_action :verify_authenticity_token, only: [:index, :show]
 
   def index
     @project = Project.find(params[:project_id])

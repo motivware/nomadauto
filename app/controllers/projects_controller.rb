@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-skip_before_filter :verify_authenticity_token, only: [:index, :show]
+skip_before_action :verify_authenticity_token, only: [:index, :show]
 
   def index
     # GET request for which / is our home page
