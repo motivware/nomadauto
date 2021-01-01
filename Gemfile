@@ -18,7 +18,7 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
 # nokogiri
-gem "nokogiri", ">= 1.10.4"
+gem "nokogiri", ">= 1.11.0.rc4"
 
 # action
 # gem "actionpack", ">= 5.2.4.3"
