@@ -1,7 +1,7 @@
 # Custom Domain Cookie
 #
 # Set the cookie domain to the custom domain if it's present
-class SetCookieDomain
+class CustomDomainCookie
   def initialize(app, default_domain)
     @app = app
     @default_domain = default_domain
