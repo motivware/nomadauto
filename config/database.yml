@@ -17,9 +17,9 @@ test: &TEST
 production:
   adapter: postgresql
   encoding: utf8
-  database: dbmotivware
+  database: postgres
   pool: 5
-  username: dbmotivware
+  username: postgres
   password: <%= ENV['MOTIVWARE_DATABASE_PASSWORD'] %>
 
 cucumber:
