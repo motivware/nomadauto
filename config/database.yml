@@ -17,10 +17,10 @@ test: &TEST
 production:
   adapter: postgresql
   encoding: utf8
-  database: postgres
+  database: 
   pool: 5
-  username: postgres
-  password: <%= ENV['MOTIVWARE_DATABASE_PASSWORD'] %>
+  username: 
+  password: 
 
 cucumber:
   <<: *TEST

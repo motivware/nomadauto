@@ -46,7 +46,6 @@ GEM
       activerecord (>= 4.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    update-nokogiri
     arel (9.0.0)
     autoprefixer-rails (10.1.0.0)
       execjs
@@ -185,7 +184,6 @@ GEM
       activesupport (= 5.2.4.4)
       method_source
       rake (>= 0.8.7)
-     update-nokogiri
       thor (>= 0.19.0, < 2.0)
     rake (13.0.3)
     rb-fsevent (0.10.4)
@@ -301,7 +299,7 @@ DEPENDENCIES
   wkhtmltopdf-binary
 
 RUBY VERSION
-   ruby 2.6.3p62
+   ruby 2.6.6p146
 
 BUNDLED WITH
    2.1.4
