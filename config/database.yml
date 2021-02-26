@@ -17,7 +17,7 @@ test: &TEST
 production:
   adapter: postgresql
   encoding: utf8
-  database: project_production
+  database: dbmotivware
   pool: 5
   username:
   password:
