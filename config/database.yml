@@ -19,8 +19,8 @@ production:
   encoding: utf8
   database: dbmotivware
   pool: 5
-  username:
-  password:
+  username: dbmotivware
+  password: <%= ENV['MOTIVWARE_DATABASE_PASSWORD'] %>
 
 cucumber:
   <<: *TEST
