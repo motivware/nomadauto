@@ -35,3 +35,7 @@ config/cable.yml
 # ignore ds store
 .DS_Store
 
+# ignore certs
+server.key
+server.csr
+server.pass.key
