@@ -1,20 +1,22 @@
 <%= form_for([@project, @vehicle]) do |f| %>
   <%= f.label :vin %>
-  <%= f.text_field :vin, autofocus: true, class: 'form-control' %>
-  <%= f.label :make %>
-  <%= f.text_field :make, autofocus: true, class: 'form-control' %>
-  <%= f.label :model %>
-  <%= f.text_field :model, autofocus: true, class: 'form-control' %>
-  <%= f.label :year %>
-  <%= f.select :year, Date.today.year-50.. 8.years.from_now.year, autofocus: true, class: 'form-control' %>
-  <%= f.label :miles %>
-  <%= f.text_field :miles, autofocus: true, class: 'form-control' %>
-  <%= f.label :engine %>
-  <%= f.text_field :engine, autofocus: true, class: 'form-control' %>
+  <%= f.text_field :vin, autofocus: true, class: 'form-control', id: 'vin' %>
   <%= f.label :license_plate %>
-  <%= f.text_field :license_plate, autofocus: true, class: 'form-control' %>
+  <%= f.text_field :license_plate, autofocus: true, class: 'form-control', id: 'license_plate' %>
+  <%= f.label :make %>
+  <%= f.text_field :make, autofocus: true, class: 'form-control', id: 'make' %>
+  <%= f.label :model %>
+  <%= f.text_field :model, autofocus: true, class: 'form-control', id: 'model' %>
+  <%= f.label :manufacturer %>
+  <%= f.text_field :manufacturer, autofocus: true, class: 'form-control', id: 'manufacturer' %>
+  <%= f.label :year %>
+  <%= f.text_field :year, autofocus: true, class: 'form-control', id: 'year'%>
+  <%= f.label :engine %>
+  <%= f.text_field :engine, autofocus: true, class: 'form-control', id: 'engine' %>
+  <%= f.label :trim %>
+  <%= f.text_field :trim, autofocus: true, class: 'form-control', id: 'trim' %>
   <%= f.label :transmission %>
-  <%= f.text_field :transmission, autofocus: true, class: 'form-control' %>
+  <%= f.text_field :transmission, autofocus: true, class: 'form-control', id: 'transmission' %>
   </br>
   <%= f.submit "Submit", class: 'btn btn-primary' %>
 <% end %>
