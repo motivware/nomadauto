@@ -1,7 +1,7 @@
 # README
-# Motivware - Web Based Software as a Service App
+# Motivware - Web Based Autoshop Management Software as a Service App
 
-Motivware is a boilerplate SaaS application that includes authenticatoin and multi-tenant capabilities. 
+Motivware is a autoshop management SaaS application that includes authenticatoin and multi-tenant capabilities. It provides the capability for autoshop ownser to manage their work orders, vehicles, customers, parts and generate invoices. 
 
 # Tech Stack
 - [Ruby on Rails](https://guides.rubyonrails.org/)
@@ -10,7 +10,7 @@ Motivware is a boilerplate SaaS application that includes authenticatoin and mul
 - [Sass](https://sass-lang.com/)
 
 # Setting up your Dev Environment
-If your computer is not setup to run ruby on rails yet - then you can follow one of the links below. These links will provide instructions on how to get your computer ready for developing rails. (Choose ruby 2.3.8 and rails 5.0.7) 
+If your computer is not setup to run ruby on rails yet - then you can follow one of the links below. These links will provide instructions on how to get your computer ready for developing rails. (Choose ruby 2.6.6 and rails 5.2.4.4) 
 
 [GoRails - Windows Setup](https://gorails.com/setup/windows/10)
 
@@ -32,7 +32,7 @@ rails server -p 3000 -b lvh.me
 ```
 
 You can now open your browser to [lvh.me:3000](lvh.me:3000)
-# Features
+# Tech Features
 
   - User authenticated accounts with teams
   - Multi-tenant subdomain support
@@ -41,6 +41,17 @@ You can now open your browser to [lvh.me:3000](lvh.me:3000)
   - Contact form functionality
   - Mobile friendly landing pages
 
+# Autoshop Features 
+  - Vehicle Roadmap
+  Create a list of vehicle records and find recommended maintenance for each vehcile.
+  - Work Orders
+  Assign tasks and keep your team organized. Track what is completed and what still needs done.
+  - Invoice Generation 
+  Generate invoices and contain a history of records. Customize your invoice to suite your needs
+  - Part Finder 
+  Search for parts based off vehicle details and add them to your invoice.
+  - Repair Estimates
+  Build service repair estimates for your customers. Send the estimates by print or email.
 # How to Contribute 
 When contributing always make sure that you have the most recents changes by running `git pull`. Also you only want to make changes inside your own branch. You can follow the steps below to get started.
 
