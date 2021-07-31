@@ -1,7 +1,7 @@
 # README
-# Motivware - Web Based Autoshop Management Software as a Service App
+# Motivware - Web Based Autoshop Management SaaS App
 
-Motivware is a autoshop management SaaS application that includes authenticatoin and multi-tenant capabilities. It provides the capability for autoshop ownser to manage their work orders, vehicles, customers, parts and generate invoices. 
+Motivware is a autoshop management SaaS application that includes authenticatoin and multi-tenant capabilities. It provides the capability for autoshop owners to manage their work orders, vehicles, customers, parts and generate invoices. 
 
 # Tech Stack
 - [Ruby on Rails](https://guides.rubyonrails.org/)
