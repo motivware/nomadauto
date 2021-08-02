@@ -57,9 +57,9 @@ workorders_list = [
   ["Replace Catalytic Converter", "description", "Open", "High", "John Clark", "10", "400", 1, 1],
   ["Brake Replacement", "description", "Closed", "Low", "John Clark", "10", "400", 1, 1],
   ["Tire Change", "description", "Closed", "High", "John Clark", "10", "400", 1, 1],
-  ["Replace Catalytic Converter", "description", "Pending", "High", "John Clark", "10", "400", 1, 1],
-  ["Replace Catalytic Converter", "description", "Open", "Low", "John Clark", "10", "400", 1, 1],
-  ["Replace Catalytic Converter", "description", "Open", "High", "John Clark", "10", "400", 1, 1],
+  ["Replace Thermostat", "description", "Pending", "High", "John Clark", "10", "400", 1, 1],
+  ["Change the Oil", "description", "Open", "Low", "John Clark", "10", "400", 1, 1],
+  ["Replace Water Pump", "description", "Open", "High", "John Clark", "10", "400", 1, 1],
 ]
 
 invoices_list = [
