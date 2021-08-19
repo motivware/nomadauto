@@ -1,0 +1,39 @@
+/* line 1, app/assets/stylesheets/users.css.scss */
+.avatar-show-img {
+  width: 128px;
+  height: 128px;
+}
+
+/* line 6, app/assets/stylesheets/users.css.scss */
+.well.profile-block {
+  color: #fff;
+}
+
+/* line 8, app/assets/stylesheets/users.css.scss */
+.well.profile-block h3 {
+  margin-top: 0;
+}
+
+/* line 13, app/assets/stylesheets/users.css.scss */
+.well.profile-description {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+
+/* line 18, app/assets/stylesheets/users.css.scss */
+.well.profile-contact-info {
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+
+/* line 23, app/assets/stylesheets/users.css.scss */
+.user-index-avatar {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+}
+
+/* line 29, app/assets/stylesheets/users.css.scss */
+.well.white-bg {
+  background-color: white;
+}

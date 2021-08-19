@@ -1,0 +1,92 @@
+/* line 1, app/assets/stylesheets/card.css.scss */
+.featurewrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  flex: 600px;
+}
+
+@media (min-width: 64em) {
+  /* line 10, app/assets/stylesheets/card.css.scss */
+  .featurewrapper {
+    padding: 2em 1em;
+  }
+}
+
+/* line 15, app/assets/stylesheets/card.css.scss */
+.cardwrapper {
+  width: 25em;
+  max-width: 25%;
+  padding: 1em 1em;
+  margin: 60px;
+  border-radius: 1.25em;
+  box-sizing: border-box;
+  background-color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* line 29, app/assets/stylesheets/card.css.scss */
+.cardwrapper:not(:last-child) {
+  margin-bottom: 4em;
+}
+
+@media (min-width: 64em) {
+  /* line 34, app/assets/stylesheets/card.css.scss */
+  .cardwrapper {
+    width: 75em;
+    height: 25em;
+    padding: 2em 4em;
+    text-align: left;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* line 44, app/assets/stylesheets/card.css.scss */
+.image {
+  width: 4.75em;
+  max-width: 50%;
+  margin-bottom: 2em;
+}
+
+@media (min-width: 64em) {
+  /* line 51, app/assets/stylesheets/card.css.scss */
+  .image {
+    margin: 2rem;
+  }
+  /* line 55, app/assets/stylesheets/card.css.scss */
+  .cardwrapper:nth-child(odd) .image {
+    order: 1;
+  }
+}
+
+/* line 60, app/assets/stylesheets/card.css.scss */
+.cardheading {
+  width: 33.125rem;
+  max-width: 100%;
+  margin-bottom: 0.625em;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5em;
+  font-weight: 600;
+  line-height: 2.125em;
+}
+
+@media (min-width: 64em) {
+  /* line 71, app/assets/stylesheets/card.css.scss */
+  .cardheading {
+    margin-bottom: 1.25rem;
+    font-size: 2.25em;
+    line-height: 3.25rem;
+  }
+}
+
+/* line 78, app/assets/stylesheets/card.css.scss */
+.body {
+  width: 28.125rem;
+  max-width: 100%;
+  color: #5b6771;
+}
