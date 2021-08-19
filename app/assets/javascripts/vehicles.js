@@ -1,5 +1,5 @@
 async function fetchVINAPI() {
-  await fetch('http://api.carmd.com/v3.0/decode?vin=' + document.getElementById("vinlookup").value, {
+  await fetch('https://api.carmd.com/v3.0/decode?vin=' + document.getElementById("vinlookup").value, {
     method: 'GET', 
     credentials: 'include',
     mode: 'cors',
