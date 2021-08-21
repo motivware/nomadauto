@@ -11,7 +11,8 @@ class InvoicesController < ApplicationController
     @customer = Customer.where(id: @invoice.customer_id)
     @vehicle = Vehicle.where(id: @invoice.vehicle_id)
     @workorders = Workorder.where(id: @invoice.workorder_id)
-    @parts = Part.where(id: @invoice.part_id)
+    @parts_to_invoices = PartsToInvoice.where(invoice_id: @invoice.id)
+    @parts = Part.where(id: @parts_to_invoices.pluck(:part_id))
     @profile = Profile.where(project_id: @project).last
 
     respond_to do |format|
