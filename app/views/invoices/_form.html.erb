@@ -1,15 +1,15 @@
 <%= form_for([@project, @invoice]) do |f| %>
   <%= f.label :date, "Due Date" %>
   <%= f.date_field :date, autofocus: true, class: 'form-control' %>
-  </br>
+
   <%= f.label :customer_id, "Customer" %>
-  <%= f.select(:customer_id, @customers) %>
+  <%= f.collection_select :customer_id, Customer.order(:first_name), :id, :first_last_name, { include_blank: 'Select a customer' }, class: "form-control" %>
 
   <%= f.label :vehicle_id, "Vehicle" %>
-  <%= f.select(:vehicle_id, @vehicles) %>
+  <%= f.collection_select :vehicle_id, Vehicle.order(:model), :id, :model_make_year, { include_blank: 'Select a vehicle' }, class: "form-control" %>
 
   <%= f.label :workorder_id, "Workorder" %>
-  <%= f.select(:workorder_id, @workorders) %>
+  <%= f.select(:workorder_id, @workorders, { include_blank: 'Select a workorder' }, class: "form-control") %>
 
   <%= f.label :part_id, "Parts" %>
   <%= f.select(:part_id, @parts, {}, { :multiple => true }) %>

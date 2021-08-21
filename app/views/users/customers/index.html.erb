@@ -19,8 +19,8 @@
       <%if Customer.exists? %>
         <% @customers.each do |customer| %>
             <tr>
-              <td><%= link_to customer.company, edit_project_customer_path(@project, customer) %></td>
-              <td><%= customer.first_name %></td>
+              <td><%= link_to customer.company %></td>
+              <td><%= link_to customer.first_name, edit_project_customer_path(@project, customer)  %></td>
               <td><%= customer.last_name %></td>
               <td><%= customer.phone_number %></td>
               <td><%= customer.website %></td>

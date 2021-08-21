@@ -8,9 +8,9 @@
   <%= f.label :quantity %>
   <%= f.number_field :quantity, autofocus: true, class: 'form-control' %>
   <%= f.label :part_number %>
-  <%= f.text_area :part_number, autofocus: true, class: 'form-control' %>
+  <%= f.number_field :part_number, autofocus: true, class: 'form-control' %>
   <%= f.label "Vehicle" %>
-  <%= f.collection_select :vehicle_id, Vehicle.order(:model), :id, :model_make_year, autofocus: true, class: 'form-control' %>
+  <%= f.collection_select :vehicle_id, Vehicle.order(:model), :id, :model_make_year, {}, class: 'form-control' %>
   </br>
   <%= f.submit "Submit", class: 'btn btn-primary' %>
 <% end %>

@@ -7,4 +7,7 @@ class Customer < ApplicationRecord
   has_many :invoices
   has_many :workorders
 
+  def first_last_name
+    "#{first_name.capitalize} #{last_name.capitalize}"
+  end
 end

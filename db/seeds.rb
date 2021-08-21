@@ -17,20 +17,20 @@ Project.create(title: 'Mechanic Shop',
                user_id: '1')
 
 customer_list = [
-  ["", "John", "Smith", 4121231234, "test.com", "test@email.com", 1 ],
-  ["", "Kevin", "Steven", 4121231234, "test.com", "test@email.com", 1 ],
-  ["", "Jeff", "Rock", 4125431234, "test.com", "test@email.com", 1 ],
-  ["", "Craig", "Smith", 4121221212, "test.com", "test@email.com", 1 ],
-  ["", "Ray", "Fenz", 4121231512, "test.com", "test@email.com", 1 ],
-  ["", "Ryan", "Fenz", 4112231512, "test.com", "test@email.com", 1 ],
-  ["", "Devon", "McDonald", 4121221212, "test.com", "test@email.com", 1 ],
-  ["", "Rebecca", "Leon", 4121231512, "test.com", "test@email.com", 1 ],
-  ["", "Winston", "Settle", 4112231512, "test.com", "test@email.com", 1 ]
+  ["", "John", "Smith", 592-775-0112, "N/A", "jsmith@gmail.com", 1 ],
+  ["", "Kevin", "Steven", 709-474-9595, "N/A", "ksteven@outlook.com", 1 ],
+  ["", "Jeff", "Rock", 846-635-3297, "N/A", "jeff.rock144@gmail.com", 1 ],
+  ["", "Craig", "Smith", 576-331-8419, "N/A", "craig.smith@email.com", 1 ],
+  ["", "Ray", "Fenz", 471-562-1377, "N/A", "rfenz56@gmail.com", 1 ],
+  ["", "Ryan", "Oswalt", 768-394-6097, "N/A", "oswalt891@yahoo.com", 1 ],
+  ["", "Devon", "McDonald", 454-552-8321, "N/A", "mcodnald0109@yahoo.com", 1 ],
+  ["", "Rebecca", "Leon", 403-311-4914, "N/A", "leon12038@outlook.com", 1 ],
+  ["", "Winston", "Settle", 424-714-6431, "N/A", "wsettle134@gmail.com", 1 ]
 ]
 
 vehicles_list = [
   ["1GNKVFED0HJ335214", "Subaru", "Outback", "Subaru", "2019", "10,000", "3.6L; DOHC; 24V; DI", "", "Automatic" , 1],
-  ["1GNKVFED0HJ335214", "Chevrolet", "Traverse", "General Motors", "2009", "90,000", "V6, 3.6L; DOHC; 24V; DI", "", "Automatic" , 1],
+  ["1GNKVFED0HJ335214", "Chevrolet", "Traverse", "General Motors", "2007", "90,000", "V6, 3.6L; DOHC; 24V; DI", "", "Automatic" , 1],
   ["1GNKVFED0HJ335214", "Dodge", "Dakota", "Dodge", "2019", "10,000", "V6, 3.6L; DOHC; 24V; DI", "", "Automatic" , 1],
   ["1GNKVFED0HJ335524", "Chevrolet", "Malibu", "General Motors", "2000", "10,000", "V6, 3.6L; DOHC; 24V; DI", "", "Automatic" , 1],
   ["1GNKVFED0HJ335424", "Honda", "Civic", "Honda", "2008", "100,000", "V6, 3.6L; DOHC; 24V; DI", "", "Manual" , 1],
@@ -54,10 +54,10 @@ parts_list = [
 workorders_list = [
   ["Replace Catalytic Converter", "description", "Open", "High", "John Clark", "10", "400", 1, 1],
   ["Inspect For Fluid Leaks", "description", "Open", "High", "John Clark", "10", "400", 1, 1],
-  ["Replace Catalytic Converter", "description", "Open", "High", "John Clark", "10", "400", 1, 1],
+  ["Replace Thermostat", "description", "Open", "High", "John Clark", "10", "400", 1, 1],
   ["Brake Replacement", "description", "Closed", "Low", "John Clark", "10", "400", 1, 1],
   ["Tire Change", "description", "Closed", "High", "John Clark", "10", "400", 1, 1],
-  ["Replace Thermostat", "description", "Pending", "High", "John Clark", "10", "400", 1, 1],
+  ["Replace Exhaust", "description", "Pending", "High", "John Clark", "10", "400", 1, 1],
   ["Change the Oil", "description", "Open", "Low", "John Clark", "10", "400", 1, 1],
   ["Replace Water Pump", "description", "Open", "High", "John Clark", "10", "400", 1, 1],
 ]

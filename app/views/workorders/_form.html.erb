@@ -6,19 +6,19 @@
     <%= f.text_area :description, class: 'form-control' %>
 
     <%= f.label :status %>
-    <%= f.select :status, options_for_select([['Open'],['Pending'],['Closed']]), class: "form-control"  %>
+    <%= f.select :status, options_for_select([['Open'],['Pending'],['Closed']]), { include_blank: 'Select status' }, class: "form-control"  %>
 
     <%= f.label :priority %>
-    <%= f.select :priority, options_for_select([['High'],['Medium'],['Low']]), {}, class: "form-control" %>
+    <%= f.select :priority, options_for_select([['High'],['Medium'],['Low']]), { include_blank: 'Select priority' }, class: "form-control" %>
 
     <%= f.label :owner %>
     <% options_from_collection_for_select(current_account.user_users, :name, :name) %>
-    <%= f.collection_select(:owner, current_account.user_users, :name, :name) %>
+    <%= f.collection_select(:owner, current_account.user_users, :name, :name, { include_blank: 'Select owner' }, class: "form-control" ) %>
 
     <%= f.hidden_field :user_id, value: current_user.id, readonly: true, class: 'form-control' %>
 
     <%= f.label :vehicle_id, "Vehicle" %>
-    <%= f.select(:vehicle_id, @vehicles) %>
+    <%= f.collection_select :vehicle_id, Vehicle.order(:model), :id, :model_make_year, { include_blank: 'Select a vehicle' }, class: "form-control" %>
 
     <%= f.label :time %>
     <%= f.text_field :time, class: 'form-control' %>
