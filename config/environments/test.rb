@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -34,7 +36,7 @@ Rails.application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
-  config.action_mailer.default_url_options = { host: "http://lvh.me:3000" }
+  config.action_mailer.default_url_options = { host: 'http://lvh.me:3000' }
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr

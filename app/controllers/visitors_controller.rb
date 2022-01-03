@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 class VisitorsController < ApplicationController
-  def index
-  end
+  def index; end
 
   def new
     @visitor = Visitor.new
-    if Plan.first == nil
+    if Plan.first.nil?
       Plan.create(name: 'basic', price: 0)
       Plan.create(name: 'pro', price: 30)
       Plan.create(name: 'invite', price: 0)
@@ -22,7 +23,7 @@ class VisitorsController < ApplicationController
       flash[:notice] = "Signed up #{@visitor.email}."
       redirect_to root_url(subdomain: 'www')
     else
-      flash[:danger] = "Please add email address"
+      flash[:danger] = 'Please add email address'
     end
   end
 
@@ -31,5 +32,4 @@ class VisitorsController < ApplicationController
   def secure_params
     params.require(:visitor).permit(:email)
   end
-
 end

@@ -1,5 +1,6 @@
-class InvoicesController < ApplicationController
+# frozen_string_literal: true
 
+class InvoicesController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
     @invoices = @project.invoices.all
@@ -16,17 +17,17 @@ class InvoicesController < ApplicationController
     @profile = Profile.where(project_id: @project).last
 
     respond_to do |format|
-        format.html
-        format.pdf do
-            render pdf: "Invoice No. #{@invoice.id}",
-            page_size: 'A4',
-            template: "invoices/show.html.erb",
-            layout: "pdf.html",
-            orientation: "Landscape",
-            lowquality: true,
-            zoom: 1,
-            dpi: 75
-        end
+      format.html
+      format.pdf do
+        render pdf: "Invoice No. #{@invoice.id}",
+               page_size: 'A4',
+               template: 'invoices/show.html.erb',
+               layout: 'pdf.html',
+               orientation: 'Landscape',
+               lowquality: true,
+               zoom: 1,
+               dpi: 75
+      end
     end
   end
 
@@ -34,12 +35,12 @@ class InvoicesController < ApplicationController
     @project = Project.find(params[:project_id])
     @invoice = @project.invoices.build
     @customers = @project.customers.pluck(:last_name, :id)
-    #needs to be dynamic based off customer selected
+    # needs to be dynamic based off customer selected
     @vehicles = @project.vehicles.pluck(:make, :id)
     @workorders = @project.workorders.pluck(:title, :id)
     @parts = @project.parts.pluck(:name, :id)
     @salestax = 0.06.to_i
-    #authorize @invoice
+    # authorize @invoice
   end
 
   def create
@@ -49,18 +50,16 @@ class InvoicesController < ApplicationController
       if @invoice.save
         # You can access an invoice's parts list by checking `@invoice.parts_to_invoices`
         invoice_params[:part_id].each do |val|
-          if val != ""
-            PartsToInvoice.create({ invoice_id: @invoice.id, part_id: val })
-          end
+          PartsToInvoice.create({ invoice_id: @invoice.id, part_id: val }) if val != ''
         end
-        #1st argument of redirect_to is an array, in order to build the correct route to the nested resource workorder
-        format.html { redirect_to project_invoices_path(@project), :notice => 'invoice was successfully created.' }
-        #the key :location is associated to an array in order to build the correct route to the nested resource workorder
-        format.xml  { render :xml => @invoice, :status => :created, :location => [@invoice.project, @invoice] }
-        #track_activity @invoice
+        # 1st argument of redirect_to is an array, in order to build the correct route to the nested resource workorder
+        format.html { redirect_to project_invoices_path(@project), notice: 'invoice was successfully created.' }
+        # the key :location is associated to an array in order to build the correct route to the nested resource workorder
+        format.xml  { render xml: @invoice, status: :created, location: [@invoice.project, @invoice] }
+        # track_activity @invoice
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @invoice.errors, :status => :unprocessable_entity }
+        format.html { render action: 'new' }
+        format.xml  { render xml: @invoice.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -73,5 +72,4 @@ class InvoicesController < ApplicationController
                                     :workorder_id, :customer_id,
                                     :vehicle_id, part_id: [])
   end
-
 end

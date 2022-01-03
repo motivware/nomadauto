@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VehiclesController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
@@ -10,7 +12,7 @@ class VehiclesController < ApplicationController
 
   def new
     @project = Project.find(params[:project_id])
-    @vehicle = Vehicle.new()
+    @vehicle = Vehicle.new
   end
 
   def create
@@ -33,7 +35,7 @@ class VehiclesController < ApplicationController
     @project = Project.find(params[:project_id])
     @vehicle = Vehicle.find(params[:id])
     if @vehicle.update_attributes(vehicle_params)
-      flash[:success] = "Vehicle updated"
+      flash[:success] = 'Vehicle updated'
       @vehicles = @project.vehicles.all
       render 'index'
     else
@@ -48,6 +50,7 @@ class VehiclesController < ApplicationController
     @vehicles = @project.vehicles.all
     render 'index'
   end
+
   private
 
   def vehicle_params

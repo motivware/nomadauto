@@ -1,12 +1,11 @@
+# frozen_string_literal: true
+
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
-  end
+  def initialize(user); end
 
   def validate_user
-     unless current_user.id == params[:id].to_i
-      raise CanCan::AccessDenied
-     end
+    raise CanCan::AccessDenied unless current_user.id == params[:id].to_i
   end
 end

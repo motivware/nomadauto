@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class Project < ApplicationRecord
   belongs_to :user
-  #validates :title, :presence => true, :length => { :minimum => 5 }
+  # validates :title, :presence => true, :length => { :minimum => 5 }
 
   has_many :customers, dependent: :destroy
   has_many :deals, dependent: :destroy
@@ -12,5 +14,4 @@ class Project < ApplicationRecord
   has_many :parts, dependent: :destroy
   has_many :profiles, dependent: :destroy
   accepts_nested_attributes_for :workorders
-
 end

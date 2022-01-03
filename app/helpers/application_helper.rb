@@ -1,8 +1,9 @@
-module ApplicationHelper
+# frozen_string_literal: true
 
+module ApplicationHelper
   # Returns the full title on a per-page basis.
   def full_title(page_title = '')
-    base_title = "Motivware"
+    base_title = 'Motivware'
     if page_title.empty?
       base_title
     else
@@ -10,8 +11,8 @@ module ApplicationHelper
     end
   end
 
-  def wicked_pdf_image_tag_for_public(img, options={})
-    if img[0] == "/"
+  def wicked_pdf_image_tag_for_public(img, options = {})
+    if img[0] == '/'
       new_image = img.slice(1..-1)
       image_tag "file://#{Rails.root.join('public', new_image)}", options
     else
@@ -21,7 +22,7 @@ module ApplicationHelper
 
   def sortable(column, title = nil)
     title ||= column.titleize
-    direction = (column == params[:sort] && params[:direction] == "asc") ? "desc" : "asc"
-    link_to title, :sort => column, :direction => direction
+    direction = column == params[:sort] && params[:direction] == 'asc' ? 'desc' : 'asc'
+    link_to title, sort: column, direction: direction
   end
 end

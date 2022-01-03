@@ -9616,12 +9616,12 @@ aside section h1 {
 /* forms */
 /* line 363, app/assets/stylesheets/custom.css.scss */
 #error_explanation {
-  color: red;
+  color: #2F2E41;
 }
 
 /* line 365, app/assets/stylesheets/custom.css.scss */
 #error_explanation ul {
-  color: red;
+  color: #2F2E41;
   margin: 0 0 30px 0;
 }
 
@@ -10462,7 +10462,7 @@ div.field, div.actions {
 /* line 55, app/assets/stylesheets/scaffolds.scss */
 .field_with_errors {
   padding: 2px;
-  background-color: red;
+  background-color: #2F2E41;
   display: table;
 }
 
@@ -23175,7 +23175,7 @@ body {
 
 /* line 57, app/assets/stylesheets/application.css.scss */
 .back {
-  background-color: red;
+  background-color: #2F2E41;
 }
 
 /* line 61, app/assets/stylesheets/application.css.scss */

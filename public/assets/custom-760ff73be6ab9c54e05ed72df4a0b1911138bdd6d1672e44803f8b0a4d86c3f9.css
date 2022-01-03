@@ -9463,12 +9463,12 @@ aside section h1 {
 /* forms */
 /* line 363, app/assets/stylesheets/custom.css.scss */
 #error_explanation {
-  color: red;
+  color: #2F2E41;
 }
 
 /* line 365, app/assets/stylesheets/custom.css.scss */
 #error_explanation ul {
-  color: red;
+  color: #2F2E41;
   margin: 0 0 30px 0;
 }
 

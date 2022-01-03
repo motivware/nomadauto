@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Contact < ActiveRecord::Base
   # Contact form validations
   validates :name, presence: true

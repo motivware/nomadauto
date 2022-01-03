@@ -1,5 +1,6 @@
-class Invoice < ApplicationRecord
+# frozen_string_literal: true
 
+class Invoice < ApplicationRecord
   belongs_to :project
 
   has_many :workorders
@@ -8,5 +9,4 @@ class Invoice < ApplicationRecord
 
   has_one :customer
   has_one :vehicle
-
 end

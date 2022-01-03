@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class DealPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.where(:user_id => user.id)
+      scope.where(user_id: user.id)
     end
   end
 
@@ -9,10 +11,12 @@ class DealPolicy < ApplicationPolicy
     @user = user
     @deal = deal
   end
+
   # no need for an index? method here. we will see this in the controller
   def index?
     user.user_deals.map(&:id).include?(@deal.id)
   end
+
   # essentially here we are checking that the project associated to the record
   # is the same as the current project
   def show?

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class ListPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.where(:user_id => user.id)
+      scope.where(user_id: user.id)
     end
   end
 
@@ -9,10 +11,12 @@ class ListPolicy < ApplicationPolicy
     @user = user
     @list = list
   end
+
   # no need for an index? method here. we will see this in the controller
   def index?
     user.user_lists.map(&:id).include?(@list.id)
   end
+
   # essentially here we are checking that the project associated to the record
   # is the same as the current project
   def show?

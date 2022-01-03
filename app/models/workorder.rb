@@ -1,5 +1,6 @@
-class Workorder < ApplicationRecord
+# frozen_string_literal: true
 
+class Workorder < ApplicationRecord
   belongs_to :user
   belongs_to :project
   belongs_to :customers
@@ -8,23 +9,21 @@ class Workorder < ApplicationRecord
   has_one :invoices
   has_many :vehicles
 
-  accepts_nested_attributes_for :comments, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :comments, reject_if: ->(a) { a[:content].blank? }, allow_destroy: true
 
   def title_with_charge
     "#{title}: #{charge}"
   end
 
   def self.assign_from_row(row)
-      workorder = Workorder.where(project_id: row[:project_id],
-                        title: row[:title],
-                        owner: row[:owner],
-                        status: row[:status],
-                        priority: row[:priority],
-                        description: row[:description]).first_or_initialize
-      workdrder
+    workorder = Workorder.where(project_id: row[:project_id],
+                                title: row[:title],
+                                owner: row[:owner],
+                                status: row[:status],
+                                priority: row[:priority],
+                                description: row[:description]).first_or_initialize
+    workdrder
   end
-
-
 
   def self.import(file)
     counter = 0
@@ -33,10 +32,9 @@ class Workorder < ApplicationRecord
       if workorder.save
         counter += 1
       else
-        puts "#{workorder.title} - #{workorder.errors.full_messages.join(", ")}"
+        puts "#{workorder.title} - #{workorder.errors.full_messages.join(', ')}"
       end
     end
     counter
   end
-
 end

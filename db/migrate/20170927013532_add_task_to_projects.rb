@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddTaskToProjects < ActiveRecord::Migration[5.0]
   def change
     add_reference :projects, :task, foreign_key: true

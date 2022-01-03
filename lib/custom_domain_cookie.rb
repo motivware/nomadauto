@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Custom Domain Cookie
 #
 # Set the cookie domain to the custom domain if it's present
@@ -8,8 +10,8 @@ class CustomDomainCookie
   end
 
   def call(env)
-    host = env["HTTP_HOST"].split(':').first
-    env["rack.session.options"][:domain] = custom_domain?(host) ? ".#{host}" : "#{@default_domain}"
+    host = env['HTTP_HOST'].split(':').first
+    env['rack.session.options'][:domain] = custom_domain?(host) ? ".#{host}" : @default_domain.to_s
     @app.call(env)
   end
 

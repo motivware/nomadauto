@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Vehicle < ApplicationRecord
   validates :make, presence: true
   belongs_to :customer

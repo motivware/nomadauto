@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ProjectsController < ApplicationController
-skip_before_action :verify_authenticity_token, only: [:index, :show]
+  skip_before_action :verify_authenticity_token, only: %i[index show]
 
   def index
     # GET request for which / is our home page
@@ -7,10 +9,7 @@ skip_before_action :verify_authenticity_token, only: [:index, :show]
     @pro_plan = Plan.find(2)
     # @invite_plan = Plan.find(3)
     @user = User.find(session[:user_id])
-    if Project.exists?(user: current_account)
-      @projects = current_account.user_projects
-    end
-
+    @projects = current_account.user_projects if Project.exists?(user: current_account)
   end
 
   def show
@@ -20,14 +19,14 @@ skip_before_action :verify_authenticity_token, only: [:index, :show]
 
   def new
     @project = Project.new
-    #@workorder = workorder.new(project_id: params[:project_id])
+    # @workorder = workorder.new(project_id: params[:project_id])
   end
 
   def create
     @project = current_account.projects.build(project_params)
-     if @project.save
-       flash[:notice] = "#{@project.title} is processing."
-       redirect_to projects_path
+    if @project.save
+      flash[:notice] = "#{@project.title} is processing."
+      redirect_to projects_path
     end
   end
 

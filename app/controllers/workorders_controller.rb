@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class WorkordersController < UsersController
   before_action :trial_expired?
-  skip_before_action :verify_authenticity_token, only: [:index, :show]
+  skip_before_action :verify_authenticity_token, only: %i[index show]
 
   def index
     @project = Project.find(params[:project_id])
@@ -9,37 +11,36 @@ class WorkordersController < UsersController
     if Workorder.where(project_id: @project)
       @workorders = @project.workorders.all
 
-      @workorders = @project.workorders.where(status: params["status"]) if params["status"].present?
-      @workorders = @project.workorders.where(priority: params["priority"]) if params["priority"].present?
-      @workorders = @project.workorders.where(user: params["user"]) if params["user"].present?
+      @workorders = @project.workorders.where(status: params['status']) if params['status'].present?
+      @workorders = @project.workorders.where(priority: params['priority']) if params['priority'].present?
+      @workorders = @project.workorders.where(user: params['user']) if params['user'].present?
 
-      @workorders = @project.workorders.order(sort_column + ' ' + sort_direction) if params["sort"].present?
+      @workorders = @project.workorders.order("#{sort_column} #{sort_direction}") if params['sort'].present?
     end
   end
 
   def show
-    #1st you retrieve the project thanks to params[:project_id]
+    # 1st you retrieve the project thanks to params[:project_id]
     @project = Project.find(params[:project_id])
-    #2nd you retrieve the workorders thanks to params[:id]
-    #@workorder = project.workorders.find(params[:id])
-    #@workorder = @project.workorders.find_by!(permalink: params[:id])
+    # 2nd you retrieve the workorders thanks to params[:id]
+    # @workorder = project.workorders.find(params[:id])
+    # @workorder = @project.workorders.find_by!(permalink: params[:id])
     @workorder = @project.workorders.find(params[:id])
-    #authorize @workorder
+    # authorize @workorder
     #
     @vehicle = Vehicle.where(id: @workorder.vehicle_id)
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @workorder }
+      format.xml  { render xml: @workorder }
     end
-
   end
 
   def new
-    #1st you retrieve the project thanks to params[:project_id]
+    # 1st you retrieve the project thanks to params[:project_id]
     @project = Project.find(params[:project_id])
 
-    #2nd you get all the workorders of this project
+    # 2nd you get all the workorders of this project
     @workorder = @project.workorders.build
     authorize @workorder
 
@@ -47,31 +48,30 @@ class WorkordersController < UsersController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @workorder }
+      format.xml  { render xml: @workorder }
     end
-    #@workorder = workorder.new
+    # @workorder = workorder.new
   end
 
   def create
-    #1st you retrieve the project thanks to params[:project_id]
+    # 1st you retrieve the project thanks to params[:project_id]
     @project = Project.find(params[:project_id])
 
-    #2nd you create the workorder with arguments in params[:workorder]
+    # 2nd you create the workorder with arguments in params[:workorder]
     @workorder = @project.workorders.create(workorder_params)
-
 
     respond_to do |format|
       if @workorder.save
-        #1st argument of redirect_to is an array, in order to build the correct route to the nested resource workorder
-        format.html { redirect_to project_workorders_path(@project), :notice => 'workorder was successfully created.' }
-        #the key :location is associated to an array in order to build the correct route to the nested resource workorder
-        format.xml  { render :xml => @workorder, :status => :created, :location => [@workorder.project, @workorder] }
+        # 1st argument of redirect_to is an array, in order to build the correct route to the nested resource workorder
+        format.html { redirect_to project_workorders_path(@project), notice: 'workorder was successfully created.' }
+        # the key :location is associated to an array in order to build the correct route to the nested resource workorder
+        format.xml  { render xml: @workorder, status: :created, location: [@workorder.project, @workorder] }
 
         track_activity @workorder
 
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @workorder.errors, :status => :unprocessable_entity }
+        format.html { render action: 'new' }
+        format.xml  { render xml: @workorder.errors, status: :unprocessable_entity }
       end
     end
     # if @workorder.save
@@ -95,22 +95,22 @@ class WorkordersController < UsersController
   end
 
   def update
-    #1st you retrieve the post thanks to params[:post_id]
+    # 1st you retrieve the post thanks to params[:post_id]
     @project = Project.find(params[:project_id])
-    #2nd you retrieve the comment thanks to params[:id]
+    # 2nd you retrieve the comment thanks to params[:id]
     @workorder = Workorder.find(params[:id])
 
     respond_to do |format|
       if @workorder.update_attributes(workorder_params)
-        #1st argument of redirect_to is an array, in order to build the correct route to the nested resource comment
-        format.html { redirect_to project_workorders_path(@project), :notice => 'workorder was successfully updated.' }
-        flash[:success] = "Your workorder has been updated"
-        format.xml  { head :ok }
+        # 1st argument of redirect_to is an array, in order to build the correct route to the nested resource comment
+        format.html { redirect_to project_workorders_path(@project), notice: 'workorder was successfully updated.' }
+        flash[:success] = 'Your workorder has been updated'
+        format.xml { head :ok }
         track_activity @workorder
 
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @workorder.errors, :status => :unprocessable_entity }
+        format.html { render action: 'edit' }
+        format.xml  { render xml: @workorder.errors, status: :unprocessable_entity }
       end
     end
     # if @workorder.update_attributes(workorder_params)
@@ -121,17 +121,13 @@ class WorkordersController < UsersController
     # end
   end
 
-
-
   def destroy
-    #1st you retrieve the project thanks to params[:project_id]
+    # 1st you retrieve the project thanks to params[:project_id]
     @project = Project.find(params[:project_id])
-    #2nd you retrieve the workorder thanks to params[:id]
+    # 2nd you retrieve the workorder thanks to params[:id]
     @workorder = Workorder.find(params[:id])
 
-    if @workorder.destroy
-      redirect_to project_workorders_path(@project)
-    end
+    redirect_to project_workorders_path(@project) if @workorder.destroy
   end
 
   def import
@@ -149,10 +145,10 @@ class WorkordersController < UsersController
   end
 
   def sort_column
-    params[:sort] || "title"
+    params[:sort] || 'title'
   end
 
   def sort_direction
-    params[:direction] || "asc"
+    params[:direction] || 'asc'
   end
 end

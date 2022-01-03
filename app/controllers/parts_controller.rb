@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PartsController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
@@ -12,7 +14,7 @@ class PartsController < ApplicationController
   def new
     @project = Project.find(params[:project_id])
     @vehicles = @project.vehicles.all
-    @part = Part.new()
+    @part = Part.new
   end
 
   def create
@@ -36,7 +38,7 @@ class PartsController < ApplicationController
     @part = Part.find(params[:id])
 
     if @part.update_attributes(part_params)
-      flash[:success] = "Part updated"
+      flash[:success] = 'Part updated'
       @parts = @project.parts.all
       render 'index'
     else
@@ -47,7 +49,7 @@ class PartsController < ApplicationController
   def destroy
     @project = Project.find(params[:project_id])
     Part.find(params[:id]).destroy
-    flash[:success] = "Part deleted"
+    flash[:success] = 'Part deleted'
     @parts = @project.parts.all
     render 'index'
   end
