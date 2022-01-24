@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class Invite < ActiveRecord::Base
   belongs_to :user_group
-  belongs_to :sender, :class_name => 'User'
-  belongs_to :recipient, :class_name => 'User', optional: true
+  belongs_to :sender, class_name: 'User'
+  belongs_to :recipient, class_name: 'User', optional: true
   belongs_to :project
   has_many :users
 
@@ -10,7 +12,7 @@ class Invite < ActiveRecord::Base
   before_create :generate_token
 
   def generate_token
-     self.token = Digest::SHA1.hexdigest([self.user_group_id, Time.now, rand].join)
+    self.token = Digest::SHA1.hexdigest([user_group_id, Time.now, rand].join)
   end
 
   def new_user_invite
@@ -19,11 +21,6 @@ class Invite < ActiveRecord::Base
 
   def check_user_existence
     recipient = User.find_by_email(email)
-   if recipient
-      self.recipient_id = recipient.id
-   end
+    self.recipient_id = recipient.id if recipient
   end
-  private
-
-
 end

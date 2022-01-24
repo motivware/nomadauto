@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -9,7 +11,7 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
-  #clear cache
+  # clear cache
   config.cache_store = :null_store
 
   # Show full error reports.
@@ -30,8 +32,7 @@ Rails.application.configure do
   end
 
   #  uplading directory for image
-  Paperclip.options[:command_path] = "/usr/local/bin/"
-
+  Paperclip.options[:command_path] = '/usr/local/bin/'
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
@@ -70,7 +71,7 @@ Rails.application.configure do
   # }
   config.serve_static_assets = false
 
-  config.action_mailer.default_url_options = { host: "http://lvh.me:3000" }
+  config.action_mailer.default_url_options = { host: 'http://lvh.me:3000' }
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
@@ -79,5 +80,5 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  #config.middleware.use "CustomDomainCookie", ".lvh.me"
+  # config.middleware.use "CustomDomainCookie", ".lvh.me"
 end

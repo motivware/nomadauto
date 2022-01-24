@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < UsersController
   def create
     @project = Project.find(params[:project_id])

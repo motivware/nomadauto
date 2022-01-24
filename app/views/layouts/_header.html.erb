@@ -2,61 +2,61 @@
   <div id="navbar" style="position:sticky;" class="navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <div class="row">
-              <div id="md-ham">
-                <div class="col-sm-10 col-sm-offset-1">
-                  <h3 style="color:#FFF;padding-left:10px;font-family: 'Roboto', sans-serif;" class="navbar-left">
-                        <%= link_to image_tag("logo.svg"), root_url %>
-                  </h3>
-                    <ul style='text-align: right;' id="md-ham" class="nav navbar-nav navbar-right">
-                      <% if logged_in? && request.subdomain.present? %>
-                        <li><%= link_to "Projects", projects_path, class: "header-nav-link" %></li>
-                        <li><%= link_to "My Account", edit_user_path(current_user), class: "header-nav-link" %></li>
-                        <li><%= link_to "Log Out", logout_path, method: :delete, class: 'header-nav-link' %></li>
-                      <% else %>
-                        <!-- <li><%= link_to features_path%></li> -->
-                        <li><%= link_to "Pricing", pricing_path, class: "header-nav-link" %></li>
-                        <li><%= link_to "Demo", new_contact_path, class: "header-nav-link" %></li>
-                        <li><%= link_to "Log In", login_path, class: 'header-nav-link' %></li>
-                      <% end %>
+        <div id="md-ham">
+          <div class="col-sm-10 col-sm-offset-1">
+            <h3 class="header-nav-link navbar-left">
+              <%= link_to image_tag('logo_alt.svg'), root_url %>
+            </h3>
+              <ul style='text-align: right;' id="md-ham" class="nav navbar-nav navbar-right">
+                <% if logged_in? && request.subdomain.present? %>
+                  <li><%= link_to "Projects", projects_path, class: "header-nav-link" %></li>
+                  <li><%= link_to "My Account", edit_user_path(current_user), class: "header-nav-link" %></li>
+                  <li><%= link_to "Log Out", logout_path, method: :delete, class: 'header-nav-link' %></li>
+                <% else %>
+                  <!-- <li><%= link_to features_path%></li> -->
+                  <li><%= link_to "Pricing", pricing_path, class: "header-nav-link" %></li>
+                  <li><%= link_to "Demo", new_contact_path, class: "header-nav-link" %></li>
+                  <li><%= link_to "Log In", login_path, class: 'header-nav-link' %></li>
+                <% end %>
+              </ul>
+          </div>
+        </div>
+            <div id="sm-ham">
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <h3 class="header-nav-link">
+                      <%= link_to image_tag('logo_alt.svg'), root_url %>
+                    </h3>
+                  </div>
+
+                  <!-- Collect the nav links, forms, and other content for toggling -->
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-left">
+                        <% if logged_in? && request.subdomain.present? %>
+                          <li><%= link_to "Projects", projects_path, class: "header-nav-link" %></li>
+                          <li><%= link_to "My Account", edit_user_path(current_user), class: "header-nav-link" %></li>
+                          <li><%= link_to "Log Out", logout_path, method: :delete, class: 'header-nav-link' %></li>
+                        <% else %>
+                          <!-- <li><%= link_to features_path%></li> -->
+                          <li><%= link_to "Pricing", pricing_path, class: "header-nav-link" %></li>
+                          <li><%= link_to "Demo", new_contact_path, class: "header-nav-link" %></li>
+                          <li><%= link_to "Log In", login_path, class: 'header-nav-link' %></li>
+                        <% end %>
                     </ul>
-                </div>
-              </div>
-              <div id="sm-ham">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                      <button type="button" style="margin-top:30px;" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                      </button>
-                      <h3 style="color:#FFF;padding-left:20px;text-align:left;font-family: 'Roboto', sans-serif;" class="navbar-left">
-                          <%= link_to image_tag("logo.svg"), root_url %>
-                      </h3>
+
                     </div>
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                      <ul class="nav navbar-nav">
-                          <% if logged_in? && request.subdomain.present? %>
-                            <li><%= link_to "Projects", projects_path, class: "header-nav-link" %></li>
-                            <li><%= link_to "My Account", edit_user_path(current_user), class: "header-nav-link" %></li>
-                            <li><%= link_to "Log Out", logout_path, method: :delete, class: 'header-nav-link' %></li>
-                          <% else %>
-                            <!-- <li><%= link_to features_path%></li> -->
-                            <li><%= link_to "Pricing", pricing_path, class: "header-nav-link" %></li>
-                            <li><%= link_to "Demo", new_contact_path, class: "header-nav-link" %></li>
-                            <li><%= link_to "Log In", login_path, class: 'header-nav-link' %></li>
-                          <% end %>
-                      </ul>
-
-                      </div>
-                    </ul>
-                </div>
-              </div>
-           </div> <!-- end div class="container" -->
-        </div> <!-- end div class="navbar navbar-default navbar-fixed-top" -->
-      </nav>
-    </div>
+                  </ul>
+            </div>
+          </div>
+        </div> <!-- end div class="container" -->
+      </div> <!-- end div class="navbar navbar-default navbar-fixed-top" -->
+    </nav>
+  </div>
 </div>
 

@@ -1,7 +1,7 @@
 # README
-# Motivware - Web Based Autoshop Management SaaS App
+# Motivware CRM
 
-Motivware is a autoshop management SaaS application that includes authenticatoin and multi-tenant capabilities. It provides the capability for autoshop owners to manage their work orders, vehicles, customers, parts and generate invoices. 
+Motivware is a web-based sales crm application that provides the capability for managing their daily routine by creating tasks, creating contacts and more coming soon.
 
 # Tech Stack
 - [Ruby on Rails](https://guides.rubyonrails.org/)
@@ -10,7 +10,7 @@ Motivware is a autoshop management SaaS application that includes authenticatoin
 - [Sass](https://sass-lang.com/)
 
 # Setting up your Dev Environment
-If your computer is not setup to run ruby on rails yet - then you can follow one of the links below. These links will provide instructions on how to get your computer ready for developing rails. (Choose ruby 2.6.6 and rails 5.2.4.4) 
+If your computer is not setup to run ruby on rails yet - then you can follow one of the links below. These links will provide instructions on how to get your computer ready for developing rails. (Choose ruby 2.7.4 and rails 5.2.4.4) 
 
 [GoRails - Windows Setup](https://gorails.com/setup/windows/10)
 
@@ -41,17 +41,12 @@ You can now open your browser to [lvh.me:3000](lvh.me:3000)
   - Contact form functionality
   - Mobile friendly landing pages
 
-# Autoshop Features 
-  - Vehicle Roadmap
-  Create a list of vehicle records and find recommended maintenance for each vehcile.
-  - Work Orders
-  Assign tasks and keep your team organized. Track what is completed and what still needs done.
-  - Invoice Generation 
-  Generate invoices and contain a history of records. Customize your invoice to suite your needs
-  - Part Finder 
-  Search for parts based off vehicle details and add them to your invoice.
-  - Repair Estimates
-  Build service repair estimates for your customers. Send the estimates by print or email.
+# Motivware Features 
+
+  - Create Contacts
+  - Create Tasks
+  - Invite Multiple Team Members
+  
 # How to Contribute 
 When contributing always make sure that you have the most recents changes by running `git pull`. Also you only want to make changes inside your own branch. You can follow the steps below to get started.
 

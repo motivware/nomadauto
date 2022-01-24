@@ -1,16 +1,17 @@
+# frozen_string_literal: true
+
 class Project < ApplicationRecord
   belongs_to :user
-  #validates :title, :presence => true, :length => { :minimum => 5 }
+  # validates :title, :presence => true, :length => { :minimum => 5 }
 
-  has_many :customers, dependent: :destroy
+  has_many :contacts, dependent: :destroy
   has_many :deals, dependent: :destroy
   has_many :lists, dependent: :destroy
-  has_many :workorders, dependent: :destroy
+  has_many :tasks, dependent: :destroy
   has_many :invites, dependent: :destroy
   has_many :invoices, dependent: :destroy
   has_many :vehicles, dependent: :destroy
   has_many :parts, dependent: :destroy
   has_many :profiles, dependent: :destroy
-  accepts_nested_attributes_for :workorders
-
+  accepts_nested_attributes_for :tasks
 end

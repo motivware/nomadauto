@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
@@ -13,15 +15,15 @@ class SessionsController < ApplicationController
     @invite_plan = Plan.find(3)
 
     user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
+    if user&.authenticate(params[:session][:password])
       if user.activated?
         # Log the user in and redirect to the user's show page.
         log_in user
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
         redirect_to projects_url(subdomain: user.subdomain)
       else
-        message  = "Account not activated."
-        message += "Check your email for the activation link."
+        message  = 'Account not activated.'
+        message += 'Check your email for the activation link.'
         flash[:warning] = message
         redirect_to root_url
       end

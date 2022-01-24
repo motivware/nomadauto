@@ -9183,11 +9183,11 @@ aside section h1 {
 /* forms */
 /* line 372, /mnt/c/changing-landing-page/nomadauto/app/assets/stylesheets/custom.css.scss */
 #error_explanation {
-  color: red;
+  color: #2F2E41;
 }
 /* line 374, /mnt/c/changing-landing-page/nomadauto/app/assets/stylesheets/custom.css.scss */
 #error_explanation ul {
-  color: red;
+  color: #2F2E41;
   margin: 0 0 30px 0;
 }
 
@@ -9508,7 +9508,7 @@ div.field, div.actions {
 /* line 55, /mnt/c/changing-landing-page/nomadauto/app/assets/stylesheets/scaffolds.scss */
 .field_with_errors {
   padding: 2px;
-  background-color: red;
+  background-color: #2F2E41;
   display: table;
 }
 
@@ -21914,7 +21914,7 @@ body {
 
 /* line 58, /mnt/c/changing-landing-page/nomadauto/app/assets/stylesheets/application.css.scss */
 .back {
-  background-color: red;
+  background-color: #2F2E41;
 }
 
 /* line 62, /mnt/c/changing-landing-page/nomadauto/app/assets/stylesheets/application.css.scss */

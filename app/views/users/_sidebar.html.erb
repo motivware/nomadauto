@@ -2,29 +2,14 @@
 <!-- Sidebar -->
 <div id="sidebar-wrapper">
   <ul class="sidebar-nav" id="sidebar">
-    <li class="nav-link">
-          <%= link_to project_workorders_path,  method: :get, class: "nav-link-text" do %>
-            Work Orders<span style="float:right;padding-right: 20px;margin-top:10px;" class="glyphicon glyphicon-tasks"></span>
+        <li class="nav-link">
+          <%= link_to project_contacts_path, method: :get, class: "nav-link-text" do %>
+            Contacts<span style="float:right;padding-right: 20px;margin-top:10px;" style="float:right;padding-right: 10px;margin-top:10px;" class="glyphicon glyphicon-user"></span>
           <% end %>
         </li>
         <li class="nav-link">
-          <%= link_to project_invoices_path, method: :get, class: "nav-link-text" do %>
-            Invoices<span style="float:right;padding-right: 20px;margin-top:10px;" style="float:right;padding-right: 10px;margin-top:10px;" class="glyphicon glyphicon-pencil"></span>
-          <% end %>
-        </li>
-        <li class="nav-link">
-          <%= link_to project_customers_path, method: :get, class: "nav-link-text" do %>
-            Customers<span style="float:right;padding-right: 20px;margin-top:10px;" style="float:right;padding-right: 10px;margin-top:10px;" class="glyphicon glyphicon-user"></span>
-          <% end %>
-        </li>
-        <li class="nav-link">
-          <%= link_to project_vehicles_path, method: :get, class: "nav-link-text" do %>
-            Vehicles<span style="float:right;padding-right: 20px;margin-top:10px;" style="float:right;padding-right: 10px;margin-top:10px;" class="glyphicon glyphicon-road"></span>
-          <% end %>
-        </li>
-        <li class="nav-link">
-          <%= link_to project_parts_path, method: :get, class: "nav-link-text" do %>
-            Parts<span style="float:right;padding-right: 20px;margin-top: 10px;" style="float:right;padding-right:10px;margin-top:10px;" class="glyphicon glyphicon-wrench"></span>
+          <%= link_to project_tasks_path,  method: :get, class: "nav-link-text" do %>
+            Tasks<span style="float:right;padding-right: 20px;margin-top:10px;" class="glyphicon glyphicon-tasks"></span>
           <% end %>
         </li>
         <li class="nav-link">
@@ -39,7 +24,7 @@
       </li>
       <li class="nav-link">
         <%= link_to projects_path, class: "nav-link-text" do %>
-          Autoshop Teams<span style="float:right;padding-right: 20px;margin-top:10px;" class="fa fa-users"></span>
+          Projects<span style="float:right;padding-right: 20px;margin-top:10px;" class="fa fa-users"></span>
         <% end %>
       </li>
       <li class="nav-link">

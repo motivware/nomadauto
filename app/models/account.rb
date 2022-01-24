@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Account < ActiveRecord::Base
   belongs_to :owner, class_name: 'User'
 
