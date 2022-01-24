@@ -1,7 +1,7 @@
 # README
 # Motivware CRM
 
-Motivware is a web-based sales crm application that provides the capability for managing their daily routine by creating tasks, creating contacts and more coming soon.
+Motivware is a web-based sales crm application that provides the capability for creating tasks, creating contacts and more coming soon.
 
 # Tech Stack
 - [Ruby on Rails](https://guides.rubyonrails.org/)
