@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
   has_many :emails
   has_many :plans
-  has_many :workorders
+  has_many :tasks
+  has_many :contacts
   has_many :lists
   has_many :deals
   has_many :projects

@@ -26,8 +26,8 @@ Rails.application.routes.draw do
 
   constraints(SubdomainBlank) do
     root 'visitors#new'
-    get 'contact-us', to: 'contacts#new', as: 'new_contact'
-    resources :contacts, only: :create
+    get 'contact-us', to: 'customer_contacts#new', as: 'new_contact'
+    resources :customer_contacts, only: :create
     resources :visitors, only: %i[new create index]
     get 'features', to: 'pages#features'
     get 'pricing', to: 'pages#pricing'
@@ -37,22 +37,18 @@ Rails.application.routes.draw do
   constraints(SubdomainPresent) do
     root 'projects#index'
     resources :projects, only: %i[index show new create] do
-      resources :workorders, only: %i[index show new create edit update destroy] do
+      resources :tasks, only: %i[index show new create edit update destroy] do
         resources :comments
-        collection do
-          post :import
-        end
       end
-      resources :vehicles
-      resources :invoices
-      resources :parts
       resources :profiles
 
       scope module: 'users' do
-        resources :customers
-        resources :deals
+        resources :contacts do
+          collection do
+            post :import
+          end
+        end
         resources :invites
-        resources :activities
       end
     end
   end

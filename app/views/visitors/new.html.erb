@@ -2,11 +2,9 @@
   <div class="row">
     <div style="margin-top:100px;" class="panel-default col-md-4 col-sm-6 col-sm-offset-1 col-md-offset-2 col-xs-offset-1 col-xs-9"><br/>
       <div class="panel-body">
-        <h2 class="sm-none" style="font-size: 2.0em; font-weight:bold;">A productivity tool app</h2>
+        <h2 class="sm-none" style="font-size: 2.0em; font-weight:bold;">A sales CRM App</h2>
         <h3 class="sm-none" style="font-size: 1.3em;">
-        Create tasks<br>
-        <br> Set reminders<br>
-        <br> Accomplish your goals</h3>
+        
           <ul style="list-style-type:none;text-align:left;">
             <li style="padding-top:35px;">
             <%= link_to "Sign Up Today", signup_path(plan: @basic_plan.id),
@@ -29,40 +27,32 @@
       <div style="font-size:3em;text-align:center;">
         <i class="glyphicon glyphicon-tasks landicon"></i>
         <h3 style="text-align:center;">Create Tasks</h3>
-        <h4 class="landtext">Assign tasks and keep
-        yourself organized. Track
-        what is completed and what
-        still needs done. </h4>
+        <h4 class="landtext">Create tasks and keep
+        organized. </h4>
       </div>
     </div>
 
     <div style="background-color: #FFF;" class="well space col-xl-1 col-lg-2 col-md-4 col-sm-4">
       <div style="font-size:3em;text-align:center;">
         <i class="glyphicon glyphicon-road landicon"></i>
-        <h3 style="text-align:center;">Set Reminders</h3>
-        <h4 class="landtext">Keep track of all your vehicles and alert customers of common
-        vehicle problems.</h4>
+        <h3 style="text-align:center;">Create Contacts</h3>
+        <h4 class="landtext">Create or import your sales contacts.</h4>
       </div>
     </div>
 
     <div style="background-color: #FFF;" class="well space landingtwo col-xl-1 col-lg-2 col-md-4 col-sm-4">
       <div style="font-size:3em;text-align:center;">
-        <i class="glyphicon glyphicon-pencil landicon"></i>
-        <h3 style="text-align:center;">Accomplish Goals</h3>
-        <h4 class="landtext">Generate invoices and contain a history
-        of records. Customize your
-        invoice to suite your needs</h4>
+        <i class="fa fa-users landicon"></i>
+        <h3 style="text-align:center;">Multiple Users</h3>
+        <h4 class="landtext">Invite others on your sales team.</h4>
       </div>
     </div>
 
     <div style="background-color: #FFF;" class="well space col-xl-1 col-lg-2 col-md-4 col-sm-4">
       <div style="font-size:3em;text-align:center;">
         <i class="glyphicon glyphicon-search landicon"></i>
-        <h3 style="text-align:center;">Schedule Events</h3>
-        <h4 class="landtext">Search for parts across
-        the web. Find the best deals to
-        help everyone save money. Ensure
-        your finding the right parts for the job.</h4>
+        <h3 style="text-align:center;">Coming Soon</h3>
+        <h4 class="landtext">More features on the way and upon request.</h4>
       </div>
     </div>
 
@@ -83,8 +73,7 @@
       <h3 class="newsletterHeading">NEWSLETTER</h3>
 
       <p class="newsletterBody">
-        To recieve tips on how to use motivware sign up to our weekly
-        newsletter. We’ll never send you spam or pass on your email address.
+        To join the mailing list fill in your email and subscribe. We’ll never send you spam or pass on your email address.
       </p>
 
       <%= form_for @visitor do |f| %>
@@ -100,7 +89,7 @@
 
       <p class="aboutBody">
         Motivware is an all-in-one tool designed to
-        assist you with staying organized and keeping on track to accomplish your goals.
+        assist you with keeping on track to accomplish your sales goals.
       </p>
 
       <ul class="info">

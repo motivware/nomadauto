@@ -1,0 +1,20 @@
+<%= form_for([@contact.project, @contact])  do |f| %>
+<%= f.label :company %>
+<%= f.text_field :company, autofocus: true, placeholder: 'Company', class: 'form-control' %>
+<%= f.label :first_name %>
+<%= f.text_field :first_name, autofocus: true, placeholder: 'First Name', class: 'form-control' %>
+<%= f.label :last_name %>
+<%= f.text_field :last_name, autofocus: true, placeholder: 'Last Name', class: 'form-control' %>
+<%= f.label :phone_number %>
+<%= f.text_field :phone_number, autofocus: true, placeholder: 'Phone Number', class: 'form-control' %>
+<%= f.label :website %>
+<%= f.text_field :website, autofocus: true, placeholder: 'Website', class: 'form-control' %>
+<%= f.label :email %>
+<%= f.text_field :email, autofocus: true, placeholder: 'Email', class: 'form-control' %>
+</br>
+<%= f.submit "Submit", class: 'btn btn-primary' %>
+<% end %>
+<td><%= link_to "Delete", [@contact.project, @contact, @activities], method: :delete, data: { confirm: "Are you sure?" } %></td>
+<td><%= link_to "Back", project_contacts_path(@project) %></td>
+
+

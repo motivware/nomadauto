@@ -1,7 +1,7 @@
 # README
-# Motivware - Web Based Autoshop Management SaaS App
+# Motivware CRM
 
-Motivware is a web-based application that provides the capability for users to manage their daily routine by creating tasks, settings reminders, accomplishing goals and scheduling events.
+Motivware is a web-based sales crm application that provides the capability for managing their daily routine by creating tasks, creating contacts and more coming soon.
 
 # Tech Stack
 - [Ruby on Rails](https://guides.rubyonrails.org/)
@@ -43,6 +43,10 @@ You can now open your browser to [lvh.me:3000](lvh.me:3000)
 
 # Motivware Features 
 
+  - Create Contacts
+  - Create Tasks
+  - Invite Multiple Team Members
+  
 # How to Contribute 
 When contributing always make sure that you have the most recents changes by running `git pull`. Also you only want to make changes inside your own branch. You can follow the steps below to get started.
 

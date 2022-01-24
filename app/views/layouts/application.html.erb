@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Motivware - A Productivity Tool</title>
+    <title>Motivware | A Sales CRM App</title>
     <%= csrf_meta_tags %>
     <meta name="Description" content="Motivware is a web-based bug tracking software.">
     <meta name=viewport content="width=device-width, initial-scale=1, user-scalable=0">
@@ -19,16 +19,15 @@
   </head>
   <body>
 
-  <% if not logged_in? && request.subdomain.present? %>
-    <%= render 'layouts/header' %>
-  <% end %>
-
   <div style="width:100%;padding:-30px;margin:0px;">
     <% flash.each do |type, msg| %>
         <%= content_tag :div, msg, class: "alert alert-#{type}" %>
     <% end %>
   </div>
-
+  
+  <% if not logged_in? && request.subdomain.present? %>
+    <%= render 'layouts/header' %>
+  <% end %>
 
   <%= yield %>
   <!-- Global site tag (gtag.js) - Google Analytics -->
