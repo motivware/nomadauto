@@ -1,25 +1,29 @@
-
-<div class="container-fluid" style="background-color:#2F2E41;>
-  <div class="forms" class="row">
-    <div style="height:900px;" class="col-md-6 col-md-offset-3">
-      <div style="margin:200px 50px 0px 50px;padding:20px;height:400px;" class="well well-sm" >
-      <h1>Create a new project!</h1>
-      <div class="well">
-      <% if @user.plan_id == 1 %>
-        <p> Trial period will expire in <span style="color:red"><%= remaining_days %> Days. </span></br><%= link_to "Suscribe Now!", edit_user_path(current_user, plan: @pro_plan.id) %></p>
-      <% end %>
+<!-- This example requires Tailwind CSS v2.0+ -->
+<div class="text-center">
+  <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+    <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+  </svg>
+  <p class="mt-1 text-sm text-gray-500">Get started by creating a new project.</p>
+  <% if @user.plan_id == 1 %>
+    <p class='mt-1 text-sm text-gray-500'> Trial period will expire in <span style="color:red"><%= remaining_days %> Days. </span><br/><%= link_to "Suscribe Now!", edit_user_path(current_user, plan: @pro_plan.id) %></p>
+  <% end %>
+  <div class="text-center">
+    <table role="list" class="divide-y divide-gray-200">
+        <% current_account.projects.each do |project| %>
+          <tr class="py-4">
+            <td class="py-4"><%= link_to project.title, project_contacts_path(project) %></td>
+            <td class="py-4"><%= project.details %></td>
+          </tr>
+        <% end %>
+    </table>
+    <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      <!-- Heroicon name: solid/plus -->
+      <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+      </svg>
       <% if @user.plan_id == 1 || @user.plan_id == 2  %>
-        <h2><%= link_to 'Create New Project', new_project_path, class: 'btn btn-default btn-lg' %></h2>
+        <h2><%= link_to 'Create New Project', new_project_path %></h2>
       <% end %>
-        <table class="table table-striped">
-          <% current_account.projects.each do |project| %>
-            <tr>
-              <td><%= link_to project.title, project_contacts_path(project) %></td>
-              <td><%= project.details %></td>
-            </tr>
-          <% end %>
-        </table>
-      </div>
-    </div>
+    </button>
   </div>
 </div>

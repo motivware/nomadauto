@@ -6,11 +6,12 @@ gem 'coffee-rails', '4.2.2'
 gem 'jquery-rails', '4.1.1'
 gem 'nokogiri', '>= 1.11.0.rc4'
 gem 'puma', '4.3.5'
-gem 'rails', '5.2.4.4'
+gem 'rails', '6.0.2'
 gem 'react-rails'
 gem 'sass-rails', '~> 6.0'
 gem 'turbolinks', '5.0.0'
 gem 'uglifier', '3.0.0'
+gem 'webpacker'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -32,6 +33,7 @@ gem 'chartkick', '>= 3.2.0'
 gem 'figaro', '1.1.1'
 gem 'groupdate'
 gem 'paperclip', '~> 6.1'
+gem "tailwindcss-rails", "~> 2.0"
 
 # Linter
 gem 'rubocop', '0.63.1', require: false

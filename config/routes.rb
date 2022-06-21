@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :users
 
   constraints(SubdomainBlank) do
-    root 'visitors#new'
+    root 'visitors#new', :as => nil
     get 'contact-us', to: 'customer_contacts#new', as: 'new_contact'
     resources :customer_contacts, only: :create
     resources :visitors, only: %i[new create index]
