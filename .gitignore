@@ -39,3 +39,4 @@ config/cable.yml
 server.key
 server.csr
 server.pass.key
+node_modules
