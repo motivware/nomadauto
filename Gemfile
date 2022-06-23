@@ -6,7 +6,7 @@ gem 'coffee-rails', '4.2.2'
 gem 'jquery-rails', '4.1.1'
 gem 'nokogiri', '>= 1.11.0.rc4'
 gem 'puma', '4.3.5'
-gem 'rails', '6.0.2'
+gem 'rails', '6.1.6'
 gem 'react-rails'
 gem 'sass-rails', '~> 6.0'
 gem 'turbolinks', '5.0.0'
@@ -27,10 +27,8 @@ gem 'hirb', '0.7.3'
 gem 'gibbon'
 # Use Stripe for payment processing
 gem 'stripe', '1.48.0'
-
-# Use Figaro for ENV variables
 gem 'chartkick', '>= 3.2.0'
-gem 'figaro', '1.1.1'
+# gem 'figaro', '1.1.1'
 gem 'groupdate'
 gem 'paperclip', '~> 6.1'
 gem "tailwindcss-rails", "~> 2.0"
@@ -42,9 +40,7 @@ gem 'rubocop', '0.63.1', require: false
 gem 'cancan'
 gem 'geocoder'
 gem 'pg', '1.1.4'
-# pagination
-gem 'will_paginate', '~> 3.0.3'
-gem 'will_paginate-bootstrap'
+
 # roles and multi-tenant
 gem 'pundit', '~> 2.1'
 # gem 'rails_12factor'
@@ -53,7 +49,7 @@ gem 'acts_as_list', '~> 1.0', '>= 1.0.2'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'capybara'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 6.0.0.rc1'
   gem 'selenium-webdriver'
   gem 'letter_opener', group: :development
   gem 'railroady'
