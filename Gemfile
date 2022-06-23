@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 
 gem 'coffee-rails', '4.2.2'
 gem 'jquery-rails', '4.1.1'
-gem 'nokogiri', '>= 1.11.0.rc4'
 gem 'puma', '4.3.5'
 gem 'rails', '6.1.6'
 gem 'react-rails'
