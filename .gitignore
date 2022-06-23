@@ -40,3 +40,16 @@ server.key
 server.csr
 server.pass.key
 node_modules
+<<<<<<< HEAD
+=======
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+>>>>>>> debf498cff89a2e85ab8ddc8f9722c32307e94ae

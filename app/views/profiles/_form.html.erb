@@ -1,39 +1,48 @@
-<%= form_for([@project, @profile]) do |f| %>
-
-  <div class="form-group">
-    <%= f.label :avatar, "Logo" %>
-    <%= f.file_field :avatar, class: 'form-control' %>
+<div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+	<div>
+		<div>
+			<h3 class="text-lg leading-6 font-medium text-gray-900">Profile</h3>
+			<p class="mt-1 max-w-2xl text-sm text-gray-500">Add information for your profile</p>
+		</div>
+    <%= form_for([@project, @profile]) do |f| %>
+    <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
+		  <div class="space-y-6 sm:space-y-5">
+			<div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= f.label :avatar, "Profile Photo", class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2' %>
+        <%= f.file_field :avatar, class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>
+      </div>
+			<div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= f.label :first_name, class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'%>
+        <%= f.text_field :first_name, placeholder: "First Name", class: 'form-control', class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>
+      </div>
+			<div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= f.label :last_name, class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2' %>
+        <%= f.text_field :last_name, placeholder: "Last Name", class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>
+      </div>
+			<div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= f.label :phone_number, "Phone", class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2' %>
+        <%= f.text_field :phone_number, placeholder: "Phone Number", class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>
+      </div>
+			<div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= f.label :street_address, class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2' %>
+        <%= f.text_field :street_address, placeholder: "Stree Address", class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>
+        <%= f.text_field :address_line_two, placeholder: "Address Line", class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>
+      </div>
+			<div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= f.label :city, class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'%>
+        <%= f.text_field :city , placeholder: "City", class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>
+      </div>
+			<div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= f.label :state, class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2' %>
+        <%= f.text_field :state, placeholder: "State", class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>
+      </div>
+			<div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= f.label :zipcode, class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2' %>
+        <%= f.text_field :zipcode, placeholder: "Zipcode", class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>
+      </div>
+			<div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= f.submit "Update Profile", class: 'inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto'  %>
+      </div>
+    <% end %>
   </div>
-  <div class="form-group">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name, placeholder: "First Name", class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name, placeholder: "Last Name", class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :phone_number, "Phone" %>
-    <%= f.text_field :phone_number, placeholder: "Phone Number", class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :street_address %>
-    <%= f.text_field :street_address, placeholder: "Stree Address", class: 'form-control' %>
-    <%= f.text_field :address_line_two, placeholder: "Address Line", class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :city %>
-    <%= f.text_field :city , placeholder: "City", class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :state %>
-    <%= f.text_field :state, placeholder: "State", class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :zipcode %>
-    <%= f.text_field :zipcode, placeholder: "Zipcode", class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.submit "Update Profile", class: 'btn btn-primary' %>
-  </div>
-<% end %>
+</div>
