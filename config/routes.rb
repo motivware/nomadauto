@@ -32,6 +32,8 @@ Rails.application.routes.draw do
     get 'features', to: 'pages#features'
     get 'pricing', to: 'pages#pricing'
     get 'faq', to: 'pages#faq'
+    get 'privacy', to: 'pages#privacy'
+    get 'terms', to: 'pages#terms'
   end
 
   constraints(SubdomainPresent) do
