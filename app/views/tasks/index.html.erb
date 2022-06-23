@@ -1,77 +1,61 @@
 <%= render 'users/sidebar' %></br>
-  <!-- Page content -->
-  <div id="page-content-wrapper">
-    <!-- Keep all page content within the page-content inset div! -->
-    <div class="page-content inset">
-      <div class="row">
-      <div class="container-fluid" id="Tasks">
-          <%if Task.where(project_id: @project) %>
-            <div class="col-xs-12 col-md-6 col-md-offset-0">
-              <h4>Priorities Graph</h4>
-              <%= bar_chart @project.tasks.group(:priority).count %>
-            </div>
-            <div class="col-xs-12 col-md-6 col-md-offset-0">
-              <h4>Status Graph</h4>
-              <%= line_chart @project.tasks.group(:status).count %>  </br></br>
-            </div>
-          <% end %>
-        <div class="col-md-12 col-md-offset-0">
-        <%= link_to "Create New Task", new_project_task_path(), class: 'btn btn-default', id: "addworkorder" %><br/><br/>
+<div class="md:pl-64 flex flex-col flex-1">
+  <main class="flex-1">
+    <div class="py-6">
+      <!-- This example requires Tailwind CSS v2.0+ -->
+      <div class="px-4 sm:px-6 lg:px-8">
+        <div class="sm:flex sm:items-center">
+          <div class="sm:flex-auto">
+            <h1 class="text-xl font-semibold text-gray-900">Tasks</h1>
+            <p class="mt-2 text-sm text-gray-700">A list of all the tasks in your account.</p>
+          </div>
+          <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+              <%= link_to "Add Task", new_project_task_path(), :class => "inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto" %>
+          </div>
         </div>
-        <%= form_tag project_tasks_path, method: :get, class: "form-inline" do %>
-            <div class="col-md-4">
-            <%= label_tag "Status" %>
-            <%= select_tag("status", options_for_select([['Open'],['Pending'],['Closed']]), :multiple => true, class: "filterbox" ) %>
-            </div>
-            <div class="col-md-4">
-            <%= label_tag "Priority" %>
-            <%= select_tag("priority", options_for_select([['High'],['Medium'],['Low']]), :multiple => true, class: "filterbox" ) %>
-            </div>
-            <div class="col-md-4">
-            <%= label_tag "User" %>
-            <%= select_tag "user", options_from_collection_for_select(current_account.user_users, 'id', 'name'), :multiple => true, class: "filterbox" %>
-            </div>
-            <div class="col-md-6">
-            <%= submit_tag "Search", name: nil, class: 'btn btn-default' %>
-            </div>
-            <div class="col-md-6">
-            <%= link_to "Reset", project_tasks_path, class: 'btn btn-default' %>
-            </div>
-        <% end %>
-            <div class="col-md-12">
-              <table class="table">
-                <thead>
-                 <tr id="table_sort">
-                   <th class="center"><%= sortable "title" %></th>
-                   <th class="center"><%= sortable "status" %></th>
-                   <th class="center"><%= sortable "priority" %></th>
-                   <th class="center"><%= sortable "user" %></th>
-                   <th class="center"><%= sortable "created_at" %></th>
-                   <th class="center"><%= sortable "updated_at" %></th>
-                 </tr>
-                </thead>
-                <tbody>
+        <div class="mt-8 flex flex-col">
+          <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+              <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-300">
+                  <thead class="bg-gray-50">
+                    <tr>
+                      <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Title</th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Status</th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Priority</th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">User</th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Created</th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Updated</th>
+                      <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                        <span class="sr-only">Edit</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-gray-200 bg-white">
+
                     <%if Task.where(project_id: @project) %>
                       <% @tasks.each do |task| %>
                         <tr>
-                          <td class="center" style="vertical-align:middle"><%= link_to task.title, project_task_path(@project, task) %></td>
-                          <td class="center" style="vertical-align:middle"><%= task.status %></td>
-                          <td class="center" style="vertical-align:middle"><%= task.priority %></td>
-                          <td class="center" style="vertical-align:middle"><%= if task.owner == nil
-                                                                                  task.user.name
-                                                                              else
-                                                                                  task.owner
-                                                                              end %></td>
-                          <td class="center" style="vertical-align:middle"><%= "#{time_ago_in_words(Time.at(task.created_at.to_i))} ago" %></td>
-                          <td class="center" style="vertical-align:middle"><%= "#{time_ago_in_words(Time.at(task.updated_at.to_i))} ago" %></td>
+                          <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><%= link_to task.title, edit_project_task_path(@project, task) %></td>
+                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= task.status %></td>
+                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= task.priority %></td>
+                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= if task.owner == nil
+                                                                                                  task.user.name
+                                                                                              else
+                                                                                                  task.owner
+                                                                                              end %></td>
+                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= "#{time_ago_in_words(Time.at(task.created_at.to_i))} ago" %></td>
+                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= "#{time_ago_in_words(Time.at(task.updated_at.to_i))} ago" %></td>
                         </tr>
-                      <% end %>
                     <% end %>
-                </tbody>
-              </table>
+                  <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </div>

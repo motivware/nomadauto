@@ -1,40 +1,44 @@
-<% provide(:title, 'Sign up') %>
-<%= form_for @user, :url => { :action => "create" }, :html => { :method => "post" }  do |f| %>
-    <%= hidden_field_tag 'plan', params[:plan] %>
+<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+  <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+    <% provide(:title, 'Sign up') %>
+    <%= form_for @user, :url => { :action => "create" }, :html => { :method => "post" }  do |f| %>
+        <%= hidden_field_tag 'plan', params[:plan] %>
 
-    <%= render 'shared/error_messages', object: f.object %>
+        <%= render 'shared/error_messages', object: f.object %>
 
-    <div class="field form-group">
-        <%= f.label :email, 'Email' %>
-        <%= f.text_field :email, value: Invite.where(token: @token).distinct.pluck(:email), readonly: true, placeholder: "Email", class: 'form-control' %>
-    </div>
-
-    <div class="field form-group">
-        <%= f.label :name, 'Full Name' %>
-        <%= f.text_field :name, autocomplete: "off", placeholder: "Full Name", class: 'form-control'  %>
-    </div>
-
-    <div class="field form-group">
-        <%= f.label :password, 'Password' %>
-        <%= f.password_field :password, placeholder: "Password", class: 'form-control'  %>
-    </div>
-
-    <div class="field form-group">
-        <%= f.label :password_confirmation, 'Confirmation' %>
-        <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: 'form-control'  %>
-    </div>
-
-    <div class="field form-group">
-        <%= f.hidden_field :subdomain, value: Invite.where(token: @token).distinct.pluck(:subdomain), readonly: true, class: 'form-control' %>
-    </div>
-
+        <div class="field form-group">
+            <%= f.label :email, 'Email', class: 'block text-sm font-medium text-gray-700' %>
+            <%= f.text_field :email, value: Invite.where(token: @token).distinct.pluck(:email), readonly: true, placeholder: "Email", class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' %>
+        </div>
+        <br/>
+        <div class="field form-group">
+            <%= f.label :name, 'Full Name', class: 'block text-sm font-medium text-gray-700' %>
+            <%= f.text_field :name, autocomplete: "off", placeholder: "Full Name", class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'  %>
+        </div>
+        <br/>
+        <div class="field form-group">
+            <%= f.label :password, 'Password', class: 'block text-sm font-medium text-gray-700' %>
+            <%= f.password_field :password, placeholder: "Password", class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'  %>
+        </div>
+        <br/>
+        <div class="field form-group">
+            <%= f.label :password_confirmation, 'Confirmation', class: 'block text-sm font-medium text-gray-700' %>
+            <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'  %>
+        </div>
+        <br/>
+        <div class="field form-group">
+            <%= f.hidden_field :subdomain, value: Invite.where(token: @token).distinct.pluck(:subdomain), readonly: true, class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' %>
+        </div>
+        <br/>
         <% if @token != nil %>
             <%= hidden_field_tag :invite_token, @token %>
         <% end %>
 
-    <div class="form-group">
-        <%= f.submit "Create my account", class: "btn btn-primary" %>
-    </div>
-    </br></br>
-<% end %>
+        <div class="form-group">
+            <%= f.submit "Create my account", class: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+        </div>
+        </br></br>
+    <% end %>
+  </div>
+</div>
 

@@ -1,23 +1,44 @@
 <%= render 'users/sidebar' %></br>
-
-<div class="container-fluid">
-  <div class="jumbotron">
-    <div class="row">
-      <div class="col-md-14">
+<div class="md:pl-64 flex flex-col flex-1">
+  <main class="flex-1">
+    <div class="py-6">
+    <!-- This example requires Tailwind CSS v2.0+ -->
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+      <div class="px-4 py-5 sm:px-6">
+        <h3 class="text-lg leading-6 font-medium text-gray-900">Profile Information</h3>
+        <p class="mt-1 max-w-2xl text-sm text-gray-500">Personal details.</p>
+      </div>
+      <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+      <dl class="sm:divide-y sm:divide-gray-200">
+      <% if Profile.where(project_id: @project).exists?() %>
+      <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">Full Name</dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @profile.first_name %> <%= @profile.last_name %></dd>
+      </div>
+      <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">Street Address</dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @profile.street_address %></dd>
+      </div>
+      <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">City and State</dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @profile.city %>, <%= @profile.state %></dd>
+      </div>
+      <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">Profile Picture</dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= image_tag(@profile.avatar.url(:thumb)) %></dd>
+      </div>
+      <% end %>
+     </div>
+    </div> <br/>
+      <div class="px-4 sm:px-6 lg:px-8">
+        <div class="sm:flex sm:items-center">
         <% if Profile.where(project_id: @project).exists?() %>
-          <%= link_to "Udate Profile", edit_project_profile_path(@project, @profile), class: 'btn btn-default' %>
+          <%= link_to "Udate Profile", edit_project_profile_path(@project, @profile), class: 'inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto' %>
           <p></p>
         <% else %>
-            <%= link_to "Add Profile", new_project_profile_path, class: 'btn btn-default' %>
+          <%= link_to "Add Profile", new_project_profile_path, class: "inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto" %>
           <p></p>
-        <% end %>
-      <br/><br/>
-      <% if Profile.where(project_id: @project).exists?() %>
-        <h3><%= @profile.first_name %> <%= @profile.last_name %></h3>
-        <h3><%= @profile.street_address %></h3>
-        <h3><%= @profile.city %>, <%= @profile.state %> <%= @profile.zipcode %></h3>
-        <h3><br/><br/><%= image_tag(@profile.avatar.url(:thumb)) %></h3>
-      <% end %>
-    </div>
-  </div>
+        <% end %>  
+  </main>
 </div>
+
