@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 gem 'coffee-rails', '4.2.2'
 gem 'jquery-rails', '4.1.1'
-gem 'puma', '4.3.5'
+gem "puma", ">= 4.3.12"
 gem 'rails', '6.1.6'
 gem 'react-rails'
 gem 'sass-rails', '~> 6.0'
