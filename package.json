@@ -8,6 +8,8 @@
     "webpack-dev-server": "4.9.2"
   },
   "scripts": {
-    "build": "build:css"
-  }
+    "build": "webpack",
+    "heroku-postbuild": "webpack --config webpack.config.prod.js"
+  },
+  "heroku-run-build-script": true
 }
