@@ -8,7 +8,7 @@
     "webpack-dev-server": "4.9.2"
   },
   "scripts": {
-    "build:css": "tailwindcss build src/styles.css -o public/styles.css",
+    "build:css": "tailwindcss build src/styles.css -o public/styles.css"
   },
   "heroku-run-build-script": true
 }
