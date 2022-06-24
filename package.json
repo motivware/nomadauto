@@ -8,7 +8,8 @@
     "webpack-cli": "^4.10.0"
   },
   "scripts": {
-    "start": "tailwindcss build src/styles.css -o public/styles.css"
+    "start": "node src/index.js",
+    "build": "webpack"
   },
   "heroku-run-build-script": true
 }
