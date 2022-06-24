@@ -9,7 +9,6 @@
   },
   "scripts": {
     "build:css": "tailwindcss build src/styles.css -o public/styles.css",
-    "heroku-postbuild": "webpack --config webpack.config.prod.js"
   },
   "heroku-run-build-script": true
 }
