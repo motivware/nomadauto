@@ -1,26 +1,27 @@
-<div class="container-fluid" style="background-color:#3E666F;">
-  <div class="forms" class="row">
-    <div style="height:900px;" class="col-md-6 col-md-offset-3">
-      <div style="margin:250px 50px 0px 50px;padding:20px;height:400px;" class="well well-sm" >
+<div class="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-md">
+  <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Reset password</h2>
+  <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+    <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
         <% provide(:title, 'Reset password') %>
-        <h1>Reset password</h1>
+        <h1></h1>
           <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
             <%= render 'shared/error_messages', object: f.object %>
 
             <%= hidden_field_tag :email, @user.email %>
 
             <div class="field form-group">
-              <%= f.label :password %>
-              <%= f.password_field :password, class: 'form-control' %>
+              <%= f.label :password, class: 'block text-sm font-medium text-gray-700' %>
+              <%= f.password_field :password, class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' %>
             </div>
 
             <div class="field form-group">
-              <%= f.label :password_confirmation, "Confirmation" %>
-              <%= f.password_field :password_confirmation, class: 'form-control' %>
+              <%= f.label :password_confirmation, "Confirmation", class: 'block text-sm font-medium text-gray-700' %>
+              <%= f.password_field :password_confirmation, class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' %>
             </div>
 
             <div class="actions form-group">
-              <%= f.submit "Update password", class: "btn btn-primary" %>
+              <%= f.submit "Update password", class: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
             </div>
           <% end %>
       </div>

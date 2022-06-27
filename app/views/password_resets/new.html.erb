@@ -1,17 +1,17 @@
-<div class="container-fluid" style="background-color:#B22222;">
-  <div class="forms" class="row">
-    <div style="height:900px;" class="col-md-6 col-md-offset-3">
-      <div style="margin:250px 50px 0px 50px;padding:20px;height:300px;" class="well well-sm" >
+<div class="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-md">
+     <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Forgot password</h2>
+       <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
         <% provide(:title, "Forgot password") %>
-        <h1>Forgot password</h1>       
           <%= form_for(:password_reset, url: password_resets_path) do |f| %>
-          <div class="field form-group">
-            <%= f.label :email %>
-            <%= f.text_field :email, placeholder: "Email", class: 'form-control' %>
-            <%= f.submit "Submit", class: "btn btn-primary" %>
-          </div>
-        <% end %>        
+            <%= f.label :email, class: 'block text-sm font-medium text-gray-700' %>
+            <br/>
+            <%= f.text_field :email, placeholder: "Email", class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' %>
+            <br/>
+            <%= f.submit "Submit", class: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+        <% end %>   
       </div>
-    </div>
+    </div>     
   </div>
 </div>
