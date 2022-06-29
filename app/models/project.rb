@@ -3,7 +3,8 @@
 class Project < ApplicationRecord
   belongs_to :user
   # validates :title, :presence => true, :length => { :minimum => 5 }
-
+  
+  has_many :tickets, dependent: :destroy
   has_many :contacts, dependent: :destroy
   has_many :deals, dependent: :destroy
   has_many :lists, dependent: :destroy

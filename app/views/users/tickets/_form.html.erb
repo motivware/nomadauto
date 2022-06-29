@@ -1,0 +1,67 @@
+<!--
+  This example requires Tailwind CSS v2.0+ 
+  
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+-->
+<div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+	<div>
+		<div>
+			<h3 class="text-lg leading-6 font-medium text-gray-900">Ticket</h3>
+			<p class="mt-1 max-w-2xl text-sm text-gray-500">This information will be displayed for you and your team to reference.</p>
+		</div>
+	<%= form_for([@ticket.project, @ticket])  do |f| %>
+	<div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
+		<div class="space-y-6 sm:space-y-5">
+			<div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+				<%= f.label :subject, class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2' %>
+				<%= f.text_field :subject, autofocus: true, placeholder: 'Subject', class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>	
+			</div>
+
+			<div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+				<%= f.label :from, "Customer From", class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2' %>
+				<%= f.text_field :from, autofocus: true, placeholder: 'Customer From', class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>	
+			</div>
+
+			<div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+				<%= f.label :assigned_to, class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2' %>
+                <% options_from_collection_for_select(current_account.user_users, :name, :name) %>
+                <%= f.collection_select(:assigned_to, current_account.user_users, :name, :name, { include_blank: 'Select assignee' }, class: "max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md" ) %>
+			</div>
+		
+			<div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">	
+				<%= f.label :priority, class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2' %>
+        <%= f.select :priority, options_for_select([['High'],['Medium'],['Low']]), { include_blank: 'Select priority' }, class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>	
+			</div>
+
+			<div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+				<%= f.label :due_date, "Due Date", class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2' %>
+				<%= f.date_field :due_date, autofocus: true, placeholder: 'Due Date', class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>	
+			</div>  
+
+			<div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+				<%= f.label :details, "Details", class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2' %>
+				<%= f.text_area :details, autofocus: true, placeholder: 'Details', class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>	
+			</div>     
+
+			<div class="pt-5">
+					<%= f.submit "Save", class: 'cursor-pointer	inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto' %>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+<%#       
+<td><%= link_to "Delete", [@contact.project, @contact, @activities], method: :delete, data: { confirm: "Are you sure?" } %><%# </td>
+<td><%= link_to "Back", project_contacts_path(@project) %>
+

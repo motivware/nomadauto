@@ -45,6 +45,7 @@ Rails.application.routes.draw do
       resources :profiles
 
       scope module: 'users' do
+        resources :tickets
         resources :contacts do
           collection do
             post :import

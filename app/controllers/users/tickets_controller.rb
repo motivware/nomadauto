@@ -1,0 +1,111 @@
+# frozen_string_literal: true
+
+module Users
+  class TicketsController < UsersController
+    before_action :trial_expired?
+
+    def index
+      @project = Project.find(params[:project_id])
+      authorize @project
+
+      @tickets = @project.tickets.all if Ticket.exists?
+    end
+
+    def new
+      @project = Project.find(params[:project_id])
+
+      @ticket = @project.tickets.build
+      authorize @ticket
+
+      respond_to do |format|
+        format.html # new.html.erb
+        format.xml  { render xml: @ticket }
+      end
+    end
+
+    def show
+      # 1st you retrieve the project thanks to params[:project_id]
+      @project = Project.find(params[:project_id])
+      # 2nd you retrieve the tickets thanks to params[:id]
+      @ticket = @project.tickets.find(params[:id])
+      authorize @ticket
+
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render xml: @ticket }
+      end
+    end
+
+    def edit
+      @project = Project.find(params[:project_id])
+
+      @ticket = @project.tickets.find(params[:id])
+    end
+
+    def create
+      # 1st you retrieve the project thanks to params[:project_id]
+      @project = Project.find(params[:project_id])
+
+      # 2nd you create the workorder with arguments in params[:workorder]
+      @ticket = @project.tickets.create(ticket_params)
+
+      if @ticket.save
+        subject = params[:ticket][:subject]
+        from = params[:ticket][:from]
+        assigned_to = params[:ticket][:assigned_to]
+        priority = params[:ticket][:priority]
+        status = params[:ticket][:status]
+        due_date = params[:ticket][:due_date]
+				details = params[:ticket][:details]
+        flash[:success] = 'Record Saved.'
+        redirect_to project_tickets_path
+
+        track_activity @ticket
+      else
+        redirect_to new_project_ticket_path
+      end
+    end
+
+    def update
+      # 1st you retrieve the post thanks to params[:post_id]
+      @project = Project.find(params[:project_id])
+      # 2nd you retrieve the comment thanks to params[:id]
+      @ticket = Ticket.find(params[:id])
+
+      respond_to do |format|
+        if @ticket.update(ticket_params)
+          # 1st argument of redirect_to is an array, in order to build the correct route to the nested resource comment
+          format.html { redirect_to project_tickets_path(@project), notice: 'ticket was successfully updated.' }
+          flash[:success] = 'Your ticket has been updated'
+          format.xml { head :ok }
+
+          track_activity @ticket
+        else
+          format.html { render action: 'edit' }
+          format.xml  { render xml: @ticket.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+
+    def destroy
+      @ticket = Ticket.find(params[:id])
+
+      redirect_to project_tickets_path if @ticket.destroy
+    end
+
+
+    def import
+      user = User.find(session[:user_id])
+      count = user.tickets.import params[:file]
+      redirect_to project_tickets_path, notice: "Imported #{count}"
+    end
+
+    private
+
+    def ticket_params
+      # To collect data from form, we need to use
+      # strong paramaters and whitelist form fields
+      params.require(:ticket).permit(:subject, :from, :assigned_to, :priority, :status, :due_date, :details)
+    end
+  end
+end

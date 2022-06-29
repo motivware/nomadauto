@@ -56,7 +56,7 @@ class ProfilesController < ApplicationController
     @project = Project.find(params[:project_id])
     # Retrieve that users profile page
     @profile = Profile.find(params[:id])
-    if @profile.update_attributes(profile_params)
+    if @profile.update(profile_params)
       flash[:success] = 'Profile Updated!'
       # Redirect user to their profile page
       redirect_to project_profile_path(@project, @profile)

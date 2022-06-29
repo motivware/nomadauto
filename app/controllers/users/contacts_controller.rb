@@ -72,7 +72,7 @@ module Users
       @contact = Contact.find(params[:id])
 
       respond_to do |format|
-        if @contact.update_attributes(contact_params)
+        if @contact.update(contact_params)
           # 1st argument of redirect_to is an array, in order to build the correct route to the nested resource comment
           format.html { redirect_to project_contacts_path(@project), notice: 'contact was successfully updated.' }
           flash[:success] = 'Your contact has been updated'
