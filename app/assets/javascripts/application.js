@@ -15,5 +15,6 @@
 //= require bootstrap-sprockets
 //= require bootstrap
 //= require turbolinks
+//= require tinymce
 //= require_tree .
 //= require chartkick

@@ -31,6 +31,7 @@ gem 'chartkick', '>= 3.2.0'
 gem 'groupdate'
 gem 'paperclip', '~> 6.1'
 gem "tailwindcss-rails", "~> 2.0"
+gem 'tinymce-rails'
 
 # Linter
 gem 'rubocop', '0.63.1', require: false
