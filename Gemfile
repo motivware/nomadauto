@@ -19,6 +19,7 @@ gem 'jbuilder', '~> 2.10', '>= 2.10.1'
 # gem 'redis', '3.0'
 gem 'bcrypt', '3.1.16'
 gem 'bootstrap-sass', '>= 3.4.1'
+gem 'dotenv-rails'
 gem 'font-awesome-sass', '~> 4.6.2'
 gem 'hirb', '0.7.3'
 
