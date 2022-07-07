@@ -30,6 +30,7 @@ gem 'chartkick', '>= 3.2.0'
 # gem 'figaro', '1.1.1'
 gem 'groupdate'
 gem 'paperclip', '~> 6.1'
+gem "recaptcha", require: "recaptcha/rails"
 gem "tailwindcss-rails", "~> 2.0"
 gem 'tinymce-rails'
 
