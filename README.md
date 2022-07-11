@@ -1,7 +1,7 @@
 # README
 # Motivware CRM
 
-Motivware is a web-based sales crm application that provides the capability for creating tasks, creating contacts and more coming soon.
+Motivware is a web-based customer support help desk application that provides a simple solution for small customer support teams to manage tickets.
 
 # Tech Stack
 - [Ruby on Rails](https://guides.rubyonrails.org/)
@@ -10,7 +10,7 @@ Motivware is a web-based sales crm application that provides the capability for 
 - [Sass](https://sass-lang.com/)
 
 # Setting up your Dev Environment
-If your computer is not setup to run ruby on rails yet - then you can follow one of the links below. These links will provide instructions on how to get your computer ready for developing rails. (Choose ruby 2.7.4 and rails 5.2.4.4) 
+If your computer is not setup to run ruby on rails yet - then you can follow one of the links below. These links will provide instructions on how to get your computer ready for developing rails. 
 
 [GoRails - Windows Setup](https://gorails.com/setup/windows/10)
 
