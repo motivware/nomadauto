@@ -40,8 +40,17 @@
 			</div>
 		
 			<div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">	
+				<%= f.label :status, class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2' %>
+					<% if @ticket.new_record? %>
+						<%= f.select :status, options_for_select([['Open'],['Pending'],['On Hold'],['Closed']]), { include_blank: 'Select status' }, class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>	
+					<% else %>
+						<%= f.select :status, options_for_select([['Open'],['Pending'],['On Hold'],['Closed']], @ticket.status), { include_blank: 'Select status' }, class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>	
+					<% end %>
+			</div>
+
+			<div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">	
 				<%= f.label :priority, class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2' %>
-        <%= f.select :priority, options_for_select([['High'],['Medium'],['Low']]), { include_blank: 'Select priority' }, class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>	
+        <%= f.select :priority, options_for_select([['High'],['Medium'],['Low']], @ticket.priority), { include_blank: 'Select priority' }, class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>	
 			</div>
 
 			<div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
