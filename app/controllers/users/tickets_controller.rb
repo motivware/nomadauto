@@ -9,6 +9,20 @@ module Users
       authorize @project
 
       @tickets = @project.tickets.all if Ticket.exists?
+
+      if params[:status] == "Open"
+        @tickets = @tickets.where(status: "Open")
+      elsif params[:status] == "Pending"
+        @tickets = @tickets.where(status: "Pending")
+      elsif params[:status] == "On Hold"
+        @tickets = @tickets.where(status: "On Hold")
+      elsif params[:status] == "Closed"
+        @tickets = @tickets.where(status: "Closed")
+      elsif params[:assigned_to] == ""  
+        @tickets = @tickets.where(assigned_to: "")
+      else params[:assigned_to] == current_user.name
+        @tickets = @tickets.where(assigned_to: current_user.name)
+      end
     end
 
     def new
