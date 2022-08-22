@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.configure do
+
+  # Store uploaded files on the local file system (see config/storage.yml for options).
+  config.active_storage.service = :mailgun
+  
+  # Prepare the ingress controller used to receive mail
+  config.action_mailbox.ingress = :mailgun
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

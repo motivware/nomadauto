@@ -18,10 +18,10 @@ module Users
         @tickets = @tickets.where(status: "On Hold")
       elsif params[:status] == "Closed"
         @tickets = @tickets.where(status: "Closed")
-      elsif params[:assigned_to] == ""  
-        @tickets = @tickets.where(assigned_to: "")
-      else params[:assigned_to] == current_user.name
+      elsif params[:assigned_to] == current_user.name
         @tickets = @tickets.where(assigned_to: current_user.name)
+      elsif params[:assigned_to] == nil
+        @tickets = @tickets.where(assigned_to: nil) 
       end
     end
 
@@ -119,7 +119,7 @@ module Users
     def ticket_params
       # To collect data from form, we need to use
       # strong paramaters and whitelist form fields
-      params.require(:ticket).permit(:subject, :from, :assigned_to, :priority, :status, :due_date, :details)
+      params.require(:ticket).permit(:subject, :from, :assigned_to, :priority, :status, :due_date, :details, :project_id)
     end
   end
 end
