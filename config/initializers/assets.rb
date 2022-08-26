@@ -14,3 +14,6 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w[filterrific/filterrific-spinner.gif]
 Rails.application.config.assets.precompile += %w[chartkick.js]
 Rails.application.config.assets.precompile += %w[invoice.css.scss]
+Rails.application.config.assets.precompile += %w[tinymce/tiny_mce.js tinymce/langs/en.js tinymce/themes/advanced/editor_template.js]
+
+
