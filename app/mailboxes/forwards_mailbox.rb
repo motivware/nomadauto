@@ -14,7 +14,7 @@ class ForwardsMailbox < ApplicationMailbox
 
   def extract_recipient
     # p mail.to.to_s.split('@').last.split('.').first
-    @recipient = User.find_by(subdomain: mail.to.to_s.split('@').last.split('.').first)
+    @recipient = User.find_by(subdomain: mail.to.to_s.split('@').first.split('.').last)
   end
 
 end
