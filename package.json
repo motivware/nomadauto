@@ -3,8 +3,7 @@
     "@rails/actiontext": "^6.1.6-1",
     "@rails/webpacker": "^5.4.3",
     "glob-parent": ">=6.0.2",
-    "trix": "^1.2.0",
-    "webpack": "^5.73.0"
+    "trix": "^1.2.0"
   },
   "devDependencies": {
     "webpack-cli": "^4.10.0",
