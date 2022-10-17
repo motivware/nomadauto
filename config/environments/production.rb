@@ -37,7 +37,7 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   # Disables security vulnerability
-  config.assets.compile = true
+  # config.assets.compile = true
 
   config.assets.digest = true
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
