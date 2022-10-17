@@ -7,7 +7,7 @@ class ForwardsMailbox < ApplicationMailbox
     Ticket.create({
       subject: mail.subject,
       from: mail.from,
-      details: mail.text,
+      details: mail.body.text,
       project_id: project_id.id
     })
   end
