@@ -3,11 +3,11 @@ class ForwardsMailbox < ApplicationMailbox
 
   def process
     project_id = Project.find_by(user_id: @recipient.id)
-    p mail
+    p mail.body
     Ticket.create({
       subject: mail.subject,
       from: mail.from,
-      details: mail.body.text,
+      details: mail.body,
       project_id: project_id.id
     })
   end
