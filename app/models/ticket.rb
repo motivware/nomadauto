@@ -2,5 +2,6 @@
 
 class Ticket < ApplicationRecord
 	belongs_to :project
+  has_rich_text :details
 
 end
