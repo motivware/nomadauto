@@ -1,0 +1,1 @@
+$(document).on("turbolinks:load",function(){$(".alert").delay(1e3).fadeOut(4e3)});
