@@ -33,7 +33,8 @@ gem 'groupdate'
 gem 'paperclip', '~> 6.1'
 gem "recaptcha", require: "recaptcha/rails"
 gem "tailwindcss-rails", "~> 2.0"
-gem 'tinymce-rails'
+gem 'image_processing', '~> 1.2'
+
 
 # Linter
 gem 'rubocop', '0.63.1', require: false

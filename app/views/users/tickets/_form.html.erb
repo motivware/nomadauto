@@ -61,8 +61,8 @@
 			<div class="sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
 				<%= f.label :details, "Details", class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2' %>
 				<br/>
-				<%= f.text_area :details, autofocus: true, placeholder: 'Details', class: 'tinymce shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md' %>	
-			</div>     
+				<%= f.rich_text_area :details, autofocus: true, placeholder: 'Details', class: 'shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md' %>	
+			</div> 
 
 			<div class="pt-5">
 					<%= f.submit "Save", class: 'cursor-pointer	inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto' %>
@@ -71,7 +71,6 @@
 		</div>
 	</div>
 </div>
-<%= tinymce %> 
 <%#       
 <td><%= link_to "Delete", [@contact.project, @contact, @activities], method: :delete, data: { confirm: "Are you sure?" } %><%# </td>
 <td><%= link_to "Back", project_contacts_path(@project) %>
