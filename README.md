@@ -20,7 +20,7 @@ Motivware is a web-based customer support help desk application that provides a 
 
 4.	Install ruby 2.7.6: `rbenv install 2.7.6`
       
-     <em>If you get an error saying that 2.7.6 is not available<em>, try running: `git clone https://github.com/rbenv/ruby-build.git “$(rbenv root)”/plugins/ruby-build`
+     <em>If you get an error saying that 2.7.6 is not available</em>, try running: `git clone https://github.com/rbenv/ruby-build.git “$(rbenv root)”/plugins/ruby-build`
 
 ## Setup the Postgres Database
 1.	Get your system ready to install postgres: `sudo apt update`
@@ -29,7 +29,7 @@ Motivware is a web-based customer support help desk application that provides a 
 
 3.	Verify the active status of PostgreSQL by running: `sudo systemct1 status postgresql`
     
-    <em>Check that active shows in output<em>
+    <em>Check that active shows in output</em>
     
 4.	Start the PostgreSQL server: `Sudo -I -u postgres`
     
