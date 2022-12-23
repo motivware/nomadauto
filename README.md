@@ -9,27 +9,63 @@ Motivware is a web-based customer support help desk application that provides a 
 - [Javascript](https://www.javascript.com/)
 - [Sass](https://sass-lang.com/)
 
-# Setting up your Dev Environment
-If your computer is not setup to run ruby on rails yet - then you can follow one of the links below. These links will provide instructions on how to get your computer ready for developing rails. 
+# Motivware Application Setup
 
-[GoRails - Windows Setup](https://gorails.com/setup/windows/10)
+## Install Ruby 2.7.6 with rbenv
+1.	Clone rbenv into ~/.rbenv: `git clone https://github.com/rbenv/rbenv.git ~/.rbenv`
 
-[GoRails - MAC Setup](https://gorails.com/setup/osx/10.14-mojave)
+2.	Initialize rbenv when terminal is opened: `rbenv init`
+    
+     <em>You may have to exit and reopen terminal to activate rbenv</em>
 
-[GoRails - Ubuntu](https://gorails.com/setup/ubuntu/16.04)
+4.	Install ruby 2.7.6: `rbenv install 2.7.6`
+      
+     <em>If you get an error saying that 2.7.6 is not available<em>, try running: `git clone https://github.com/rbenv/ruby-build.git “$(rbenv root)”/plugins/ruby-build`
 
-Once your computer is setup and running ruby on rails with Postgres you can clone the project and start working locally. Open your terminal window and follow the steps below to get a local version of motivware setup on your computer. 
+## Setup the Postgres Database
+1.	Get your system ready to install postgres: `sudo apt update`
+    
+2.	Run the installation command for PostgreSQL by running: `sudo apt install postgresql`
 
-```
-mkdir projects
-cd projects
-git clone https://github.com/motivware/nomadauto.git
-cd nomadauto
-bundle install
-rails db:create
-rails db:migrate
-rails server -p 3000 -b lvh.me
-```
+3.	Verify the active status of PostgreSQL by running: `sudo systemct1 status postgresql`
+    
+    <em>Check that active shows in output<em>
+    
+4.	Start the PostgreSQL server: `Sudo -I -u postgres`
+    
+5.	Enter PSQL interpreter: `psql`
+    
+6.	Create role on pgsql with privilege as “superuser”: `CREATE ROLE root superuser;`
+    
+7.	Then create the user by running: `CREATE USER username;`
+    
+8.	Assign privilege to user: `GRANT ROOT TO username;`
+    
+9.	Then enable login with that user: `ALTER ROLE root WITH LOGIN;`
+
+10.	Quit psql: `\q`
+
+11.	Quit postgres: `exit`
+
+
+## Setup the Motivware application
+1.	Clone the motivware app: `git clone https://github.com/motivware/nomadauto`
+    
+2.  Move into cloned directory: `cd nomadauto`
+     
+3.  Install postgresql-devel package: `sudo apt-get install libpg-dev`
+      
+4.	Install gem dependencies: `Bundle Install`
+
+5.	Install ruby-railties:`apt install ruby-railties`
+
+6.	Setup Ruby version installed by rbenv: `rbenv local 2.7.6` and `rbenv rehash`
+       
+7.	Install nodejs: `sudo apt-get install nodejs`
+      
+8.	Create the databases: `rails db:migrate`
+      
+9.	Run the rails server: `rails server -p 3000 -b lvh.me`
 
 You can now open your browser to [lvh.me:3000](lvh.me:3000)
 # Tech Features
