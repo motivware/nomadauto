@@ -15,6 +15,8 @@ class SubdomainBlank
 end
 
 Rails.application.routes.draw do
+  get 'collection/new'
+  get 'articles/index'
   # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
@@ -39,6 +41,10 @@ Rails.application.routes.draw do
   constraints(SubdomainPresent) do
     root 'projects#index'
     resources :projects, only: %i[index show new create] do
+      resources :articles, only: :index
+      resources :collections do 
+        resources :articles, only: %i[show edit new create]
+      end
       resources :tasks, only: %i[index show new create edit update destroy] do
         resources :comments
       end
