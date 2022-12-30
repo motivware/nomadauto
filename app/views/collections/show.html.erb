@@ -1,0 +1,39 @@
+<%= render 'users/sidebar' %></br>
+<div class="md:pl-64 flex flex-col flex-1">
+  <main class="flex-1">
+    <div class="py-6">
+      <!-- This example requires Tailwind CSS v2.0+ -->
+      <div class="px-4 sm:px-6 lg:px-8">
+        <div class="sm:flex sm:items-center">
+          <div class="sm:flex-auto">
+						<div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+							<div>
+								<div>
+									<h1 class="text-lg leading-6 font-medium text-gray-900"><%= @collection.title%></h1>
+									<p class="mt-1 max-w-2xl text-sm text-gray-500"><%= @collection.heading %></p><br/>
+									<%= link_to "Add New Article", new_project_collection_article_path(@project, @collection), :class => "inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto" %>
+								</div>
+								<br/>
+								<%if Article.exists? %>
+									<% @articles.each do |article| %>
+												<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+													<div class="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400">
+														<div class="min-w-0 flex-1">
+															<h2 class="text-sm font-medium text-gray-900"><%= link_to article.subject, project_collection_article_path(@project, @collection, article.id)  %></h2>
+															<p class="truncate text-sm text-gray-500"><%= article.author %></p>
+															<br/>
+														</div>
+													</div>
+												</div>
+												<br/>
+											<% end %>
+									<% end %>
+								</div>				
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

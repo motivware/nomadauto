@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_15_173549) do
+ActiveRecord::Schema.define(version: 2022_12_24_012115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,47 @@ ActiveRecord::Schema.define(version: 2022_10_15_173549) do
     t.datetime "updated_at", null: false
     t.index ["trackable_type", "trackable_id"], name: "index_activities_on_trackable_type_and_trackable_id"
     t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.string "subject"
+    t.string "author"
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "project_id"
+    t.bigint "collection_id"
+    t.index ["collection_id"], name: "index_articles_on_collection_id"
+    t.index ["project_id"], name: "index_articles_on_project_id"
+  end
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "email"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "project_id"
+    t.index ["project_id"], name: "index_chatrooms_on_project_id"
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.string "message"
+    t.string "name"
+    t.bigint "chatroom_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chatroom_id"], name: "index_chats_on_chatroom_id"
+  end
+
+  create_table "collections", force: :cascade do |t|
+    t.string "title"
+    t.string "heading"
+    t.bigint "articles_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "project_id"
+    t.index ["articles_id"], name: "index_collections_on_articles_id"
+    t.index ["project_id"], name: "index_collections_on_project_id"
   end
 
   create_table "comments", id: :serial, force: :cascade do |t|
@@ -220,6 +261,12 @@ ActiveRecord::Schema.define(version: 2022_10_15_173549) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "users"
+  add_foreign_key "articles", "collections"
+  add_foreign_key "articles", "projects"
+  add_foreign_key "chatrooms", "projects"
+  add_foreign_key "chats", "chatrooms"
+  add_foreign_key "collections", "articles", column: "articles_id"
+  add_foreign_key "collections", "projects"
   add_foreign_key "comments", "tasks"
   add_foreign_key "contacts", "projects"
   add_foreign_key "deals", "projects"
