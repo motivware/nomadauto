@@ -1,7 +1,6 @@
 class ArticlesController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
-    authorize @project
     @articles = Project.find(params[:project_id]).articles.all if Article.exists?
     @collections = @project.collections.all if Collection.exists?
   end

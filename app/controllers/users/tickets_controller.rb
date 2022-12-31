@@ -29,7 +29,6 @@ module Users
       @project = Project.find(params[:project_id])
 
       @ticket = @project.tickets.build
-      authorize @ticket
 
       respond_to do |format|
         format.html # new.html.erb
