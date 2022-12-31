@@ -1,5 +1,5 @@
-
-<%= render 'users/sidebar' %></br>
+<% if logged_in? %>
+<%= render 'users/sidebar' %><br/>
 <div class="md:pl-64 flex flex-col flex-1">
 	<main class="flex-1">
 		<div class="py-6">
@@ -16,3 +16,20 @@
 		</div>
 	</main>
 </div>
+<% else %>
+<div style="padding-bottom: 400px" class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+<main class="flex-1">
+		<div class="py-6">
+			<!-- This example requires Tailwind CSS v2.0+ -->
+			<div class="px-4 sm:px-6 lg:px-8">
+				<div class="sm:flex sm:items-center">
+					<h3 class="text-lg leading-6 font-medium text-gray-900"><%= @article.subject%></h3>
+					<h4 class="mt-1 max-w-2xl text-sm text-gray-500"><%= @article.author %></h4>
+				</div>
+					<p class="mt-1 max-w-2xl text-sm text-gray-500"><%= @article.content %></p>
+					<br/>
+			</div>
+		</div>
+	</main>
+</div	>
+	<% end %>

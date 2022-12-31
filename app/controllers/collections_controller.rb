@@ -20,6 +20,20 @@ class CollectionsController < ApplicationController
     @collection = @project.collections.find(params[:id])
   end
 
+  def update
+    # Retrieve project from the database
+    @project = Project.find(params[:project_id])
+    # Retrieve that users profile page
+    @collection = Collection.find(params[:id])
+    if @collection.update(collection_params)
+      flash[:success] = 'Collection Updated!'
+      # Redirect user to their profile page
+      redirect_to project_articles_path(@project, @article)
+    else
+      render action: :edit
+    end
+  end
+
   def new
     @project = Project.find(params[:project_id])
     @collection = @project.collections.build
@@ -50,6 +64,6 @@ class CollectionsController < ApplicationController
   private
 
     def collection_params
-      params.require(:collection).permit(:title, :headine, :article_id, :project_id)
+      params.require(:collection).permit(:title, :heading, :article_id, :project_id)
     end
 end

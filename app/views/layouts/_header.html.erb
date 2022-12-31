@@ -5,7 +5,13 @@
       <div class="flex items-center">
         <div class="hidden sm:block sm:ml-6">
           <div class="flex-shrink-0">
-            <%= link_to image_tag('logo_alt.svg'), root_url %>
+           <% if current_user.nil? && request.subdomain.present? %>
+              <% if current_page?(new_project_ticket_path) || current_page?(project_articles_path) %>
+                <%= link_to image_tag('logo_alt.svg'), root_url(subdomain: false) %>
+              <% end %>
+          <% else %>
+              <%= link_to image_tag('logo_alt.svg'), root_url %>
+          <% end %>
           </div>
         </div>
         <div class="hidden sm:block sm:ml-6">
@@ -15,11 +21,16 @@
               <a><%= link_to "Projects", projects_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
               <a><%= link_to "My Account", edit_user_path(current_user), class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
               <a><%= link_to "Log Out", logout_path, method: :delete, class: 'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium' %></a>
+            <% elsif current_user.nil? && request.subdomain.present? %>
+              <% if current_page?(new_project_ticket_path) || current_page?(project_articles_path) %>
+              <a><%= link_to "Help Center", project_articles_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
+              <% end %>
             <% else %>
               <!-- <li><%= link_to features_path%></li> -->
               <a><%= link_to "Pricing", pricing_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
               <a><%= link_to "Contact", new_contact_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
               <a><%= link_to "Log In", login_path, class: 'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium' %></a>
+              <a href="https://nomad.motivware.com/projects/3/articles" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Help Center</a>
             <% end %>
           </div>
         </div>
@@ -32,16 +43,21 @@
       <div class="sm:hidden" id="mobile-menu">
         <div class="px-2 pt-2 pb-3 space-y-1">
           <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-          <% if logged_in? && request.subdomain.present? %>
-              <a><%= link_to "Projects", projects_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-small" %></a>
-              <a><%= link_to "My Account", edit_user_path(current_user), class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-small" %></a>
-              <a><%= link_to "Log Out", logout_path, method: :delete, class: 'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-small' %></a>
-          <% else %>
+           <% if logged_in? && request.subdomain.present? %>
+              <a><%= link_to "Projects", projects_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
+              <a><%= link_to "My Account", edit_user_path(current_user), class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
+              <a><%= link_to "Log Out", logout_path, method: :delete, class: 'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium' %></a>
+            <% elsif current_user.nil? && request.subdomain.present? %>
+              <% if current_page?(new_project_ticket_path) || current_page?(project_articles_path) %>
+              <a><%= link_to "Help Center", project_articles_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
+              <% end %>
+            <% else %>
               <!-- <li><%= link_to features_path%></li> -->
-              <a><%= link_to "Pricing", pricing_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-small" %></a>
-              <a><%= link_to "Contact", new_contact_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-small" %></a>
-              <a><%= link_to "Log In", login_path, class: 'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-small' %></a>
-          <% end %>
+              <a><%= link_to "Pricing", pricing_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
+              <a><%= link_to "Contact", new_contact_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
+              <a><%= link_to "Log In", login_path, class: 'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium' %></a>
+              <a href="https://nomad.motivware.com/projects/3/articles" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Help Center</a>
+            <% end %>
         </div>
       </div>
     </div>
