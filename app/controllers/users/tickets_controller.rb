@@ -71,7 +71,7 @@ module Users
         due_date = params[:ticket][:due_date]
 				details = params[:ticket][:details]
         flash[:success] = 'Record Saved.'
-        redirect_to project_tickets_path
+        redirect_to project_tickets_path(assigned_to: "")
 
         track_activity @ticket
       else
@@ -88,7 +88,7 @@ module Users
       respond_to do |format|
         if @ticket.update(ticket_params)
           # 1st argument of redirect_to is an array, in order to build the correct route to the nested resource comment
-          format.html { redirect_to project_tickets_path(@project), notice: 'ticket was successfully updated.' }
+          format.html { redirect_to project_tickets_path(@project, assigned_to: ""), notice: 'ticket was successfully updated.' }
           flash[:success] = 'Your ticket has been updated'
           format.xml { head :ok }
 
