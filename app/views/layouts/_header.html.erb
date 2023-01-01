@@ -16,12 +16,13 @@
         </div>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex space-x-4">
+          <% subdomains = %w[https:// www admin] %>
              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <% if logged_in? && request.subdomain.present? %>
+            <% if logged_in? && request.subdomain.blank? %>
               <a><%= link_to "Projects", projects_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
               <a><%= link_to "My Account", edit_user_path(current_user), class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
               <a><%= link_to "Log Out", logout_path, method: :delete, class: 'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium' %></a>
-            <% elsif current_user.nil? && request.subdomain.present? %>
+            <% elsif current_user.nil? && request.subdomain.present? || subdomains.include?(request.subdomain) %>
               <% if current_page?(new_project_ticket_path) || current_page?(project_articles_path) %>
               <a><%= link_to "Support", project_articles_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
               <% end %>
