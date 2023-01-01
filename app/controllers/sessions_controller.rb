@@ -39,6 +39,6 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out if logged_in?
-    redirect_to root_url(subdomain: false)
+    redirect_to root_url(subdomain: 'https://www')
   end
 end
