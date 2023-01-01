@@ -81,7 +81,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(_resource_or_scope)
-    redirect_to logout_path(subdomain: request.subdomain)
+    redirect_to logout_path(subdomain: "")
   end
 
   def after_invite_path_for(_resource_or_scope)
