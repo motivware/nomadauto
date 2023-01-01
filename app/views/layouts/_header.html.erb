@@ -5,8 +5,8 @@
       <div class="flex items-center">
         <div class="hidden sm:block sm:ml-6">
           <div class="flex-shrink-0">
-           <% if current_user.nil? && request.subdomain.present? %>
-              <% if current_page?(new_project_ticket_path) || current_page?(project_articles_path) && request.subdomain.inspect != "https://www." %>
+           <% if current_user.nil? && request.subdomain.present? && request.subdomain.inspect != "https://www."%>
+              <% if current_page?(new_project_ticket_path) || current_page?(project_articles_path) %>
                 <%= link_to image_tag('logo_alt.svg'), root_url(subdomain: false) %>
               <% end %>
           <% else %>
