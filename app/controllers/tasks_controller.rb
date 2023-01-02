@@ -81,7 +81,7 @@ class TasksController < UsersController
     @task = Task.find(params[:id])
 
     respond_to do |format|
-      if @task.update_attributes(task_params)
+      if @task.update(task_params)
         # 1st argument of redirect_to is an array, in order to build the correct route to the nested resource comment
         format.html { redirect_to project_tasks_path(@project), notice: 'task was successfully updated.' }
         flash[:success] = 'Your task has been updated'

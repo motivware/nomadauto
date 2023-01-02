@@ -81,14 +81,14 @@ class UsersController < ApplicationController
   def update
     if params[:plan] == '1' || params[:plan] == '3'
       @user = User.find(params[:id])
-      @user.update_attributes(user_params)
+      @user.update(user_params)
       flash[:success] = 'Profile updated'
       redirect_to root_url
     else
       params[:plan] == '2'
       @user = User.find(params[:id], params[:stripe_card_token])
       @user.save_with_subscription
-      @user.update_attribute(:plan_id, '2')
+      @user.update(:plan_id, '2')
       flash[:info] = 'You are now signed up for the pro account'
       redirect_to projects_path
     end
