@@ -16,7 +16,6 @@
         </div>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex space-x-4">
-          <% subdomains = %w[https:// www admin] %>
              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <% if logged_in? && request.subdomain.blank? %>
               <a><%= link_to "Projects", projects_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
@@ -31,7 +30,7 @@
               <a><%= link_to "Pricing", pricing_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
               <a><%= link_to "Contact", new_contact_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
               <a><%= link_to "Log In", login_path, class: 'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium' %></a>
-              <a href="https://nomad.motivware.com/projects/3/articles" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Help Center</a>
+              <a href="https://nomad.motivware.com/projects/3/articles" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Support</a>
             <% end %>
           </div>
         </div>
@@ -57,7 +56,7 @@
               <a><%= link_to "Pricing", pricing_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
               <a><%= link_to "Contact", new_contact_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
               <a><%= link_to "Log In", login_path, class: 'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium' %></a>
-              <a href="https://nomad.motivware.com/projects/3/articles" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Help Center</a>
+              <a href="https://nomad.motivware.com/projects/3/articles" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Support</a>
             <% end %>
         </div>
       </div>
