@@ -15,20 +15,23 @@
 									<%= link_to "Add New Article", new_project_collection_article_path(@project, @collection), :class => "inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto" %>
 								</div>
 								<br/>
+								<ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 								<%if Article.exists? %>
 									<% @articles.each do |article| %>
-												<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-													<div class="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400">
-														<div class="min-w-0 flex-1">
-															<h2 class="text-sm font-medium text-gray-900"><%= link_to article.subject, project_collection_article_path(@project, @collection, article.id)  %></h2>
-															<p class="truncate text-sm text-gray-500"><%= article.author %></p>
-															<br/>
+											<li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
+												<div class="flex w-full items-center justify-between space-x-6 p-6">
+													<div class="flex-1 truncate">
+														<div class="flex items-center space-x-3">
+															<h3 class="truncate text-lg font-large text-gray-900"><%= link_to article.subject, project_collection_article_path(@project, @collection, article.id) %></h3>
 														</div>
+														<p class="mt-1 truncate text-sm text-gray-500"><%= article.author %></p>
 													</div>
+													<%# <img class="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt=""> %>
 												</div>
-												<br/>
+											</li>
 											<% end %>
 									<% end %>
+								</ul>
 								</div>				
 							</div>
 						</div>
@@ -53,20 +56,23 @@
 									<p class="mt-1 max-w-2xl text-sm text-gray-500"><%= @collection.heading %></p><br/>
 								</div>
 								<br/>
+								<ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 								<%if Article.exists? %>
 									<% @articles.each do |article| %>
-												<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-													<div class="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400">
-														<div class="min-w-0 flex-1">
-															<h2 class="text-sm font-medium text-gray-900"><%= link_to article.subject, project_collection_article_path(@project, @collection, article.id)  %></h2>
-															<p class="truncate text-sm text-gray-500"><%= article.author %></p>
-															<br/>
+											<li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
+												<div class="flex w-full items-center justify-between space-x-6 p-6">
+													<div class="flex-1 truncate">
+														<div class="flex items-center space-x-3">
+															<h3 class="truncate text-lg font-large text-gray-900"><%= link_to article.subject, project_collection_article_path(@project, @collection, article.id) %></h3>
 														</div>
+														<p class="mt-1 truncate text-sm text-gray-500"><%= article.author %></p>
 													</div>
+													<%# <img class="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt=""> %>
 												</div>
-												<br/>
+											</li>
 											<% end %>
 									<% end %>
+								</ul>
 								</div>				
 							</div>
 						</div>

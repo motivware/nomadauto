@@ -8,17 +8,40 @@ class ArticlesController < ApplicationController
   def show 
     @project = Project.find(params[:project_id])
     @collection = Collection.find(params[:collection_id])
-    @article = @collection.articles.find(params[:id])
+    @article = Project.find(params[:project_id]).collections.find(params[:collection_id]).articles.find(params[:id])
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render xml: @article }
+    end
   end 
 
   def edit 
     @project = Project.find(params[:project_id])
     @collection = Collection.find(params[:collection_id])
-    @article = Project.find(params[:project_id]).collections.find(params[:collection_id]).articles.find(params[:id])
+    @article = @project.collections.find(params[:collection_id]).articles.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render xml: @article }
+    end
+  end
+
+  def update
+    @project = Project.find(params[:project_id])
+    @collection = Collection.find(params[:collection_id])
+    @article = @project.collections.find(params[:collection_id]).articles.find(params[:id])
+
+    respond_to do |format|
+      if @article.update(article_params)
+        # 1st argument of redirect_to is an array, in order to build the correct route to the nested resource comment
+        format.html { redirect_to project_collection_article_path(@project, @collection, @article), notice: 'article was successfully updated.' }
+        flash[:success] = 'Your article has been updated'
+        format.xml { head :ok }
+      else
+        format.html { render action: 'edit' }
+        format.xml  { render xml: @article.errors, status: :unprocessable_entity }
+      end
     end
   end
   

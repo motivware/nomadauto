@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     resources :projects, only: %i[index show new create] do
       resources :articles, only: :index
       resources :collections do 
-        resources :articles, only: %i[show edit new create]
+        resources :articles, only: %i[show edit update new create]
       end
       resources :tasks, only: %i[index show new create edit update destroy] do
         resources :comments
