@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
     @project = current_account.projects.build(project_params)
     if @project.save
       flash[:notice] = "#{@project.title} is processing."
-      redirect_to projects_path
+      redirect_to project_contacts_path(@project)
     end
   end
 

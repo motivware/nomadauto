@@ -5,9 +5,11 @@
       <svg class="mx-auto h-20 w-20 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
         <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
       </svg>
-      <p class="mt-1 text-lg ">Get started by creating a new project.</p>
+      <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">Motivware</h2>
+      <p class="mt-5 text-xl text-gray-500">Get started by creating a new project.</p>  
+      
       <% if @user.plan_id == 1 %>
-        <p class='mt-1 text-lg text-gray-500'> Trial period will expire in <span style="color:red"><%= remaining_days %> Days. </span><br/><%= link_to "Suscribe Now!", edit_user_path(current_user, plan: @pro_plan.id) %></p>
+        <p class='mt-1 text-sm text-gray-500'> Trial period will expire in <span style="color:red"><%= remaining_days %> Days. </span><br/><%= link_to "Suscribe Now!", edit_user_path(current_user, plan: @pro_plan.id) %></p>
       <% end %>
       <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
