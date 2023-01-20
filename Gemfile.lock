@@ -121,7 +121,7 @@ GEM
     gibbon (3.4.4)
       faraday (>= 1.0)
       multi_json (>= 1.11.0)
-    globalid (1.0.0)
+    globalid (1.0.1)
       activesupport (>= 5.0)
     groupdate (6.1.0)
       activesupport (>= 5.2)
@@ -207,7 +207,7 @@ GEM
     pundit (2.3.0)
       activesupport (>= 3.0.0)
     racc (1.6.2)
-    rack (2.2.5)
+    rack (2.2.6.2)
     rack-proxy (0.7.4)
       rack
     rack-test (2.0.2)
