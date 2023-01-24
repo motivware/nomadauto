@@ -11,16 +11,16 @@ Motivware is a web-based customer support help desk application that provides a 
 
 # Motivware Application Setup
 
-## Install Ruby 2.7.6 with rbenv
+## Install Ruby 3.1.2 with rbenv
 1.	Clone rbenv into ~/.rbenv: `git clone https://github.com/rbenv/rbenv.git ~/.rbenv`
 
 2.	Initialize rbenv when terminal is opened: `rbenv init`
     
      <em>You may have to exit and reopen terminal to activate rbenv</em>
 
-4.	Install ruby 2.7.6: `rbenv install 2.7.6`
+4.	Install ruby 3.1.2: `rbenv install 3.1.2`
       
-     <em>If you get an error saying that 2.7.6 is not available</em>, try running: `git clone https://github.com/rbenv/ruby-build.git “$(rbenv root)”/plugins/ruby-build`
+     <em>If you get an error saying that 3.1.2 is not available</em>, try running: `git clone https://github.com/rbenv/ruby-build.git “$(rbenv root)”/plugins/ruby-build`
 
 ## Setup the Postgres Database
 1.	Get your system ready to install postgres: `sudo apt update`
