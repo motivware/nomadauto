@@ -1,14 +1,16 @@
-  <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-    <div class="pb-16 xl:flex xl:items-center xl:justify-between">
-      <div>
-        <h1 class="text-4xl font-extrabold sm:text-5xl sm:tracking-tight">
-          <span class="text-gray-900">Pricing plans for all teams and sizes</span>
-        </h1>
-        <p class="mt-5 text-xl text-gray-500">Choose an affordable plan that's packed with the best features for creating customer loyalty.</p>
-      </div>
-      <%= link_to "Try 30 Days Free", signup_path(plan: @basic_plan.id),
-                                        class: 'mt-8 w-full bg-indigo-600 border border-transparent px-5 py-3 inline-flex items-center justify-center text-base font-medium rounded-md text-white hover:bg-indigo-700 sm:mt-10 sm:w-auto xl:mt-0' %>
+<% @title="Pricing" %>
+
+<div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+  <div class="pb-16 xl:flex xl:items-center xl:justify-between">
+    <div>
+      <h1 class="text-4xl font-extrabold sm:text-5xl sm:tracking-tight">
+        <span class="text-gray-900">Pricing plans for all teams and sizes</span>
+      </h1>
+      <p class="mt-5 text-xl text-gray-500">Choose an affordable plan that's packed with the best features for creating customer loyalty.</p>
     </div>
+    <%= link_to "Try 30 Days Free", signup_path(plan: @basic_plan.id),
+                                      class: 'mt-8 w-full bg-indigo-600 border border-transparent px-5 py-3 inline-flex items-center justify-center text-base font-medium rounded-md text-white hover:bg-indigo-700 sm:mt-10 sm:w-auto xl:mt-0' %>
+  </div>
 
   <!-- Tiers -->
   <div class="mt-24 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:space-y-0">

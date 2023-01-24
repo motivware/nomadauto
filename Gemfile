@@ -37,7 +37,7 @@ gem 'image_processing', '~> 1.2'
 
 
 # Linter
-gem 'rubocop', '0.63.1', require: false
+gem 'rubocop', '1.43', require: false
 
 # Google maps Integration
 gem 'cancan'
