@@ -255,7 +255,7 @@ GEM
       ffi (~> 1.0)
     react-rails (2.6.2)
       babel-transpiler (>= 0.7.0)
-      connection_pool
+      connection_poolx
       execjs
       railties (>= 3.2)
       tilt
