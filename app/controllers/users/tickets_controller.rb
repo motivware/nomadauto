@@ -64,7 +64,7 @@ module Users
 
       if @ticket.save
         subject = params[:ticket][:subject]
-        from = params[:ticket][:from]
+        customer = params[:ticket][:customer]
         assigned_to = params[:ticket][:assigned_to]
         priority = params[:ticket][:priority]
         status = params[:ticket][:status]
@@ -126,7 +126,7 @@ module Users
     def ticket_params
       # To collect data from form, we need to use
       # strong paramaters and whitelist form fields
-      params.require(:ticket).permit(:subject, :from, :assigned_to, :priority, :status, :due_date, :details, :project_id)
+      params.require(:ticket).permit(:subject, :customer, :assigned_to, :priority, :status, :due_date, :details, :project_id)
     end
   end
 end
