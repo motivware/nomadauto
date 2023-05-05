@@ -56,7 +56,7 @@
                   <% if Ticket.exists? %>
                     <% @tickets.each do |ticket| %>
                         <tr>
-                          <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><%= link_to ticket.subject, edit_project_ticket_path(@project, ticket)  %></td>
+                          <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><%= link_to ticket.subject, project_ticket_path(@project, ticket)  %></td>
                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= ticket.customer %></td>
                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= ticket.priority %></td>
                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= ticket.due_date %></td>

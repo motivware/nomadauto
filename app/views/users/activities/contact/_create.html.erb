@@ -1,4 +1,4 @@
  <div>
-   <p class="text-sm"><%= activity.user.name %> has <%= activity.action %>d a new <%= activity.trackable_type %> called <%= link_to activity.trackable.last_name + ', ' + activity.trackable.first_name, project_contacts_path(assigned_to: current_user.name), class: "font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline" %>
+   <p class="text-sm"><%= activity.user.name %> has <%= activity.action %>d a new <%= activity.trackable_type %> called <%= link_to activity.trackable.last_name + ', ' + activity.trackable.first_name, project_contact_path(@project, activity.trackable_id), class: "font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline" %>
    <time datetime="2020-09-20">on <%= activity.created_at.to_date %></time></p>
 </div>

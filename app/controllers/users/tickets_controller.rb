@@ -41,7 +41,7 @@ module Users
       @project = Project.find(params[:project_id])
       # 2nd you retrieve the tickets thanks to params[:id]
       @ticket = @project.tickets.find(params[:id])
-      authorize @ticket
+      # authorize @ticket
 
       respond_to do |format|
         format.html # show.html.erb

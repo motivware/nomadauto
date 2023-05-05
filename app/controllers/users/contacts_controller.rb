@@ -28,7 +28,7 @@ module Users
       @project = Project.find(params[:project_id])
       # 2nd you retrieve the contacts thanks to params[:id]
       @contact = @project.contacts.find(params[:id])
-      authorize @contact
+      # authorize @contact
 
       respond_to do |format|
         format.html # show.html.erb
