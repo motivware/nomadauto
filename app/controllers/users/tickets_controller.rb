@@ -3,12 +3,14 @@
 module Users
   class TicketsController < UsersController
     before_action :trial_expired?
+    helper_method :sort_column, :sort_direction
 
     def index
       @project = Project.find(params[:project_id])
       authorize @project
 
       @tickets = @project.tickets.all if Ticket.exists?
+      @tickets = @tickets.order("#{sort_column} #{sort_direction}") if params['sort'].present?
 
       if params[:status] == "Open"
         @tickets = @tickets.where(status: "Open")
@@ -20,8 +22,6 @@ module Users
         @tickets = @tickets.where(status: "Closed")
       elsif params[:assigned_to] == current_user.name
         @tickets = @tickets.where(assigned_to: current_user.name)
-      elsif params[:assigned_to] == nil
-        @tickets = @tickets.where(assigned_to: nil) 
       end
     end
 
@@ -111,6 +111,14 @@ module Users
       user = User.find(session[:user_id])
       count = user.tickets.import params[:file]
       redirect_to project_tickets_path, notice: "Imported #{count}"
+    end
+
+    def sort_column
+      @tickets.column_names.include?(params[:sort]) ? params[:sort] : "subject"
+    end
+    
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
     end
 
     private

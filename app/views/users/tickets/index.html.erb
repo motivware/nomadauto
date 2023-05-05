@@ -40,12 +40,12 @@
                 <table class="min-w-full divide-y divide-gray-300">
                   <thead class="bg-gray-50">
                     <tr>
-                      <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Subject</th>
-                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">From</th>
-                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Priority</th>
-                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Due Date</th>
-                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Created</th>
-                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Updated</th>
+                      <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"><%= sortable "subject", "Subject" %></th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "customer", "Customer" %></th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "priority", "Priority" %></th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "due_date", "Due Date" %></th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "created_at", "Created" %></th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "updated_at", "Updated" %></th>
                       <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                         <span class="sr-only">Edit</span>
                       </th>
@@ -53,11 +53,11 @@
                   </thead>
                   <tbody class="divide-y divide-gray-200 bg-white">
 
-                  <%if Ticket.exists? %>
+                  <% if Ticket.exists? %>
                     <% @tickets.each do |ticket| %>
                         <tr>
                           <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><%= link_to ticket.subject, edit_project_ticket_path(@project, ticket)  %></td>
-                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= ticket.from %></td>
+                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= ticket.customer %></td>
                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= ticket.priority %></td>
                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= ticket.due_date %></td>
                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= "#{time_ago_in_words(Time.at(ticket.created_at.to_i))} ago" %></td>
