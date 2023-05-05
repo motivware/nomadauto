@@ -4,9 +4,11 @@ source 'https://rubygems.org'
 
 gem 'coffee-rails', '4.2.2'
 gem 'jquery-rails', '4.1.1'
+gem 'public_activity', '2.0.2'
 gem "puma", ">= 4.3.12"
 gem 'rails', '7.0.4.1'
 gem 'react-rails'
+gem 'record_tag_helper', '~> 1.0'
 gem 'sass-rails', '~> 6.0'
 gem 'turbolinks', '5.0.0'
 gem 'uglifier', '3.0.0'
@@ -71,4 +73,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-ruby '3.1.2'
+ruby '3.1.3'

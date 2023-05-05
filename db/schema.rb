@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_24_012115) do
-
+ActiveRecord::Schema[7.0].define(version: 2023_05_04_200222) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,8 +18,8 @@ ActiveRecord::Schema.define(version: 2022_12_24_012115) do
     t.integer "status", default: 0, null: false
     t.string "message_id", null: false
     t.string "message_checksum", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["message_id", "message_checksum"], name: "index_action_mailbox_inbound_emails_uniqueness", unique: true
   end
 
@@ -29,8 +28,8 @@ ActiveRecord::Schema.define(version: 2022_12_24_012115) do
     t.text "body"
     t.string "record_type", null: false
     t.bigint "record_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
   end
 
@@ -39,7 +38,7 @@ ActiveRecord::Schema.define(version: 2022_12_24_012115) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -52,7 +51,7 @@ ActiveRecord::Schema.define(version: 2022_12_24_012115) do
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -67,8 +66,10 @@ ActiveRecord::Schema.define(version: 2022_12_24_012115) do
     t.string "action"
     t.string "trackable_type"
     t.integer "trackable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.bigint "ticket_id"
+    t.index ["ticket_id"], name: "index_activities_on_ticket_id"
     t.index ["trackable_type", "trackable_id"], name: "index_activities_on_trackable_type_and_trackable_id"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
@@ -77,8 +78,8 @@ ActiveRecord::Schema.define(version: 2022_12_24_012115) do
     t.string "subject"
     t.string "author"
     t.text "content"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "project_id"
     t.bigint "collection_id"
     t.index ["collection_id"], name: "index_articles_on_collection_id"
@@ -88,8 +89,8 @@ ActiveRecord::Schema.define(version: 2022_12_24_012115) do
   create_table "chatrooms", force: :cascade do |t|
     t.string "email"
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "project_id"
     t.index ["project_id"], name: "index_chatrooms_on_project_id"
   end
@@ -98,8 +99,8 @@ ActiveRecord::Schema.define(version: 2022_12_24_012115) do
     t.string "message"
     t.string "name"
     t.bigint "chatroom_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["chatroom_id"], name: "index_chats_on_chatroom_id"
   end
 
@@ -107,8 +108,8 @@ ActiveRecord::Schema.define(version: 2022_12_24_012115) do
     t.string "title"
     t.string "heading"
     t.bigint "articles_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "project_id"
     t.index ["articles_id"], name: "index_collections_on_articles_id"
     t.index ["project_id"], name: "index_collections_on_project_id"
@@ -117,15 +118,15 @@ ActiveRecord::Schema.define(version: 2022_12_24_012115) do
   create_table "comments", id: :serial, force: :cascade do |t|
     t.text "body"
     t.integer "task_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "owner"
     t.index ["task_id"], name: "index_comments_on_task_id"
   end
 
   create_table "contacts", id: :serial, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "project_id"
     t.string "company"
     t.string "first_name"
@@ -140,16 +141,16 @@ ActiveRecord::Schema.define(version: 2022_12_24_012115) do
     t.string "name"
     t.string "email"
     t.text "comments"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "deals", id: :serial, force: :cascade do |t|
     t.string "company"
     t.string "status"
     t.integer "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "user_id"
     t.integer "project_id"
     t.index ["project_id"], name: "index_deals_on_project_id"
@@ -161,8 +162,8 @@ ActiveRecord::Schema.define(version: 2022_12_24_012115) do
     t.integer "sender_id"
     t.integer "recipient_id"
     t.string "token"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "subdomain"
     t.integer "project_id"
     t.index ["project_id"], name: "index_invites_on_project_id"
@@ -171,8 +172,8 @@ ActiveRecord::Schema.define(version: 2022_12_24_012115) do
   create_table "plans", id: :serial, force: :cascade do |t|
     t.string "name"
     t.decimal "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "profiles", id: :serial, force: :cascade do |t|
@@ -182,12 +183,12 @@ ActiveRecord::Schema.define(version: 2022_12_24_012115) do
     t.string "phone_number"
     t.string "contact_email"
     t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "avatar_file_name"
     t.string "avatar_content_type"
     t.bigint "avatar_file_size"
-    t.datetime "avatar_updated_at"
+    t.datetime "avatar_updated_at", precision: nil
     t.integer "project_id"
     t.string "street_address"
     t.string "address_line_two"
@@ -213,8 +214,8 @@ ActiveRecord::Schema.define(version: 2022_12_24_012115) do
     t.string "status"
     t.string "priority"
     t.string "owner"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "user_id"
     t.integer "project_id"
     t.index ["project_id"], name: "index_tasks_on_project_id"
@@ -226,13 +227,13 @@ ActiveRecord::Schema.define(version: 2022_12_24_012115) do
     t.string "assigned_to"
     t.string "priority"
     t.string "status"
-    t.datetime "due_date"
     t.text "details"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "project_id"
     t.bigint "author_id"
     t.bigint "contact_id"
+    t.datetime "due_date", precision: nil
     t.index ["author_id"], name: "index_tickets_on_author_id"
     t.index ["contact_id"], name: "index_tickets_on_contact_id"
     t.index ["project_id"], name: "index_tickets_on_project_id"
@@ -241,16 +242,16 @@ ActiveRecord::Schema.define(version: 2022_12_24_012115) do
   create_table "users", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "password_digest"
     t.string "remember_digest"
     t.boolean "admin", default: false
     t.string "activation_digest"
     t.boolean "activated", default: false
-    t.datetime "activated_at"
+    t.datetime "activated_at", precision: nil
     t.string "reset_digest"
-    t.datetime "reset_sent_at"
+    t.datetime "reset_sent_at", precision: nil
     t.integer "plan_id"
     t.string "stripe_customer_token"
     t.string "subdomain"
@@ -260,6 +261,7 @@ ActiveRecord::Schema.define(version: 2022_12_24_012115) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "activities", "tickets"
   add_foreign_key "activities", "users"
   add_foreign_key "articles", "collections"
   add_foreign_key "articles", "projects"

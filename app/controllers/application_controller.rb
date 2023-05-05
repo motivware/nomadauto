@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   # before_action :configure_permitted_parameters, if: :devise_controller?
   include SessionsHelper
   helper_method :current_user
-
+  
   # make expire_on method available for all the controllers
   helper_method :all
   helper_method :remaining_days

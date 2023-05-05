@@ -7,6 +7,8 @@ class Contact < ApplicationRecord
   has_many :tasks
 
   validates :first_name, :presence => true
+	
+  include PublicActivity
 
   def first_last_name
     "#{first_name.capitalize} #{last_name.capitalize}"

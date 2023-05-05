@@ -17,7 +17,6 @@ end
 Rails.application.routes.draw do
   get 'collection/new'
   get 'articles/index'
-  get '/.well-known/acme-challenge/:id' => 'pages#letsencrypt'
   # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
@@ -53,6 +52,7 @@ Rails.application.routes.draw do
 
       scope module: 'users' do
         resources :tickets
+        resources :activities
         resources :contacts do
           collection do
             post :import

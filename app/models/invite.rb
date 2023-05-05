@@ -11,6 +11,8 @@ class Invite < ActiveRecord::Base
 
   before_create :generate_token
 
+  include PublicActivity
+
   def generate_token
     self.token = Digest::SHA1.hexdigest([user_group_id, Time.now, rand].join)
   end
