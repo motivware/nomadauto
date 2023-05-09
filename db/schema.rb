@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_05_155735) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_09_011345) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,6 +69,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_155735) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.bigint "ticket_id"
+    t.bigint "project_id"
+    t.index ["project_id"], name: "index_activities_on_project_id"
     t.index ["ticket_id"], name: "index_activities_on_ticket_id"
     t.index ["trackable_type", "trackable_id"], name: "index_activities_on_trackable_type_and_trackable_id"
     t.index ["user_id"], name: "index_activities_on_user_id"
@@ -261,6 +263,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_155735) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "activities", "projects"
   add_foreign_key "activities", "tickets"
   add_foreign_key "activities", "users"
   add_foreign_key "articles", "collections"

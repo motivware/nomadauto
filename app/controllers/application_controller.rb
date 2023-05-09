@@ -35,8 +35,8 @@ class ApplicationController < ActionController::Base
     redirect_to projects_path if (remaining_days <= 0) && (current_user.plan_id != 2)
   end
 
-  def track_activity(trackable, action = params[:action])
-    current_user.activities.create! action: action, trackable: trackable
+  def track_activity(trackable, action = params[:action], project_id = params[:project_id])
+    current_user.activities.create! action: action, trackable: trackable, project_id: project_id
   end
 
   private

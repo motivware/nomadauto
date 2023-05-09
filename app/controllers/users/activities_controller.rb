@@ -5,11 +5,11 @@ module Users
     def index
       @project = Project.find(params[:project_id])
 
-      @activities = Activity.order("created_at desc")
+      @activities = @project.activities.order("created_at desc") if Activity.exists?
     end
 
     def permitted_params
-      params.require(:activity).permit(:user, :ticket, :trackable, :action)
+      params.require(:activity).permit(:user, :ticket, :trackable, :action, :project_id)
     end
   end
 end
