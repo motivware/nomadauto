@@ -19,6 +19,8 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   helper_method :current_user
   
+  include Pagy::Backend
+
   # make expire_on method available for all the controllers
   helper_method :all
   helper_method :remaining_days

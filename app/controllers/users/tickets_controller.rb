@@ -11,6 +11,9 @@ module Users
 
       @tickets = @project.tickets.all if Ticket.exists?
       @tickets = @tickets.order("#{sort_column} #{sort_direction}") if params['sort'].present?
+      
+      Pagy::DEFAULT[:items] = 10
+      @pagy, @tickets = pagy(@tickets)
 
       if params[:status] == "Open"
         @tickets = @tickets.where(status: "Open")
@@ -22,6 +25,7 @@ module Users
         @tickets = @tickets.where(status: "Closed")
       elsif params[:assigned_to] == current_user.name
         @tickets = @tickets.where(assigned_to: current_user.name)
+        @pagy, @tickets = pagy(@tickets)
       end
     end
 

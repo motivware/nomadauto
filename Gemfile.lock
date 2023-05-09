@@ -191,6 +191,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.14.3-x86_64-linux)
       racc (~> 1.4)
+    pagy (6.0.4)
     paperclip (6.1.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
@@ -394,6 +395,7 @@ DEPENDENCIES
   jquery-rails (= 4.4.0)
   letter_opener
   listen (= 3.0.5)
+  pagy (~> 6.0)
   paperclip (~> 6.1)
   pg (= 1.1.4)
   public_activity (= 2.0.2)

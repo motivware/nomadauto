@@ -52,7 +52,6 @@
                     </tr>
                   </thead>
                   <tbody class="divide-y divide-gray-200 bg-white">
-
                   <% if Ticket.exists? %>
                     <% @tickets.each do |ticket| %>
                         <tr>
@@ -66,11 +65,16 @@
                           <a href="#" class="text-indigo-600 hover:text-indigo-900"><%= link_to 'Edit', edit_project_ticket_path(@project, ticket)  %></a>
                           </td>
                         </tr>
+                      <% end %>
                     <% end %>
-                  <% end %>
                   </tbody>
                 </table>
               </div>
+              <% if params[:assigned_to] == "" %>
+                <div class="pag-bar mt-5 pt-5">
+                  <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>

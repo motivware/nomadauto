@@ -14,6 +14,7 @@ gem 'turbolinks', '5.0.0'
 gem 'uglifier', '3.0.0'
 gem 'webpacker'
 gem 'wicked_pdf'
+gem 'pagy', '~> 6.0' # omit patch digit
 gem 'wkhtmltopdf-binary'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.10', '>= 2.10.1'
