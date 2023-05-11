@@ -101,9 +101,10 @@ module Users
     end
 
     def destroy
+      @project = Project.find(params[:project_id])
       @ticket = Ticket.find(params[:id])
 
-      redirect_to project_tickets_path if @ticket.destroy
+      redirect_to project_tickets_path(@project) if @ticket.destroy
     end
 
 

@@ -3,10 +3,10 @@
 class CommentsController < UsersController
   def create
     @project = Project.find(params[:project_id])
-    @workorder = Workorder.find(params[:workorder_id])
-    @comment = @workorder.comments.create(params[:comment].permit(:owner, :body))
+    @task = Task.find(params[:task_id])
+    @comment = @task.comments.create(params[:comment].permit(:owner, :body))
 
-    redirect_to project_workorder_path(@project, @workorder)
+    redirect_to project_task_path(@project, @task)
   end
 
   def destroy

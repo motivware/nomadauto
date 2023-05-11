@@ -1,0 +1,5 @@
+updated Task for <%= link_to activity.trackable.title, project_tasks_path %>
+ <div>
+		<p class="text-sm"><%= activity.user.name %> has <%= activity.action %>d a <%= activity.trackable_type %> called <%= link_to activity.trackable.title, project_task_path(@project, activity.trackable_id), class: "font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline" %>
+		<time datetime="2020-09-20">on <%= activity.created_at.to_date %></time></p>
+	</div>

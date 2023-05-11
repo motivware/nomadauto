@@ -44,7 +44,11 @@
                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= contact.website %></td>
                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= contact.email %></td>
                           <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                          <a href="#" class="text-indigo-600 hover:text-indigo-900"><%= link_to 'Edit', edit_project_contact_path(@project, contact)  %></a>
+                            <a href="#" class="text-indigo-600 hover:text-indigo-900"><%= link_to 'Edit', edit_project_contact_path(@project, contact)  %></a>
+                          </td>
+                           <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                            <a href="#" class="text-indigo-600 hover:text-indigo-900"><%= link_to "Delete", project_contact_path(@project, contact), method: :delete,
+                            data: { confirm: "Are you sure?" }  %></a>
                           </td>
                         </tr>
                     <% end %>

@@ -60,12 +60,16 @@
                           <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><%= link_to ticket.subject, project_ticket_path(@project, ticket)  %></td>
                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= ticket.customer %></td>
                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= ticket.priority %></td>
-                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= ticket.due_date %></td>
+                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= ticket.due_date.to_date %></td>
                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= ticket.status %></td>
                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= "#{time_ago_in_words(Time.at(ticket.created_at.to_i))} ago" %></td>
                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= "#{time_ago_in_words(Time.at(ticket.updated_at.to_i))} ago" %></td>
                           <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                           <a href="#" class="text-indigo-600 hover:text-indigo-900"><%= link_to 'Edit', edit_project_ticket_path(@project, ticket)  %></a>
+                          </td>
+                          <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                            <a href="#" class="text-indigo-600 hover:text-indigo-900"><%= link_to "Delete", project_ticket_path(@project, ticket), method: :delete,
+                            data: { confirm: "Are you sure?" }  %></a>
                           </td>
                         </tr>
                     <% end %>
