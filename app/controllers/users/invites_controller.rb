@@ -34,6 +34,8 @@ module Users
     end
 
     def create
+      @subdomain = request.subdomain
+
       # 1st you retrieve the project thanks to params[:project_id]
       @project = Project.find(params[:project_id])
 

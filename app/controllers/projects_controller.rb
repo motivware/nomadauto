@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
     @pro_plan = Plan.find(2)
     # @invite_plan = Plan.find(3)
     @user = User.find(session[:user_id])
-    @projects = current_account.user_projects if Project.exists?(user: current_account)
+    @projects = current_account.user_projects
   end
 
   def show

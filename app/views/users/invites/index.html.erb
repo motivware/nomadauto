@@ -30,11 +30,11 @@
           <p> You have <span style="color:red"><%= remaining_days %> Days left </span>with your free acount! <%= link_to "Suscribe Now", edit_user_path(current_user, plan: @pro_plan.id) %> to add the rest of your team!</p>
       <% else @user.plan_id == 2 %>
       <%= form_for @invite, :url => project_invites_path, class: 'mt-6 flex-row' do |f| %>
-          <%= f.hidden_field :user_group_id, :value => @invite.user_group_id %>
+          <%= f.hidden_field :subdomain, :value => @subdomain %>
           <%= f.label :email, class: 'sr-only' %>
           <div class="flex">
             <%= f.text_field :email, placeholder: 'Enter an email', class: 'shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md' %> <br/>
-            <%= f.submit :submit, class: 'ml-4 flex-shrink-0 px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' %>
+            <%= f.submit :submit, class: 'cursor-pointer ml-4 flex-shrink-0 px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' %>
           </div>
         <% end %>
       <% end %>

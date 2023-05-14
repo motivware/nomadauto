@@ -1,4 +1,3 @@
-sent invitation to <%= link_to activity.trackable.email, project_invites_path %>
  <div>
 		<p class="text-sm"><%= activity.user.name %> has sent invitation to  <%= link_to activity.trackable.email, project_invites_path, class: "font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline" %>
 		<time datetime="2020-09-20">on <%= activity.created_at.to_date %></time></p>
