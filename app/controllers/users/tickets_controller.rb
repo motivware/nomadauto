@@ -89,7 +89,6 @@ module Users
         if @ticket.update(ticket_params)
           # 1st argument of redirect_to is an array, in order to build the correct route to the nested resource comment
           format.html { redirect_to project_tickets_path(@project, assigned_to: ""), notice: 'ticket was successfully updated.' }
-          flash[:success] = 'Your ticket has been updated'
           format.xml { head :ok }
 
           track_activity @ticket
