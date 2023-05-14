@@ -10,7 +10,7 @@ module Users
       authorize @project
       @user = User.find(session[:user_id])
 
-      if @user.plan_id == 2
+      if @user.plan_id == 2 ||  @user.plan_id == 1
         @tickets = @project.tickets.all if Ticket.exists?
         @tickets = @tickets.order("#{sort_column} #{sort_direction}") if params['sort'].present?
 

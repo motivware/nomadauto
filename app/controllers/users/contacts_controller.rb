@@ -9,7 +9,7 @@ module Users
       authorize @project
       @user = User.find(session[:user_id])
 
-      if @user.plan_id == 2
+      if @user.plan_id == 2 ||  @user.plan_id == 1
         @contacts = @project.contacts.order("created_at desc") if Contact.exists?
       else @user.plan_id == 3
         @contacts = @user.contacts.order("created_at desc") if Contact.exists?

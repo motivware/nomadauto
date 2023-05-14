@@ -37,7 +37,7 @@
                   </thead>
                   <tbody class="divide-y divide-gray-200 bg-white">
 
-                    <%if Task.where(project_id: @project) %>
+                    <%if Task.exists? %>
                       <% @tasks.each do |task| %>
                         <tr>
                           <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-600 underline sm:pl-6"><%= link_to task.title, project_task_path(@project, task) %></td>

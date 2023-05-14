@@ -9,7 +9,7 @@ class TasksController < UsersController
     authorize @project
     @user = User.find(session[:user_id])
 
-    if @user.plan_id == 2
+    if @user.plan_id == 2 || @user.plan_id == 1
       @tasks = @project.tasks.order("created_at desc") if Task.exists?
     else @user.plan_id == 3
       @tasks = @user.tasks.order("created_at desc") if Task.exists?
