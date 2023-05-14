@@ -8,25 +8,44 @@ module Users
     def index
       @project = Project.find(params[:project_id])
       authorize @project
+      @user = User.find(session[:user_id])
 
-      @tickets = @project.tickets.all if Ticket.exists?
-      @tickets = @tickets.order("#{sort_column} #{sort_direction}") if params['sort'].present?
+      if @user.plan_id == 2
+        @tickets = @project.tickets.all if Ticket.exists?
+        @tickets = @tickets.order("#{sort_column} #{sort_direction}") if params['sort'].present?
 
-      if params[:status] == "Open"
-        @tickets = @tickets.where(status: "Open")
-      elsif params[:status] == "Pending"
-        @tickets = @tickets.where(status: "Pending")
-      elsif params[:status] == "On Hold"
-        @tickets = @tickets.where(status: "On Hold")
-      elsif params[:status] == "Closed"
-        @tickets = @tickets.where(status: "Closed")
-      elsif params[:assigned_to] == current_user.name
-        @tickets = @tickets.where(assigned_to: current_user.name)
+        if params[:status] == "Open"
+          @tickets = @tickets.where(status: "Open")
+        elsif params[:status] == "Pending"
+          @tickets = @tickets.where(status: "Pending")
+        elsif params[:status] == "On Hold"
+          @tickets = @tickets.where(status: "On Hold")
+        elsif params[:status] == "Closed"
+          @tickets = @tickets.where(status: "Closed")
+        elsif params[:assigned_to] == current_user.name
+          @tickets = @tickets.where(assigned_to: current_user.name)
+        end
+      else @user.plan_id == 3
+        @tickets = @user.tickets.all if Ticket.exists?
+        @tickets = @tickets.order("#{sort_column} #{sort_direction}") if params['sort'].present?
+
+        if params[:status] == "Open"
+          @tickets = @tickets.where(status: "Open")
+        elsif params[:status] == "Pending"
+          @tickets = @tickets.where(status: "Pending")
+        elsif params[:status] == "On Hold"
+          @tickets = @tickets.where(status: "On Hold")
+        elsif params[:status] == "Closed"
+          @tickets = @tickets.where(status: "Closed")
+        elsif params[:assigned_to] == current_user.name
+          @tickets = @tickets.where(assigned_to: current_user.name)
+        end
       end
     end
 
     def new
       @project = Project.find(params[:project_id])
+      @user = User.find(session[:user_id])
 
       @ticket = @project.tickets.build
 
@@ -58,6 +77,7 @@ module Users
     def create
       # 1st you retrieve the project thanks to params[:project_id]
       @project = Project.find(params[:project_id])
+      @user = User.find(session[:user_id])
 
       # 2nd you create the workorder with arguments in params[:workorder]
       @ticket = @project.tickets.create(ticket_params)
@@ -126,7 +146,7 @@ module Users
     def ticket_params
       # To collect data from form, we need to use
       # strong paramaters and whitelist form fields
-      params.require(:ticket).permit(:subject, :customer, :assigned_to, :priority, :status, :due_date, :details, :project_id)
+      params.require(:ticket).permit(:subject, :customer, :assigned_to, :priority, :status, :due_date, :details, :project_id, :user_id)
     end
   end
 end

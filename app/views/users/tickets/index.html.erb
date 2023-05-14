@@ -30,66 +30,105 @@
 
           </div>
           <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-            <%= link_to "Add Ticket", new_project_ticket_path, :class => "inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto" %>
+            <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-indigo-600 hover:bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Filter Status<svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+            <!-- Dropdown menu -->
+            <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                  <%= link_to project_tickets_path(assigned_to: ""),  method: :get, class: "" do %>
+                  <li>
+                    <div href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">All Tickets</div>
+                  </li>
+                  <% end %>
+                 <%= link_to project_tickets_path(assigned_to: current_user.name),  method: :get, class: "" do %>
+                  <li>
+                    <div href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">My Tickets</div>
+                  </li>
+                  <% end %>
+                  <%= link_to project_tickets_path(status: 'Open'),  method: :get, class: "" do %>
+                  <li>
+                     <div href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Open Tickets</div>
+                  </li>
+                  <% end %>
+                  <%= link_to project_tickets_path(status: 'Pending'),  method: :get, class: "" do %>
+                  <li>
+                     <div href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pending Tickets</div>
+                  </li>
+                  <% end %>
+                  <%= link_to project_tickets_path(status: 'On Hold'),  method: :get, class: "" do %>
+                  <li>
+                     <div href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">On Hold Tickets</div>
+                  </li>
+                  <% end %>
+                  <%= link_to project_tickets_path(status: 'Closed'),  method: :get, class: "" do %>
+                  <li>
+                     <div href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Closed Tickets</div>
+                  </li>
+                  <% end %>
+                </ul>
+            </div>
+
+            <%= link_to "Add Ticket", new_project_ticket_path, :class => "inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto" %>
 
           </div>
         </div>
         <div class="mt-8 flex flex-col">
-          <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-            <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-              <table class="min-w-full divide-y divide-gray-300">
-                <thead class="bg-gray-50">
-                  <tr>
-                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"><%= sortable "subject", "Subject" %></th>
-                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "customer", "Customer" %></th>
-                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "priority", "Priority" %></th>
-                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "due_date", "Due Date" %></th>
-                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "status", "Status" %></th>
-                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "created_at", "Created" %></th>
-                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "updated_at", "Updated" %></th>
-                    <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                      <span class="sr-only">Edit</span>
-                    </th>
-                    <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                      <span class="sr-only">Delete</span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-200 bg-white">
+          <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+              <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-300">
+                  <thead class="bg-gray-50">
+                    <tr>
+                      <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"><%= sortable "subject", "Subject" %></th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "customer", "Customer" %></th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "priority", "Priority" %></th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "due_date", "Due Date" %></th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "status", "Status" %></th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "created_at", "Created" %></th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "updated_at", "Updated" %></th>
+                      <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                        <span class="sr-only">Edit</span>
+                      </th>
+                      <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                        <span class="sr-only">Delete</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-gray-200 bg-white">
 
-                <% if Ticket.exists? %>
-                  <% @tickets.each do |ticket| %>
-                      <tr>
-                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-600 underline sm:pl-6"><%= link_to ticket.subject, project_ticket_path(@project, ticket)  %></td>
-                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= ticket.customer %></td>
-                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= ticket.priority %></td>
-                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= ticket.due_date.to_date %></td>
-                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= ticket.status %></td>
-                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= "#{time_ago_in_words(Time.at(ticket.created_at.to_i))} ago" %></td>
-                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= "#{time_ago_in_words(Time.at(ticket.updated_at.to_i))} ago" %></td>
-                        <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                          <%= link_to edit_project_ticket_path(@project, ticket) do %>
-                            <div href="#" class="text-indigo-600 hover:text-indigo-900">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                                <path d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"/>
-                              </svg>
-                            </div>
-                          <% end %>
-                        </td>
-                        <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                          <%= link_to project_ticket_path(@project, ticket), method: :delete, data: { confirm: "Are you sure?" } do %>
-                            <div href="#" class="text-indigo-600 hover:text-indigo-900">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/>
-                              </svg>
-                            </div>
-                          <% end %>
-                        </td>
-                      </tr>
+                  <% if Ticket.exists? %>
+                    <% @tickets.each do |ticket| %>
+                        <tr>
+                          <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-600 underline sm:pl-6"><%= link_to ticket.subject, project_ticket_path(@project, ticket)  %></td>
+                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= ticket.customer %></td>
+                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= ticket.priority %></td>
+                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= ticket.due_date.to_date %></td>
+                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= ticket.status %></td>
+                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= "#{time_ago_in_words(Time.at(ticket.created_at.to_i))} ago" %></td>
+                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= "#{time_ago_in_words(Time.at(ticket.updated_at.to_i))} ago" %></td>
+                          <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                            <%= link_to edit_project_ticket_path(@project, ticket) do %>
+                              <div href="#" class="text-indigo-600 hover:text-indigo-900">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="w-4 h-4">
+                                  <path d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"/>
+                                </svg>
+                              </div>
+                            <% end %>
+                          </td>
+                          <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                            <%= link_to project_ticket_path(@project, ticket), method: :delete, data: { confirm: "Are you sure?" } do %>
+                              <div href="#" class="text-indigo-600 hover:text-indigo-900">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4">
+                                  <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/>
+                                </svg>
+                              </div>
+                            <% end %>
+                          </td>
+                        </tr>
+                    <% end %>
                   <% end %>
-                <% end %>
-                </tbody>
-              </table>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

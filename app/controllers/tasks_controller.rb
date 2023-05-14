@@ -7,16 +7,22 @@ class TasksController < UsersController
   def index
     @project = Project.find(params[:project_id])
     authorize @project
-    user = User.all
-    if Task.where(project_id: @project)
-      @tasks = @project.tasks.all
+    @user = User.find(session[:user_id])
 
-      @tasks = @project.tasks.where(status: params['status']) if params['status'].present?
-      @tasks = @project.tasks.where(priority: params['priority']) if params['priority'].present?
-      @tasks = @project.tasks.where(user: params['user']) if params['user'].present?
-
-      @tasks = @project.tasks.order("#{sort_column} #{sort_direction}") if params['sort'].present?
+    if @user.plan_id == 2
+      @tasks = @project.tasks.order("created_at desc") if Task.exists?
+    else @user.plan_id == 3
+      @tasks = @user.tasks.order("created_at desc") if Task.exists?
     end
+    # if Task.where(project_id: @project)
+    #   @tasks = @project.tasks.all
+
+    #   @tasks = @project.tasks.where(status: params['status']) if params['status'].present?
+    #   @tasks = @project.tasks.where(priority: params['priority']) if params['priority'].present?
+    #   @tasks = @project.tasks.where(user: params['user']) if params['user'].present?
+
+    #   @tasks = @project.tasks.order("#{sort_column} #{sort_direction}") if params['sort'].present?
+    # end
   end
 
   def show

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_09_011345) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_14_131325) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -136,7 +136,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_09_011345) do
     t.string "phone_number"
     t.string "website"
     t.string "email"
+    t.bigint "user_id"
     t.index ["project_id"], name: "index_contacts_on_project_id"
+    t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
   create_table "customer_contacts", force: :cascade do |t|
@@ -236,9 +238,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_09_011345) do
     t.bigint "author_id"
     t.bigint "contact_id"
     t.datetime "due_date", precision: nil
+    t.bigint "user_id"
     t.index ["author_id"], name: "index_tickets_on_author_id"
     t.index ["contact_id"], name: "index_tickets_on_contact_id"
     t.index ["project_id"], name: "index_tickets_on_project_id"
+    t.index ["user_id"], name: "index_tickets_on_user_id"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
@@ -274,6 +278,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_09_011345) do
   add_foreign_key "collections", "projects"
   add_foreign_key "comments", "tasks"
   add_foreign_key "contacts", "projects"
+  add_foreign_key "contacts", "users"
   add_foreign_key "deals", "projects"
   add_foreign_key "invites", "projects"
   add_foreign_key "profiles", "projects"
@@ -282,5 +287,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_09_011345) do
   add_foreign_key "tasks", "projects"
   add_foreign_key "tickets", "contacts"
   add_foreign_key "tickets", "projects"
+  add_foreign_key "tickets", "users"
   add_foreign_key "tickets", "users", column: "author_id"
 end

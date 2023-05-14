@@ -37,46 +37,16 @@
             </div>
          </li>
          <% end %>
-         <li>
-            <button type="button" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+        <%= link_to project_tickets_path(assigned_to: ""),  method: :get, class: "" do %>
+        <li>
+            <div href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                 <path fill-rule="evenodd" d="M1.5 6.375c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v3.026a.75.75 0 01-.375.65 2.249 2.249 0 000 3.898.75.75 0 01.375.65v3.026c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 17.625v-3.026a.75.75 0 01.374-.65 2.249 2.249 0 000-3.898.75.75 0 01-.374-.65V6.375zm15-1.125a.75.75 0 01.75.75v.75a.75.75 0 01-1.5 0V6a.75.75 0 01.75-.75zm.75 4.5a.75.75 0 00-1.5 0v.75a.75.75 0 001.5 0v-.75zm-.75 3a.75.75 0 01.75.75v.75a.75.75 0 01-1.5 0v-.75a.75.75 0 01.75-.75zm.75 4.5a.75.75 0 00-1.5 0V18a.75.75 0 001.5 0v-.75zM6 12a.75.75 0 01.75-.75H12a.75.75 0 010 1.5H6.75A.75.75 0 016 12zm.75 2.25a.75.75 0 000 1.5h3a.75.75 0 000-1.5h-3z" clip-rule="evenodd" />
               </svg> 
-              <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Tickets</span>
-              <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-            </button>
-            <ul id="dropdown-example" class="hidden py-2 space-y-2">
-                  <%= link_to project_tickets_path(assigned_to: ""),  method: :get, class: "" do %>
-                  <li>
-                     <div href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">All Tickets</div>
-                  </li>
-                  <% end %>
-                  <%= link_to project_tickets_path(assigned_to: current_user.name),  method: :get, class: "" do %>
-                  <li>
-                     <div href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">My Tickets</div>
-                  </li>
-                   <% end %>
-                  <%= link_to project_tickets_path(status: 'Open'),  method: :get, class: "" do %>
-                  <li>
-                     <div href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Open Tickets</div>
-                  </li>
-                  <% end %>
-                  <%= link_to project_tickets_path(status: 'Pending'),  method: :get, class: "" do %>
-                  <li>
-                     <div href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Pending Tickets</div>
-                  </li>
-                  <% end %>
-                  <%= link_to project_tickets_path(status: 'On Hold'),  method: :get, class: "" do %>
-                  <li>
-                     <div href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">On Hold Tickets</div>
-                  </li>
-                  <% end %>
-                  <%= link_to project_tickets_path(status: 'Closed'),  method: :get, class: "" do %>
-                  <li>
-                     <div href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Closed Tickets</div>
-                  </li>
-                  <% end %>
-            </ul>
+              <span class="flex-1 ml-3 whitespace-nowrap">Tickets</span>
+            </div>
+        </li>
+        <% end %>
          </li>
         <%= link_to project_articles_path,  method: :get, class: "" do %>
          <li>

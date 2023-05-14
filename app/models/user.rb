@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :lists
   has_many :deals
   has_many :projects
+  has_many :tickets
   has_many :invitations, class_name: 'Invite',
                          foreign_key: 'recipient_id'
 

@@ -7,8 +7,13 @@ module Users
     def index
       @project = Project.find(params[:project_id])
       authorize @project
+      @user = User.find(session[:user_id])
 
-      @contacts = @project.contacts.all if Contact.exists?
+      if @user.plan_id == 2
+        @contacts = @project.contacts.order("created_at desc") if Contact.exists?
+      else @user.plan_id == 3
+        @contacts = @user.contacts.order("created_at desc") if Contact.exists?
+      end
     end
 
     def new
@@ -103,7 +108,7 @@ module Users
     def contact_params
       # To collect data from form, we need to use
       # strong paramaters and whitelist form fields
-      params.require(:contact).permit(:company, :first_name, :last_name, :phone_number, :website, :email)
+      params.require(:contact).permit(:company, :first_name, :last_name, :phone_number, :website, :email, :user_id)
     end
   end
 end
