@@ -27,7 +27,7 @@
       <p class="mt-1 text-sm text-gray-500">As the owner of this project, you can add new team members.</p>
       <br/>
        <% if @user.plan_id == 1 %>
-          <p> You have <span style="color:red"><%= remaining_days %> Days left </span>with your free acount! <%= link_to "Suscribe Now", edit_user_path(current_user, plan: @pro_plan.id) %> to add the rest of your team!</p>
+          <p> You have <span style="color:red"><%= remaining_days %> Days left </span>with your free acount! <%= link_to "Subscribe Now", edit_user_path(current_user, plan: @pro_plan.id), class: "text-blue-600 underline"  %> to add the rest of your team!</p>
       <% else @user.plan_id == 2 %>
       <%= form_for @invite, :url => project_invites_path, class: 'mt-6 flex-row' do |f| %>
           <%= f.hidden_field :subdomain, :value => @subdomain %>
@@ -43,18 +43,48 @@
   </div>
   <div class="mt-8 flex flex-col text-center">
     <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Team members added to this project</h3>
-    <ul role="list" class="mt-4 border-t border-b border-gray-200 divide-y divide-gray-200">
-      <% @users.each do |user| %>
-        <li class="py-4 flex justify-between space-x-3">
-          <div class="min-w-0 flex-1 flex space-x-3">
-              <div class="min-w-0 flex-1">
-                <p class="text-sm font-medium text-gray-900 truncate"><%= user.name %></p>
-                <p class="text-sm font-medium text-gray-500 truncate"><%= user.email %></p>
-                <p class="text-sm font-medium text-gray-900 truncate"><%= user_status(user) %></p>
-              </div>
-          </div>
-        </li>
-      <% end %>
+    <br/>
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                  <th scope="col" class="px-6 py-3">
+                      Name
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                      Email
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                      Status
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                      Role
+                  </th>
+              </tr>
+          </thead>
+          <% @users.each do |user| %>
+            <tbody>
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <%= user.name %>
+                    </th>
+                    <td class="px-6 py-4">
+                        <%= user.email %>
+                    </td>
+                    <td class="px-6 py-4">
+                        Activated on
+                        <%= user.activated_at.to_date %>
+                    </td>
+                    <td class="px-6 py-4">
+                        <% if user.plan_id == 1 or user.plan_id == 2 %>
+                          <p>Manager</p>
+                        <% else user.plan_id == 3 %>
+                          <p>Employee</p>
+                        <% end %>
+                    </td>
+                </tr>
+            </tbody>
+          <% end %>
+      </table>
     </ul>
   </div>
 </div>
