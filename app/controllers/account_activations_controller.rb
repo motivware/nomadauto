@@ -9,7 +9,7 @@ class AccountActivationsController < ApplicationController
       user.save
       flash[:success] = 'Account activated!'
       if user.plan_id == 1 || user.plan_id == 2
-        Project.create(title: user.subdomain, details: "Sample project", user_id: user.id)
+        Project.create(title: user.subdomain, details: "Project", user_id: user.id)
         @project = Project.find_by(user_id: user.id)
       	redirect_to project_contacts_url(subdomain: user.subdomain, project_id: @project)
       else user.plan_id == 3
