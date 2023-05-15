@@ -20,7 +20,8 @@ class SessionsController < ApplicationController
         # Log the user in and redirect to the user's show page.
         log_in user
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-        redirect_to projects_url(subdomain: user.subdomain)
+        @project = Project.find_by(user_id: user.id)
+        redirect_to project_contacts_url(subdomain: user.subdomain, project_id: @project)
       else
         message  = 'Account not activated.'
         message += 'Check your email for the activation link.'
