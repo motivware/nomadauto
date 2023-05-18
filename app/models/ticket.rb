@@ -5,6 +5,8 @@ class Ticket < ApplicationRecord
 	belongs_to :user
 	belongs_to :activity
 	
+	validates :due_date, :presence => true
+
   has_rich_text :details
 	include PublicActivity
 end
