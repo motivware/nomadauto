@@ -20,10 +20,10 @@ class VisitorsController < ApplicationController
     @visitor = Visitor.new(secure_params)
     if @visitor.valid?
       @visitor.subscribe
-      flash[:notice] = "Signed up #{@visitor.email}."
+      flash[:success] = "Signed up #{@visitor.email}."
       redirect_to root_url(subdomain: 'www')
     else
-      flash[:danger] = 'Please add email address'
+      flash[:warning] = "Please add email address"
     end
   end
 

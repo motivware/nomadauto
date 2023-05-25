@@ -7,31 +7,75 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Plan.create(name: 'basic', price: 0)
-Plan.create(name: 'pro', price: 49)
-Plan.create(name: 'invite', price: 0)
 
-User.create(name: 'Damon Clark', email: 'demouser@test.com', password: 'MotiVw@re',
-            plan_id: '2', activated: 'TRUE', subdomain: 'company')
+Plan.create(id: 1, name: 'basic', price: 0)
+Plan.create(id: 2, name: 'pro', price: 49)
+Plan.create(id: 3, name: 'invite', price: 0)
 
-Project.create(title: 'Demo Shop',
-               details: 'This is a demo',
-               user_id: '1')
-
-contact_list = [
-  ['', 'John', 'Smith', 592 - 775 - 0o112, 'N/A', 'jsmith@gmail.com', 1],
-  ['', 'Kevin', 'Steven', 709 - 474 - 9595, 'N/A', 'ksteven@outlook.com', 1],
-  ['', 'Jeff', 'Rock', 846 - 635 - 3297, 'N/A', 'jeff.rock144@gmail.com', 1],
-  ['', 'Craig', 'Smith', 576 - 331 - 8419, 'N/A', 'craig.smith@email.com', 1],
-  ['', 'Ray', 'Fenz', 471 - 562 - 1377, 'N/A', 'rfenz56@gmail.com', 1],
-  ['', 'Ryan', 'Oswalt', 768 - 394 - 6097, 'N/A', 'oswalt891@yahoo.com', 1],
-  ['', 'Devon', 'McDonald', 454 - 552 - 8321, 'N/A', 'mcodnald0109@yahoo.com', 1],
-  ['', 'Rebecca', 'Leon', 403 - 311 - 4914, 'N/A', 'leon12038@outlook.com', 1],
-  ['', 'Winston', 'Settle', 424 - 714 - 6431, 'N/A', 'wsettle134@gmail.com', 1]
+user_list = [
+  [1, 'Damon Clark', 'damon-user@test.com', 'password', 2, 'TRUE',Faker::Date.between(from: 2.days.ago, to: Date.today), 'testing'],
+  [2, 'Owen Clark', 'owen-user@test.com', 'password', 3, 'TRUE', Faker::Date.between(from: 2.days.ago, to: Date.today), 'testing'],
+  [3, 'Ruby Clark', 'ruby-user@test.com', 'password', 3, 'TRUE', Faker::Date.between(from: 2.days.ago, to: Date.today), 'testing'],
 ]
 
-contact_list.each do |company, first_name, last_name, phone_number, website, email, project_id|
-  Contact.create(company: company, first_name: first_name,
-                  last_name: last_name, phone_number: phone_number,
-                  website: website, email: email, project_id: project_id)
+user_list.each do |id, name, email, password, plan_id, activated, activated_at, subdomain|
+  User.new(id: id, name: name,
+                  email: email, password: password,
+                  plan_id: plan_id, activated: activated, activated_at: activated_at, subdomain: subdomain).save(validate: false)
 end
+
+Project.create(id: 1,
+               title: 'Demo Shop',
+               details: 'This is a demo',
+               user_id: 1)
+
+Invite.create(email: 'owen-user@test.com', 
+              subdomain: 'testing',
+              project_id: 1)
+
+Invite.create(email: 'ruby-user@test.com', 
+              subdomain: 'testing',
+              project_id: 1)
+              
+40.times do 
+  Contact.create(company: Faker::Company.name, 
+                 first_name: Faker::Name.first_name,
+                 last_name: Faker::Name.last_name,
+                 phone_number: Faker::PhoneNumber.phone_number,
+                 website: Faker::Internet.url,
+                 email: Faker::Internet.email,
+                 project_id: 1,
+                 user_id: [1, 2, 3].sample)
+  end
+  
+30.times do 
+  Task.create(title: Faker::Lorem.word,
+              description: Faker::Lorem.paragraph,
+              status: ["Open", "Pending", "Closed"].sample,
+              priority: ["High", "Medium", "Low"].sample,
+              owner: ["Damon Clark", "Owen Clark", "Ruby Clark"].sample,
+              project_id: 1,
+              user_id: [1, 2, 3].sample)
+  end
+
+30.times do 
+  Ticket.create(subject: Faker::Lorem.word,
+                customer: Faker::Name.last_name + Faker::Name.first_name,
+                assigned_to: ["Damon Clark", "Owen Clark", "Ruby Clark"].sample,
+                priority: ["High", "Medium", "Low"].sample,
+                status: ["Open", "Pending", "Closed", "On Hold"].sample,
+                details: Faker::Lorem.paragraph,
+                project_id: 1,
+                due_date: Faker::Date.in_date_period,
+                user_id: [1, 2, 3].sample)
+  end
+
+30.times do 
+  Activity.create(action:["create", "update"].sample,
+                  trackable_type: ["Ticket", "Contact", "Task"].sample,
+                  trackable_id: 1,
+                  created_at: Faker::Date.in_date_period,
+                  updated_at: Faker::Date.in_date_period,
+                  project_id: 1,
+                  user_id: [1, 2, 3].sample)
+  end
