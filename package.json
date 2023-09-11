@@ -2,6 +2,7 @@
   "dependencies": {
     "@rails/actiontext": "^6.1.6-1",
     "@rails/webpacker": "^5.4.3",
+    "chokidar": "^3.5.3",
     "flowbite": "^1.6.5",
     "glob-parent": ">=6.0.2",
     "trix": "^1.2.0"
