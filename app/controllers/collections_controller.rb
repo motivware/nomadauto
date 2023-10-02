@@ -1,5 +1,5 @@
 class CollectionsController < ApplicationController
-  before_action :trial_expired?
+  # before_action :trial_expired?
 
   def show
     @project = Project.find(params[:project_id])
