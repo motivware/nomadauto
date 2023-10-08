@@ -15,10 +15,6 @@
 				<div class="mt-6 border-t border-gray-100">
 					<dl class="divide-y divide-gray-100">
 						<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-							<dt class="text-sm font-medium leading-6 text-gray-900">Company</dt>
-							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= @contact.company %></dd>
-						</div>
-						<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 							<dt class="text-sm font-medium leading-6 text-gray-900">First Name</dt>
 							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= @contact.first_name %></dd>
 						</div>
@@ -31,12 +27,24 @@
 							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= @contact.phone_number %></dd>
 						</div>
 						<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-							<dt class="text-sm font-medium leading-6 text-gray-900">Website</dt>
-							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= @contact.website %></dd>
-						</div>
-						<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 							<dt class="text-sm font-medium leading-6 text-gray-900">Email</dt>
 							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= @contact.email %></dd>
+						</div>
+						<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+							<dt class="text-sm font-medium leading-6 text-gray-900">Status</dt>
+							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= @contact.status %></dd>
+						</div>
+						<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+							<dt class="text-sm font-medium leading-6 text-gray-900">Start Date</dt>
+							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= @contact.start_date %></dd>
+						</div>
+						<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+							<dt class="text-sm font-medium leading-6 text-gray-900">End Date</dt>
+							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= @contact.end_date %></dd>
+						</div>
+						<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+							<dt class="text-sm font-medium leading-6 text-gray-900">Pay Rate</dt>
+							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= @contact.pay_rate %></dd>
 						</div>
 						<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 							<dt class="text-sm font-medium leading-6 text-gray-900">Created At</dt>

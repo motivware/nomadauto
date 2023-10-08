@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_14_131325) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_08_103215) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -88,6 +88,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_14_131325) do
     t.index ["project_id"], name: "index_articles_on_project_id"
   end
 
+  create_table "cards", force: :cascade do |t|
+    t.bigint "list_id", null: false
+    t.string "name"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_cards_on_list_id"
+  end
+
   create_table "chatrooms", force: :cascade do |t|
     t.string "email"
     t.string "name"
@@ -130,15 +139,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_14_131325) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.bigint "project_id"
-    t.string "company"
     t.string "first_name"
     t.string "last_name"
     t.string "phone_number"
-    t.string "website"
     t.string "email"
     t.bigint "user_id"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "pay_rate"
+    t.string "status"
+    t.text "notes"
     t.index ["project_id"], name: "index_contacts_on_project_id"
     t.index ["user_id"], name: "index_contacts_on_user_id"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.string "subject"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "contact_id"
+    t.bigint "project_id"
+    t.index ["contact_id"], name: "index_conversations_on_contact_id"
+    t.index ["project_id"], name: "index_conversations_on_project_id"
   end
 
   create_table "customer_contacts", force: :cascade do |t|
@@ -173,11 +195,31 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_14_131325) do
     t.index ["project_id"], name: "index_invites_on_project_id"
   end
 
+  create_table "lists", force: :cascade do |t|
+    t.string "name"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "project_id"
+    t.index ["project_id"], name: "index_lists_on_project_id"
+  end
+
   create_table "plans", id: :serial, force: :cascade do |t|
     t.string "name"
     t.decimal "price"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.bigint "conversation_id", null: false
+    t.string "author_type", null: false
+    t.bigint "author_id", null: false
+    t.string "message_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_type", "author_id"], name: "index_posts_on_author"
+    t.index ["conversation_id"], name: "index_posts_on_conversation_id"
   end
 
   create_table "profiles", id: :serial, force: :cascade do |t|
@@ -272,6 +314,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_14_131325) do
   add_foreign_key "activities", "users"
   add_foreign_key "articles", "collections"
   add_foreign_key "articles", "projects"
+  add_foreign_key "cards", "lists"
   add_foreign_key "chatrooms", "projects"
   add_foreign_key "chats", "chatrooms"
   add_foreign_key "collections", "articles", column: "articles_id"
@@ -279,8 +322,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_14_131325) do
   add_foreign_key "comments", "tasks"
   add_foreign_key "contacts", "projects"
   add_foreign_key "contacts", "users"
+  add_foreign_key "conversations", "contacts"
+  add_foreign_key "conversations", "projects"
   add_foreign_key "deals", "projects"
   add_foreign_key "invites", "projects"
+  add_foreign_key "lists", "projects"
+  add_foreign_key "posts", "conversations"
   add_foreign_key "profiles", "projects"
   add_foreign_key "projects", "deals"
   add_foreign_key "projects", "tasks"

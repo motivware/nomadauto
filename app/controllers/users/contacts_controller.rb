@@ -3,6 +3,7 @@
 module Users
   class ContactsController < UsersController
     before_action :trial_expired?
+    helper_method :sort_column, :sort_direction
 
     def index
       @project = Project.find(params[:project_id])
@@ -10,10 +11,34 @@ module Users
       @user = User.find(session[:user_id])
 
       if @user.plan_id == 2 ||  @user.plan_id == 1
-        @contacts = @project.contacts.order("created_at desc") if Contact.exists?
+        @contacts = @project.contacts.all if Contact.exists?
+        @contacts = @contacts.order("#{sort_column} #{sort_direction}") if params['sort'].present?
+
+        if params[:status] == "Lead"
+          @contacts = @contacts.where(status: "Lead")
+        elsif params[:status] == "Prospect"
+          @contacts = @contacts.where(status: "Prospect")
+        elsif params[:status] == "Athlete"
+          @contacts = @contacts.where(status: "Athlete")
+        elsif params[:status] == "Completed"
+          @contacts = @contacts.where(status: "Completed")
+        end
+
       else @user.plan_id == 3
-        @contacts = @user.contacts.order("created_at desc") if Contact.exists?
+        @contacts = @user.contacts.all if Contact.exists?
+        @contacts = @contacts.order("#{sort_column} #{sort_direction}") if params['sort'].present?
+
+        if params[:status] == "Leads"
+          @contacts = @contacts.where(status: "Leads")
+        elsif params[:status] == "Prospects"
+          @contacts = @contacts.where(status: "Prospects")
+        elsif params[:status] == "Athletes"
+          @contacts = @contacts.where(status: "Athletes")
+        elsif params[:status] == "Completed"
+          @contacts = @contacts.where(status: "Completed")
+        end
       end
+
     end
 
     def new
@@ -55,12 +80,14 @@ module Users
       @contact = @project.contacts.create(contact_params)
 
       if @contact.save
-        company = params[:contact][:contact]
         first_name = params[:contact][:first_name]
         last_name = params[:contact][:last_name]
         phone_number = params[:contact][:phone_number]
-        website = params[:contact][:website]
         email = params[:contact][:email]
+        status = params[:contact][:status]
+        start_date= params[:contact][:start_date]
+        end_date = params[:contact][:end_date]
+        pay_rate = params[:contact][:pay_rate]
         flash[:success] = 'Record Saved.'
         redirect_to project_contacts_path
 
@@ -103,12 +130,20 @@ module Users
       redirect_to project_contacts_path, notice: "Imported #{count} users"
     end
 
+    def sort_column
+      params[:sort] || 'title'
+    end
+  
+    def sort_direction
+      params[:direction] || 'asc'
+    end
+
     private
 
     def contact_params
       # To collect data from form, we need to use
       # strong paramaters and whitelist form fields
-      params.require(:contact).permit(:company, :first_name, :last_name, :phone_number, :website, :email, :user_id)
+      params.require(:contact).permit(:first_name, :last_name, :phone_number,:email, :status, :start_date, :end_date, :pay_rate, :notes, :user_id)
     end
   end
 end
