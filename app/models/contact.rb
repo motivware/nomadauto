@@ -25,6 +25,8 @@ class Contact < ApplicationRecord
     contact
   end
 
+  attr_accessor :avatar_file_name
+  
   has_attached_file :waiver,
                     styles: { medium: '300x300>', thumb: '100x100>' },
                     default_url: '/images/:style/missing.png',
