@@ -88,6 +88,7 @@ module Users
         start_date= params[:contact][:start_date]
         end_date = params[:contact][:end_date]
         pay_rate = params[:contact][:pay_rate]
+        waiver = params[:contact][:waiver]
         flash[:success] = 'Record Saved.'
         redirect_to project_contacts_path
 
@@ -143,7 +144,7 @@ module Users
     def contact_params
       # To collect data from form, we need to use
       # strong paramaters and whitelist form fields
-      params.require(:contact).permit(:first_name, :last_name, :phone_number,:email, :status, :start_date, :end_date, :pay_rate, :notes, :user_id)
+      params.require(:contact).permit(:first_name, :last_name, :phone_number,:email, :status, :start_date, :end_date, :pay_rate, :notes, :user_id, :waiver)
     end
   end
 end
