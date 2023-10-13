@@ -59,7 +59,11 @@ module Users
       # 2nd you retrieve the contacts thanks to params[:id]
       @contact = @project.contacts.find(params[:id])
       # authorize @contact
+      if Address.where(contact: @contact) 
+        puts @contact.address
 
+        @address = @contact.address
+      end
       respond_to do |format|
         format.html # show.html.erb
         format.xml  { render xml: @contact }

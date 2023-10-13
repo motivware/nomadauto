@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_13_010456) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_13_021915) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,6 +74,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_13_010456) do
     t.index ["ticket_id"], name: "index_activities_on_ticket_id"
     t.index ["trackable_type", "trackable_id"], name: "index_activities_on_trackable_type_and_trackable_id"
     t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "street_address"
+    t.string "address_line_two"
+    t.string "city"
+    t.string "state"
+    t.string "zipcode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "contact_id"
+    t.bigint "project_id"
+    t.index ["contact_id"], name: "index_addresses_on_contact_id"
+    t.index ["project_id"], name: "index_addresses_on_project_id"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -326,6 +340,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_13_010456) do
   add_foreign_key "activities", "projects"
   add_foreign_key "activities", "tickets"
   add_foreign_key "activities", "users"
+  add_foreign_key "addresses", "contacts"
+  add_foreign_key "addresses", "projects"
   add_foreign_key "articles", "collections"
   add_foreign_key "articles", "projects"
   add_foreign_key "cards", "lists"

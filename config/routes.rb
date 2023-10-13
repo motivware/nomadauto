@@ -54,6 +54,7 @@ Rails.application.routes.draw do
         resources :tickets
         resources :activities
         resources :contacts do
+          resources :addresses
           collection do
             post :import
           end

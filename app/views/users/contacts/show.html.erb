@@ -47,6 +47,14 @@
 							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= @contact.pay_rate %></dd>
 						</div>
 						<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+							<dt class="text-sm font-medium leading-6 text-gray-900">Address</dt>
+							<% if Address.where(contact_id: @contact).exists? %>
+							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= @address.street_address %><br/><% if @address.address_line_two.present? %><%= @address.address_line_two %><br/><% end %><%= @address.city %> <%= @address.state %> <%= @address.zipcode %></dd>
+							<% else %>
+							<dd class=""><%= link_to "Add Contacts Address", new_project_contact_address_path(@project, @contact), :class => "inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto" %></dd>
+							<% end %>
+						</div>
+						<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 							<dt class="text-sm font-medium leading-6 text-gray-900">Created At</dt>
 							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= @contact.created_at.to_date %></dd>
 						</div>
