@@ -60,8 +60,6 @@ module Users
       @contact = @project.contacts.find(params[:id])
       # authorize @contact
       if Address.where(contact: @contact) 
-        puts @contact.address
-
         @address = @contact.address
       end
       respond_to do |format|
