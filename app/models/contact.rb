@@ -27,7 +27,10 @@ class Contact < ApplicationRecord
   end
 
   attr_accessor :avatar_file_name
-  
+  attr_accessor :waiver
+  attr_accessor :intake_form
+  attr_accessor :contract
+
   has_attached_file :waiver,
                     styles: { medium: '300x300>', thumb: '100x100>' },
                     default_url: '/images/:style/missing.png',
