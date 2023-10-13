@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_09_012437) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_13_010456) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -153,6 +153,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_09_012437) do
     t.string "waiver_content_type"
     t.bigint "waiver_file_size"
     t.datetime "waiver_updated_at"
+    t.string "intake_form_file_name"
+    t.string "intake_form_content_type"
+    t.bigint "intake_form_file_size"
+    t.datetime "intake_form_updated_at"
+    t.string "contract_file_name"
+    t.string "contract_content_type"
+    t.bigint "contract_file_size"
+    t.datetime "contract_updated_at"
     t.index ["project_id"], name: "index_contacts_on_project_id"
     t.index ["user_id"], name: "index_contacts_on_user_id"
   end
@@ -222,8 +230,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_09_012437) do
     t.string "message_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "project_id"
     t.index ["author_type", "author_id"], name: "index_posts_on_author"
     t.index ["conversation_id"], name: "index_posts_on_conversation_id"
+    t.index ["project_id"], name: "index_posts_on_project_id"
   end
 
   create_table "profiles", id: :serial, force: :cascade do |t|
@@ -332,6 +342,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_09_012437) do
   add_foreign_key "invites", "projects"
   add_foreign_key "lists", "projects"
   add_foreign_key "posts", "conversations"
+  add_foreign_key "posts", "projects"
   add_foreign_key "profiles", "projects"
   add_foreign_key "projects", "deals"
   add_foreign_key "projects", "tasks"

@@ -34,6 +34,20 @@ class Contact < ApplicationRecord
 
   validates_attachment_content_type :waiver, content_type: ['application/pdf']
 
+  has_attached_file :intake_form,
+                    styles: { medium: '300x300>', thumb: '100x100>' },
+                    default_url: '/images/:style/missing.png',
+                    url: '/assets/:id/:style/:basename.:extension'
+
+  validates_attachment_content_type :intake_form, content_type: ['application/pdf']
+
+  has_attached_file :contract,
+                    styles: { medium: '300x300>', thumb: '100x100>' },
+                    default_url: '/images/:style/missing.png',
+                    url: '/assets/:id/:style/:basename.:extension'
+
+  validates_attachment_content_type :contract, content_type: ['application/pdf']
+
   def self.import(file)
     counter = 0
     CSV.foreach(file.pathmap, headers: true, header_converters: :symbol) do |row|

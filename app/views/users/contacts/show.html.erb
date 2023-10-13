@@ -58,6 +58,14 @@
 							<dt class="text-sm font-medium leading-6 text-gray-900">Waiver</dt>
 							<dd class=""><%= link_to "Download Attached Waiver", asset_path(@contact.waiver.url()), target: "_blank", class: 'inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto' %></dd>
 						</div>
+						<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+							<dt class="text-sm font-medium leading-6 text-gray-900">Intake Form</dt>
+							<dd class=""><%= link_to "Download Attached Intake Form", asset_path(@contact.intake_form.url()), target: "_blank", class: 'inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto' %></dd>
+						</div>
+						<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+							<dt class="text-sm font-medium leading-6 text-gray-900">Contract</dt>
+							<dd class=""><%= link_to "Download Attached Contract", asset_path(@contact.contract.url()), target: "_blank", class: 'inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto' %></dd>
+						</div>
 					</dl>
 					<div class="pt-5">
 						<%= link_to "Edit", edit_project_contact_path(@project), class: 'inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto'  %>
