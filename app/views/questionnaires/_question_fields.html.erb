@@ -1,0 +1,42 @@
+<div class="nested-fields" data-controller='dynamic-select'>
+  <div class="shadow-lg p-3 pt-8 space-y-6 sm:pt-10 sm:space-y-5">
+    <div class="space-y-6 sm:space-y-5">
+        <div class="form-group">
+          <%= form.select :question_type, options_for_select(Question.question_type_select, selected: form.object.question_type), {}, 'data-dynamic-select-target': 'select', 'data-action': 'dynamic-select#selected'%>
+        </div>
+
+        <div class="sm:grid sm:grid-cols-1 sm:gap-4 sm:items-start sm:border-gray-200">
+          <div class="form-group">
+          <%= form.hidden_field :_destroy %>
+          <%= form.text_field :name, placeholder: 'Question', class: 'block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md' %>
+          </div>
+        <div class="p-2 sm:grid sm:grid-cols-8 sm:gap-4 sm:items-start sm:border-gray-200">
+          <small>
+            <%= link_to "Remove", "#", data: { action: "click->nested-form#remove_association" }, class: "cursor-pointer	inline-flex items-center justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:w-auto" %>
+          </small>
+          </div>
+        </div>
+        <div data-controller="nested-form" data-dynamic-select-target='choice'>
+            <template data-nested-form-target='template'>
+              <%= form.fields_for :answers, Answer.new, child_index: 'TEMPLATE_RECORD' do |answer| %>
+                <%= render 'answer_fields', form: answer %>
+              <% end %>
+            </template>
+
+            <%= form.fields_for :answers do |answer| %>
+              <%= render 'answer_fields', form: answer %>
+            <% end %>
+
+          <div class="p-2 sm:grid sm:grid-cols-1 sm:gap-4 sm:items-start sm:border-gray-200">
+            <div data-nested-form-target="add_item">
+              <%= link_to "Add Answer", "#", data: { action: "nested-form#add_association" }, class: "cursor-pointer	inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto" %>
+            </div>
+            <br/>
+          </div>
+        </div>
+        <div data-controller="nested-form" data-dynamic-select-target='long'>
+        </div>
+      </div>
+    </div>
+</div>
+ 

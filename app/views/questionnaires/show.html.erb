@@ -1,0 +1,49 @@
+<%= render 'users/sidebar' %><br/>
+<div class="md:pl-64 flex flex-col flex-1">
+  <main class="flex-1">
+    <div class="py-6">
+      <!-- This example requires Tailwind CSS v2.0+ -->
+      <div class="px-4 sm:px-6 lg:px-8">
+        <div class="sm:flex sm:items-center">
+          <div class="sm:flex-auto">
+					<div>
+            <% if notice.present? %>
+              <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+            <% end %>
+
+            <h1 class="text-base font-semibold leading-7 text-xl text-gray-900"><%= @questionnaire.name %></h1> <br/>
+
+            <% @questionnaire.questions.each do |question| %>
+              <h2 class="py-4 text-lg"><%= question.name %></h2>
+
+              <% case question.question_type %>
+              <% when 'single_choice' %>
+                <% question.answers.each do |answer| %>
+                  <p>
+                    <%= radio_button_tag question.id, answer.id %>
+                    <%= answer.name %>
+                  </p>
+                <% end %>
+              <% when 'multiple_choice' %>
+                <% question.answers.each do |answer| %>
+                  <p>
+                    <%= check_box_tag question.id, answer.id %>
+                    <%= answer.name %>
+                  </p>
+                <% end %>
+              <% when 'long_answer' %>
+                <%= text_area_tag question.id %>
+              <% end %>
+            <% end %>
+
+            <%= link_to 'Edit this questionnaire', edit_project_questionnaire_path(@project, @questionnaire), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+            <div class="inline-block ml-2">
+              <%= button_to 'Destroy this questionnaire', project_questionnaire_path(@project, @questionnaire), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+            </div>
+            <%= link_to 'Back to questionnaires', project_questionnaires_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+          </div>
+	      </div>
+			</div>
+    </div>
+  <div>
+</div>

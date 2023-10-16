@@ -9,6 +9,7 @@ gem "puma", "6.4.0"
 gem 'rails', '7.0.4'
 gem 'react-rails'
 gem 'record_tag_helper', '~> 1.0'
+gem 'stimulus-rails'
 gem 'sass-rails', '~> 6.0'
 gem 'turbolinks', '5.0.0'
 gem 'uglifier', '3.0.0'

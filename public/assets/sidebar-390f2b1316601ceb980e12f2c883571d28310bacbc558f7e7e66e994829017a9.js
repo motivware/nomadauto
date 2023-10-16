@@ -1,1 +1,0 @@
-$(function(){$(window).width()>767&&$("#menu-toggle").click(function(e){e.preventDefault(),$("#wrapper").toggleClass("active")})});
