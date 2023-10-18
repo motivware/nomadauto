@@ -6,9 +6,9 @@
         <%= form.text_field :name, placeholder: 'Questionnaire Name', class: 'block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md' %>
       </div>
 
-      <div data-controller="nested-form">
+      <div data-controller="nested-form" data-nested-form-index-value='QUESTION_RECORD'>
         <template data-nested-form-target='template'>
-          <%= form.fields_for :questions, Question.new, child_index: 'TEMPLATE_RECORD' do |question| %>
+          <%= form.fields_for :questions, Question.new, child_index: 'QUESTION_RECORD' do |question| %>
             <%= render 'question_fields', form: question %>
           <% end %>
         </template>

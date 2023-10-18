@@ -58,6 +58,8 @@ class QuestionnairesController < ApplicationController
   def edit
     @project = Project.find(params[:project_id])
 
+    @questions = Question.all
+    @answers = Answer.all
     @questionnaire = @project.questionnaires.find(params[:id])
   end
   
@@ -100,6 +102,7 @@ class QuestionnairesController < ApplicationController
           :id,
           :question_type,
           :name,
+          :required,
           answers_attributes: [
             :_destroy,
             :id,

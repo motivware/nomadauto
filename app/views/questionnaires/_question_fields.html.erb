@@ -5,6 +5,11 @@
           <%= form.select :question_type, options_for_select(Question.question_type_select, selected: form.object.question_type), {}, 'data-dynamic-select-target': 'select', 'data-action': 'dynamic-select#selected'%>
         </div>
 
+        <div class='form-group'>
+          <%= form.check_box :required%>
+          <%= form.label :required%>
+
+        </div>
         <div class="sm:grid sm:grid-cols-1 sm:gap-4 sm:items-start sm:border-gray-200">
           <div class="form-group">
           <%= form.hidden_field :_destroy %>
@@ -16,9 +21,10 @@
           </small>
           </div>
         </div>
-        <div data-controller="nested-form" data-dynamic-select-target='choice'>
+
+        <div data-controller="nested-form" data-nested-form-index-value="ANSWER_RECORD" data-dynamic-select-target='choice'>
             <template data-nested-form-target='template'>
-              <%= form.fields_for :answers, Answer.new, child_index: 'TEMPLATE_RECORD' do |answer| %>
+              <%= form.fields_for :answers, Answer.new, child_index: 'ANSWER_RECORD' do |answer| %>
                 <%= render 'answer_fields', form: answer %>
               <% end %>
             </template>

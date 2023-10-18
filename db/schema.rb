@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_15_141635) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_17_011813) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -308,6 +308,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_15_141635) do
     t.index ["questionnaire_id"], name: "index_questions_on_questionnaire_id"
   end
 
+  create_table "responses", force: :cascade do |t|
+    t.bigint "questionnaire_id", null: false
+    t.json "answers"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["questionnaire_id"], name: "index_responses_on_questionnaire_id"
+  end
+
   create_table "tasks", id: :serial, force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -391,6 +399,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_15_141635) do
   add_foreign_key "projects", "tasks"
   add_foreign_key "questionnaires", "projects"
   add_foreign_key "questions", "questionnaires"
+  add_foreign_key "responses", "questionnaires"
   add_foreign_key "tasks", "projects"
   add_foreign_key "tickets", "contacts"
   add_foreign_key "tickets", "projects"

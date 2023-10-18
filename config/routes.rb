@@ -49,7 +49,9 @@ Rails.application.routes.draw do
         resources :comments
       end
       
-      resources :questionnaires
+      resources :questionnaires do 
+        resources :responses
+      end
 
       resources :profiles
 

@@ -1,0 +1,51 @@
+<h1 class="text-xl font-semibold text-gray-900"><br/>
+<%= @questionnaire.name %>
+</h1>
+<%= form_for([@questionnaire.project, @questionnaire, response], class: "contents") do |form| %>
+  <%= form.fields_for :answers do |response| %>
+    <% @questionnaire.questions.each do |question| %>
+      <h2>
+        <br/>
+        <%= question.name %>
+        <%= content_tag :abbr, '*', title: 'Required' if question.required %>
+      </h2>
+
+       <% case question.question_type %>
+        <% when 'single_choice' %>
+          <% question.answers.each do |answer| %>
+            <p>
+              <%= response.radio_button question.id, answer.id, required: question.required %>
+              <%= answer.name %>
+            </p>
+          <% end %>
+        <% when 'multiple_choice' %>
+          <% question.answers.each do |answer| %>
+            <p>
+              <%= response.check_box question.id, { multiple: true }, answer.id %>
+              <%= answer.name %>
+            </p>
+        <% end %>
+        <% when 'long_answer' %>
+          <%= response.text_area question.id, { class: "py-5 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" } %>
+          <br/>
+        <% end %>
+  
+
+    <% end %>
+  <% end %>
+  <% if response.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(response.errors.count, "error") %> prohibited this response from being saved:</h2>
+
+      <ul>
+        <% response.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <br/>
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
