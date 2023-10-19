@@ -28,9 +28,9 @@
         <% when 'long_answer' %>
           <%= response.text_area question.id, { class: "py-5 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" } %>
           <br/>
+        <% when 'short_answer' %>
+          <%= response.text_field question.id,  required: question.required  %>
         <% end %>
-  
-
     <% end %>
   <% end %>
   <% if response.errors.any? %>

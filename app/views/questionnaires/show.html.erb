@@ -33,6 +33,8 @@
                 <% end %>
               <% when 'long_answer' %>
                 <%= text_area_tag question.id %>
+              <% when 'short_answer' %>
+                <%= text_field_tag question.id %>
               <% end %>
             <% end %>
             <br/>

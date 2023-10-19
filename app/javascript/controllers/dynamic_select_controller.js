@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["select", "choice", "long"]
+  static targets = ["select", "choice", "long", "short"]
 
   connect() {
     this.selected()
@@ -17,6 +17,9 @@ export default class extends Controller {
         this.choiceTarget.classList.remove('hidden')
         break;
       case 'long_answer':
+        this.longTarget.classList.remove('hidden')
+        break;
+      case 'short_answer':
         this.longTarget.classList.remove('hidden')
         break;
     }

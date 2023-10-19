@@ -9,7 +9,7 @@
             <h1 class="font-bold text-4xl">Editing questionnaire</h1>
 
             <%= render "form", questionnaire: @questionnaire %>
-
+            <br/>
             <%= link_to "Show this questionnaire", edit_project_questionnaire_path(@project), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
             <%= link_to "Back to questionnaires", project_questionnaires_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
           </div>

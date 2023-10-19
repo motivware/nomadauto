@@ -27,6 +27,8 @@
                 <% when 'long_answer' %>
                   <p><%= @response.answers[question.id.to_s] %></p>
                     <br/>
+                <% when 'short_answer' %>
+                  <%= @response.answers[question.id.to_s] %>
                 <% end %>
             <% end %>
           </div>
