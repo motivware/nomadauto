@@ -5,7 +5,8 @@ class Project < ApplicationRecord
   # validates :title, :presence => true, :length => { :minimum => 5 }
   has_many :collections,  dependent: :destroy
   has_many :articles, dependent: :destroy
-  has_many :addresses
+  has_many :addresses, dependent: :destroy
+  has_many :questionnaires, dependent: :destroy
   has_many :activities,  dependent: :destroy
   has_many :tickets, dependent: :destroy
   has_many :contacts, dependent: :destroy

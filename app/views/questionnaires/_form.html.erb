@@ -1,0 +1,33 @@
+<%= form_for([@questionnaire.project, @questionnaire], class: "contents") do |form| %>
+	<div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
+		<div class="space-y-6 sm:space-y-5">
+      <%= form.label :name, "Create a name for your questionaire" %>
+			<div class="sm:grid sm:grid-cols-1 sm:items-start sm:border-gray-200 sm:pt-5">
+        <%= form.text_field :name, placeholder: 'Questionnaire Name', class: 'block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md' %>
+      </div>
+
+      <div data-controller="nested-form" data-nested-form-index-value='QUESTION_RECORD'>
+        <template data-nested-form-target='template'>
+          <%= form.fields_for :questions, Question.new, child_index: 'QUESTION_RECORD' do |question| %>
+            <%= render 'question_fields', form: question %>
+          <% end %>
+        </template>
+
+        <%= form.fields_for :questions do |question| %>
+          <%= render 'question_fields', form: question %>
+        <% end %>
+
+      <div class="sm:grid sm:grid-cols-1 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200">
+      <br/>
+        <div data-nested-form-target="add_item">
+          <%= link_to "Add Question", "#", data: { action: "nested-form#add_association" }, class: "cursor-pointer	inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto" %>
+        </div>
+      </div>
+      </div>
+
+      <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= form.submit class: "cursor-pointer	inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto" %>
+      </div>
+      </div>
+    </div>
+<% end %>

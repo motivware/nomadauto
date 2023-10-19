@@ -48,6 +48,11 @@ Rails.application.routes.draw do
       resources :tasks, only: %i[index show new create edit update destroy] do
         resources :comments
       end
+      
+      resources :questionnaires do 
+        resources :responses
+      end
+
       resources :profiles
 
       scope module: 'users' do

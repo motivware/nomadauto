@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_13_021915) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_17_011813) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -88,6 +88,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_13_021915) do
     t.bigint "project_id"
     t.index ["contact_id"], name: "index_addresses_on_contact_id"
     t.index ["project_id"], name: "index_addresses_on_project_id"
+  end
+
+  create_table "answers", force: :cascade do |t|
+    t.bigint "question_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -282,6 +290,32 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_13_021915) do
     t.index ["task_id"], name: "index_projects_on_task_id"
   end
 
+  create_table "questionnaires", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "project_id"
+    t.index ["project_id"], name: "index_questionnaires_on_project_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.bigint "questionnaire_id", null: false
+    t.integer "question_type"
+    t.boolean "required"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["questionnaire_id"], name: "index_questions_on_questionnaire_id"
+  end
+
+  create_table "responses", force: :cascade do |t|
+    t.bigint "questionnaire_id", null: false
+    t.json "answers"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["questionnaire_id"], name: "index_responses_on_questionnaire_id"
+  end
+
   create_table "tasks", id: :serial, force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -342,6 +376,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_13_021915) do
   add_foreign_key "activities", "users"
   add_foreign_key "addresses", "contacts"
   add_foreign_key "addresses", "projects"
+  add_foreign_key "answers", "questions"
   add_foreign_key "articles", "collections"
   add_foreign_key "articles", "projects"
   add_foreign_key "cards", "lists"
@@ -362,6 +397,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_13_021915) do
   add_foreign_key "profiles", "projects"
   add_foreign_key "projects", "deals"
   add_foreign_key "projects", "tasks"
+  add_foreign_key "questionnaires", "projects"
+  add_foreign_key "questions", "questionnaires"
+  add_foreign_key "responses", "questionnaires"
   add_foreign_key "tasks", "projects"
   add_foreign_key "tickets", "contacts"
   add_foreign_key "tickets", "projects"

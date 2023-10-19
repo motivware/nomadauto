@@ -1,0 +1,11 @@
+
+<div class="nested-fields">
+  <div class='form-group'>
+      <%= form.hidden_field :_destroy %>
+      <%= form.text_field :name, placeholder: 'Answer', class: 'w-3/4	 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md' %>
+      <small>
+        <%= link_to "Remove Answer", "#", data: { action: "click->nested-form#remove_association" }, class: "cursor-pointer	inline-flex items-center justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:w-auto" %>
+      </small>
+    </div>
+  </div>
+</div>
