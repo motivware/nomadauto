@@ -1,0 +1,43 @@
+/* line 13, app/assets/stylesheets/actiontext.scss */
+.trix-content .attachment-gallery > action-text-attachment,
+.trix-content .attachment-gallery > .attachment {
+  flex: 1 0 33%;
+  padding: 0 0.5em;
+  max-width: 33%;
+}
+
+/* line 22, app/assets/stylesheets/actiontext.scss */
+.trix-content .attachment-gallery.attachment-gallery--2 > action-text-attachment,
+.trix-content .attachment-gallery.attachment-gallery--2 > .attachment, .trix-content .attachment-gallery.attachment-gallery--4 > action-text-attachment,
+.trix-content .attachment-gallery.attachment-gallery--4 > .attachment {
+  flex-basis: 50%;
+  max-width: 50%;
+}
+
+/* line 31, app/assets/stylesheets/actiontext.scss */
+.trix-content action-text-attachment .attachment {
+  padding: 0 !important;
+  max-width: 100% !important;
+}
+
+/* line 37, app/assets/stylesheets/actiontext.scss */
+trix-editor a {
+  text-decoration: underline !important;
+}
+
+/* line 38, app/assets/stylesheets/actiontext.scss */
+trix-editor ul {
+  list-style-type: disc !important;
+  margin-left: 1rem !important;
+}
+
+/* line 39, app/assets/stylesheets/actiontext.scss */
+trix-editor ol {
+  list-style-type: decimal !important;
+  margin-left: 1rem !important;
+}
+
+/* line 40, app/assets/stylesheets/actiontext.scss */
+trix-editor ul {
+  list-style-type: disc !important;
+}
