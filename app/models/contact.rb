@@ -6,7 +6,7 @@ class Contact < ApplicationRecord
 
   has_one :address
   has_many :tasks
-
+  has_many :questionnaires
   validates :first_name, :presence => true
 	
   include PublicActivity

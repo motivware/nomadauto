@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_17_011813) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_27_153133) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -295,6 +295,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_17_011813) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "project_id"
+    t.bigint "contact_id"
+    t.index ["contact_id"], name: "index_questionnaires_on_contact_id"
     t.index ["project_id"], name: "index_questionnaires_on_project_id"
   end
 
@@ -397,6 +399,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_17_011813) do
   add_foreign_key "profiles", "projects"
   add_foreign_key "projects", "deals"
   add_foreign_key "projects", "tasks"
+  add_foreign_key "questionnaires", "contacts"
   add_foreign_key "questionnaires", "projects"
   add_foreign_key "questions", "questionnaires"
   add_foreign_key "responses", "questionnaires"

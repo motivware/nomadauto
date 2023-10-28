@@ -19,10 +19,10 @@
 
               <% case question.question_type %>
                 <% when 'single_choice' %>
-                  <><%= @response.answers.find { |a| a.id.to_s == @response.answers[question.id.to_s] }.name %></p>
+                  <p><%= question.answers.find { |a| a.id.to_s == @response.answers[question.id.to_s] }.name %></p>
                 <% when 'multiple_choice' %>
-                  <%= @response.answers.select { |a| @response.multiple_choice_answers(question.id).includes?(a.id) }.each do |answers|  %>
-                    <p><%= answer.name %></p>
+                 <% question.answers.select { |a| @response.multiple_choice_answers(question.id).include?(a.id) }.each do |answer| %>
+                  <p><%= answer.name %></p>
                   <% end %>
                 <% when 'long_answer' %>
                   <p><%= @response.answers[question.id.to_s] %></p>
@@ -31,8 +31,8 @@
                   <%= @response.answers[question.id.to_s] %>
                 <% end %>
             <% end %>
-          </div>
-        </div>
+              </div>
+            </div>
           </div>
 	      </div>
 			</div>

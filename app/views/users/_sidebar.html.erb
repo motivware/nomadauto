@@ -37,16 +37,6 @@
             </div>
          </li>
          <% end %>
-        <%= link_to project_questionnaires_path,  method: :get, class: "" do %>
-        <li>
-            <div class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm0 16a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm1-5.034V12a1 1 0 0 1-2 0v-1.418a1 1 0 0 1 1.038-.999 1.436 1.436 0 0 0 1.488-1.441 1.501 1.501 0 1 0-3-.116.986.986 0 0 1-1.037.961 1 1 0 0 1-.96-1.037A3.5 3.5 0 1 1 11 11.466Z"/>
-            </svg>
-              <span class="flex-1 ml-3 whitespace-nowrap">Questionnaires</span>
-            </div>
-        </li>
-        <% end %>
         <%= link_to project_tickets_path(assigned_to: ""),  method: :get, class: "" do %>
         <li>
             <div class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
@@ -56,18 +46,7 @@
               <span class="flex-1 ml-3 whitespace-nowrap">Tickets</span>
             </div>
         </li>
-        <% end %>
-         </li>
-        <%= link_to project_articles_path,  method: :get, class: "" do %>
-         <li>
-            <div class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColer" class="w-6 h-6">
-                <path d="M11.25 4.533A9.707 9.707 0 006 3a9.735 9.735 0 00-3.25.555.75.75 0 00-.5.707v14.25a.75.75 0 001 .707A8.237 8.237 0 016 18.75c1.995 0 3.823.707 5.25 1.886V4.533zM12.75 20.636A8.214 8.214 0 0118 18.75c.966 0 1.89.166 2.75.47a.75.75 0 001-.708V4.262a.75.75 0 00-.5-.707A9.735 9.735 0 0018 3a9.707 9.707 0 00-5.25 1.533v16.103z" />
-              </svg>
-              <span class="flex-1 ml-3 whitespace-nowrap">Knowledge</span>
-            </div>
-         </li>
-         <% end %>
+        <% end %> 
         <%= link_to project_contacts_path,  method: :get, class: "" do %>
          <li>
             <div class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">

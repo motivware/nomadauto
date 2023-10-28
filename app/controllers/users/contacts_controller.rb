@@ -9,6 +9,7 @@ module Users
       @project = Project.find(params[:project_id])
       authorize @project
       @user = User.find(session[:user_id])
+      @questionnaire = @project.questionnaires.all
 
       if @user.plan_id == 2 ||  @user.plan_id == 1
         @contacts = @project.contacts.all if Contact.exists?
@@ -58,6 +59,15 @@ module Users
       @project = Project.find(params[:project_id])
       # 2nd you retrieve the contacts thanks to params[:id]
       @contact = @project.contacts.find(params[:id])
+
+      if Questionnaire.where(project_id: @project) && Questionnaire.where(contact: @contact)
+        @questionnaires = @contact.questionnaires.all
+        @questions = Question.all
+        @answers = Answer.all
+        @questionnaire = @project.questionnaires.new
+        @questions = @questionnaire.questions.build
+      end
+
       # authorize @contact
       if Address.where(contact: @contact) 
         @address = @contact.address

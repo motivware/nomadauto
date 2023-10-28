@@ -1,7 +1,7 @@
 <h1 class="text-xl font-semibold text-gray-900"><br/>
 <%= @questionnaire.name %>
 </h1>
-<%= form_for([@questionnaire.project, @questionnaire, response], class: "contents") do |form| %>
+<%= form_for([@questionnaire.project, @contact, @questionnaire, response], class: "contents") do |form| %>
   <%= form.fields_for :answers do |response| %>
     <% @questionnaire.questions.each do |question| %>
       <h2>
