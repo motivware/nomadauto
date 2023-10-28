@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_28_183657) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_28_190740) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -170,7 +170,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_28_183657) do
     t.date "end_date"
     t.integer "pay_rate"
     t.string "status"
-    t.text "notes"
+    t.text "comment"
     t.string "waiver_file_name"
     t.string "waiver_content_type"
     t.bigint "waiver_file_size"

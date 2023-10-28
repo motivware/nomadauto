@@ -158,7 +158,7 @@ module Users
     def contact_params
       # To collect data from form, we need to use
       # strong paramaters and whitelist form fields
-      params.require(:contact).permit(:first_name, :last_name, :phone_number, :email, :status, :start_date, :end_date, :pay_rate, :notes, :user_id, :waiver, :intake_form, :contract)
+      params.require(:contact).permit(:first_name, :last_name, :phone_number, :email, :status, :start_date, :end_date, :pay_rate, :comment, :user_id, :waiver, :intake_form, :contract)
     end
   end
 end
