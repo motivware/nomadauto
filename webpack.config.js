@@ -1,5 +1,4 @@
 module.exports = {
-  entry : "/src",
   module: {
     rules: [
       {
