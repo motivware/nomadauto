@@ -24,7 +24,9 @@
   },
   "scripts": {
     "start": "node src/index.js",
-    "build": "webpack"
+    "webpack" : "webpack",
+    "dev": "npm run webpack -- --mode development --watch",
+    "build": "npm run webpack -- --mode production"
   },
   "heroku-run-build-script": true
 }
