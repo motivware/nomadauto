@@ -8,7 +8,7 @@
     "@tailwindcss/forms": "^0.5.6",
     "@tailwindcss/typography": "^0.5.10",
     "chokidar": "^3.5.3",
-    "flowbite": "^1.6.5",
+    "flowbite": "^1.8.1",
     "glob-parent": ">=6.0.2",
     "stimulus": "^3.2.2",
     "trix": "^1.2.0",
@@ -20,11 +20,12 @@
     "@babel/preset-env": "^7.11.5",
     "babel-loader": "^8.2.5",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^4"
+    "webpack-dev-server": "^4",
+    "tailwindcss": "^1.2.0"
   },
   "scripts": {
     "start": "node src/index.js",
-    "webpack" : "webpack",
+    "webpack": "webpack",
     "dev": "npm run webpack -- --mode development --watch",
     "build": "npm run webpack -- --mode production"
   },
