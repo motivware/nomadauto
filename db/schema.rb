@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_27_153133) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_28_183657) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -238,6 +238,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_27_153133) do
     t.index ["project_id"], name: "index_lists_on_project_id"
   end
 
+  create_table "notes", force: :cascade do |t|
+    t.string "user_id"
+    t.string "owner"
+    t.text "body"
+    t.bigint "contact_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_id"], name: "index_notes_on_contact_id"
+  end
+
   create_table "plans", id: :serial, force: :cascade do |t|
     t.string "name"
     t.decimal "price"
@@ -394,6 +404,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_27_153133) do
   add_foreign_key "deals", "projects"
   add_foreign_key "invites", "projects"
   add_foreign_key "lists", "projects"
+  add_foreign_key "notes", "contacts"
   add_foreign_key "posts", "conversations"
   add_foreign_key "posts", "projects"
   add_foreign_key "profiles", "projects"

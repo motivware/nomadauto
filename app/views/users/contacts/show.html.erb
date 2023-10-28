@@ -26,7 +26,7 @@
 										<button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="surveys-tab" data-tabs-target="#surveys" type="button" role="tab" aria-controls="surveys" aria-selected="false">Surveys</button>
 								</li>
 								<li role="presentation">
-										<button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="contacts-tab" data-tabs-target="#contacts" type="button" role="tab" aria-controls="contacts" aria-selected="false">Notes</button>
+										<button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="notes-tab" data-tabs-target="#notes" type="button" role="tab" aria-controls="notes" aria-selected="false">Notes</button>
 								</li>
 						</ul>
 				</div>
@@ -115,8 +115,14 @@
 								
 								</div>
 						</div>
-						<div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
-								<p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">Contacts tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
+						<div class="hidden p-4 rounded-lg" id="notes" role="tabpanel" aria-labelledby="notes-tab">
+							 <div class="px-4 sm:px-0">
+									<h3 class="text-base font-semibold leading-7 text-gray-900"><%= @contact.notes.count %> Notes</h3>
+									<p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500"> <%= render @contact.notes %></p>
+									<br/>
+									<h4>Add a Note:</h4>
+									<%= render 'users/notes/form' %> 
+								</div>
 						</div>
 				</div>
 

@@ -55,6 +55,7 @@ Rails.application.routes.draw do
         resources :tickets
         resources :activities
         resources :contacts do
+          resources :notes
           resources :addresses
           resources :questionnaires do 
             resources :responses

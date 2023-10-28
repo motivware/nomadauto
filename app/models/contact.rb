@@ -6,6 +6,7 @@ class Contact < ApplicationRecord
 
   has_one :address
   has_many :tasks
+  has_many :notes
   has_many :questionnaires
   validates :first_name, :presence => true
 	
