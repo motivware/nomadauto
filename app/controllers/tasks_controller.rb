@@ -61,7 +61,7 @@ class TasksController < UsersController
     respond_to do |format|
       if @task.save
         # 1st argument of redirect_to is an array, in order to build the correct route to the nested resource task
-        format.html { redirect_to project_tasks_path(@project), notice: 'task was successfully created.' }
+        format.html { redirect_to project_task_path(@project, @task), notice: 'task was successfully created.' }
         # the key :location is associated to an array in order to build the correct route to the nested resource task
         format.xml  { render xml: @task, status: :created, location: [@task.project, @task] }
 
@@ -84,7 +84,7 @@ class TasksController < UsersController
     # 1st you retrieve the post thanks to params[:post_id]
     @project = Project.find(params[:project_id])
     # 2nd you retrieve the comment thanks to params[:id]
-    @task = Task.find(params[:id])
+    @task.task_id = Task.find(params[:task_id])
 
     respond_to do |format|
       if @task.update(task_params)

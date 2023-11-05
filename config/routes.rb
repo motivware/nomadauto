@@ -15,6 +15,8 @@ class SubdomainBlank
 end
 
 Rails.application.routes.draw do
+  resources :items
+  resources :columns
   get 'collection/new'
   get 'articles/index'
   # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -46,6 +48,9 @@ Rails.application.routes.draw do
         resources :articles, only: %i[show edit update new create]
       end
       resources :tasks, only: %i[index show new create edit update destroy] do
+        resources :columns, except: [:index, :show] do
+          resources :items, except: [:index, :show]
+        end
         resources :comments
       end
 

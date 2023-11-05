@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_28_190740) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_04_233717) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,7 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_28_190740) do
     t.text "metadata"
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
-    t.string "checksum", null: false
+    t.string "checksum"
     t.datetime "created_at", precision: nil, null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
@@ -148,6 +148,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_28_190740) do
     t.index ["project_id"], name: "index_collections_on_project_id"
   end
 
+  create_table "columns", force: :cascade do |t|
+    t.bigint "task_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "project_id"
+    t.index ["project_id"], name: "index_columns_on_project_id"
+    t.index ["task_id"], name: "index_columns_on_task_id"
+  end
+
   create_table "comments", id: :serial, force: :cascade do |t|
     t.text "body"
     t.integer "task_id"
@@ -227,6 +237,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_28_190740) do
     t.string "subdomain"
     t.integer "project_id"
     t.index ["project_id"], name: "index_invites_on_project_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.bigint "column_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["column_id"], name: "index_items_on_column_id"
   end
 
   create_table "lists", force: :cascade do |t|
@@ -331,8 +348,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_28_190740) do
   create_table "tasks", id: :serial, force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.string "status"
-    t.string "priority"
     t.string "owner"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
@@ -396,6 +411,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_28_190740) do
   add_foreign_key "chats", "chatrooms"
   add_foreign_key "collections", "articles", column: "articles_id"
   add_foreign_key "collections", "projects"
+  add_foreign_key "columns", "projects"
+  add_foreign_key "columns", "tasks"
   add_foreign_key "comments", "tasks"
   add_foreign_key "contacts", "projects"
   add_foreign_key "contacts", "users"
@@ -403,6 +420,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_28_190740) do
   add_foreign_key "conversations", "projects"
   add_foreign_key "deals", "projects"
   add_foreign_key "invites", "projects"
+  add_foreign_key "items", "columns"
   add_foreign_key "lists", "projects"
   add_foreign_key "notes", "contacts"
   add_foreign_key "posts", "conversations"

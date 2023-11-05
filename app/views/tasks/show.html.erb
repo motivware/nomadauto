@@ -5,55 +5,29 @@
     <div class="py-6">
       <!-- This example requires Tailwind CSS v2.0+ -->
       <div class="px-4 sm:px-6 lg:px-8">
-        <div class="sm:flex sm:items-center">
-          <div class="sm:flex-auto">
-					<div>
-				<div class="px-4 sm:px-0">
-					<h3 class="text-base font-semibold leading-7 text-gray-900">Task Information</h3>
-					<p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Task Details.</p>
-				</div>
-        <div class="mt-6 border-t border-gray-100">
-					<dl class="divide-y divide-gray-100">
-						<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-							<dt class="text-sm font-medium leading-6 text-gray-900">Title:</dt>
-							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= @task.title %></dd>
-						</div>
-						<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-							<dt class="text-sm font-medium leading-6 text-gray-900">Priority</dt>
-							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= @task.priority %></dd>
-						</div>
-						<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-							<dt class="text-sm font-medium leading-6 text-gray-900">Owner</dt>
-							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= @task.owner %></dd>
-						</div>
-						<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-							<dt class="text-sm font-medium leading-6 text-gray-900">Description</dt>
-							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= @task.description %></dd>
-						</div>
-						<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-							<dt class="text-sm font-medium leading-6 text-gray-900">Created At</dt>
-							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= @task.created_at.to_date%></dd>
-						</div>
-						<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-							<dt class="text-sm font-medium leading-6 text-gray-900">Updated At</dt>
-							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= @task.updated_at.to_date%></dd>
-						</div>
-					</dl>
+					<%= link_to "New Column", new_project_task_column_path(@project, @task), class: 'inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto' %>
+					<%= content_tag :div, class: 'flex flex-row', data: { controller: 'draggable' } do %>
+						<% @task.columns.each do |column| %>
+							<div class="p-6">
+								<%= content_tag :ul, class: 'card-text dropzone flex-auto w-64 h-screen block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700', data: { id: column.id, target: 'draggable.column' } do %>
+									<h5 class='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'><%= column.name %></h5>
+										<%= link_to "New Item", [:new, @project, @task, @list, column, :item], class: 'inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto' %>
+										<br/><br/>
+										<div class='mb-3 font-normal text-gray-700 dark:text-gray-400'>
+											<%= render column.items, task: @task, column: column %>
+										</div>
+								<% end %>
+							</div>
+						<% end %>
+					<% end %>
           <div class="pt-5">
+
 						<%= link_to "Edit", edit_project_task_path(@project), class: 'inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto'  %>
-						<%=  link_to "Delete", project_task_path(@project, @task), class: 'inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto', method: :delete,
-													data: { confirm: "Are you sure?" }  %>
+						<%# <%=  link_to "Delete", project_task_path(@project, @task), class: 'inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto', method: :delete,
+													data: { confirm: "Are you sure?" }  %> 
 						<%= link_to "Back", project_tasks_path, class: 'inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto'  %>
 					</div>
       </div>
-    </div>
-    <br/>
-    <div class="px-4 sm:px-0">
-      <h3 class="text-base font-semibold leading-7 text-gray-900"><%= @task.comments.count %> Comments</h3>
-      <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500"> <%= render @task.comments %></p>
-      <br/>
-      <h4>Add a comment:</h4>
-      <%= render 'comments/form' %>
     </div>
   <div>
 </div>
