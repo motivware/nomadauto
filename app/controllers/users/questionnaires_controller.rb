@@ -7,7 +7,7 @@ module Users
       @contact = @project.contacts.find(params[:contact_id])
 
       # 2nd you retrieve the contacts thanks to params[:id]
-      @questionnaire = @project.questionnaires.all
+      @questionnaire = @contact.questionnaires.all
     end
 
     # GET /questionnaires/1 or /questionnaires/1.json
@@ -17,7 +17,7 @@ module Users
       # 2nd you retrieve the tasks thanks to params[:id]
       @contact = @project.contacts.find(params[:contact_id])
 
-      @questionnaire = @project.questionnaires.find(params[:id])
+      @questionnaire = @contact.questionnaires.find(params[:id])
   
       respond_to do |format|
         format.html # show.html.erb
