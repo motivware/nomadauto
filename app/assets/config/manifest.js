@@ -9,3 +9,4 @@
 //= link controllers/hello_controller.js
 //= link controllers/index.js
 //= link controllers/nested_form_controller.js
+//= link application.js
