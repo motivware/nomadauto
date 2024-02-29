@@ -211,7 +211,7 @@ GEM
     parser (3.2.2.4)
       ast (~> 2.4.1)
       racc
-    pg (1.1.4)
+    pg (1.5.5)
     public_activity (2.0.2)
       actionpack (>= 5.0.0)
       activerecord (>= 5.0)
@@ -378,6 +378,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  arm64-darwin-23
   x86_64-linux
 
 DEPENDENCIES
@@ -404,7 +405,7 @@ DEPENDENCIES
   kt-paperclip (~> 6.4, >= 6.4.1)
   letter_opener
   listen (= 3.0.5)
-  pg (= 1.1.4)
+  pg (~> 1.5, >= 1.5.5)
   public_activity (= 2.0.2)
   puma (= 6.4.2)
   pundit (~> 2.1)
@@ -429,7 +430,7 @@ DEPENDENCIES
   wkhtmltopdf-binary
 
 RUBY VERSION
-   ruby 3.1.2p20
+   ruby 3.3.0p0
 
 BUNDLED WITH
    2.3.26

@@ -47,8 +47,7 @@ gem 'rubocop', '1.43', require: false
 # Google maps Integration
 gem 'cancan'
 gem 'geocoder'
-gem 'pg', '1.1.4'
-
+gem 'pg', '~> 1.5', '>= 1.5.5'
 # roles and multi-tenant
 gem 'pundit', '~> 2.1'
 # gem 'rails_12factor'
@@ -77,4 +76,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-ruby '3.1.2'
+ruby '3.3.0'
