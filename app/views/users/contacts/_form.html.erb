@@ -46,9 +46,9 @@
 			<div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">	
 				<%= f.label :status, class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2' %>
 					<% if @contact.new_record? %>
-						<%= f.select :status, options_for_select([['Lead'],['Prospect'],['Current Athlete'],['Completed']]), { include_blank: 'Select status' }, class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>	
+						<%= f.select :status, options_for_select([['Lead'],['Prospect'],['Current Customer'],['Completed']]), { include_blank: 'Select status' }, class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>	
 					<% else %>
-						<%= f.select :status, options_for_select([['Lead'],['Prospect'],['Athlete'],['Completed']], @contact.status), { include_blank: 'Select status' }, class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>	
+						<%= f.select :status, options_for_select([['Lead'],['Prospect'],['Customer'],['Completed']], @contact.status), { include_blank: 'Select status' }, class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>	
 					<% end %>
 			</div> 
 
@@ -68,18 +68,8 @@
 			</div> 
 
 			<div class="sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-				<%= f.label :waiver, "Upload Waiver", class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2' %>
-        <%= f.file_field :waiver, class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>
-			</div> 
-
-			<div class="sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-				<%= f.label :intake_form, "Upload Intake Form", class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2' %>
-        <%= f.file_field :intake_form, class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>
-			</div> 
-
-			<div class="sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-				<%= f.label :contract, "Upload Contract", class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2' %>
-				<%= f.file_field :contract, class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>
+				<%= f.label :attachment, "Upload Attachment", class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2' %>
+        <%= f.file_field :attachment, class: 'max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>
 			</div> 
 
 			<div class="sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">

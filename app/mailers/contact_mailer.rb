@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ContactMailer < ActionMailer::Base
-  default to: 'damon.clark@hey.com'
+  default to: 'damon.clark@motivware.com'
 
   def contact_email(name, email, body)
     @name = name

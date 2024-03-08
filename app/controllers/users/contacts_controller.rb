@@ -19,8 +19,8 @@ module Users
           @contacts = @contacts.where(status: "Lead")
         elsif params[:status] == "Prospect"
           @contacts = @contacts.where(status: "Prospect")
-        elsif params[:status] == "Athlete"
-          @contacts = @contacts.where(status: "Athlete")
+        elsif params[:status] == "Customer"
+          @contacts = @contacts.where(status: "Customer")
         elsif params[:status] == "Completed"
           @contacts = @contacts.where(status: "Completed")
         end
@@ -33,8 +33,8 @@ module Users
           @contacts = @contacts.where(status: "Leads")
         elsif params[:status] == "Prospects"
           @contacts = @contacts.where(status: "Prospects")
-        elsif params[:status] == "Athletes"
-          @contacts = @contacts.where(status: "Athletes")
+        elsif params[:status] == "Customers"
+          @contacts = @contacts.where(status: "Customers")
         elsif params[:status] == "Completed"
           @contacts = @contacts.where(status: "Completed")
         end
@@ -100,8 +100,6 @@ module Users
         start_date= params[:contact][:start_date]
         end_date = params[:contact][:end_date]
         pay_rate = params[:contact][:pay_rate]
-        waiver = params[:contact][:waiver]
-        intake_form = params[:contact][:intake_form]
         contract = params[:contact][:contract]
         flash[:success] = 'Record Saved.'
         redirect_to project_contacts_path
@@ -158,7 +156,7 @@ module Users
     def contact_params
       # To collect data from form, we need to use
       # strong paramaters and whitelist form fields
-      params.require(:contact).permit(:first_name, :last_name, :phone_number, :email, :status, :start_date, :end_date, :pay_rate, :comment, :user_id, :waiver, :intake_form, :contract)
+      params.require(:contact).permit(:first_name, :last_name, :phone_number, :email, :status, :start_date, :end_date, :pay_rate, :comment, :user_id, :contract)
     end
   end
 end

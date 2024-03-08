@@ -18,7 +18,7 @@
 	<div>
 		<div>
 			<h3 class="text-lg leading-6 font-medium text-gray-900">Address</h3>
-			<p class="mt-1 max-w-2xl text-sm text-gray-500">This is an address for your athlete: <%= @contact.first_name + ' ' + @contact.last_name %>  </p>
+			<p class="mt-1 max-w-2xl text-sm text-gray-500">This is an address for your Customer: <%= @contact.first_name + ' ' + @contact.last_name %>  </p>
 		</div>
 	<%= form_for([@contact.project, @contact, @address])  do |f| %>
 	<div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">

@@ -27,23 +27,8 @@ class Contact < ApplicationRecord
   end
 
   attr_accessor :avatar_file_name
-  attr_accessor :waiver
-  attr_accessor :intake_form
   attr_accessor :contract
 
-  has_attached_file :waiver,
-                    styles: { medium: '300x300>', thumb: '100x100>' },
-                    default_url: '/images/:style/missing.png',
-                    url: '/assets/:id/:style/:basename.:extension'
-
-  validates_attachment_content_type :waiver, content_type: ['application/pdf']
-
-  has_attached_file :intake_form,
-                    styles: { medium: '300x300>', thumb: '100x100>' },
-                    default_url: '/images/:style/missing.png',
-                    url: '/assets/:id/:style/:basename.:extension'
-
-  validates_attachment_content_type :intake_form, content_type: ['application/pdf']
 
   has_attached_file :contract,
                     styles: { medium: '300x300>', thumb: '100x100>' },
