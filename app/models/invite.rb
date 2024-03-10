@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class Invite < ActiveRecord::Base
-  belongs_to :user_group
-  belongs_to :sender, class_name: 'User'
+  # belongs_to :user_group
+  belongs_to :sender, class_name: 'User', optional: true
   belongs_to :recipient, class_name: 'User', optional: true
-  belongs_to :project
+  belongs_to :project, optional: true
   has_many :users
 
   before_save :check_user_existence
