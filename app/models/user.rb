@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ActiveRecord::Base
-  belongs_to :invite
+  has_many :invites
 
   has_many :microposts, dependent: :destroy
   has_many :emails
@@ -95,10 +95,10 @@ class User < ActiveRecord::Base
     update_attribute(:activated_at, Time.zone.now)
   end
 
-  def invite
-    update_attribute(:invited, true)
-    update_attribute(:invited_at, Time.zone.now)
-  end
+  # def invite
+  #   update_column(:invited, true)
+  #   update_column(:invited_at, Time.zone.now)
+  # end
 
   # Sends activation email.
   def send_activation_email

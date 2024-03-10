@@ -122,6 +122,10 @@ class UsersController < ApplicationController
                                  :password_confirmation, :subdomain, :stripe_card_token)
   end
 
+  # def invite
+  #   @user.invited = false
+  #   @user.invited_at = Time.zone.now.to_datetime
+  # end
   # Before filters
 
   # Confirms a logged-in user.
