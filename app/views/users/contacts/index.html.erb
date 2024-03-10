@@ -59,10 +59,9 @@
                       <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "status", "Status" %></th>
                       <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "start_date", "Start Date" %></th>
                       <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "end_date", "End Date" %></th>
-                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "pay_rate", "Pay Rate" %></th>
                       <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "created_at", "Created" %></th>
                       <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "updated_at", "Updated" %></th>
-                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "attachment", "Attachment" %></th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sortable "attachment", "File" %></th>
                       <th scope="col" class="">
                         <span class="sr-only">Edit</span>
                       </th>
@@ -82,7 +81,6 @@
                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= contact.status %></td>
                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= contact.start_date %></td>
                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= contact.end_date %></td>
-                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= contact.pay_rate %></td>
                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= "#{time_ago_in_words(Time.at(contact.created_at.to_i))} ago" %></td>
                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= "#{time_ago_in_words(Time.at(contact.updated_at.to_i))} ago" %></td>
                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
