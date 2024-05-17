@@ -16,7 +16,7 @@
               <%= link_to "Back to conversations", project_contact_conversations_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
             </div>
 
-            <%= turbo_stream_from(@project, @converstions) %>
+            <%= turbo_stream_from(@project, @contact, @converstions) %>
             <div id="posts" class="min-w-full">
               <%= render @posts %>
             </div>
