@@ -77,7 +77,7 @@ Rails.application.configure do
   # }
   config.serve_static_assets = false
 
-  config.action_mailer.default_url_options = { host: 'http://lvh.me:3000' }
+  config.action_mailer.default_url_options = { host: 'nomad.lvh.me', port: 4000 }
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

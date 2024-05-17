@@ -1,0 +1,23 @@
+<%= render 'users/sidebar' %><br/>
+<%= render 'shared/flashes' %>
+<div class="md:pl-64 flex flex-col flex-1">
+  <main class="flex-1">
+    <div class="py-6">
+      <!-- This example requires Tailwind CSS v2.0+ -->
+      <div class="px-4 sm:px-6 lg:px-8">
+        <div class="sm:flex sm:items-center">
+          <div class="sm:flex-auto">
+          <div class="flex justify-between items-center">
+            <h1 class="font-bold text-4xl">Conversations</h1>
+            <%= link_to "New Conversation", new_project_contact_conversation_path(), :class => "inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto" %>
+          </div>
+
+          <%= turbo_stream_from(@project, @converstion) %>
+          <div id="conversations" class="min-w-full">
+            <%= render @conversation %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

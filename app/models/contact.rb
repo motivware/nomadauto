@@ -7,6 +7,8 @@ class Contact < ApplicationRecord
   has_one :address
   has_many :notes
   has_many :questionnaires
+  has_many :conversations
+  has_many :posts, as: :author
   validates :first_name, :presence => true
 	
   include PublicActivity

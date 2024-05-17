@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  */
+ 
+@import "./actiontext.scss";
 
 html, body {
   height: 100%;
@@ -23,3 +25,6 @@ html {
   display: table;
   margin: 0 auto;
 }
+
+.trix-content ul { list-style: disc; }
+.trix-content ol { list-style: decimal; }

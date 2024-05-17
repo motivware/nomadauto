@@ -1,0 +1,32 @@
+<%= render 'users/sidebar' %><br/>
+<%= render 'shared/flashes' %>
+<div class="md:pl-64 flex flex-col flex-1">
+  <main class="flex-1">
+    <div class="py-6">
+      <div class="px-4 sm:px-6 lg:px-8">
+        <div class="sm:flex sm:items-center">
+          <div class="sm:flex-auto">
+
+              <%= render @conversation %>
+
+              <%= link_to "Edit this conversation", edit_project_contact_conversation_path(@project, @contact, @conversation), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+              <div class="inline-block ml-2">
+                <%= button_to "Destroy this conversation", project_contact_conversation_path(@project, @contact, @conversation), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+              </div>
+              <%= link_to "Back to conversations", project_contact_conversations_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+            </div>
+
+            <%= turbo_stream_from(@project, @converstions) %>
+            <div id="posts" class="min-w-full">
+              <%= render @posts %>
+            </div>
+
+              <%= render partial: "users/posts/form", locals: { project: @project, contact: @contact, conversation: @conversation, post: Post.new }%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

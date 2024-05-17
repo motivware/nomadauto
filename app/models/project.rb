@@ -9,6 +9,7 @@ class Project < ApplicationRecord
   has_many :questionnaires, dependent: :destroy
   has_many :activities,  dependent: :destroy
   has_many :tickets, dependent: :destroy
+  has_many :conversations,  dependent: :destroy
   has_many :contacts, dependent: :destroy
   has_many :deals, dependent: :destroy
   has_many :lists, dependent: :destroy

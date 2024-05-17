@@ -7,6 +7,7 @@ gem 'jquery-rails', '4.4.0'
 gem 'public_activity', '2.0.2'
 gem "puma", "6.4.2"
 gem 'rails', '7.0.8.1'
+gem "hotwire-rails", "~> 0.1.3"
 gem 'react-rails'
 gem 'record_tag_helper', '~> 1.0'
 gem 'importmap-rails'
@@ -21,7 +22,7 @@ gem 'wkhtmltopdf-binary'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.10', '>= 2.10.1'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '3.0'
+gem 'redis', '3.0'
 gem 'bcrypt', '3.1.16'
 gem 'bootstrap-sass', '>= 3.4.1'
 gem 'dotenv-rails'

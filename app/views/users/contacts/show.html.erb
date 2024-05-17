@@ -1,13 +1,10 @@
 <%= render 'users/sidebar' %><br/>
 
-
-
 <div class="md:pl-64 flex flex-col flex-1">
   <main class="flex-1">
     <div class="py-6">
       <!-- This example requires Tailwind CSS v2.0+ -->
       <div class="px-4 sm:px-6 lg:px-8">
-        <div class="sm:flex sm:items-center">
           <div class="sm:flex-auto">
 					<div>
 				<div class="px-4 sm:px-0">
@@ -20,7 +17,7 @@
 										<button class="inline-block p-4 border-b-2 rounded-t-lg" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
 								</li>
 								<li class="mr-2" role="presentation">
-										<button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="appointments-tab" data-tabs-target="#appointments" type="button" role="tab" aria-controls="appointments" aria-selected="false">Appointments</button>
+										<button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="conversations-tab" data-tabs-target="#conversations" type="button" role="tab" aria-controls="conversations" aria-selected="false">Conversations</button>
 								</li>
 								<li class="mr-2" role="presentation">
 										<button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="surveys-tab" data-tabs-target="#surveys" type="button" role="tab" aria-controls="surveys" aria-selected="false">Surveys</button>
@@ -96,7 +93,16 @@
 								</div>
 							</div>
 						</div>
-						<div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="appointments" role="tabpanel" aria-labelledby="appointments-tab">
+						<div class="hidden p-4 rounded-lg" id="conversations" role="tabpanel" aria-labelledby="conversations-tab">
+							<div class="flex justify-between items-center">
+								<h1 class="font-bold text-4xl">Conversations</h1>
+								<%= link_to "New conversation", new_project_contact_conversation_path(@project, @contact, @conversation), class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+							</div>
+
+							<%= turbo_stream_from(@project, @contact, @converstion) %>
+							<div id="conversations" class="min-w-full">
+								<%= render @contact.conversations %>
+							</div>
 						</div>
 						<div class="hidden p-4 rounded-lg" id="surveys" role="tabpanel" aria-labelledby="surveys-tab">
 								<div class="flex justify-between items-center">
@@ -110,13 +116,18 @@
 								
 								</div>
 						</div>
-						<div class="hidden p-4 rounded-lg" id="notes" role="tabpanel" aria-labelledby="notes-tab">
-							 <div class="px-4 sm:px-0">
-									<h3 class="text-base font-semibold leading-7 text-gray-900"><%= @contact.notes.count %> Notes</h3>
-									<p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500"> <%= render @contact.notes %></p>
-									<br/>
-									<h4>Add a Note:</h4>
-									<%= render 'users/notes/form' %> 
+						<div class="hidden px-4 sm:px-6 lg:px-8" id="notes" role="tabpanel" aria-labelledby="notes-tab">
+							 <div class="sm:flex sm:items-center">
+
+							 <div class="flex justify-between items-center">
+								<div class="px-4 sm:px-0">
+										<h3 class="text-base font-semibold leading-7 text-gray-900"><%= @contact.notes.count %> Notes</h3>
+										<p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500"> <%= render @contact.notes %></p>
+										<br/>
+										<h4>Add a Note:</h4>
+										<%= render 'users/notes/form' %> 
+									</div>
+								</div>
 								</div>
 						</div>
 				</div>

@@ -1,0 +1,16 @@
+<%= form_with model: [project, contact, conversation, post], id: 'form' do |form| %>
+		<div>
+			<% form.object.errors.full_messages.each do |messages| %>
+				<div><%= message %></div>
+			<% end %>
+		</div>
+
+  <div class="my-5">
+	<%= form.label :body %>
+	<%= form.text_area :body, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"  %>
+	</div>
+	
+	<div class="my-5">
+	<%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer"  %>
+	</div>
+<% end%>

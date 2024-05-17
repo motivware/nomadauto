@@ -15,6 +15,7 @@ class SubdomainBlank
 end
 
 Rails.application.routes.draw do
+  resources :conversations
   resources :items
   resources :columns
   get 'collection/new'
@@ -47,6 +48,9 @@ Rails.application.routes.draw do
       resources :collections do 
         resources :articles, only: %i[show edit update new create]
       end
+
+      
+
       resources :tasks, only: %i[index show new create edit update destroy] do
         resources :columns, except: [:index, :show] do
           resources :items, except: [:index, :show]
@@ -54,7 +58,7 @@ Rails.application.routes.draw do
         resources :comments
       end
 
-      resources :profiles
+      resources :profiles, except: [:show]
 
       scope module: 'users' do
         resources :tickets
@@ -64,6 +68,9 @@ Rails.application.routes.draw do
           resources :addresses
           resources :questionnaires do 
             resources :responses
+          end
+          resources :conversations do 
+            resources :posts
           end
           collection do
             post :import

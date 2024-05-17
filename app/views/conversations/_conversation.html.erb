@@ -1,0 +1,19 @@
+  <%= tag.div id: dom_id(@project, conversation) do  %>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Subject:</strong>
+      <%= link_to conversation.subject, project_contact_conversation_path(@project, @contact, conversation), class: "text-blue-600 underline" %>
+    </p>
+  <% end %>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Contact:</strong>
+    <%= link_to conversation.contact.first_name, project_contact_path(@project, conversation.contact_id), class: "text-blue-600 underline" %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this conversation", project_contact_conversation_path(@project, @contact, conversation), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this conversation", edit_project_contact_conversation_path(@project, @contact, conversation), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
+  

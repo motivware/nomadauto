@@ -20,6 +20,9 @@ class User < ActiveRecord::Base
 
   has_many :activities
 
+  has_many :conversations
+  has_many :posts, as: :author
+
   attr_accessor :remember_token, :activation_token, :reset_token,
                 :stripe_card_token
 

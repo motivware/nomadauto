@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_04_233717) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_20_233859) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -199,9 +199,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_04_233717) do
 
   create_table "conversations", force: :cascade do |t|
     t.string "subject"
+    t.bigint "contact_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "contact_id"
     t.bigint "project_id"
     t.index ["contact_id"], name: "index_conversations_on_contact_id"
     t.index ["project_id"], name: "index_conversations_on_project_id"
@@ -279,10 +279,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_04_233717) do
     t.string "message_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "project_id"
+    t.string "body"
     t.index ["author_type", "author_id"], name: "index_posts_on_author"
     t.index ["conversation_id"], name: "index_posts_on_conversation_id"
-    t.index ["project_id"], name: "index_posts_on_project_id"
   end
 
   create_table "profiles", id: :serial, force: :cascade do |t|
@@ -424,7 +423,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_04_233717) do
   add_foreign_key "lists", "projects"
   add_foreign_key "notes", "contacts"
   add_foreign_key "posts", "conversations"
-  add_foreign_key "posts", "projects"
   add_foreign_key "profiles", "projects"
   add_foreign_key "projects", "deals"
   add_foreign_key "projects", "tasks"

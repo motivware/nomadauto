@@ -10,3 +10,4 @@
 //= link controllers/index.js
 //= link controllers/nested_form_controller.js
 //= link application.js
+//= link actiontext.css
