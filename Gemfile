@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'coffee-rails', '4.2.2'
 gem 'jquery-rails', '4.4.0'
 gem 'public_activity', '2.0.2'
-gem "puma", "6.4.2"
+gem "puma", "6.4.3"
 gem 'rails', '7.0.8.1'
 gem 'react-rails'
 gem 'record_tag_helper', '~> 1.0'
