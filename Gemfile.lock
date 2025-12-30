@@ -360,7 +360,7 @@ GEM
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (2.5.0)
-    uri (0.13.0)
+    uri (0.13.3)
     web-console (3.0.0)
       activemodel (>= 4.2)
       debug_inspector
