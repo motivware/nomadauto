@@ -12,12 +12,9 @@ class PasswordResetsController < ApplicationController
     if @user
       @user.create_reset_digest
       @user.send_password_reset_email
-      flash[:info] = 'Email sent with password reset instructions'
-      redirect_to root_url
-    else
-      flash.now[:danger] = 'Email address not found'
-      render 'new'
     end
+    flash[:info] = 'If an account with that email exists, we have sent password reset instructions.'
+    redirect_to root_url
   end
 
   def edit; end

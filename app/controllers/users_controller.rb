@@ -120,7 +120,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :plan_id,
-                                 :password_confirmation, :subdomain, :stripe_card_token)
+                                 :password_confirmation, :subdomain)
   end
 
   # def invite
