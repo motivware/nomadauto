@@ -5,6 +5,9 @@ require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require 'capybara/playwright'
+
+ENV['PLAYWRIGHT_CLI_EXECUTABLE_PATH'] ||= './node_modules/.bin/playwright'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -29,6 +32,19 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
+Capybara.register_driver(:playwright) do |app|
+  Capybara::Playwright::Driver.new(app,
+    browser_type: :chromium,
+    headless: (ENV['CI'] || ENV['HEADLESS']) ? true : false
+  )
+end
+
+Capybara.default_driver = :playwright
+Capybara.javascript_driver = :playwright
+Capybara.server_host = '0.0.0.0'
+Capybara.app_host = 'http://lvh.me'
+Capybara.always_include_port = true
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -36,7 +52,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false

@@ -77,7 +77,7 @@ GEM
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
-    base64 (0.2.0)
+    base64 (0.3.0)
     bcrypt (3.1.16)
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
@@ -94,6 +94,10 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    capybara-playwright-driver (0.5.7)
+      addressable
+      capybara
+      playwright-ruby-client (>= 1.16.0)
     chartkick (5.0.6)
     climate_control (0.2.0)
     coffee-rails (4.2.2)
@@ -212,6 +216,10 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.6)
+    playwright-ruby-client (1.58.0)
+      base64
+      concurrent-ruby (>= 1.1.6)
+      mime-types (>= 3.0)
     public_activity (2.0.2)
       actionpack (>= 5.0.0)
       activerecord (>= 5.0)
@@ -309,7 +317,6 @@ GEM
     ruby-progressbar (1.13.0)
     ruby-vips (2.2.1)
       ffi (~> 1.12)
-    rubyzip (2.3.2)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -325,11 +332,6 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.18.1)
-      base64 (~> 0.2)
-      rexml (~> 3.2, >= 3.2.5)
-      rubyzip (>= 1.2.2, < 3.0)
-      websocket (~> 1.0)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -365,7 +367,6 @@ GEM
       activemodel (>= 4.2)
       debug_inspector
       railties (>= 4.2)
-    websocket (1.2.10)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -379,6 +380,7 @@ GEM
 PLATFORMS
   arm64-darwin-21
   arm64-darwin-23
+  arm64-darwin-24
   x86_64-linux
 
 DEPENDENCIES
@@ -388,6 +390,7 @@ DEPENDENCIES
   byebug
   cancan
   capybara
+  capybara-playwright-driver
   chartkick (>= 3.2.0)
   coffee-rails (= 4.2.2)
   dotenv-rails
@@ -417,7 +420,6 @@ DEPENDENCIES
   rspec-rails (~> 6.0.0.rc1)
   rubocop (= 1.43)
   sass-rails (~> 6.0)
-  selenium-webdriver
   sprockets-rails
   stimulus-rails
   stripe (= 1.48.0)

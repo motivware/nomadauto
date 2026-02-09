@@ -56,9 +56,9 @@ gem 'acts_as_list', '~> 1.0', '>= 1.0.2'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'capybara'
+  gem 'capybara-playwright-driver'
   gem 'faker'
   gem 'rspec-rails', '~> 6.0.0.rc1'
-  gem 'selenium-webdriver'
   gem 'letter_opener', group: :development
   gem 'railroady'
 end
