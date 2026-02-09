@@ -15,9 +15,6 @@ class ColumnsController < ApplicationController
     @project = Project.find(params[:project_id])
     @task = Task.find(params[:task_id])
 
-    @column = Project.find(params[:project_id]).tasks.find(params[:task_id]).columns.build
-    
-    # @task = @project.tasks.includes(columns: :items).find(params[:task_id])
     @column = @task.columns.new
   end
 

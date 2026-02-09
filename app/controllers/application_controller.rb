@@ -7,24 +7,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery prepend: true, with: :exception
   helper_method %i[current_account logged_in?]
 
-  # before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
-
-  # before_action :load_schema
-  # before_action :authenticate_user!
-
   include TicketHelper
-  # Whitelist the following form fields, so we can process them, if coming from
-  # a devise signup form.
-  # before_action :configure_permitted_parameters, if: :devise_controller?
   include SessionsHelper
   helper_method :current_user
-  
-  # make expire_on method available for all the controllers
+
   helper_method :all
   helper_method :remaining_days
   helper_method :trial_expired?
 
-  # find the remaining trial days for this user
   def remaining_days
     return 0 unless current_account
 
@@ -34,8 +24,6 @@ class ApplicationController < ActionController::Base
   def trial_expired?
     return redirect_to login_path unless current_account
 
-    # find current_user who is login. If you are using devise simply current_user will works
-    # now that you have remaining_days, check whether trial period is already completed
     redirect_to projects_path if (remaining_days <= 0) && (current_user.plan_id != 2)
   end
 
@@ -45,7 +33,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-  # Confirms a logged-in user
   def logged_in_user
     unless logged_in?
       store_location
@@ -58,22 +45,6 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id])
   rescue ActiveRecord::RecordNotFound
   end
-  # def configure_permitted_parameters
-  #   devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:stripe_card_token, :email, :password, :password_confirmation) }
-  # end
-
-  # def load_schema
-  #   Apartment::Tenant.switch!('public')
-
-  #   return unless request.subdomain.present?
-
-  #   user = User.find_by(subdomain: request.subdomain)
-  #   if user
-  #     Apartment::Tenant.switch!(user.subdomain)
-  #   else
-  #     redirect_to login_url(subdomain: false)
-  #   end
-  # end
 
   def current_account
     @current_account ||= User.find_by(subdomain: request.subdomain)
@@ -93,7 +64,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_not_authorized
-    flash[:alert] = 'You are not cool enough to do this - go back from whence you came.'
+    flash[:alert] = 'You are not authorized to perform this action.'
     redirect_to(projects_path)
   end
 end

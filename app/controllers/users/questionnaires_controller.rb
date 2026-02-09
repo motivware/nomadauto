@@ -51,7 +51,7 @@ module Users
 
       respond_to do |format|
           if @questionnaire.create(questionnaire_params)
-            puts questionnaire_params
+
             flash[:success] = 'Record Saved.'
             format.html { redirect_to project_contact_questionnaires_url(@project), notice: "Questionnaire was successfully created." }
             format.json { render :show, status: :created, location: @questionnaire }  
@@ -82,8 +82,6 @@ module Users
 
       respond_to do |format|
         if @questionnaire.update(questionnaire_params)
-          puts questionnaire_params
-
           format.html { redirect_to project_questionnaire_url(@project, @questionnaire), notice: "Questionnaire was successfully updated." }
           format.json { render :show, status: :ok, location: @questionnaire }
         else

@@ -1,17 +1,9 @@
 class ItemsController < ApplicationController
-  # before_action :set_task
-  # before_action :set_columns
-  # before_action :set_item, only: %i[ show edit update destroy ]
-
-  # GET /items/new
   def new
     @project = Project.find(params[:project_id])
     @task = Task.find(params[:task_id])
     @column = @task.columns.find(params[:column_id])
-    # @item = @column.items.new
-    @item = Project.find(params[:project_id]).tasks.find(params[:task_id]).columns.find(params[:column_id]).items.build
-    
-    # @task = @project.tasks.includes(columns: :items).find(params[:task_id])
+    @item = @column.items.new
   end
 
   # GET /items/1/edit
@@ -74,9 +66,6 @@ class ItemsController < ApplicationController
   end
 
   private
-    # def set_task
-    #   @task = @project.tasks.include(columns: :items).find(params[:task_id])
-    # end
 
     def set_column
       @column = @task.columns.find(params[:column_id])
