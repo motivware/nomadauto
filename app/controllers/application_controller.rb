@@ -26,10 +26,14 @@ class ApplicationController < ActionController::Base
 
   # find the remaining trial days for this user
   def remaining_days
+    return 0 unless current_account
+
     ((current_account.created_at + 30.days).to_date - Date.today).round
   end
 
   def trial_expired?
+    return redirect_to login_path unless current_account
+
     # find current_user who is login. If you are using devise simply current_user will works
     # now that you have remaining_days, check whether trial period is already completed
     redirect_to projects_path if (remaining_days <= 0) && (current_user.plan_id != 2)
