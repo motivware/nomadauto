@@ -2,12 +2,10 @@
 
 source 'https://rubygems.org'
 
-gem 'coffee-rails', '4.2.2'
 gem 'jquery-rails', '4.4.0'
 gem 'public_activity', '2.0.2'
 gem "puma", "6.4.3"
 gem 'rails', '7.0.8.1'
-gem 'react-rails'
 gem 'record_tag_helper', '~> 1.0'
 gem 'importmap-rails'
 gem 'stimulus-rails'
@@ -15,7 +13,6 @@ gem 'sprockets-rails'
 gem 'turbo-rails', '~> 1.4'
 gem 'jsbundling-rails'
 gem 'sass-rails', '~> 6.0'
-gem 'uglifier', '3.0.0'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -45,7 +42,6 @@ gem 'image_processing', '~> 1.2'
 gem 'rubocop', '1.43', require: false
 
 # Google maps Integration
-gem 'cancan'
 gem 'geocoder'
 gem 'pg', '~> 1.5', '>= 1.5.5'
 # roles and multi-tenant
