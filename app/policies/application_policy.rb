@@ -49,8 +49,7 @@ class ApplicationPolicy
     end
 
     def resolve
-      scope.joins(:project).where(project_id: user.project_id)
-      scope.joins(:workorder).where(workorder_id: user.workorder_id)
+      scope.where(project_id: user.project_id)
     end
   end
 end

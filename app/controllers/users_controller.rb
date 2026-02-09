@@ -57,7 +57,7 @@ class UsersController < ApplicationController
 
     if !@token.nil?
       org = Invite.find_by_token(@token).user_group # find the user group attached to the invite
-      @newUser.user_groups.push(org) # add this user to the new user group as a member
+      @user.user_groups.push(org) # add this user to the new user group as a member
     elsif @user.plan_id == 3
       @user.save(validate: false)
       @user.send_activation_email
@@ -86,9 +86,10 @@ class UsersController < ApplicationController
       redirect_to root_url
     else
       params[:plan] == '2'
-      @user = User.find(params[:id], params[:stripe_card_token])
+      @user = User.find(params[:id])
+      @user.stripe_card_token = params[:stripe_card_token]
       @user.save_with_subscription
-      @user.update(:plan_id, '2')
+      @user.update(plan_id: 2)
       flash[:info] = 'You are now signed up for the pro account'
       redirect_to projects_path
     end
@@ -102,8 +103,8 @@ class UsersController < ApplicationController
 
   # Confirms the correct user.
   def correct_user
-    @user = User.find([:sessionuser_id])
-    redirect_to(root_url) unless current_user?(@user)
+    @user = User.find(session[:user_id])
+    redirect_to(root_url) unless @user == current_user
   end
   helper_method :current_user
   # hide_action :current_user

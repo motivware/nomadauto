@@ -11,10 +11,10 @@ class CommentsController < UsersController
 
   def destroy
     @project = Project.find(params[:project_id])
-    @workorder = Workorder.find(params[:workorder_id])
-    @comment = @workorder.comments.find(params[:id])
+    @task = Task.find(params[:task_id])
+    @comment = @task.comments.find(params[:id])
     @comment.destroy
 
-    redirect_to project_workorder_path(@project, @workorder)
+    redirect_to project_task_path(@project, @task)
   end
 end

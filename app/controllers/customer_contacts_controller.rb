@@ -13,7 +13,7 @@ class CustomerContactsController < ApplicationController
     # Mass assignment of form fields into Contact object
     @customer_contact = CustomerContact.new(customer_contacts_params)
     # Save the contact object to the database
-    if verify_recaptcha(model: @customer) && @customer_contact.save
+    if verify_recaptcha(model: @customer_contact) && @customer_contact.save
       # Store form fields via paramaters, into variables
       name = params[:customer_contact][:name]
       email = params[:customer_contact][:email]

@@ -20,7 +20,7 @@ class ContactPolicy < ApplicationPolicy
   # essentially here we are checking that the project associated to the record
   # is the same as the current project
   def show?
-    record.contact == contact
+    user.user_contacts.map(&:id).include?(@contact.id)
   end
 
   def edit?

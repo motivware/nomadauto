@@ -20,7 +20,7 @@ class ProjectPolicy < ApplicationPolicy
   # essentially here we are checking that the user associated to the record
   # is the same as the current user
   def show?
-    record.project == project
+    user.user_projects.map(&:id).include?(@project.id)
   end
 
   def edit?

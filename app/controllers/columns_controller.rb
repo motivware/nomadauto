@@ -47,7 +47,7 @@ class ColumnsController < ApplicationController
   def update
     respond_to do |format|
       if @column.update(column_params)
-        format.html { redirect_to @list, notice: "Column was successfully updated." }
+        format.html { redirect_to project_task_path(@project, @task), notice: "Column was successfully updated." }
         format.json { render :show, status: :ok, location: @column }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -61,7 +61,7 @@ class ColumnsController < ApplicationController
     @column.destroy
 
     respond_to do |format|
-      format.html { redirect_to @list, notice: "Column was successfully destroyed." }
+      format.html { redirect_to project_task_path(@project, @task), notice: "Column was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -75,7 +75,7 @@ class ColumnsController < ApplicationController
     
     # Use callbacks to share common setup or constraints between actions.
     def set_column
-      @column = @task.columns.includes(:columns).find(params[:id])
+      @column = @task.columns.includes(:items).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

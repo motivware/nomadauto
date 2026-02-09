@@ -12,7 +12,7 @@ class AccountActivationsController < ApplicationController
         Project.create(title: user.subdomain, details: "Project", user_id: user.id)
         @project = Project.find_by(user_id: user.id)
       	redirect_to project_contacts_url(subdomain: user.subdomain, project_id: @project)
-      else user.plan_id == 3
+      elsif user.plan_id == 3
         @project = Project.find_by(title: user.subdomain)
       	redirect_to project_contacts_url(subdomain: user.subdomain, project_id: @project)
       end
