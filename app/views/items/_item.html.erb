@@ -1,6 +1,0 @@
-<%= content_tag :li, class: 'cursor-pointer block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700', data: { target: 'draggable.item' , url: project_task_column_item_path(@project, @task, column, item) } do %>
-  <p class='draggable card-text'>
-    <%= item.content %>
-  </p>
-<%# <%= link_to "Delete", [@project, @task, @column, @item], method: :delete %> 
-<% end %>

@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery prepend: true, with: :exception
   helper_method %i[current_account logged_in?]
 
-  include TicketHelper
   include SessionsHelper
   helper_method :current_user
 
@@ -25,10 +24,6 @@ class ApplicationController < ActionController::Base
     return redirect_to login_path unless current_account
 
     redirect_to projects_path if (remaining_days <= 0) && (current_user.plan_id != 2)
-  end
-
-  def track_activity(trackable, action = params[:action], project_id = params[:project_id])
-    current_user.activities.create! action: action, trackable: trackable, project_id: project_id
   end
 
   private

@@ -4,9 +4,5 @@
 //= link_tree ../builds
 //= link_tree ../../../vendor/javascript .js
 //= link controllers/application.js
-//= link controllers/draggable_controller.js
-//= link controllers/dynamic_select_controller.js
-//= link controllers/hello_controller.js
 //= link controllers/index.js
-//= link controllers/nested_form_controller.js
 //= link application.js

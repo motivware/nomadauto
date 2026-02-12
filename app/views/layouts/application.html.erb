@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang = "en">
   <head>
-    <title>Motivware <%= @title %></title>
+    <title>SynthMonitor <%= @title %></title>
     <%= csrf_meta_tags %>
-    <meta name="Description" content="Motivware is a web-based customer support software application.">
+    <meta name="Description" content="Synthetic user monitoring for critical path automation testing.">
     <meta name=viewport content="width=device-width, initial-scale=1, user-scalable=0">
     <meta name="HandheldFriendly" content="true">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -21,13 +21,11 @@
   </head>
   <body>
   
-  <% if not logged_in? && request.subdomain.present? %>
-    <%= render 'layouts/header' %>
-  <% end %>
+  <%= render 'layouts/header' %>
 
   <%= yield %>
 
-  <% if not logged_in? && request.subdomain.present? %>
+  <% unless logged_in? && request.subdomain.present? %>
     <%= render 'layouts/footer' %>
   <% end %>
 

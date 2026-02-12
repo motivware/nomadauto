@@ -1,24 +1,11 @@
 # frozen_string_literal: true
 
 class User < ActiveRecord::Base
-  has_many :invites
-
-  has_many :microposts, dependent: :destroy
-  has_many :emails
-  has_many :plans
-  has_many :tasks
-  has_many :contacts
-  has_many :lists
-  has_many :deals
   has_many :projects
-  has_many :tickets
-  has_many :invitations, class_name: 'Invite',
-                         foreign_key: 'recipient_id'
+  has_many :invites
 
   has_many :sent_invites, class_name: 'Invite',
                           foreign_key: 'sender_id'
-
-  has_many :activities
 
   attr_accessor :remember_token, :activation_token, :reset_token,
                 :stripe_card_token
@@ -120,12 +107,6 @@ class User < ActiveRecord::Base
   # Returns true if a password reset has expired.
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
-  end
-
-  # Defines a proto-feed.
-  # See "Following users"
-  def feed
-    Micropost.where('user_id = ?', id)
   end
 
   def user_projects

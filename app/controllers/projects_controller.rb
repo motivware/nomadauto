@@ -4,10 +4,10 @@ class ProjectsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: %i[index show]
 
   def index
-    # GET request for which / is our home page
-    # @basic_plan = Plan.find(1)
+    unless current_account
+      redirect_to root_url(subdomain: 'www') and return
+    end
     @pro_plan = Plan.find(2)
-    # @invite_plan = Plan.find(3)
     @user = User.find(session[:user_id])
     @projects = current_account.user_projects
   end
@@ -26,13 +26,13 @@ class ProjectsController < ApplicationController
     @project = current_account.projects.build(project_params)
     if @project.save
       flash[:notice] = "#{@project.title} is processing."
-      redirect_to project_contacts_path(@project)
+      redirect_to project_path(@project)
     end
   end
 
   private
 
   def project_params
-    params.require(:project).permit(:title, :details, :workorder_id, :deal_id)
+    params.require(:project).permit(:title, :details)
   end
 end

@@ -2,27 +2,17 @@
 
 class SessionsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:destroy]
+  before_action :set_plans, only: %i[new create]
 
-  def new
-    @basic_plan = Plan.find(1)
-    @pro_plan = Plan.find(2)
-    @invite_plan = Plan.find(3)
-  end
+  def new; end
 
   def create
-    @basic_plan = Plan.find(1)
-    @pro_plan = Plan.find(2)
-    @invite_plan = Plan.find(3)
-
     user = User.find_by(email: params[:session][:email].downcase)
     if user&.authenticate(params[:session][:password])
       if user.activated?
-        # Log the user in and redirect to the user's show page.
         log_in user
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-        manager = User.where(subdomain: user.subdomain, plan_id: user.plan_id)
-        project = Project.find_by(user_id: manager)
-        redirect_to project_contacts_url(subdomain: user.subdomain, project_id: project.id)
+        redirect_to projects_url(subdomain: user.subdomain)
       else
         message  = 'Account not activated.'
         message += 'Check your email for the activation link.'
@@ -38,5 +28,13 @@ class SessionsController < ApplicationController
   def destroy
     log_out if logged_in?
     redirect_to root_url(subdomain: 'www')
+  end
+
+  private
+
+  def set_plans
+    @basic_plan = Plan.find_or_create_by!(id: 1) { |p| p.name = 'basic'; p.price = 0 }
+    @pro_plan = Plan.find_or_create_by!(id: 2) { |p| p.name = 'pro'; p.price = 30 }
+    @invite_plan = Plan.find_or_create_by!(id: 3) { |p| p.name = 'invite'; p.price = 0 }
   end
 end

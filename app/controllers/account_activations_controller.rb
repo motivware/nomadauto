@@ -11,10 +11,10 @@ class AccountActivationsController < ApplicationController
       if user.plan_id == 1 || user.plan_id == 2
         Project.create(title: user.subdomain, details: "Project", user_id: user.id)
         @project = Project.find_by(user_id: user.id)
-      	redirect_to project_contacts_url(subdomain: user.subdomain, project_id: @project)
+      	redirect_to projects_url(subdomain: user.subdomain, project_id: @project)
       elsif user.plan_id == 3
         @project = Project.find_by(title: user.subdomain)
-      	redirect_to project_contacts_url(subdomain: user.subdomain, project_id: @project)
+      	redirect_to projects_url(subdomain: user.subdomain, project_id: @project)
       end
     else
       flash[:danger] = 'Invalid activation link'

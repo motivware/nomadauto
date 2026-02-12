@@ -4,20 +4,20 @@ require 'rails_helper'
 require 'capybara/rails'
 
 RSpec.describe 'Login', js: true do
-  scenario 'manager can login and see contacts page' do
+  scenario 'manager can login and see dashboard' do
     visit login_path
     fill_in 'Email', with: 'damon-user@test.com'
     fill_in 'Password', with: 'password'
     click_button 'Log in'
-    expect(page).to have_content('Contacts')
+    expect(page).to have_content('SynthMonitor')
   end
 
-  scenario 'employee can login and see contacts page' do
+  scenario 'employee can login and see dashboard' do
     visit login_path
     fill_in 'Email', with: 'owen-user@test.com'
     fill_in 'Password', with: 'password'
     click_button 'Log in'
-    expect(page).to have_content('Contacts')
+    expect(page).to have_content('SynthMonitor')
   end
 
   scenario 'invalid credentials stay on login page' do
@@ -33,7 +33,7 @@ RSpec.describe 'Login', js: true do
     fill_in 'Email', with: 'damon-user@test.com'
     fill_in 'Password', with: 'password'
     click_button 'Log in'
-    expect(page).to have_content('Contacts')
+    expect(page).to have_content('SynthMonitor')
 
     click_button 'Logout'
     expect(current_url).to include('www')

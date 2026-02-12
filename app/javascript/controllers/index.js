@@ -3,15 +3,3 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application"
-
-import DraggableController from "./draggable_controller"
-application.register("draggable", DraggableController)
-
-import DynamicSelectController from "./dynamic_select_controller"
-application.register("dynamic-select", DynamicSelectController)
-
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
-
-import NestedFormController from "./nested_form_controller"
-application.register("nested-form", NestedFormController)

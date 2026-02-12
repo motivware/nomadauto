@@ -1,4 +1,4 @@
-<% @title="| CRM Software for Insurance Agencies" %>
+<% @title="| Synthetic User Monitoring" %>
 
 <%= render 'shared/flashes' %>
 <!-- This example requires Tailwind CSS v2.0+ -->
@@ -12,10 +12,10 @@
       <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
         <div class="sm:text-center lg:text-center">
           <h1 class="tracking-tight font-extrabold text-gray-900 text-2xl sm:text-5xl md:text-6xl">
-            <span class="block xl:inline">Streamlined CRM Platform<br/>for Insurance Sales Agencies</span>
+            <span class="block xl:inline">Synthetic User Monitoring<br/>for Critical Path Testing</span>
           </h1>
           <h2 class="mt-4 text-base text-gray-500 sm:mt-5 sm:text-lg sm:mx-auto md:mt-5 md:text-xl lg:mx-4">
-          Effortlessly centralize all customer relations in one place and reclaim countless hours of productivity.
+          Run automated browser tests against your production app on a schedule. Get alerted the moment a critical user flow breaks.
           </h2>
            <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-center">
 
@@ -23,18 +23,10 @@
               <%= link_to "Try for Free Today", signup_path(plan: @basic_plan.id),
                                         class: 'w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10' %>
             </div>
-            <div class="mt-3 sm:mt-0 sm:ml-3">
-              <%= link_to "Book a Demo", 'https://calendly.com/motivware/discovery-call', class: 'w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10' %>
-            </div>
           </div>
         </div>
-        <div class="flex justify-center mt-10">
-          <video class="object-cover w-full h-100 rounded-xl lg:w-4/5" poster="/assets/vsl-poster.png" controls>
-            <source src="/assets/motivware_vsl.mp4" />
-          </video>
-        </div>
       </main>
-      
+
     </div>
   </div>
 </div>
@@ -43,7 +35,7 @@
   <div class="relative mx-auto max-w-xl px-6 lg:max-w-7xl lg:px-8">
     <div class="relative">
       <h2 class="text-center text-xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
-        Optimize your teams workflow with our CRM, replacing messy spreadsheets and overloaded CRM systems for simplicity and efficiency. 👫🆓
+        Know your critical flows are working before your users tell you they aren't.
         </h2>
     </div>
   </div>
@@ -55,66 +47,35 @@
       <div class="grid grid-cols-1 gap-y-16 md:grid-cols-2 md:gap-x-12 md:gap-y-16">
         <div class="relative flex flex-col gap-6 sm:flex-row md:flex-col lg:flex-row">
           <div class="sm:min-w-0 sm:flex-1">
-            <h3 class="text-lg font-semibold leading-8 text-gray-900">Easily manage leads and prospects 🚀</h3>
-            <p class="mt-2 text-base leading-7 text-gray-600">Staying connected to your contacts is a big deal. 😅 Check out Motivware—it's still evolving, but it's a fantastic starting point for keeping your team organized.</p>
+            <h3 class="text-lg font-semibold leading-8 text-gray-900">Scheduled Browser Tests</h3>
+            <p class="mt-2 text-base leading-7 text-gray-600">Define critical user flows and run them on a schedule — every 5 minutes, hourly, or daily. Powered by headless Playwright.</p>
           </div>
         </div>
 
         <div class="relative flex flex-col gap-6 sm:flex-row md:flex-col lg:flex-row">
           <div class="sm:min-w-0 sm:flex-1">
-            <p class="text-lg font-semibold leading-8 text-gray-900">Create Tailored Surveys for Clients. </p>
-            <p class="mt-2 text-base leading-7 text-gray-600">Empower your approach with our tool to craft personalized surveys for your clients. Tailor your questions to gain valuable insights, enabling you to provide highly individualized support.</p>
-          </div>
-        </div>
-
-        <div class="relative flex flex-col gap-6 sm:flex-row md:flex-col lg:flex-row">  
-          <div class="sm:min-w-0 sm:flex-1">
-            <p class="text-xl font-semibold leading-8 text-gray-900">Take Control with Our Ticketing</p>
-            <p class="mt-2 text-base leading-7 text-gray-600">Step right up to our ticketing system: Filter support tickets with ease and keep your team organized. Enjoy omni-channel support!</p>
+            <p class="text-lg font-semibold leading-8 text-gray-900">Instant Alerts</p>
+            <p class="mt-2 text-base leading-7 text-gray-600">Get notified via email or Slack the moment a test fails. See exactly what went wrong with screenshots and error details.</p>
           </div>
         </div>
 
         <div class="relative flex flex-col gap-6 sm:flex-row md:flex-col lg:flex-row">
           <div class="sm:min-w-0 sm:flex-1">
-            <p class="text-lg font-semibold leading-8 text-gray-900">Empower Your Team with Knowledge 📝</p>
-            <p class="mt-2 text-base leading-7 text-gray-600"> Unlock a customer-facing knowledge base: Let users help themselves! Discover seamless organization and boost team productivity.</p>
-          </div>
-        </div>
-        <div class="relative flex flex-col gap-6 sm:flex-row md:flex-col lg:flex-row">  
-          <div class="sm:min-w-0 sm:flex-1">
-            <p class="text-xl font-semibold leading-8 text-gray-900">Collaborate with Multiple Users</p>
-            <p class="mt-2 text-base leading-7 text-gray-600">At Motivware, we're all about teamwork and making things flow smoothly. Let's create that awesome work vibe together!</p>
+            <p class="text-xl font-semibold leading-8 text-gray-900">Uptime & Performance Dashboard</p>
+            <p class="mt-2 text-base leading-7 text-gray-600">Track pass/fail rates, response times, and uptime across all your monitors in one place.</p>
           </div>
         </div>
 
         <div class="relative flex flex-col gap-6 sm:flex-row md:flex-col lg:flex-row">
           <div class="sm:min-w-0 sm:flex-1">
-            <p class="text-lg font-semibold leading-8 text-gray-900">Stay organized with Contact Profiles</p>
-            <p class="mt-2 text-base leading-7 text-gray-600"> Enhance your business with our centralized profiles and note-taking service. Give it a try today and be part of our ongoing improvement journey!</p>
+            <p class="text-lg font-semibold leading-8 text-gray-900">Team Collaboration</p>
+            <p class="mt-2 text-base leading-7 text-gray-600">Invite team members to manage monitors and review results together. Everyone stays in the loop.</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-<!--
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
 
 
 <div class="bg-white">

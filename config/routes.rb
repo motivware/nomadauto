@@ -15,11 +15,6 @@ class SubdomainBlank
 end
 
 Rails.application.routes.draw do
-  resources :items
-  resources :columns
-  get 'collection/new'
-  get 'articles/index'
-  # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
@@ -43,32 +38,7 @@ Rails.application.routes.draw do
   constraints(SubdomainPresent) do
     root 'projects#index'
     resources :projects, only: %i[index show new create] do
-      resources :articles, only: :index
-      resources :collections do 
-        resources :articles, only: %i[show edit update new create]
-      end
-      resources :tasks, only: %i[index show new create edit update destroy] do
-        resources :columns, except: [:index, :show] do
-          resources :items, except: [:index, :show]
-        end
-        resources :comments
-      end
-
-      resources :profiles
-
       scope module: 'users' do
-        resources :tickets
-        resources :activities
-        resources :contacts do
-          resources :notes
-          resources :addresses
-          resources :questionnaires do 
-            resources :responses
-          end
-          collection do
-            post :import
-          end
-        end
         resources :invites
       end
     end

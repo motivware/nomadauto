@@ -9,7 +9,7 @@ RSpec.describe 'Multitenancy', js: true do
     fill_in 'Email', with: 'damon-user@test.com'
     fill_in 'Password', with: 'password'
     click_button 'Log in'
-    expect(page).to have_content('Contacts')
+    expect(page).to have_content('SynthMonitor')
     expect(current_url).to include('testing.lvh.me')
   end
 
@@ -18,12 +18,12 @@ RSpec.describe 'Multitenancy', js: true do
     fill_in 'Email', with: 'damon-user@test.com'
     fill_in 'Password', with: 'password'
     click_button 'Log in'
-    expect(page).to have_content('Contacts')
+    expect(page).to have_content('SynthMonitor')
 
     # Navigate to a subdomain that doesn't belong to this user
     port = current_url.match(/:(\d+)/)[1]
-    visit "http://other.lvh.me:#{port}/projects/1/contacts"
-    expect(page).not_to have_content('Add Contact')
+    visit "http://other.lvh.me:#{port}/projects"
+    expect(page).not_to have_content('SynthMonitor')
     expect(page).not_to have_button('Logout')
   end
 
@@ -32,7 +32,7 @@ RSpec.describe 'Multitenancy', js: true do
     fill_in 'Email', with: 'damon-user@test.com'
     fill_in 'Password', with: 'password'
     click_button 'Log in'
-    expect(page).to have_content('Contacts')
+    expect(page).to have_content('SynthMonitor')
 
     click_button 'Logout'
     expect(current_url).to include('www')

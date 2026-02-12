@@ -2,21 +2,5 @@
 
 class Project < ApplicationRecord
   belongs_to :user
-  # validates :title, :presence => true, :length => { :minimum => 5 }
-  has_many :collections,  dependent: :destroy
-  has_many :articles, dependent: :destroy
-  has_many :addresses, dependent: :destroy
-  has_many :questionnaires, dependent: :destroy
-  has_many :activities,  dependent: :destroy
-  has_many :tickets, dependent: :destroy
-  has_many :contacts, dependent: :destroy
-  has_many :deals, dependent: :destroy
-  has_many :lists, dependent: :destroy
-  has_many :tasks, dependent: :destroy
   has_many :invites, dependent: :destroy
-  has_many :invoices, dependent: :destroy
-  has_many :vehicles, dependent: :destroy
-  has_many :parts, dependent: :destroy
-  has_many :profiles, dependent: :destroy
-  accepts_nested_attributes_for :tasks
 end
