@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What Is This?
 
-Motivware CRM — a multi-tenant SaaS help desk / CRM built with Rails 7.0 and Ruby 3.3.0. Users get subdomain-based accounts with 30-day trials, manage contacts, tasks (Kanban board), tickets, and knowledge base articles within projects.
+SynthMonitor — a multi-tenant SaaS synthetic user monitoring tool built with Rails 7.0 and Ruby 3.3.0. Users get subdomain-based accounts with 30-day trials to run critical path automation tests in production on a scheduled basis and get alerted when something fails. Currently a stripped-down shell with auth, multi-tenancy, project scoping, invites, and trial/billing infrastructure in place.
 
 ## Commands
 
@@ -18,6 +18,7 @@ yarn build --watch                   # esbuild JS watch
 # Database
 bin/rails db:prepare                 # Create + migrate
 bin/rails db:migrate                 # Run migrations (PostgreSQL)
+bin/rails db:seed                    # Seed plans, users, and demo project
 
 # Tests
 bundle exec rspec                    # All tests
@@ -38,8 +39,9 @@ bin/rails assets:precompile          # Precompile for production
 ### Multi-Tenancy (Subdomain-Based)
 - `config/routes.rb` splits routes with `SubdomainPresent` / `SubdomainBlank` constraints
 - `SubdomainBlank`: public marketing pages (landing, pricing, FAQ, signup, login)
-- `SubdomainPresent`: tenant resources (projects, contacts, tasks, tickets, etc.)
+- `SubdomainPresent`: tenant resources (projects, invites)
 - `ApplicationController#current_account` finds the `User` by `request.subdomain`
+- `ProjectsController#index` redirects to root if `current_account` is nil (non-existent subdomain)
 - All tenant resources are nested under `Projects` which belong to the subdomain owner
 - Local development uses `lvh.me` (resolves to localhost with subdomain support)
 
@@ -51,36 +53,48 @@ bin/rails assets:precompile          # Precompile for production
 - Account activation and password reset via email tokens (2-hour expiry for reset)
 
 ### Authorization
-- **Pundit** policies in `app/policies/` scope resources by project/workorder
+- **Pundit** policies in `app/policies/` scope resources by project
 - `ApplicationController` includes `Pundit::Authorization` and rescues `NotAuthorizedError`
 
 ### Trial/Billing
 - `ApplicationController#remaining_days` calculates days remaining in 30-day trial from `current_account.created_at`
 - `trial_expired?` before_action redirects free-tier users (`plan_id != 2`) when trial ends
 - Stripe integration exists (gem version 1.48.0 — very old)
+- Plans: basic (free, id=1), pro ($49, id=2), invite (free, id=3)
 
 ### Frontend
 - **Tailwind CSS** (primary) via `tailwindcss-rails` gem, with legacy Bootstrap/Sass still present
 - **Stimulus** + **Turbo** for JS interactivity and navigation
 - **esbuild** for JS bundling, **Sprockets** + **importmap** for asset pipeline
-- **Flowbite** for Tailwind UI components, **Shopify Draggable** for Kanban
-- **Trix** for rich text editing (Action Text)
-- Legacy jQuery, CoffeeScript, and React still in dependencies
+- **Flowbite** for Tailwind UI components
+- Legacy jQuery still in dependencies
 
 ### Key Models & Relationships
 - `User` → has many `Projects` (one per account, acts as tenant container)
-- `Project` → has many `Contacts`, `Tasks`, `Tickets`, `Collections`, `Articles`, `Profiles`
-- `Task` → has many `Columns` → has many `Items` (Kanban board)
-- `Contact` → has many `Notes`, `Addresses`, `Questionnaires` → `Responses`
-- `Collection` → has many `Articles` (knowledge base)
+- `Project` → has many `Invites`
+- `Invite` → team member invitation system (links users to a subdomain/project)
+- `CustomerContact` — marketing contact-us form model
+- `Visitor` — newsletter signup form object
+
+### Navigation
+- Top nav header (`layouts/_header.html.erb`) shows different links based on auth state
+- Logged in: Projects, Settings, Logout
+- Logged out: Pricing, Contact, Log In
+- Footer hidden when logged in with subdomain present
 
 ### Testing
 - **RSpec** with **Capybara** + **Playwright** (chromium) for feature tests
-- `spec/features/` contains E2E smoke tests for login, signup, contacts, multitenancy, subscribers
+- `spec/features/` contains E2E tests: login, signup, multitenancy, subscribers
 - `transactional_fixtures: false` — be aware of database state between tests
-- Test fixtures loaded from `spec/fixtures`; Faker gem available for generated data
+- Seed data uses `save(validate: false)` because multiple users share the same subdomain
 - Playwright headless controlled by `CI` or `HEADLESS` env vars
 
 ### Database
 - PostgreSQL: `project_development` / `project_test`
-- Action Mailbox (Mailgun), Active Storage (local), Active Text all enabled
+- Tables: users, projects, invites, plans (plus schema_migrations, ar_internal_metadata)
+
+### Seed Data
+- 3 plans (basic, pro, invite)
+- 3 users sharing subdomain "testing": Damon (manager, pro), Owen (employee, invite), Ruby (employee, invite)
+- 1 demo project ("Demo Shop") owned by Damon
+- 2 invites linking Owen and Ruby to the demo project
