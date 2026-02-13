@@ -42,6 +42,7 @@ gem 'image_processing', '~> 1.2'
 gem 'logger', '= 1.6.0'
 
 
+
 # Linter
 gem 'rubocop', '1.43', require: false
 
