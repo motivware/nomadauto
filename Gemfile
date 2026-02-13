@@ -39,7 +39,8 @@ gem "recaptcha", require: "recaptcha/rails"
 gem "tailwindcss-rails", "~> 2.0"
 gem 'image_processing', '~> 1.2'
 # Pin logger below 1.7 to avoid default-gem activation conflicts on older Bundler/deploy images
-gem 'logger', '~> 1.6.0'
+gem 'logger', '= 1.6.0'
+
 
 
 # Linter
