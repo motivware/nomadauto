@@ -146,10 +146,10 @@
   dependencies:
     spark-md5 "^3.0.1"
 
-"@shopify/draggable@^1.1.3":
-  version "1.1.3"
-  resolved "https://registry.npmjs.org/@shopify/draggable/-/draggable-1.1.3.tgz"
-  integrity sha512-okZG6FTOX1HpfToN2uFVXTicum+NtHFGEY+0MFkZsdChP5qvLSlkffQormMxoDQVIDsK+jso3yz03tteIJ/A0w==
+"@shopify/draggable@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@shopify/draggable/-/draggable-1.2.1.tgz#b0d4bfaabeb1d53881b6c62e0f7743eb61c910cd"
+  integrity sha512-hYKhd99nl1mkO4ybA8i3rxvZgYS2A4Imcxpq7BoUu7h4LmFt997YxHLy8Mm5J7ST+G4DTQXqBsTx9mDid6piZg==
 
 "@tailwindcss/aspect-ratio@^0.4.2":
   version "0.4.2"
