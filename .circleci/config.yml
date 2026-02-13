@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: cimg/ruby:3.3-node
+      - image: cimg/ruby:3.3.10-node
         environment:
           RAILS_ENV: test
           CI: "true"
