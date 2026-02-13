@@ -45,7 +45,7 @@ gem 'rubocop', '1.43', require: false
 
 # Google maps Integration
 gem 'geocoder'
-gem 'pg', '~> 1.5', '>= 1.5.5'
+gem 'pg', '~> 1.6'
 # roles and multi-tenant
 gem 'pundit', '~> 2.1'
 # gem 'rails_12factor'
