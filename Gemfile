@@ -5,18 +5,18 @@ source 'https://rubygems.org'
 gem 'jquery-rails', '4.4.0'
 gem 'public_activity', '2.0.2'
 gem "puma", "6.4.3"
-gem 'rails', '7.0.8.1'
+gem 'rails', '~> 8.0.0'
 gem 'record_tag_helper', '~> 1.0'
 gem 'importmap-rails'
 gem 'stimulus-rails'
 gem 'sprockets-rails'
-gem 'turbo-rails', '~> 1.4'
+gem 'turbo-rails', '~> 2.0'
 gem 'jsbundling-rails'
 gem 'sass-rails', '~> 6.0'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.10', '>= 2.10.1'
+gem 'jbuilder', '~> 2.13'
 # Redis + Sidekiq for background jobs
 gem 'redis', '~> 5.0'
 gem 'sidekiq', '~> 7.2'
@@ -38,7 +38,6 @@ gem "kt-paperclip", "~> 6.4", ">= 6.4.1"
 gem "recaptcha", require: "recaptcha/rails"
 gem "tailwindcss-rails", "~> 2.0"
 gem 'image_processing', '~> 1.2'
-gem 'logger', '1.6.0'
 
 
 # Linter
@@ -59,14 +58,14 @@ gem 'capybara-playwright-driver'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'faker'
-  gem 'rspec-rails', '~> 6.0.0.rc1'
+  gem 'rspec-rails', '~> 8.0'
   gem 'letter_opener', group: :development
   gem 'railroady'
 end
 
 group :development do
   gem 'listen', '3.5.0'
-  gem 'web-console', '3.0.0'
+  gem 'web-console', '~> 4.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
   # gem 'spring-watcher-listen', '2.0.0'
