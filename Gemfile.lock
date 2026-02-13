@@ -116,7 +116,8 @@ GEM
       faraday-net_http (>= 2.0, < 3.2)
     faraday-net_http (3.1.0)
       net-http
-    ffi (1.16.3)
+    ffi (1.17.3-arm64-darwin)
+    ffi (1.17.3-x86_64-linux-gnu)
     font-awesome-sass (4.6.2)
       sass (>= 3.2)
     fugit (1.12.1)
@@ -135,8 +136,8 @@ GEM
     hirb (0.7.3)
     i18n (1.14.8)
       concurrent-ruby (~> 1.0)
-    image_processing (1.12.2)
-      mini_magick (>= 4.9.5, < 5)
+    image_processing (1.14.0)
+      mini_magick (>= 4.9.5, < 6)
       ruby-vips (>= 2.0.17, < 3)
     importmap-rails (2.0.1)
       actionpack (>= 6.0.0)
@@ -184,7 +185,8 @@ GEM
     mimemagic (0.3.10)
       nokogiri (~> 1)
       rake
-    mini_magick (4.12.0)
+    mini_magick (5.3.1)
+      logger
     mini_mime (1.1.5)
     minitest (6.0.1)
       prism (~> 1.5)
@@ -306,8 +308,9 @@ GEM
     rubocop-ast (1.31.1)
       parser (>= 3.3.0.4)
     ruby-progressbar (1.13.0)
-    ruby-vips (2.2.1)
+    ruby-vips (2.3.0)
       ffi (~> 1.12)
+      logger
     rufus-scheduler (3.9.2)
       fugit (~> 1.1, >= 1.11.1)
     sass (3.7.4)
@@ -399,7 +402,7 @@ DEPENDENCIES
   gibbon
   groupdate
   hirb (= 0.7.3)
-  image_processing (~> 1.2)
+  image_processing (~> 1.14)
   importmap-rails
   jbuilder (~> 2.10, >= 2.10.1)
   jquery-rails (= 4.4.0)
@@ -407,6 +410,7 @@ DEPENDENCIES
   kt-paperclip (~> 6.4, >= 6.4.1)
   letter_opener
   listen (= 3.5.0)
+  logger (= 1.6.0)
   pg (~> 1.6)
   public_activity (= 2.0.2)
   puma (= 6.4.3)
