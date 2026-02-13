@@ -378,10 +378,9 @@ GEM
       logger
       rack (>= 2.2.4, < 3.3)
       redis-client (>= 0.23.0, < 1)
-    sidekiq-scheduler (5.0.6)
+    sidekiq-scheduler (6.0.1)
       rufus-scheduler (~> 3.2)
-      sidekiq (>= 6, < 8)
-      tilt (>= 1.4.0, < 3)
+      sidekiq (>= 7.3, < 9)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
       logger
@@ -471,7 +470,7 @@ DEPENDENCIES
   rubocop (= 1.43)
   sass-rails (~> 6.0)
   sidekiq (~> 7.2)
-  sidekiq-scheduler (~> 5.0)
+  sidekiq-scheduler (~> 6.0)
   sprockets-rails
   stimulus-rails
   stripe
