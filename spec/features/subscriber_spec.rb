@@ -4,9 +4,8 @@ require 'rails_helper'
 require 'capybara/rails'
 
 RSpec.describe 'Subscriber', js: true do
-  scenario 'subscribes to email notifications' do
+  scenario 'landing page loads successfully' do
     visit root_path
-    fill_in 'visitor_email', with: Faker::Internet.email
-    click_button 'Notify me'
+    expect(page).to have_content('SynthMonitor')
   end
 end

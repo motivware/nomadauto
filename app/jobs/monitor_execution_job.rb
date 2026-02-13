@@ -3,13 +3,14 @@
 class MonitorExecutionJob < ApplicationJob
   queue_as :monitors
 
-  def perform(monitor_id)
+  def perform(monitor_id, force: false)
     monitor = SiteMonitor.find_by(id: monitor_id)
-    return unless monitor&.status == 'active'
+    return unless monitor
+    return unless force || monitor.status == 'active'
 
     started_at = Time.current
 
-    begin
+    run = begin
       run_steps(monitor)
       duration = ((Time.current - started_at) * 1000).to_i
 
@@ -32,9 +33,23 @@ class MonitorExecutionJob < ApplicationJob
     ensure
       monitor.update_column(:last_run_at, Time.current)
     end
+
+    send_alerts(monitor, run)
   end
 
   private
+
+  def send_alerts(monitor, run)
+    return unless run.is_a?(MonitorRun)
+
+    if run.status == 'fail' && monitor.alerted_at.nil?
+      MonitorMailer.failure_alert(monitor, run).deliver_later
+      monitor.update_column(:alerted_at, Time.current)
+    elsif run.status == 'pass' && monitor.alerted_at.present?
+      MonitorMailer.recovery_alert(monitor, run).deliver_later
+      monitor.update_column(:alerted_at, nil)
+    end
+  end
 
   def run_steps(monitor)
     Playwright.create(playwright_cli_executable_path: 'npx playwright') do |playwright|

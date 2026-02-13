@@ -2,6 +2,8 @@
 
 class ProjectsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: %i[index show]
+  before_action :enforce_trial!, only: %i[index show new create]
+  before_action :check_email_confirmation, only: %i[index show new create]
 
   def index
     unless current_account
@@ -16,7 +18,6 @@ class ProjectsController < ApplicationController
       redirect_to new_project_path and return
     end
 
-    @pro_plan = Plan.find(2)
   end
 
   def show

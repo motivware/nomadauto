@@ -3,19 +3,13 @@
 class AccountActivationsController < ApplicationController
   def edit
     user = User.find_by(email: params[:email])
-    if user && !user.activated? && user.authenticated?(:activation, params[:id])
-      user.activate
+    if user && user.authenticated?(:activation, params[:id])
+      # Clear activation digest to mark email as confirmed
+      user.update_attribute(:activation_digest, nil)
+      user.activate unless user.activated?
       log_in user
-      user.save
-      flash[:success] = 'Account activated!'
-      if user.plan_id == 1 || user.plan_id == 2
-        Project.create(title: user.subdomain, details: "Project", user_id: user.id)
-        @project = Project.find_by(user_id: user.id)
-      	redirect_to projects_url(subdomain: user.subdomain, project_id: @project)
-      elsif user.plan_id == 3
-        @project = Project.find_by(title: user.subdomain)
-      	redirect_to projects_url(subdomain: user.subdomain, project_id: @project)
-      end
+      flash[:success] = 'Email confirmed!'
+      redirect_to projects_url(subdomain: user.subdomain)
     else
       flash[:danger] = 'Invalid activation link'
       redirect_to root_url

@@ -1,37 +1,38 @@
 <% @title="| Frequently Asked Questions" %>
 
-<!-- This example requires Tailwind CSS v2.0+ -->
-<div class="bg-white">
-  <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
-    <div class="lg:grid lg:grid-cols-3 lg:gap-8">
-      <div>
-        <h2 class="text-3xl font-extrabold text-gray-900">Frequently asked questions</h2>
-        <p class="mt-4 text-lg text-gray-500">Can’t find the answer you’re looking for? Reach out to us and we will respond promptly. </p>
-        <br/> <%= link_to "Contact Us", new_contact_path, class: 'w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10' %>
+<div class="bg-gradient-to-b from-gray-50 to-white">
+  <div class="max-w-3xl mx-auto px-4 py-16 sm:py-24">
+    <div class="text-center mb-12">
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">Frequently Asked Questions</h1>
+      <p class="mt-4 text-lg text-gray-500">
+        Everything you need to know to get started.
+      </p>
+    </div>
+
+    <div class="space-y-6">
+      <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+        <h3 class="text-base font-semibold text-gray-900">What is SynthMonitor?</h3>
+        <p class="mt-2 text-base text-gray-600 leading-relaxed">SynthMonitor runs automated browser tests against your production application on a schedule. If a critical user flow like login, checkout, or signup breaks, you'll know about it before your customers do.</p>
       </div>
-      <div class="mt-12 lg:mt-0 lg:col-span-2">
-        <dl class="space-y-12">
-          <div>
-            <dt class="text-lg leading-6 font-medium text-gray-900">What can I do with the trial period?</dt>
-            <dd class="mt-2 text-base text-gray-500">It's 30 days of total functionality or longer...if we really like you! 😉 Let's make this fun!.</dd>
-          </div>
 
-          <div>
-            <dt class="text-lg leading-6 font-medium text-gray-900">When can I cancel my account?</dt>
-            <dd class="mt-2 text-base text-gray-500">Account not vibing with you? No worries! Feel free to cancel it anytime you like. <br/> We won't hold it against you. 😄</dd>
-          </div>
+      <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+        <h3 class="text-base font-semibold text-gray-900">What's included in the free trial?</h3>
+        <p class="mt-2 text-base text-gray-600 leading-relaxed">You get 30 days of full access — no credit card required. Create monitors, set up schedules, and receive alerts just like a paid account.</p>
+      </div>
 
-          <div>
-            <dt class="text-lg leading-6 font-medium text-gray-900">Is a credit card required to use Motivware?</dt>
-            <dd class="mt-2 text-base text-gray-500">For the first 30 days, you can dive into Motivware, no credit card needed! <br/>We're chill like that - your plastic can take a break. 😄💳</dd>
-          </div>
+      <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+        <h3 class="text-base font-semibold text-gray-900">Can I cancel anytime?</h3>
+        <p class="mt-2 text-base text-gray-600 leading-relaxed">Yes. There are no contracts or commitments. You can cancel your account at any time from your settings page.</p>
+      </div>
 
-          <div>
-            <dt class="text-lg leading-6 font-medium text-gray-900">What forms of payment are accepted?</dt>
-            <dd class="mt-2 text-base text-gray-500">We're pretty easy-going when it comes to payments. <br/>You can use your credit card, use PayPal, even slide in with Venmo - we're flexible! 💳💰🎉</dd>
-          </div>
-          <!-- More questions... -->
-        </dl>
+      <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+        <h3 class="text-base font-semibold text-gray-900">Do I need to write code to create monitors?</h3>
+        <p class="mt-2 text-base text-gray-600 leading-relaxed">No. SynthMonitor includes a no-code test builder that lets you define multi-step browser flows by configuring steps like navigate, click, and fill — no scripting required.</p>
+      </div>
+
+      <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+        <h3 class="text-base font-semibold text-gray-900">What forms of payment are accepted?</h3>
+        <p class="mt-2 text-base text-gray-600 leading-relaxed">We accept all major credit cards through Stripe. No payment is required during the trial period.</p>
       </div>
     </div>
   </div>

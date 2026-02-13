@@ -1,54 +1,37 @@
-<!--
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
-<!--
-  This example requires updating your template:
-
-  ```
-  <html class="h-full bg-gray-50">
-  <body class="h-full">
-  ```
--->
 <% @title="| Login" %>
 
-<div class="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-  <div class="sm:mx-auto sm:w-full sm:max-w-md">
-    <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
-    <p class="mt-2 text-center text-sm text-gray-600">
-      Or
-      <a><%= link_to "start your 30-day free trial", signup_path(plan: @basic_plan.id), class: 'font-medium text-indigo-600 hover:text-indigo-500' %></a>
-    </p>
-  </div>
+<div class="bg-gradient-to-b from-gray-50 to-white">
+  <div class="max-w-md mx-auto px-4 py-16 sm:py-24">
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-bold tracking-tight text-gray-900">Sign in to your account</h1>
+      <p class="mt-2 text-sm text-gray-500">
+        Or <%= link_to "start your 30-day free trial", signup_path(plan: @basic_plan.id), class: 'font-medium text-indigo-600 hover:text-indigo-500' %>
+      </p>
+    </div>
 
-  <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-    <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-    <%= form_for(:session, url: login_path) do |f| %>
-      <%= f.label :email, class: "block text-sm font-medium text-gray-700" %>
-      <%= f.text_field :email, placeholder: "Email", class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' %>
-      <br/>
-      <%= f.label :password, class: "block text-sm font-medium text-gray-700" %>
-      <%= f.password_field :password, placeholder: "Password", class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' %>
-      <br/>
-      <%= f.label :remember_me, class: "flex items-center" do %>
-      <%= f.check_box :remember_me, class: "h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" %>
-        <span class="ml-2 block text-sm text-gray-900">Remember me</span>
+    <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+      <%= form_for(:session, url: login_path) do |f| %>
+        <div class="space-y-4">
+          <div>
+            <%= f.label :email, class: "block text-sm font-medium text-gray-700 mb-1" %>
+            <%= f.text_field :email, placeholder: "jane@company.com", class: 'block w-full py-2.5 px-4 placeholder-gray-400 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm' %>
+          </div>
+          <div>
+            <%= f.label :password, class: "block text-sm font-medium text-gray-700 mb-1" %>
+            <%= f.password_field :password, placeholder: "Password", class: 'block w-full py-2.5 px-4 placeholder-gray-400 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm' %>
+          </div>
+          <div class="flex items-center justify-between">
+            <%= f.label :remember_me, class: "flex items-center" do %>
+              <%= f.check_box :remember_me, class: "h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" %>
+              <span class="ml-2 text-sm text-gray-700">Remember me</span>
+            <% end %>
+            <%= link_to "Forgot password?", new_password_reset_path, class: "text-sm font-medium text-indigo-600 hover:text-indigo-500" %>
+          </div>
+          <div class="pt-2">
+            <%= f.submit "Log in", class: "cursor-pointer w-full inline-flex items-center justify-center py-2.5 px-4 text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm transition" %>
+          </div>
+        </div>
       <% end %>
-      <%= link_to "Forgot your password", new_password_reset_path, class: "text-sm font-medium text-indigo-600 hover:text-indigo-500" %>
-      <br/><br/>
-      <%= f.submit "Log in", class: "cursor-pointer	w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
-    <% end %>
+    </div>
   </div>
 </div>

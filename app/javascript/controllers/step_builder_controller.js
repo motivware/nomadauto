@@ -5,6 +5,7 @@ export default class extends Controller {
 
   connect() {
     this.syncToHidden()
+    this.containerTarget.addEventListener("input", () => this.syncToHidden())
   }
 
   addStep() {

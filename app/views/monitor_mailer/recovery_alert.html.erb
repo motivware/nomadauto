@@ -1,0 +1,7 @@
+<h1>Monitor Recovered: <%= @monitor.name %></h1>
+
+<p>Your monitor <strong><%= @monitor.name %></strong> is passing again.</p>
+
+<p><strong>URL:</strong> <%= @monitor.url %></p>
+<p><strong>Downtime:</strong> approximately <%= @downtime %></p>
+<p><strong>Recovered at:</strong> <%= @run.completed_at.strftime("%B %d, %Y at %I:%M %p UTC") %></p>

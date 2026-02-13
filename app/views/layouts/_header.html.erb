@@ -1,4 +1,4 @@
-<nav class="bg-gray-800">
+<nav class="bg-white border-b border-gray-200">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <div class="flex-shrink-0">
@@ -7,25 +7,25 @@
 
       <div class="hidden sm:flex sm:items-center sm:space-x-4 sm:ml-10">
         <% if logged_in? %>
-          <%= link_to "Monitors", root_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
-          <%= link_to "Settings", edit_user_path(current_user), class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
-          <%= button_to "Logout", logout_path, method: :delete, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+          <%= link_to "Monitors", root_path, class: "text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition" %>
+          <%= link_to "Settings", edit_user_path(current_user), class: "text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition" %>
+          <%= button_to "Logout", logout_path, method: :delete, class: "text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition" %>
         <% else %>
-          <%= link_to "Pricing", pricing_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
-          <%= link_to "Contact", new_contact_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
-          <%= link_to "Log In", login_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+          <%= link_to "Home", root_path, class: "text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition" %>
+          <%= link_to "Pricing", pricing_path, class: "text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition" %>
+          <%= link_to "Log In", login_path, class: "inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 transition" %>
         <% end %>
       </div>
 
       <div class="sm:hidden flex items-center space-x-2">
         <% if logged_in? %>
-          <%= link_to "Monitors", root_path, class: "text-gray-300 hover:text-white px-2 py-1 rounded-md text-xs font-medium" %>
-          <%= link_to "Settings", edit_user_path(current_user), class: "text-gray-300 hover:text-white px-2 py-1 rounded-md text-xs font-medium" %>
-          <%= button_to "Logout", logout_path, method: :delete, class: "text-gray-300 hover:text-white px-2 py-1 rounded-md text-xs font-medium" %>
+          <%= link_to "Monitors", root_path, class: "text-gray-600 hover:text-gray-900 px-2 py-1 rounded-md text-xs font-medium" %>
+          <%= link_to "Settings", edit_user_path(current_user), class: "text-gray-600 hover:text-gray-900 px-2 py-1 rounded-md text-xs font-medium" %>
+          <%= button_to "Logout", logout_path, method: :delete, class: "text-gray-600 hover:text-gray-900 px-2 py-1 rounded-md text-xs font-medium" %>
         <% else %>
-          <%= link_to "Pricing", pricing_path, class: "text-gray-300 hover:text-white px-2 py-1 rounded-md text-xs font-medium" %>
-          <%= link_to "Contact", new_contact_path, class: "text-gray-300 hover:text-white px-2 py-1 rounded-md text-xs font-medium" %>
-          <%= link_to "Log In", login_path, class: "text-gray-300 hover:text-white px-2 py-1 rounded-md text-xs font-medium" %>
+          <%= link_to "Home", root_path, class: "text-gray-600 hover:text-gray-900 px-2 py-1 rounded-md text-xs font-medium" %>
+          <%= link_to "Pricing", pricing_path, class: "text-gray-600 hover:text-gray-900 px-2 py-1 rounded-md text-xs font-medium" %>
+          <%= link_to "Log In", login_path, class: "inline-flex items-center justify-center px-3 py-1 text-xs font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700" %>
         <% end %>
       </div>
     </div>

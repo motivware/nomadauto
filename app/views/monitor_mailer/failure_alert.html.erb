@@ -1,0 +1,7 @@
+<h1>Monitor Failing: <%= @monitor.name %></h1>
+
+<p>Your monitor <strong><%= @monitor.name %></strong> is failing.</p>
+
+<p><strong>URL:</strong> <%= @monitor.url %></p>
+<p><strong>Error:</strong> <%= @run.error_message %></p>
+<p><strong>Time:</strong> <%= @run.completed_at.strftime("%B %d, %Y at %I:%M %p UTC") %></p>

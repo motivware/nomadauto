@@ -1,36 +1,78 @@
-<% provide(:title, "Edit user") %>
+<% @title="| Settings" %>
 
-<div class="forms" class="row">
-  <% if params[:plan] == '2' %>
-    <div class="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-        <div class="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Pro Account</h1>
-              <p class="mt-2 text-center text-sm text-gray-600">Sign up with the pro account for only $30/month!</p>
-            <%= render "pro_form" %>
-        </div>
+<div class="bg-gradient-to-b from-gray-50 to-white">
+  <div class="max-w-2xl mx-auto px-4 py-16 sm:py-24">
+    <div class="text-center mb-12">
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">Settings</h1>
+    </div>
+
+    <div class="space-y-6">
+      <!-- Account Info -->
+      <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+        <h2 class="text-lg font-semibold text-gray-900 mb-4">Account</h2>
+        <dl class="space-y-3">
+          <div class="flex justify-between">
+            <dt class="text-sm text-gray-500">Name</dt>
+            <dd class="text-sm font-medium text-gray-900"><%= @user.name %></dd>
+          </div>
+          <div class="flex justify-between">
+            <dt class="text-sm text-gray-500">Email</dt>
+            <dd class="text-sm font-medium text-gray-900"><%= @user.email %></dd>
+          </div>
+          <div class="flex justify-between">
+            <dt class="text-sm text-gray-500">Subdomain</dt>
+            <dd class="text-sm font-medium text-gray-900"><%= @user.subdomain %>.synthmonitor.com</dd>
+          </div>
+        </dl>
+      </div>
+
+      <!-- Subscription -->
+      <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+        <h2 class="text-lg font-semibold text-gray-900 mb-4">Subscription</h2>
+        <% if @user.plan_id == 2 %>
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Pro</span>
+              <span class="ml-2 text-sm text-gray-600">$49/month</span>
+            </div>
+            <span class="text-sm text-green-600 font-medium">Active</span>
+          </div>
+        <% else %>
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">Free Trial</span>
+              <% if remaining_days > 0 %>
+                <span class="ml-2 text-sm text-gray-600"><%= remaining_days %> days remaining</span>
+              <% else %>
+                <span class="ml-2 text-sm text-red-600 font-medium">Expired</span>
+              <% end %>
+            </div>
+          </div>
+          <%= button_to "Subscribe — $49/mo", checkout_path, method: :post,
+                class: "w-full inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm transition" %>
+        <% end %>
+      </div>
+
+      <!-- Change Password -->
+      <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+        <h2 class="text-lg font-semibold text-gray-900 mb-4">Change Password</h2>
+        <%= form_for(@user) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+          <div class="space-y-4">
+            <div>
+              <%= f.label :password, "New Password", class: 'block text-sm font-medium text-gray-700 mb-1' %>
+              <%= f.password_field :password, class: 'block w-full py-2.5 px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm' %>
+            </div>
+            <div>
+              <%= f.label :password_confirmation, "Confirm Password", class: 'block text-sm font-medium text-gray-700 mb-1' %>
+              <%= f.password_field :password_confirmation, class: 'block w-full py-2.5 px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm' %>
+            </div>
+            <div>
+              <%= f.submit "Update Password", class: "cursor-pointer inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm transition" %>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
-  <% end %>
-  <% if params[:plan] != '2'%>
-  <div class="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-    <div class="sm:mx-auto sm:w-full sm:max-w-md">
-      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Change your password</h2>
-  <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-    <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-
-      <%= form_for(@user) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
-          <%= f.label :password, class: 'block text-sm font-medium text-gray-700' %>
-          <%= f.password_field :password, class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' %>
-          <%= f.label :password_confirmation, class: 'block text-sm font-medium text-gray-700' %>
-          <%= f.password_field :password_confirmation, class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' %>
-          <br/>
-          <%= f.submit "Save changes", class: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
-      </div>
-    </div>
-  <% end %>
+  </div>
 </div>
-</div>
-</div>
-<% end %>
-

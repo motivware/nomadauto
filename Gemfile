@@ -30,7 +30,7 @@ gem 'hirb', '0.7.3'
 # Use gibbon to connect to the mailchimp API
 gem 'gibbon'
 # Use Stripe for payment processing
-gem 'stripe', '1.48.0'
+gem 'stripe'
 gem 'chartkick', '>= 3.2.0'
 # gem 'figaro', '1.1.1'
 gem 'groupdate'

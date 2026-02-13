@@ -27,5 +27,8 @@ end
 Invite.find_or_create_by!(email: 'owen-user@test.com', subdomain: 'testing', project_id: 1)
 Invite.find_or_create_by!(email: 'ruby-user@test.com', subdomain: 'testing', project_id: 1)
 
+# Clear activation digest for seeded users (simulates confirmed email)
+User.where(activated: true).where.not(activation_digest: nil).update_all(activation_digest: nil)
+
 ActiveRecord::Base.connection.execute("SELECT setval('users_id_seq', (SELECT MAX(id) FROM users))")
 ActiveRecord::Base.connection.execute("SELECT setval('projects_id_seq', (SELECT MAX(id) FROM projects))")

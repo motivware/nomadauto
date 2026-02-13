@@ -3,6 +3,7 @@
   - monitors
 
 :scheduler:
-  monitor_scheduler:
-    every: '5m'
-    class: MonitorSchedulerJob
+  :schedule:
+    monitor_scheduler:
+      every: '5m'
+      class: MonitorSchedulerJob

@@ -4,7 +4,7 @@
     <% if @user.plan_id == 1 %>
       <p class="mt-2 text-sm text-gray-500">
         Trial expires in <span class="text-red-600 font-medium"><%= remaining_days %> days</span>.
-        <%= link_to "Subscribe Now!", edit_user_path(current_user, plan: @pro_plan.id), class: "text-indigo-600 hover:text-indigo-500 font-medium" %>
+        <%= button_to "Subscribe Now!", checkout_path, method: :post, class: "inline text-indigo-600 hover:text-indigo-500 font-medium text-sm bg-transparent border-0 p-0 cursor-pointer" %>
       </p>
     <% end %>
   </div>

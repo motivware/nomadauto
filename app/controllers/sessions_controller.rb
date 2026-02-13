@@ -9,15 +9,13 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user&.authenticate(params[:session][:password])
-      if user.activated?
+      if user.confirmation_grace_expired?
+        flash[:warning] = 'Please confirm your email to continue. Check your inbox for the activation link.'
+        redirect_to root_url
+      else
         log_in user
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
         redirect_to projects_url(subdomain: user.subdomain)
-      else
-        message  = 'Account not activated.'
-        message += 'Check your email for the activation link.'
-        flash[:warning] = message
-        redirect_to root_url
       end
     else
       flash.now[:danger] = 'Invalid email/password combination'

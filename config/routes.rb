@@ -37,6 +37,10 @@ Rails.application.routes.draw do
 
   constraints(SubdomainPresent) do
     root 'projects#index'
+    get 'expired', to: 'pages#expired'
+    post 'checkout', to: 'checkouts#create'
+    get 'checkout/success', to: 'checkouts#success', as: 'checkout_success'
+    get 'checkout/cancel', to: 'checkouts#cancel', as: 'checkout_cancel'
     resources :projects, only: %i[index show new create] do
       scope module: 'users' do
         resources :invites

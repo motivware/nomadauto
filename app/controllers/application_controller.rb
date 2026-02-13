@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
 
   helper_method :all
   helper_method :remaining_days
-  helper_method :trial_expired?
 
   def remaining_days
     return 0 unless current_account
@@ -20,10 +19,19 @@ class ApplicationController < ActionController::Base
     ((current_account.created_at + 30.days).to_date - Date.today).round
   end
 
-  def trial_expired?
+  def enforce_trial!
     return redirect_to login_path unless current_account
+    return if current_user&.plan_id == 2
 
-    redirect_to projects_path if (remaining_days <= 0) && (current_user.plan_id != 2)
+    redirect_to expired_path if remaining_days <= 0
+  end
+
+  def check_email_confirmation
+    return unless current_user&.confirmation_grace_expired?
+
+    log_out
+    flash[:warning] = 'Please confirm your email to continue. Check your inbox for the activation link.'
+    redirect_to login_url
   end
 
   private

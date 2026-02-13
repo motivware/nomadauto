@@ -10,7 +10,11 @@ class SiteMonitor < ApplicationRecord
   validates :interval_minutes, numericality: { greater_than: 0 }
 
   scope :active, -> { where(status: 'active') }
-  scope :due, -> { active.where('last_run_at IS NULL OR last_run_at <= ?', 30.minutes.ago) }
+  scope :due, -> {
+    active.where(
+      "last_run_at IS NULL OR last_run_at <= NOW() - (interval_minutes * INTERVAL '1 minute')"
+    )
+  }
 
   def last_run
     monitor_runs.order(created_at: :desc).first

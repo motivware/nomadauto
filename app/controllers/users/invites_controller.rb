@@ -2,7 +2,7 @@
 
 module Users
   class InvitesController < UsersController
-    before_action :trial_expired?
+    before_action :enforce_trial!
 
     def index
       @users = current_account.invitelist

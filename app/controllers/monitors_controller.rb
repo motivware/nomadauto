@@ -2,6 +2,8 @@
 
 class MonitorsController < ApplicationController
   before_action :logged_in_user
+  before_action :enforce_trial!
+  before_action :check_email_confirmation
   before_action :set_project
   before_action :set_monitor, only: %i[show edit update destroy toggle run_now]
 
@@ -57,7 +59,7 @@ class MonitorsController < ApplicationController
 
   def run_now
     authorize @monitor
-    MonitorExecutionJob.perform_later(@monitor.id)
+    MonitorExecutionJob.perform_later(@monitor.id, force: true)
     redirect_to project_monitor_path(@project, @monitor), notice: 'Test run queued.'
   end
 

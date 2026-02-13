@@ -1,20 +1,18 @@
-<% @title="| Signup" %>
+<% @title="| Sign Up" %>
 
-<div class="container-fluid">
-  <div class="forms" class="row">
-    <% if params[:plan] == '1' %>
-      <div class="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-        <div class="sm:mx-auto sm:w-full sm:max-w-md">
-          <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign up for free and get started today!</h2>
-        </div>
-      <%= render "basic_form" %>
-    <% else params[:plan] == '3' %>
-      <div class="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div class="sm:mx-auto sm:w-full sm:max-w-md">
-        <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
-        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Accept invitation and get started today!</h2>
-      </div>
+<div class="bg-gradient-to-b from-gray-50 to-white">
+  <div class="max-w-md mx-auto px-4 py-16 sm:py-24">
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-bold tracking-tight text-gray-900">Create your account</h1>
+      <p class="mt-2 text-sm text-gray-500">
+        Free 30-day trial. No credit card required.
+      </p>
+    </div>
+
+    <% if params[:plan] == '3' %>
       <%= render "invite_form" %>
+    <% else %>
+      <%= render "basic_form" %>
     <% end %>
   </div>
 </div>

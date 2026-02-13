@@ -7,8 +7,7 @@ class User < ActiveRecord::Base
   has_many :sent_invites, class_name: 'Invite',
                           foreign_key: 'sender_id'
 
-  attr_accessor :remember_token, :activation_token, :reset_token,
-                :stripe_card_token
+  attr_accessor :remember_token, :activation_token, :reset_token
 
   before_create :create_activation_digest
   validates :name, presence: true, length: { maximum: 50 }
@@ -30,20 +29,15 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }, allow_blank: true
 
-  # If pro user passes validations (email, password, etc.).
-  # then call Stripe and tell Stripe to setup a subscription.
-  # upon charging the customer's card.
-  # Stripe responds back with customer data.
-  # Store customer.id as the customer token and save the token.
-  def save_with_subscription
-    if valid?
-      customer = Stripe::Customer.create(description: email, plan: plan_id, card: stripe_card_token)
-      self.stripe_customer_token = customer.id
-      save!
-    end
+  def email_confirmed?
+    activation_digest.nil?
   end
 
-  # Returns the hash difest of the given string.
+  def confirmation_grace_expired?
+    !email_confirmed? && created_at < 24.hours.ago
+  end
+
+  # Returns the hash digest of the given string.
   def self.digest(string)
     cost = if ActiveModel::SecurePassword.min_cost
              BCrypt::Engine::MIN_COST
