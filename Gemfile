@@ -58,7 +58,7 @@ gem 'capybara-playwright-driver'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'faker'
-  gem 'rspec-rails', '~> 6.0.0.rc1'
+  gem 'rspec-rails', '~> 7.1.1'
   gem 'letter_opener', group: :development
   gem 'railroady'
 end
