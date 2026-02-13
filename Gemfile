@@ -38,6 +38,7 @@ gem "kt-paperclip", "~> 6.4", ">= 6.4.1"
 gem "recaptcha", require: "recaptcha/rails"
 gem "tailwindcss-rails", "~> 2.0"
 gem 'image_processing', '~> 1.2'
+gem 'logger', '1.6.0'
 
 
 # Linter
