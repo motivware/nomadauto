@@ -26,5 +26,5 @@ Rails.application.configure do
 
   # Report violations without enforcing the policy.
   # Switch to false once violations are resolved.
-  config.content_security_policy_report_only = true
+  config.content_security_policy_report_only = false
 end
