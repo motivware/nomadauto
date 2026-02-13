@@ -407,6 +407,7 @@ DEPENDENCIES
   kt-paperclip (~> 6.4, >= 6.4.1)
   letter_opener
   listen (= 3.5.0)
+  logger (= 1.6.0)
   pg (~> 1.6)
   public_activity (= 2.0.2)
   puma (= 6.4.3)
