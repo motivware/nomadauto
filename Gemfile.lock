@@ -66,8 +66,9 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-    acts_as_list (1.1.0)
-      activerecord (>= 4.2)
+    acts_as_list (1.2.6)
+      activerecord (>= 6.1)
+      activesupport (>= 6.1)
     addressable (2.8.8)
       public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.2)
@@ -385,7 +386,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  acts_as_list (~> 1.0, >= 1.0.2)
+  acts_as_list (~> 1.2)
   bcrypt (= 3.1.16)
   bootstrap-sass (>= 3.4.1)
   byebug

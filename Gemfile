@@ -49,7 +49,7 @@ gem 'pg', '~> 1.6'
 # roles and multi-tenant
 gem 'pundit', '~> 2.1'
 # gem 'rails_12factor'
-gem 'acts_as_list', '~> 1.0', '>= 1.0.2'
+gem 'acts_as_list', '~> 1.2'
 
 # Playwright for browser automation (monitors + tests)
 gem 'capybara'
