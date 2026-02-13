@@ -1,0 +1,60 @@
+<%= form_with(model: monitor, url: monitor.persisted? ? project_monitor_path(@project, monitor) : project_monitors_path(@project), class: "space-y-6", data: { controller: "step-builder" }) do |f| %>
+  <% if monitor.errors.any? %>
+    <div class="rounded-md bg-red-50 p-4">
+      <ul class="list-disc pl-5 text-sm text-red-700">
+        <% monitor.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :name, class: "block text-sm font-medium text-gray-700" %>
+    <%= f.text_field :name, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm", placeholder: "Login Flow", data: { testid: "monitor-name" } %>
+  </div>
+
+  <div>
+    <%= f.label :url, "Starting URL", class: "block text-sm font-medium text-gray-700" %>
+    <%= f.text_field :url, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm", placeholder: "https://example.com", data: { testid: "monitor-url" } %>
+  </div>
+
+  <div>
+    <%= f.label :interval_minutes, "Run every (minutes)", class: "block text-sm font-medium text-gray-700" %>
+    <%= f.number_field :interval_minutes, class: "mt-1 block w-32 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm", min: 1 %>
+  </div>
+
+  <%= f.hidden_field :steps_json, value: monitor.steps.to_json, data: { step_builder_target: "output" } %>
+
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-2">Test Steps</label>
+    <div data-step-builder-target="container" class="space-y-3">
+      <% monitor.steps.each_with_index do |step, i| %>
+        <div data-step class="flex items-start space-x-2 bg-gray-50 p-3 rounded-md">
+          <span class="text-sm text-gray-400 pt-2 w-6"><%= i + 1 %>.</span>
+          <select data-action="change->step-builder#changeAction" data-field="action" class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+            <option value="visit" <%= 'selected' if step['action'] == 'visit' %>>Visit URL</option>
+            <option value="click" <%= 'selected' if step['action'] == 'click' %>>Click</option>
+            <option value="fill_in" <%= 'selected' if step['action'] == 'fill_in' %>>Fill In</option>
+            <option value="expect_text" <%= 'selected' if step['action'] == 'expect_text' %>>Expect Text</option>
+          </select>
+          <input type="text" data-field="url" placeholder="https://..." value="<%= step['url'] %>" class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm <%= 'hidden' unless step['action'] == 'visit' %>">
+          <input type="text" data-field="selector" placeholder="CSS selector (e.g. #email)" value="<%= step['selector'] %>" class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm <%= 'hidden' unless %w[click fill_in].include?(step['action']) %>">
+          <input type="text" data-field="value" placeholder="Value to enter" value="<%= step['value'] %>" class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm <%= 'hidden' unless step['action'] == 'fill_in' %>">
+          <input type="text" data-field="text" placeholder="Expected text" value="<%= step['text'] %>" class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm <%= 'hidden' unless step['action'] == 'expect_text' %>">
+          <button type="button" data-action="click->step-builder#removeStep" class="text-red-400 hover:text-red-600 pt-2">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      <% end %>
+    </div>
+    <button type="button" data-action="click->step-builder#addStep" class="mt-3 inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+      + Add Step
+    </button>
+  </div>
+
+  <div class="flex items-center space-x-4">
+    <%= f.submit monitor.persisted? ? "Update Monitor" : "Create Monitor", class: "cursor-pointer inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700", data: { testid: "monitor-submit" } %>
+    <%= link_to "Cancel", monitor.persisted? ? project_monitor_path(@project, monitor) : project_monitors_path(@project), class: "text-sm text-gray-500 hover:text-gray-700" %>
+  </div>
+<% end %>

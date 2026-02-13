@@ -17,8 +17,10 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.10', '>= 2.10.1'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '3.0'
+# Redis + Sidekiq for background jobs
+gem 'redis', '~> 5.0'
+gem 'sidekiq', '~> 7.2'
+gem 'sidekiq-scheduler', '~> 5.0'
 gem 'bcrypt', '3.1.16'
 gem 'bootstrap-sass', '>= 3.4.1'
 gem 'dotenv-rails'
@@ -49,10 +51,12 @@ gem 'pundit', '~> 2.1'
 # gem 'rails_12factor'
 gem 'acts_as_list', '~> 1.0', '>= 1.0.2'
 
+# Playwright for browser automation (monitors + tests)
+gem 'capybara'
+gem 'capybara-playwright-driver'
+
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'capybara'
-  gem 'capybara-playwright-driver'
   gem 'faker'
   gem 'rspec-rails', '~> 6.0.0.rc1'
   gem 'letter_opener', group: :development

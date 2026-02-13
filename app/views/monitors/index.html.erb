@@ -1,0 +1,54 @@
+<div class="max-w-4xl mx-auto px-4 py-8">
+  <div class="flex justify-between items-center mb-6">
+    <div>
+      <h1 class="text-2xl font-bold text-gray-900">Monitors</h1>
+      <p class="text-sm text-gray-500 mt-1"><%= @project.title %></p>
+    </div>
+    <%= link_to "New Monitor", new_project_monitor_path(@project), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700" %>
+  </div>
+
+  <%= render 'shared/flashes' %>
+
+  <% if @monitors.any? %>
+    <div class="bg-white shadow overflow-hidden sm:rounded-md">
+      <ul class="divide-y divide-gray-200">
+        <% @monitors.each do |monitor| %>
+          <li>
+            <%= link_to project_monitor_path(@project, monitor), class: "block hover:bg-gray-50 px-4 py-4 sm:px-6" do %>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center min-w-0">
+                  <% if monitor.last_run %>
+                    <span class="flex-shrink-0 h-3 w-3 rounded-full mr-3 <%= monitor.passing? ? 'bg-green-400' : 'bg-red-400' %>"></span>
+                  <% else %>
+                    <span class="flex-shrink-0 h-3 w-3 rounded-full mr-3 bg-gray-300"></span>
+                  <% end %>
+                  <div>
+                    <p class="text-sm font-medium text-indigo-600 truncate"><%= monitor.name %></p>
+                    <p class="text-sm text-gray-500 truncate"><%= monitor.url %></p>
+                  </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium <%= monitor.status == 'active' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' %>">
+                    <%= monitor.status %>
+                  </span>
+                  <span class="text-sm text-gray-500">every <%= monitor.interval_minutes %> min</span>
+                </div>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% else %>
+    <div class="text-center py-12">
+      <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+      </svg>
+      <h3 class="mt-2 text-sm font-medium text-gray-900">No monitors</h3>
+      <p class="mt-1 text-sm text-gray-500">Get started by creating your first monitor.</p>
+      <div class="mt-6">
+        <%= link_to "New Monitor", new_project_monitor_path(@project), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700" %>
+      </div>
+    </div>
+  <% end %>
+</div>

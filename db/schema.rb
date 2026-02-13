@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2026_02_12_112753) do
+ActiveRecord::Schema[7.0].define(version: 2026_02_12_211619) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,6 +35,19 @@ ActiveRecord::Schema[7.0].define(version: 2026_02_12_112753) do
     t.index ["project_id"], name: "index_invites_on_project_id"
   end
 
+  create_table "monitor_runs", force: :cascade do |t|
+    t.bigint "site_monitor_id", null: false
+    t.string "status", null: false
+    t.integer "duration_ms"
+    t.text "error_message"
+    t.datetime "started_at", null: false
+    t.datetime "completed_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["site_monitor_id", "created_at"], name: "index_monitor_runs_on_site_monitor_id_and_created_at"
+    t.index ["site_monitor_id"], name: "index_monitor_runs_on_site_monitor_id"
+  end
+
   create_table "plans", id: :serial, force: :cascade do |t|
     t.string "name"
     t.decimal "price"
@@ -46,6 +59,20 @@ ActiveRecord::Schema[7.0].define(version: 2026_02_12_112753) do
     t.string "title"
     t.string "details"
     t.integer "user_id"
+  end
+
+  create_table "site_monitors", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.string "name", null: false
+    t.string "url", null: false
+    t.jsonb "steps", default: [], null: false
+    t.integer "interval_minutes", default: 30, null: false
+    t.string "status", default: "active", null: false
+    t.datetime "last_run_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id", "status"], name: "index_site_monitors_on_project_id_and_status"
+    t.index ["project_id"], name: "index_site_monitors_on_project_id"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
@@ -69,4 +96,6 @@ ActiveRecord::Schema[7.0].define(version: 2026_02_12_112753) do
   end
 
   add_foreign_key "invites", "projects"
+  add_foreign_key "monitor_runs", "site_monitors"
+  add_foreign_key "site_monitors", "projects"
 end

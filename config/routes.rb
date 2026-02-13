@@ -41,6 +41,12 @@ Rails.application.routes.draw do
       scope module: 'users' do
         resources :invites
       end
+      resources :monitors do
+        member do
+          post :toggle
+          post :run_now
+        end
+      end
     end
   end
 end

@@ -3,3 +3,6 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application"
+
+import StepBuilderController from "./step_builder_controller"
+application.register("step-builder", StepBuilderController)

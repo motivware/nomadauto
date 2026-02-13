@@ -7,9 +7,16 @@ class ProjectsController < ApplicationController
     unless current_account
       redirect_to root_url(subdomain: 'www') and return
     end
-    @pro_plan = Plan.find(2)
     @user = User.find(session[:user_id])
     @projects = current_account.user_projects
+
+    if @projects.size == 1
+      redirect_to project_monitors_path(@projects.first) and return
+    elsif @projects.empty?
+      redirect_to new_project_path and return
+    end
+
+    @pro_plan = Plan.find(2)
   end
 
   def show

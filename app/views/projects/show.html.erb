@@ -1,7 +1,37 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="well projects">
-
-    </div>
+<div class="max-w-4xl mx-auto px-4 py-8">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-bold text-gray-900"><%= @project.title %></h1>
+    <%= link_to "Monitors", project_monitors_path(@project), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700" %>
   </div>
+
+  <% if @project.details.present? %>
+    <p class="text-gray-600 mb-6"><%= @project.details %></p>
+  <% end %>
+
+  <% monitors = @project.site_monitors.order(created_at: :desc) %>
+  <% if monitors.any? %>
+    <div class="bg-white shadow overflow-hidden sm:rounded-md">
+      <ul class="divide-y divide-gray-200">
+        <% monitors.each do |monitor| %>
+          <li>
+            <%= link_to project_monitor_path(@project, monitor), class: "block hover:bg-gray-50 px-4 py-4" do %>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <% if monitor.last_run %>
+                    <span class="h-3 w-3 rounded-full mr-3 <%= monitor.passing? ? 'bg-green-400' : 'bg-red-400' %>"></span>
+                  <% else %>
+                    <span class="h-3 w-3 rounded-full mr-3 bg-gray-300"></span>
+                  <% end %>
+                  <span class="text-sm font-medium text-indigo-600"><%= monitor.name %></span>
+                </div>
+                <span class="text-xs text-gray-500"><%= monitor.status %></span>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% else %>
+    <p class="text-sm text-gray-500">No monitors yet. <%= link_to "Create one", new_project_monitor_path(@project), class: "text-indigo-600 hover:text-indigo-500" %>.</p>
+  <% end %>
 </div>

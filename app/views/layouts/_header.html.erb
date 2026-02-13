@@ -1,44 +1,32 @@
-<!-- This example requires Tailwind CSS v2.0+ -->
 <nav class="bg-gray-800">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
-      <div class="flex items-center">
-        <div class="hidden sm:block sm:ml-6">
-          <div class="flex-shrink-0">
-            <%= link_to image_tag('logo_alt.svg'), root_url %>
-          </div>
-        </div>
-        <div class="hidden sm:block sm:ml-6">
-          <div class="flex space-x-4">
-            <% if logged_in? %>
-              <a><%= link_to "Projects", projects_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
-              <a><%= link_to "Settings", edit_user_path(current_user), class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
-              <%= button_to "Logout", logout_path, method: :delete, class: 'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium' %>
-            <% else %>
-              <a><%= link_to "Pricing", pricing_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"%> </a>
-              <a><%= link_to "Contact", new_contact_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
-              <a><%= link_to "Log In", login_path, class: 'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium' %></a>
-            <% end %>
-          </div>
-        </div>
+      <div class="flex-shrink-0">
+        <%= link_to image_tag('logo_alt.svg'), root_url %>
+      </div>
 
-        <div class="sm:hidden sm:ml-6">
-          <div class="flex-shrink-0">
-            <%= link_to image_tag('logo_alt.svg', width: '100'), root_url %>
-          </div>
-        </div>
-      <div class="sm:hidden pl-3" id="mobile-menu">
-        <div class="px-0 pt-2 pb-3 space-y-1 ">
-          <% if logged_in? %>
-              <a><%= link_to "Projects", projects_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
-              <a><%= link_to "Settings", edit_user_path(current_user), class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %></a>
-              <%= button_to "Logout", logout_path, method: :delete, class: 'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium' %>
-            <% else %>
-              <a><%= link_to "Pricing", pricing_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-2 py-2 rounded-md text-xs font-small" %></a>
-              <a><%= link_to "Contact", new_contact_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-2 py-2 rounded-md text-xs font-small" %></a>
-              <a><%= link_to "Log In", login_path, class: 'text-gray-300 hover:bg-gray-700 hover:text-white px-2 py-2 rounded-md text-xs font-small' %></a>
-            <% end %>
-        </div>
+      <div class="hidden sm:flex sm:items-center sm:space-x-4 sm:ml-10">
+        <% if logged_in? %>
+          <%= link_to "Monitors", root_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+          <%= link_to "Settings", edit_user_path(current_user), class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+          <%= button_to "Logout", logout_path, method: :delete, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+        <% else %>
+          <%= link_to "Pricing", pricing_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+          <%= link_to "Contact", new_contact_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+          <%= link_to "Log In", login_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+        <% end %>
+      </div>
+
+      <div class="sm:hidden flex items-center space-x-2">
+        <% if logged_in? %>
+          <%= link_to "Monitors", root_path, class: "text-gray-300 hover:text-white px-2 py-1 rounded-md text-xs font-medium" %>
+          <%= link_to "Settings", edit_user_path(current_user), class: "text-gray-300 hover:text-white px-2 py-1 rounded-md text-xs font-medium" %>
+          <%= button_to "Logout", logout_path, method: :delete, class: "text-gray-300 hover:text-white px-2 py-1 rounded-md text-xs font-medium" %>
+        <% else %>
+          <%= link_to "Pricing", pricing_path, class: "text-gray-300 hover:text-white px-2 py-1 rounded-md text-xs font-medium" %>
+          <%= link_to "Contact", new_contact_path, class: "text-gray-300 hover:text-white px-2 py-1 rounded-md text-xs font-medium" %>
+          <%= link_to "Log In", login_path, class: "text-gray-300 hover:text-white px-2 py-1 rounded-md text-xs font-medium" %>
+        <% end %>
       </div>
     </div>
   </div>

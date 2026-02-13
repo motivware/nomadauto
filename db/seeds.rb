@@ -26,3 +26,6 @@ end
 
 Invite.find_or_create_by!(email: 'owen-user@test.com', subdomain: 'testing', project_id: 1)
 Invite.find_or_create_by!(email: 'ruby-user@test.com', subdomain: 'testing', project_id: 1)
+
+ActiveRecord::Base.connection.execute("SELECT setval('users_id_seq', (SELECT MAX(id) FROM users))")
+ActiveRecord::Base.connection.execute("SELECT setval('projects_id_seq', (SELECT MAX(id) FROM projects))")

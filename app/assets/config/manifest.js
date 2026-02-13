@@ -5,4 +5,5 @@
 //= link_tree ../../../vendor/javascript .js
 //= link controllers/application.js
 //= link controllers/index.js
+//= link controllers/step_builder_controller.js
 //= link application.js

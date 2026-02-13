@@ -1,0 +1,8 @@
+:queues:
+  - default
+  - monitors
+
+:scheduler:
+  monitor_scheduler:
+    every: '5m'
+    class: MonitorSchedulerJob

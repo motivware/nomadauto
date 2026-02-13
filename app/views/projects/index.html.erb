@@ -1,43 +1,34 @@
-<!-- This example requires Tailwind CSS v2.0+ -->
-<div class="min-h-full flex flex-col justify-center py-12 md:px-6 lg:px-8">
-  <div class="md:mx-auto md:w-full sm:max-w-md">
-    <div class="text-center">
-      <svg class="mx-auto h-20 w-20 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-        <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-      </svg>
-      <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">SynthMonitor</h2>
-      <% if @user.plan_id == 1 %>
-        <p class="mt-5 text-xl text-gray-500">Get started by creating a new project.</p>  
-        <p class='mt-1 text-sm text-gray-500'> Trial period will expire in <span style="color:red"><%= remaining_days %> Days. </span><br/><%= link_to "Subscribe Now!", edit_user_path(current_user, plan: @pro_plan.id) %></p>
-      <% end %>
-      <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <% @projects.each do |project| %>
-            <div class="flex justify-center">
-              <ul role="list" class="mt-4 grid">
-                <li class="col-span-1 shadow-sm rounded-md hover:gray-800">
-                  <div class="flex-1 justify-between border border-gray-200 bg-white rounded truncate">
-                    <div class="flex-1 px-4 py-2 text-sm truncate">
-                      <%= link_to project.title, project_path(project), class: 'text-gray-900 font-large hover:text-gray-600' %>
-                      <p class="text-gray-500"><%= project.details %></p>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          <% end %>
-        <br/>          
-          <% if @user.plan_id == 1 || @user.plan_id == 2  %>
-            <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-            </svg>
-            <h2><%= link_to 'Create New Project', new_project_path %></h2>
-          <% end %>
-        </button>
-      </div>
-      </div>
-      </div>
-    </div>
+<div class="max-w-4xl mx-auto px-4 py-12">
+  <div class="text-center mb-8">
+    <h1 class="text-3xl font-bold tracking-tight text-gray-900">Your Projects</h1>
+    <% if @user.plan_id == 1 %>
+      <p class="mt-2 text-sm text-gray-500">
+        Trial expires in <span class="text-red-600 font-medium"><%= remaining_days %> days</span>.
+        <%= link_to "Subscribe Now!", edit_user_path(current_user, plan: @pro_plan.id), class: "text-indigo-600 hover:text-indigo-500 font-medium" %>
+      </p>
+    <% end %>
   </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+    <% @projects.each do |project| %>
+      <%= link_to project_monitors_path(project), class: "block bg-white shadow-sm rounded-xl border border-gray-100 p-6 hover:shadow-md transition-shadow" do %>
+        <h2 class="text-lg font-semibold text-gray-900"><%= project.title %></h2>
+        <% if project.details.present? %>
+          <p class="mt-1 text-sm text-gray-500"><%= project.details %></p>
+        <% end %>
+        <p class="mt-3 text-sm text-gray-400"><%= project.site_monitors.size %> monitors</p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if @user.plan_id == 1 || @user.plan_id == 2 %>
+    <div class="text-center">
+      <%= link_to new_project_path, class: "inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700" do %>
+        <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+        </svg>
+        Create New Project
+      <% end %>
+    </div>
+  <% end %>
 </div>
