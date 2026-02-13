@@ -41,7 +41,7 @@ gem 'image_processing', '~> 1.2'
 
 
 # Linter
-gem 'rubocop', '1.43', require: false
+gem 'rubocop', '1.84.2', require: false
 
 # Google maps Integration
 gem 'geocoder'
