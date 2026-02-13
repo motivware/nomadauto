@@ -394,10 +394,11 @@ GEM
       railties (>= 6.0.0)
     stringio (3.2.0)
     stripe (18.3.1)
-    tailwindcss-rails (2.7.9-arm64-darwin)
+    tailwindcss-rails (4.4.0)
       railties (>= 7.0.0)
-    tailwindcss-rails (2.7.9-x86_64-linux)
-      railties (>= 7.0.0)
+      tailwindcss-ruby (~> 4.0)
+    tailwindcss-ruby (4.1.18-arm64-darwin)
+    tailwindcss-ruby (4.1.18-x86_64-linux-gnu)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
     thor (1.5.0)
@@ -457,8 +458,8 @@ DEPENDENCIES
   jsbundling-rails
   kt-paperclip (~> 6.4, >= 6.4.1)
   letter_opener
-  logger (= 1.6.0)
   listen (= 3.5.0)
+  logger (= 1.6.0)
   pg (~> 1.6)
   public_activity (= 2.0.2)
   puma (= 6.4.3)
@@ -476,7 +477,7 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   stripe
-  tailwindcss-rails (~> 2.0)
+  tailwindcss-rails (~> 4.4)
   turbo-rails (~> 2.0)
   tzinfo-data
   web-console (~> 4.2)
