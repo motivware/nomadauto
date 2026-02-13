@@ -81,7 +81,7 @@ GEM
     autoprefixer-rails (10.4.21.0)
       execjs (~> 2)
     base64 (0.3.0)
-    bcrypt (3.1.16)
+    bcrypt (3.1.21)
     benchmark (0.5.0)
     bigdecimal (4.0.1)
     bindex (0.8.1)
@@ -437,7 +437,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list (~> 1.0, >= 1.0.2)
-  bcrypt (= 3.1.16)
+  bcrypt (= 3.1.21)
   bootstrap-sass (>= 3.4.1)
   byebug
   capybara
