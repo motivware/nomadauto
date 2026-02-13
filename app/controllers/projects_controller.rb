@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ProjectsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: %i[index show]
   before_action :enforce_trial!, only: %i[index show new create]
   before_action :check_email_confirmation, only: %i[index show new create]
 

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:destroy]
   before_action :set_plans, only: %i[new create]
 
   def new; end
