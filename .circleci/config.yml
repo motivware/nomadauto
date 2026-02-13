@@ -20,7 +20,7 @@ jobs:
       - run:
           name: Enable Corepack (Yarn)
           command: |
-            corepack enable
+            sudo corepack enable
             yarn --version
 
       - run:
