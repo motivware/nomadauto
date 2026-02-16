@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'jquery-rails', '4.4.0'
+gem 'jquery-rails', '4.6.1'
 gem 'public_activity', '2.0.2'
 gem "puma", "6.4.3"
 gem 'rails', '~> 8.0.0'
