@@ -134,8 +134,8 @@ GEM
       net-http (~> 0.5)
     ffi (1.17.3-arm64-darwin)
     ffi (1.17.3-x86_64-linux-gnu)
-    font-awesome-sass (4.6.2)
-      sass (>= 3.2)
+    font-awesome-sass (6.7.2)
+      sassc (~> 2.0)
     fugit (1.12.1)
       et-orbi (~> 1.4)
       raabro (~> 1.4)
@@ -356,11 +356,6 @@ GEM
       logger
     rufus-scheduler (3.9.2)
       fugit (~> 1.1, >= 1.11.1)
-    sass (3.7.4)
-      sass-listen (~> 4.0.0)
-    sass-listen (4.0.0)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -445,7 +440,7 @@ DEPENDENCIES
   chartkick (>= 3.2.0)
   dotenv-rails
   faker
-  font-awesome-sass (~> 4.6.2)
+  font-awesome-sass (~> 6.7.2)
   geocoder
   gibbon
   groupdate
@@ -457,8 +452,8 @@ DEPENDENCIES
   jsbundling-rails
   kt-paperclip (~> 6.4, >= 6.4.1)
   letter_opener
-  logger (= 1.6.0)
   listen (= 3.5.0)
+  logger (= 1.6.0)
   pg (~> 1.6)
   public_activity (= 2.0.2)
   puma (= 6.4.3)
