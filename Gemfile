@@ -44,7 +44,7 @@ gem 'logger', '= 1.6.0'
 
 
 # Linter
-gem 'rubocop', '1.43', require: false
+gem 'rubocop', '1.85.1', require: false
 
 # Google maps Integration
 gem 'geocoder'
