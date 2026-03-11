@@ -11,7 +11,7 @@
     "glob-parent": ">=6.0.2",
     "playwright": "^1.58.2",
     "stimulus": "^3.2.2",
-    "trix": "^2.1.5"
+    "trix": "^2.1.17"
   },
   "resolutions": {
     "acorn": "8.7.1"
