@@ -34,7 +34,7 @@ gem 'stripe'
 gem 'chartkick', '>= 3.2.0'
 # gem 'figaro', '1.1.1'
 gem 'groupdate'
-gem "kt-paperclip", "~> 6.4", ">= 6.4.1"
+gem "kt-paperclip", "~> 7.3"
 gem "recaptcha", require: "recaptcha/rails"
 gem "tailwindcss-rails", "~> 2.0"
 gem 'image_processing', '~> 1.2'
