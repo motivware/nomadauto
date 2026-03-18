@@ -75,7 +75,7 @@ GEM
     acts_as_list (1.2.6)
       activerecord (>= 6.1)
       activesupport (>= 6.1)
-    addressable (2.8.8)
+    addressable (2.8.9)
       public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
     autoprefixer-rails (10.4.21.0)
@@ -100,7 +100,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    capybara-playwright-driver (0.5.8)
+    capybara-playwright-driver (0.5.9)
       addressable
       capybara
       playwright-ruby-client (>= 1.16.0)
@@ -205,7 +205,7 @@ GEM
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
-    mime-types-data (3.2026.0203)
+    mime-types-data (3.2026.0317)
     mimemagic (0.3.10)
       nokogiri (~> 1)
       rake
@@ -239,7 +239,7 @@ GEM
       racc
     pg (1.6.3-arm64-darwin)
     pg (1.6.3-x86_64-linux)
-    playwright-ruby-client (1.58.0)
+    playwright-ruby-client (1.58.1)
       base64
       concurrent-ruby (>= 1.1.6)
       mime-types (>= 3.0)
@@ -255,7 +255,7 @@ GEM
       activerecord (>= 5.0)
       i18n (>= 0.5.0)
       railties (>= 5.0.0)
-    public_suffix (7.0.2)
+    public_suffix (7.0.5)
     puma (6.4.3)
       nio4r (~> 2.0)
     pundit (2.5.2)
