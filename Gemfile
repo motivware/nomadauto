@@ -20,7 +20,7 @@ gem 'jbuilder', '~> 2.13'
 # Redis + Sidekiq for background jobs
 gem 'redis', '~> 5.0'
 gem 'sidekiq', '~> 7.2'
-gem 'sidekiq-scheduler', '~> 5.0'
+gem 'sidekiq-scheduler', '~> 6.0'
 gem 'bcrypt', '3.1.21'
 gem 'bootstrap-sass', '>= 3.4.1'
 gem 'dotenv-rails'
