@@ -107,7 +107,7 @@ GEM
     chartkick (5.2.1)
     childprocess (5.1.0)
       logger (~> 1.5)
-    climate_control (0.2.0)
+    climate_control (1.2.0)
     concurrent-ruby (1.3.6)
     connection_pool (2.5.5)
     crass (1.0.6)
@@ -175,12 +175,12 @@ GEM
     jsbundling-rails (1.3.1)
       railties (>= 6.0.0)
     json (2.18.1)
-    kt-paperclip (6.4.2)
+    kt-paperclip (7.3.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
+      marcel (~> 1.0.1)
       mime-types
-      mimemagic (~> 0.3.0)
-      terrapin (~> 0.6.0)
+      terrapin (>= 0.6.0, < 2.0)
     launchy (3.1.1)
       addressable (~> 2.8)
       childprocess (~> 5.0)
@@ -200,15 +200,12 @@ GEM
       net-imap
       net-pop
       net-smtp
-    marcel (1.1.0)
+    marcel (1.0.4)
     matrix (0.4.3)
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
     mime-types-data (3.2026.0317)
-    mimemagic (0.3.10)
-      nokogiri (~> 1)
-      rake
     mini_magick (5.3.1)
       logger
     mini_mime (1.1.5)
@@ -399,8 +396,8 @@ GEM
       railties (>= 7.0.0)
     tailwindcss-rails (2.7.9-x86_64-linux)
       railties (>= 7.0.0)
-    terrapin (0.6.0)
-      climate_control (>= 0.0.3, < 1.0)
+    terrapin (1.1.1)
+      climate_control
     thor (1.5.0)
     tilt (2.7.0)
     timeout (0.6.0)
@@ -456,7 +453,7 @@ DEPENDENCIES
   jbuilder (~> 2.13)
   jquery-rails (= 4.4.0)
   jsbundling-rails
-  kt-paperclip (~> 6.4, >= 6.4.1)
+  kt-paperclip (~> 7.3)
   letter_opener
   listen (= 3.5.0)
   logger (= 1.6.0)
