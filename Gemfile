@@ -24,7 +24,7 @@ gem 'sidekiq-scheduler', '~> 5.0'
 gem 'bcrypt', '3.1.22'
 gem 'bootstrap-sass', '>= 3.4.1'
 gem 'dotenv-rails'
-gem 'font-awesome-sass', '~> 4.6.2'
+gem 'font-awesome-sass', '~> 6.7.2'
 gem 'hirb', '0.7.3'
 
 # Use gibbon to connect to the mailchimp API
