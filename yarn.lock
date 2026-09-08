@@ -229,11 +229,6 @@ flowbite@^1.8.1:
     "@popperjs/core" "^2.9.3"
     mini-svg-data-uri "^1.4.3"
 
-fsevents@2.3.2:
-  version "2.3.2"
-  resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
-  integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
-
 glob-parent@>=6.0.2:
   version "6.0.2"
   resolved "https://registry.npmjs.org/glob-parent/-/glob-parent-6.0.2.tgz"
@@ -258,19 +253,17 @@ mini-svg-data-uri@^1.2.3, mini-svg-data-uri@^1.4.3:
   resolved "https://registry.npmjs.org/mini-svg-data-uri/-/mini-svg-data-uri-1.4.4.tgz"
   integrity sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==
 
-playwright-core@1.58.2:
-  version "1.58.2"
-  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.58.2.tgz#ac5f5b4b10d29bcf934415f0b8d133b34b0dcb13"
-  integrity sha512-yZkEtftgwS8CsfYo7nm0KE8jsvm6i/PTgVtB8DL726wNf6H2IMsDuxCpJj59KDaxCtSnrWan2AeDqM7JBaultg==
+playwright-core@1.63.0:
+  version "1.63.0"
+  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.63.0.tgz#e57665bc32846c213ac39a1e4d5bc6228e76b376"
+  integrity sha512-rYCsBF/M5HjUch52bbtVONEFjv6Xu8sm8h72dNlR5bzIE1fvC/bxgspzkjSfU+MweEMmPM8KJebG6nnyxo5mCg==
 
-playwright@^1.58.2:
-  version "1.58.2"
-  resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.58.2.tgz#afe547164539b0bcfcb79957394a7a3fa8683cfd"
-  integrity sha512-vA30H8Nvkq/cPBnNw4Q8TWz1EJyqgpuinBcHET0YVJVFldr8JDNiU9LaWAE1KqSkRYazuaBhTpB5ZzShOezQ6A==
+playwright@^1.63.0:
+  version "1.63.0"
+  resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.63.0.tgz#99b56f9f69b1b70c44f00bf84b2fe52348ae2511"
+  integrity sha512-+7ziBLidS4NaNCdt57SUDT+wYmmd5fmiQejUic/kb+YsYSCPyOOE9sebzMjNmQrsnNpDJqd4WHvV/8lfKfUDUg==
   dependencies:
-    playwright-core "1.58.2"
-  optionalDependencies:
-    fsevents "2.3.2"
+    playwright-core "1.63.0"
 
 postcss-selector-parser@6.0.10:
   version "6.0.10"
